@@ -1,0 +1,186 @@
+
+#search {
+    position: relative;
+	top: -220px;
+	text-align: right;
+}
+
+#search div {
+	text-align: right;
+}
+
+#proj-search {
+   -moz-border-radius-bottomleft:3px;
+   -moz-border-radius-bottomright:3px;
+   -moz-border-radius-topleft:3px;
+   -moz-border-radius-topright:3px;
+}
+
+input[type="button"]:hover, 
+input[type="submit"]:hover, 
+input[type="reset"]:hover {
+    background: #E5E5E5 none repeat scroll 0% 0%;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    background: #EEEEEE none repeat scroll 0% 0%;
+    border:1px solid #CCCCCC;
+    color: #222222;
+    padding:0.1em 0.5em;   
+	-moz-border-radius-bottomleft:3px;
+   -moz-border-radius-bottomright:3px;
+   -moz-border-radius-topleft:3px;
+   -moz-border-radius-topright:3px;
+}
+
+#anydiff {
+    float: none;
+}
+
+.buttons {
+    text-align: right;
+	width: 100%;
+	display: block !important;
+}
+
+.buttons input {
+    font-size: 80%;
+}
+
+.ticket .buttons input {
+    font-size: 100%;
+}
+
+.buttons #delete {
+    margin: 0px;
+}
+
+#mainnav {
+    border: 0px;
+    background: none !important;
+    margin: 0px auto;
+    width: 860px;
+    padding: 0px;
+    height: 1px;
+    overflow: visible;
+}
+
+#mainnav ul {
+    width: 140px;
+    text-align: left;
+    position: relative;
+    padding: 0px;
+    background: #F5F7F5 url(menu_bottom.png) bottom left no-repeat;
+    padding-bottom: 90px;
+}
+
+#mainnav li {
+    display: block;
+    text-align: left;
+    padding: 0px;
+    border: none !important;
+}
+
+#mainnav a {
+    border: none !important;
+    padding: 5px 30px 5px 5px !important;
+    background: transparent url(menu_normal.png) center right no-repeat !important;
+    display: block;
+}
+
+#mainnav .active *:link, #mainnav .active *:visited {
+    color: #33573a;
+    background: transparent url(menu_selected.png) center right no-repeat !important;
+}
+
+#mainnav *:link:hover, #mainnav *:visited:hover {
+    background: transparent url(menu_hover.png) center right no-repeat !important;
+    color: black !important;
+}
+
+#donate form {
+	padding: 10px 0px 0px 0px;
+	text-align: center;
+}
+
+#donate a,
+#donate a:link:hover,
+#donate a:visited {
+    background: none !important;
+}
+
+.nav li {
+    border-left: 1px solid #D7D7D7;
+    border-right: none !important;
+}
+
+.nav li.last a {
+    border-right: none !important;
+}
+
+.nav li.first,
+.nav li.first a {
+    border-left: none !important;
+}
+
+#ctxtnav {
+	float: right;
+    z-index: 1;
+}
+
+#content {
+	padding-top: 5px;
+    clear: both;
+}
+
+#main h1 {
+	clear: both;
+}
+
+#metanav {
+    position: absolute;
+    top: 10px;
+    overflow: hidden;
+    width: 400px;
+}
+
+#metanav ul {
+	padding: 0px;
+    text-align: left;
+	width: 100%;
+}
+
+#main {
+    margin: 0px auto;
+    width: 710px !important;
+    padding: 0px 0px 0px 150px !important;
+    margin-top: 0px;
+    min-height: 300px;
+}
+
+#prefs {
+    background-color: #F5F7F5;
+   -moz-border-radius-bottomleft:3px;
+   -moz-border-radius-bottomright:3px;
+   -moz-border-radius-topleft:3px;
+   -moz-border-radius-topright:3px;
+    border: none;
+}
+
+#dirlist td.name {
+    width: 45%;
+}
+
+#dirlist td.change {
+    font-size: 65%;
+    height: 30px;
+    vertical-align: middle;
+    white-space: normal !important;
+    width: 40%;
+}
+
+#attachments_folder a {
+	display: none;
+}
