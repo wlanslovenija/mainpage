@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" py:strip="">
+  <py:match path="script[@src='/chrome/common/js/jquery.js']">
+    <script type="text/javascript" src="${href.chrome('site/jquery.js')}" ></script>
+  </py:match>
+  <head py:match="head" py:attrs="select('@*')">
+    ${select('*|comment()|text()')}
+    <link rel="stylesheet" type="text/css" href="${href.chrome('site/common.css')}" />
+	<link rel="stylesheet" type="text/css" href="${href.chrome('site/trac.css')}" />
+    <link rel="stylesheet" type="text/css" href="${href.chrome('site/visage.css')}" />
+    <script type="text/javascript" src="${href.chrome('site/folding.js')}" ></script>
+    <script type="text/javascript" src="${href.chrome('site/jquery.visage.js')}" ></script>
+    <script type="text/javascript" src="${href.chrome('site/jquery.visage.init.js')}" ></script>
+  </head>
+  <py:match path="title">
+    <title>${select('text()').__str__().decode("utf-8")[:-5]}</title>
+  </py:match>
+  <?python homeurl = '/'
+           if req.environ['HTTP_HOST'] != 'wlan-lj.net':
+             homeurl = '/trac/wlanlj'
+             homeurl = Markup(homeurl)
+ ?>
+  <div id="header" py:match="div[@id='header']">
+    <h1><a href="$homeurl"><span>$project.name</span></a></h1>
+    <h2><a href="$homeurl"><span>$project.descr</span></a></h2>
+  </div>
+  <py:match path="div[@id='footer']" />
+  <py:match path="div[@id='mainnav']//li">
+    <?python content = select('*|text()').__str__().decode("utf-8")
+             if req.environ['HTTP_HOST'] != 'wlan-lj.net':
+               content = content.replace('href="/wiki', 'href="/trac/wlanlj/wiki')
+             content = Markup(content)
+    ?>
+    <py:choose test="">
+      <py:when test="(select('a').select('@href').__str__() != '') and (req.environ['PATH_INFO'].startswith(select('a').select('@href').__str__()) or ('/trac/wlanlj' + req.environ['PATH_INFO']).startswith(select('a').select('@href').__str__()))">
+        <li class="active">${content}</li>
+      </py:when>
+      <py:when test="select('text()').__str__().startswith('&lt;a href=&quot;' + req.environ['PATH_INFO'] + '&quot;&gt;')">
+        <li class="active">${content}</li>
+      </py:when>
+      <py:when test="req.environ['PATH_INFO'].startswith('/wiki/') and select('text()').__str__().startswith('&lt;a href=&quot;' + '/'.join(req.environ['PATH_INFO'].split('/', 3)[0:3]) + '&quot;&gt;')">
+        <li class="active">${content}</li>
+      </py:when>
+      <py:otherwise>
+        <li>${content}</li>
+      </py:otherwise>
+    </py:choose>
+  </py:match>
+  <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
+  <py:match path="div[@id='altlinks']">
+    <py:if test="not req.environ['PATH_INFO'].startswith('/wiki') and req.environ['PATH_INFO'] != '/'">
+      <div id="altlinks">
+        ${select('*|text()')}
+      </div>
+     </py:if>
+  </py:match>
+  <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
+  <py:if test="req.environ['PATH_INFO'] == '/browser'">
+    <py:match path="div[@id='content']//h1">
+      <p><a class="ext-link" href="http://subversion.tigris.org/"><span class="icon">SVN</span></a> repozitorij z izvorno kodo je za branje dostopen na <a href="http://wlan-lj.net/svn/">http://wlan-lj.net/svn/</a>, za branje in pisanje razvijalcev pa na <a class="ext-link" href="https://common.tnode.com/svn/wlanlj/"><span class="icon">https://common.tnode.com/svn/wlanlj/</span></a>.</p>
+      <h1>
+        ${select('*|text()')}
+      </h1>
+    </py:match>
+  </py:if>
+  <py:match path="div[@id='mainnav']//ul">
+    <ul>
+      ${select('*|text()')}
+      <li id="donate"><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="3295105" />
+        <input type="image" src="https://www.paypal.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="Donate" />
+      </form></li>
+    </ul>
+  </py:match>
+  <py:match path="div[@id='ctxtnav']">
+    <py:if test="len(list(select('.//li'))) > 0">
+      <div id="ctxtnav" class="nav">
+        ${select('*|text()')}
+      </div>
+    </py:if>
+  </py:match>
+  <py:match path="div[@id='content' and @class='wiki']/h3">
+    <h3 id="attachments_folder" class="folding closed">${select('text()')}</h3>
+  </py:match>
+  <py:match path="div[@id='content' and @class='wiki']/ul">
+	<ul id="attachments_foldee">${select('*')}</ul>
+  </py:match>
+  <py:match path="div[@id='content']">
+	${select("./p[@class='path']")}
+		    <div id="content" class="${select('attribute::class')}">
+					    ${select("./*[@class!='path']")}
+		    </div>
+  </py:match>
+  <py:if test="req.environ['PATH_INFO'].startswith('/wiki/Tocke/')">
+    <py:match path="select[@name='template']//option">
+      <py:choose test="">
+        <py:when test="select('text()').__str__() == 'Tocke'"><option selected="selected">Tocke</option></py:when>
+        <py:when test="select('text()').__str__() == '(blank page)'"><option value="">(blank page)</option></py:when>
+        <py:otherwise><option>${select('text()')}</option></py:otherwise>
+      </py:choose>
+    </py:match>
+  </py:if>
+</html>
