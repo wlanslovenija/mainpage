@@ -56,7 +56,7 @@
   <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
   <py:if test="req.environ['PATH_INFO'] == '/browser'">
     <py:match path="div[@id='content']//h1">
-      <p><a class="ext-link" href="http://subversion.tigris.org/"><span class="icon">SVN</span></a> repozitorij z izvorno kodo je za branje dostopen na <a href="http://wlan-lj.net/svn/">http://wlan-lj.net/svn/</a>, za branje in pisanje razvijalcev pa na <a class="ext-link" href="https://common.tnode.com/svn/wlanlj/"><span class="icon">https://common.tnode.com/svn/wlanlj/</span></a>.</p>
+      <p><a class="ext-link" href="http://subversion.tigris.org/"><span class="icon">SVN</span></a> repozitorij z izvorno kodo je za branje dostopen na <a href="http://wlan-lj.net/svn/">http://wlan-lj.net/svn/</a>, za branje in pisanje razvijalcev pa na <a class="ext-link" href="https://common.tnode.com/svn/wlanlj/"><span class="icon"> </span>https://common.tnode.com/svn/wlanlj/</a>.</p>
       <h1>
         ${select('*|text()')}
       </h1>
