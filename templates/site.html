@@ -12,7 +12,7 @@
     <script type="text/javascript" src="${href.chrome('site/jquery.visage.init.js')}" ></script>
   </head>
   <py:match path="title">
-    <title>${select('text()').__str__().decode("utf-8")[:-5]}</title>
+    <title>${select('text()').__str__().decode("utf-8")[:-5]} - odprto brezžično omrežje Ljubljane</title>
   </py:match>
   <?python homeurl = '/'
            if req.environ['HTTP_HOST'] != 'wlan-lj.net':
