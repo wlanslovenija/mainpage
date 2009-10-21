@@ -100,4 +100,23 @@
       </py:choose>
     </py:match>
   </py:if>
+  <py:match path="div[@class='blog-list-title']">
+    <p>Pozdravljen/a na spletni strani odprtega brezžičnega omrežja Ljubljane <i>wlan ljubljana</i>. Če omrežja še ne poznaš, te vabimo, da si prebereš <a class="wiki" href="/wiki/OOmrezju">o omrežju</a> in se razgledaš naokoli po strani. Mogoče te premami, da se nam pridružiš in v omrežju <a class="wiki" href="/wiki/Sodeluj">sodeluješ</a> tudi ti.</p>
+  </py:match>
+  <py:match path="div[@class='sidebar-section']">
+    <py:choose test="">
+      <py:when test="select('p').__str__().find('This blog does not yet have an') != -1" />
+      <py:otherwise><div class="sidebar-section">${select('*|text()')}</div></py:otherwise>
+    </py:choose>
+  </py:match>
+  <py:match path="div[@class='sidebar-section']//span[@class='metainfo']|div[@class='sidebar-section last']//span[@class='metainfo']">
+    <?python link = select('//@href').__str__().decode("utf-8") ?>
+    <span class="metainfo"><a href="${link}"><img src="/chrome/common/feed.png" alt="RSS" /></a></span>
+  </py:match>
+  <py:match path="div[@id='sidebar']">
+    <py:choose test="">
+      <py:when test="select('*|text()').__str__().find('Naming your blog posts') != -1" />
+      <py:otherwise><div id="sidebar">${select('*|text()')}</div></py:otherwise>
+    </py:choose>
+  </py:match>
 </html>
