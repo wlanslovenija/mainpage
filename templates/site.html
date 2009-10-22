@@ -12,7 +12,7 @@
     <script type="text/javascript" src="${href.chrome('site/jquery.visage.init.js')}" ></script>
   </head>
   <py:match path="title">
-    <title>${select('text()').__str__().decode("utf-8")[:-5]} - odprto brezžično omrežje Ljubljane</title>
+    <title>${select('text()').__str__().decode("utf-8").strip()} – odprto brezžično omrežje Ljubljane</title>
   </py:match>
   <?python homeurl = '/'
            if req.environ['HTTP_HOST'] != 'wlan-lj.net':
@@ -107,6 +107,10 @@
     </py:choose>
   </py:match>
   <py:if test="req.environ['PATH_INFO'].startswith('/blog') or req.environ['PATH_INFO'] == '/'">
+    <?python import re ?>
+    <py:match path="title">
+      <title>${re.sub(r'^(Blog – |Blog: )', '', select('text()').__str__().decode("utf-8"))}</title>
+    </py:match>
     <py:match path="div[@id='ctxtnav']">
       <div id="ctxtnav" class="nav">
         <h2>Context Navigation</h2><ul><li><a href="/blog/archive" title="Browse blog posts">Browse Posts</a></li>${select('ul/*')}</ul><hr />
