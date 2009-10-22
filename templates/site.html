@@ -5,7 +5,7 @@
   <head py:match="head" py:attrs="select('@*')">
     ${select('*|comment()|text()')}
     <link rel="stylesheet" type="text/css" href="${href.chrome('site/common.css')}" />
-	<link rel="stylesheet" type="text/css" href="${href.chrome('site/trac.css')}" />
+    <link rel="stylesheet" type="text/css" href="${href.chrome('site/trac.css')}" />
     <link rel="stylesheet" type="text/css" href="${href.chrome('site/visage.css')}" />
     <script type="text/javascript" src="${href.chrome('site/folding.js')}" ></script>
     <script type="text/javascript" src="${href.chrome('site/jquery.visage.js')}" ></script>
@@ -45,15 +45,9 @@
       </py:otherwise>
     </py:choose>
   </py:match>
-  <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
-  <py:match path="div[@id='altlinks']">
-    <py:if test="not req.environ['PATH_INFO'].startswith('/wiki') and req.environ['PATH_INFO'] != '/'">
-      <div id="altlinks">
-        ${select('*|text()')}
-      </div>
-     </py:if>
-  </py:match>
-  <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
+  <py:if test="req.environ['PATH_INFO'].startswith('/wiki') or req.environ['PATH_INFO'].startswith('/blog') or req.environ['PATH_INFO'] == '/'">
+    <py:match path="div[@id='altlinks']" />
+  </py:if>
   <py:if test="req.environ['PATH_INFO'] == '/browser'">
     <py:match path="div[@id='content']//h1">
       <p><a class="ext-link" href="http://subversion.tigris.org/"><span class="icon">&nbsp;</span>SVN</a> repozitorij z izvorno kodo je za branje dostopen na <a href="http://wlan-lj.net/svn/">http://wlan-lj.net/svn/</a>, za branje in pisanje razvijalcev pa na <a class="ext-link" href="https://common.tnode.com/svn/wlanlj/"><span class="icon">&nbsp;</span>https://common.tnode.com/svn/wlanlj/</a>.</p>
@@ -72,24 +66,17 @@
       </form></li>
     </ul>
   </py:match>
-  <py:match path="div[@id='ctxtnav']">
-    <py:if test="len(list(select('.//li'))) > 0">
-      <div id="ctxtnav" class="nav">
-        ${select('*|text()')}
-      </div>
-    </py:if>
-  </py:match>
   <py:match path="div[@id='content' and @class='wiki']/h3">
     <h3 id="attachments_folder" class="folding closed">${select('text()')}</h3>
   </py:match>
   <py:match path="div[@id='content' and @class='wiki']/ul">
-	<ul id="attachments_foldee">${select('*')}</ul>
+    <ul id="attachments_foldee">${select('*')}</ul>
   </py:match>
   <py:match path="div[@id='content']">
-	${select("./p[@class='path']")}
-		    <div id="content" class="${select('attribute::class')}">
-					    ${select("./*[@class!='path']")}
-		    </div>
+    ${select("./p[@class='path']")}
+    <div id="content" class="${select('attribute::class')}">
+      ${select("./*[@class!='path']")}
+    </div>
   </py:match>
   <py:if test="req.environ['PATH_INFO'].startswith('/wiki/Tocke/')">
     <py:match path="select[@name='template']//option">
@@ -115,8 +102,17 @@
   </py:match>
   <py:match path="div[@id='sidebar']">
     <py:choose test="">
-      <py:when test="select('*|text()').__str__().find('Naming your blog posts') != -1" />
-      <py:otherwise><div id="sidebar">${select('*|text()')}</div></py:otherwise>
+      <py:when test="req.environ['PATH_INFO'].startswith('/blog/archive')"><div id="sidebar">${select('*|text()')}</div></py:when>
+      <py:otherwise />
     </py:choose>
   </py:match>
+  <py:if test="req.environ['PATH_INFO'].startswith('/blog') or req.environ['PATH_INFO'] == '/'">
+    <py:match path="div[@id='ctxtnav']">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2><ul><li><a href="/blog/archive" title="Browse blog posts">Browse Posts</a></li>${select('ul/*')}</ul><hr />
+      </div>
+    </py:match>
+  </py:if>
+  <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
+  <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
 </html>
