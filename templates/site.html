@@ -4,6 +4,13 @@
   </py:match>
   <head py:match="head" py:attrs="select('@*')">
     ${select('*|comment()|text()')}
+    <py:if test="req.environ['PATH_INFO'].startswith('/blog') or req.environ['PATH_INFO'] == '/'">
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          $("#content").find("h1,h2,h3,h4,h5,h6").filter("[id]").addAnchor("Link to this section");
+        });
+      </script>
+    </py:if>
     <link rel="stylesheet" type="text/css" href="${href.chrome('site/common.css')}" />
     <link rel="stylesheet" type="text/css" href="${href.chrome('site/trac.css')}" />
     <link rel="stylesheet" type="text/css" href="${href.chrome('site/visage.css')}" />
@@ -18,7 +25,7 @@
            if req.environ['HTTP_HOST'] != 'wlan-lj.net':
              homeurl = '/trac/wlanlj'
              homeurl = Markup(homeurl)
- ?>
+  ?>
   <div id="header" py:match="div[@id='header']">
     <h1><a href="$homeurl"><span>$project.name</span></a></h1>
     <h2><a href="$homeurl"><span>$project.descr</span></a></h2>
@@ -88,8 +95,17 @@
     </py:match>
   </py:if>
   <py:match path="div[@class='blog-list-title']">
-    <p>Pozdravljen/a na spletni strani odprtega brezžičnega omrežja Ljubljane <i>wlan ljubljana</i>. Če omrežja še ne poznaš, te vabimo, da si prebereš <a class="wiki" href="/wiki/OOmrezju">o omrežju</a> in se razgledaš naokoli po strani. Mogoče te premami, da se nam pridružiš in v omrežju <a class="wiki" href="/wiki/Sodeluj">sodeluješ</a> tudi ti.</p>
+    <py:choose test="">
+      <py:when test="req.environ['PATH_INFO'] == '/'">
+        <p class="welcome">Pozdravljen/a na spletni strani odprtega brezžičnega omrežja Ljubljane <i>wlan ljubljana</i>. Če omrežja še ne poznaš, te vabimo, da si prebereš <a class="wiki" href="/wiki/OOmrezju">o omrežju</a> in se razgledaš naokoli po strani. Mogoče te premami, da se nam pridružiš in v omrežju <a class="wiki" href="/wiki/Sodeluj">sodeluješ</a> tudi ti.</p>
+      </py:when>
+      <py:when test="req.environ['PATH_INFO'] == '/blog'"><h1 class="blog-list-title">Zadnji prispevki</h1></py:when>
+      <py:otherwise><h1 class="blog-list-title">${select('*|text()')}</h1></py:otherwise>
+    </py:choose>
   </py:match>
+  <py:if test="req.environ['PATH_INFO'] == '/blog/archive'">
+    <py:match path="div[@id='blog-main']"><div id="blog-main" class="blog-archive">${select('*|text()')}</div></py:match>
+  </py:if>
   <py:match path="div[@class='sidebar-section']">
     <py:choose test="">
       <py:when test="select('p').__str__().find('This blog does not yet have an') != -1" />
@@ -100,6 +116,7 @@
     <?python link = select('//@href').__str__().decode("utf-8") ?>
     <span class="metainfo"><a href="${link}"><img src="/chrome/common/feed.png" alt="RSS" /></a></span>
   </py:match>
+  <py:match path="ul[@class='metainfo']//span[@class='metaupdated']"><?python updated = select('text()').__str__().decode("utf-8").strip().strip("()") ?><span class="metaupdatedtext">(${updated})</span><span class="metaupdated" title="${updated}" /></py:match>
   <py:match path="div[@id='sidebar']">
     <py:choose test="">
       <py:when test="req.environ['PATH_INFO'].startswith('/blog/archive')"><div id="sidebar">${select('*|text()')}</div></py:when>
@@ -113,7 +130,7 @@
     </py:match>
     <py:match path="div[@id='ctxtnav']">
       <div id="ctxtnav" class="nav">
-        <h2>Context Navigation</h2><ul><li><a href="/blog/archive" title="Browse blog posts">Browse Posts</a></li>${select('ul/*')}</ul><hr />
+        <h2>Context Navigation</h2><ul>${select('ul/*')}<li><a href="/blog/archive" title="Browse blog posts">Browse Posts</a></li></ul><hr />
       </div>
     </py:match>
   </py:if>
