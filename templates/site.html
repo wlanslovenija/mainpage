@@ -116,7 +116,7 @@
     <?python link = select('//@href').__str__().decode("utf-8") ?>
     <span class="metainfo"><a href="${link}"><img src="/chrome/common/feed.png" alt="RSS" /></a></span>
   </py:match>
-  <py:match path="ul[@class='metainfo']//span[@class='metaupdated']"><?python updated = select('text()').__str__().decode("utf-8").strip().strip("()") ?><span class="metaupdatedtext">(${updated})</span><span class="metaupdated" title="${updated}" /></py:match>
+  <py:match path="ul[@class='metainfo']//span[@class='metaupdated']"><?python updated = select('text()').__str__().decode("utf-8").strip().strip("()") ?><span class="metaupdatedtext">(${updated})</span><span class="metaupdated" title="${updated}">&nbsp;</span></py:match>
   <py:match path="div[@id='sidebar']">
     <py:choose test="">
       <py:when test="req.environ['PATH_INFO'].startswith('/blog/archive')"><div id="sidebar">${select('*|text()')}</div></py:when>
