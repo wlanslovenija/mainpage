@@ -213,9 +213,10 @@ input[type="reset"] {
 }
 
 .blog ul.metainfo {
-
+	margin: 5px 0 3px 18px;
+	border-top: 1px solid #EEEEEE;
 	list-style-type: none;
-
+	padding: 3px;
 }
 
 .blog .metainfo li {
@@ -249,6 +250,10 @@ input[type="reset"] {
 	color: inherit;
 	padding-bottom: inherit;
 	text-align: inherit;
+}
+
+.blog-comment {
+  padding: 7px;
 }
 
 .welcome {
