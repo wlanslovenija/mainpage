@@ -103,6 +103,10 @@
       <py:otherwise><h1 class="blog-list-title">${select('*|text()')}</h1></py:otherwise>
     </py:choose>
   </py:match>
+  <py:if test="req.environ['PATH_INFO'].startswith('/timeline')"> 
+    <py:match path="div[@id='content']//h1" />
+    <py:match path="form[@id='prefs']"><form id="prefs" method="get" action="">${select('*|text()')}</form><h1>Timeline</h1></py:match>
+  </py:if>
   <py:if test="req.environ['PATH_INFO'] == '/blog/archive'">
     <py:match path="div[@id='blog-main']"><div id="blog-main" class="blog-archive">${select('*|text()')}</div></py:match>
   </py:if>
