@@ -3,9 +3,9 @@
  * http://mitar.tnode.com/
  * In kind public domain.
  *
- * $Id$
- * $Revision$
- * $HeadURL$
+ * $Id: jquery.visage.js 106 2009-11-03 00:44:30Z mitar $
+ * $Revision: 106 $
+ * $HeadURL: https://common.tnode.com/svn/mitar/visage/trunk/src/jquery.visage.js $
 */
 
 (function ($) {
