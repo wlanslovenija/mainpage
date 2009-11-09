@@ -19,7 +19,7 @@
     <script type="text/javascript" src="${href.chrome('site/jquery.visage.init.js')}" ></script>
   </head>
   <py:match path="title">
-    <title>${select('text()').__str__().decode("utf-8").strip()} – odprto brezžično omrežje Ljubljane</title>
+    <title>${Markup(select('text()').__str__().decode("utf-8").strip()).unescape()} – odprto brezžično omrežje Ljubljane</title>
   </py:match>
   <?python homeurl = '/'
            if req.environ['HTTP_HOST'] != 'wlan-lj.net':
@@ -140,4 +140,22 @@
   </py:if>
   <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
   <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
+  <py:if test="req.environ['PATH_INFO'] == '/prefs'">
+    <py:match path="table">
+      <table>
+        ${select('*|text()')}
+        <tr class="field">
+          <th><label for="ticket-notification-optout">Ticket notifications opt-out:</label></th>
+          <td><input type="hidden" name="ticket-notification-optout_cb" value="" /><input type="checkbox" id="ticket-notification-optout" name="ticket-notification-optout" checked="${req.session.get('ticket-notification-optout') or None}" /></td>
+        </tr>
+      </table>
+    </py:match>
+    <py:if test="req.authname != 'anonymous'">
+      <py:match path="p[@class='hint'][1]">
+        <p class="hint">
+          ${select('*|text()')} <strong>Email address is required</strong> for many functions of <a href="http://node.wlan-lj.net">node monitoring and deployment system</a>.
+        </p>
+      </py:match>
+    </py:if>
+  </py:if>
 </html>
