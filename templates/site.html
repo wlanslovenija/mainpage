@@ -141,21 +141,33 @@
   <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
   <py:match path="div[@id='ctxtnav']//li[1]"><li class="first">${select('*|text()')}</li></py:match>
   <py:if test="req.environ['PATH_INFO'] == '/prefs'">
-    <py:match path="table">
-      <table>
-        ${select('*|text()')}
-        <tr class="field">
-          <th><label for="ticket-notification-optout">Ticket notifications opt-out:</label></th>
-          <td><input type="hidden" name="ticket-notification-optout_cb" value="" /><input type="checkbox" id="ticket-notification-optout" name="ticket-notification-optout" checked="${req.session.get('ticket-notification-optout') or None}" /></td>
-        </tr>
-      </table>
-    </py:match>
     <py:if test="req.authname != 'anonymous'">
+      <py:match path="table">
+        <table>
+          ${select('*|text()')}
+          <tr class="field">
+            <th><label for="ticket-notification-optout">Ticket notifications opt-out:</label></th>
+            <td><input type="hidden" name="ticket-notification-optout_cb" value="" /><input type="checkbox" id="ticket-notification-optout" name="ticket-notification-optout" checked="${req.session.get('ticket-notification-optout') or None}" /></td>
+          </tr>
+        </table>
+      </py:match>
       <py:match path="p[@class='hint'][1]">
         <p class="hint">
-          ${select('*|text()')} <strong>Email address is required</strong> for many functions of <a href="http://node.wlan-lj.net">node monitoring and deployment system</a>.
+          ${select('*|text()')} <strong>Email address is required</strong> for many functions of <a href="http://node.wlan-lj.net">node monitoring and deployment system</a>. You can find more information and guidelines <a href="/wiki/Podrobnosti/Razvoj/Trac#Noviuporabniki">here</a>.
         </p>
       </py:match>
     </py:if>
+  </py:if>
+  <py:if test="req.environ['PATH_INFO'] == '/register'">
+    <py:match path="fieldset//p">
+      <p class="hint">
+        ${select('*|text()')} This information is also used for email notification and RSS feeds, for example. <strong>Email address is required</strong> for many functions of <a href="http://node.wlan-lj.net">node monitoring and deployment system</a>. You can find more information and guidelines <a href="/wiki/Podrobnosti/Razvoj/Trac#Noviuporabniki">here</a>.
+      </p>
+    </py:match>
+    <py:match path="input[@type='submit']">
+      <div class="buttons">
+        <input type="submit" value="Create account" />
+      </div>
+    </py:match>
   </py:if>
 </html>

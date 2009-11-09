@@ -18,12 +18,12 @@
     <form class="mod" id="contact" method="post" action="">
       <div class="field">
         <label>Ime / Name:<br />
-          <input type="text" name="name" value="${name}" />
+          <input type="text" name="name" value="${name or req.session.get('name')}" />
         </label>
       </div>
       <div class="field">
         <label>Naslov elektronske pošte / Email Address:<br />
-          <input type="text" name="email" size="48" value="${email}" />
+          <input type="text" name="email" size="48" value="${email or req.session.get('email')}" />
         </label>
       </div>
       <div class="field">
