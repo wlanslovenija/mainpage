@@ -1,0 +1,5 @@
+$message
+
+-- 
+$project.name <${project.url or abs_href()}>
+$project.descr

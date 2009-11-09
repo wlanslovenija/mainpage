@@ -1,0 +1,46 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="layout.html" />
+  <head>
+    <title>Stik / Contact</title>
+  </head>
+
+  <body>
+    <div id="content">
+    <h1>Stik / Contact</h1>
+
+    <div>${wiki_to_html(context.from_request(req), intro_text)}</div>
+
+    <form class="mod" id="contact" method="post" action="">
+      <div class="field">
+        <label>Ime / Name:<br />
+          <input type="text" name="name" value="${name}" />
+        </label>
+      </div>
+      <div class="field">
+        <label>Naslov elektronske pošte / Email Address:<br />
+          <input type="text" name="email" size="48" value="${email}" />
+        </label>
+      </div>
+      <div class="field">
+        <label>Zadeva / Subject:<br />
+          <input type="text" name="subject" size="48" value="${subject}" />
+        </label>
+      </div>
+      <div class="field">
+        <label>Sporočilo / Message:<br />
+          <textarea name="message" rows="10" cols="50">${message}</textarea>
+        </label>
+      </div>
+      <div class="buttons">
+        <input type="submit" value="Send" py:attrs="sendbutton_attr"/>
+      </div>
+    </form>
+    </div>
+  </body>
+
+</html>
