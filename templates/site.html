@@ -57,10 +57,19 @@
   </py:if>
   <py:if test="req.environ['PATH_INFO'] == '/browser'">
     <py:match path="div[@id='content']//h1">
-      <p><a class="ext-link" href="http://subversion.tigris.org/"><span class="icon">&nbsp;</span>SVN</a> repozitorij z izvorno kodo je za branje dostopen na <a href="http://wlan-lj.net/svn/">http://wlan-lj.net/svn/</a>, za branje in pisanje razvijalcev pa na <a class="ext-link" href="https://common.tnode.com/svn/wlanlj/"><span class="icon">&nbsp;</span>https://common.tnode.com/svn/wlanlj/</a>.</p>
+      <p>Več o dostopu do izvorne kode in uporabi repozitorija <a href="/wiki/Podrobnosti/Razvoj/Repozitorij">tu</a>.</p>
+      <p>More about access to source code and repository usage <a href="/wiki/International/English/GetSource">here</a>.</p>
       <h1>
         ${select('*|text()')}
       </h1>
+    </py:match>
+  </py:if>
+  <py:if test="req.environ['PATH_INFO'] == '/newticket'">
+    <py:match path="div[@id='content']//h1">
+      <h1>
+        ${select('*|text()')}
+      </h1>
+      <p>Več o odpiranju ticketov <a href="/wiki/Podrobnosti/Razvoj/Trac#Odpiranjeticketov">tu</a>.</p>
     </py:match>
   </py:if>
   <py:match path="div[@id='mainnav']//ul">
