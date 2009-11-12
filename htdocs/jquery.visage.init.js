@@ -14,5 +14,5 @@ $.fn.visage.defaults.imageValues = function (image, options) {
 	return values;
 };
 $(document).ready(function () {
-	$("a:has(img)").visage();
+	$("a[href^='/attachment/']:has(img)").visage();
 });
