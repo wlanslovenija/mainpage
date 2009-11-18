@@ -81,12 +81,9 @@
         <input type="image" src="https://www.paypal.com/en_GB/i/btn/btn_donate_SM.gif" style="border: none;" name="submit" alt="Donate" /></div>
       </form></li>
     </ul>
-  </py:match>
-  <py:match path="div[@id='content' and @class='wiki']/h3">
+	</py:match>
+  <py:match path="div[@id='content' or @id='blog-main']/h3">
     <h3 id="attachments_folder" class="folding closed">${select('text()')}</h3>
-  </py:match>
-  <py:match path="div[@id='content' and @class='wiki']/ul">
-    <ul id="attachments_foldee">${select('*')}</ul>
   </py:match>
   <py:match path="div[@id='content']">
     ${select("./p[@class='path']")}
