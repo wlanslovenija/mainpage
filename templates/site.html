@@ -142,6 +142,7 @@
       <div id="ctxtnav" class="nav">
         <h2>Context Navigation</h2><ul>${select('ul/*')}<li><a href="/blog/archive" title="Browse blog posts">Browse Posts</a></li></ul><hr />
       </div>
+      <div class="clear"></div>
     </py:match>
   </py:if>
   <py:match path="div[@id='ctxtnav']//li"><py:choose test="select('a').select('@href').__str__()"><py:when test="'/wiki/WikiStart'" /><py:when test="'/trac/wlanlj/wiki/WikiStart'" /><py:otherwise><li>${select('*|text()')}</li></py:otherwise></py:choose></py:match>
