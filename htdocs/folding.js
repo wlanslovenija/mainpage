@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$(".folding").each(function (i) {
-		var ul = $(this).next('ul');
+		var ul = $(this).next();
 		if ($(this).hasClass("closed")) {
 			ul.addClass("closed").hide();
 		}
