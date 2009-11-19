@@ -263,7 +263,7 @@ input[type="reset"] {
 	margin: 0;
 }
 
-.timeline h1 {
+.timeline h1, .roadmap h1 {
 	clear: none !important;
 }
 
