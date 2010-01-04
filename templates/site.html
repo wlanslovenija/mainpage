@@ -176,7 +176,7 @@
         ${select('*|text()')} This information is also used for email notification and RSS feeds, for example. <strong>Email address is required</strong> for many functions of <a href="http://node.wlan-lj.net">node monitoring and deployment system</a>. You can find more information and guidelines <a href="/wiki/Podrobnosti/Razvoj/Trac#Noviuporabniki">here</a>.
       </p>
     </py:match>
-    <py:match path="input[@type='submit']">
+    <py:match path="div[@class='register']//input[@type='submit']">
       <div class="buttons">
         <input type="submit" value="Create account" />
       </div>
