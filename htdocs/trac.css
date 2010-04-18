@@ -105,10 +105,20 @@ input[type="reset"] {
 	text-align: center;
 }
 
-#donate a,
-#donate a:link:hover,
-#donate a:visited {
+#mainnav .notentry {
+    text-align: center !important;
+}
+
+#social img {
+    padding: 3px;
+}
+
+#mainnav .notentry a,
+#mainnav .notentry a:link:hover,
+#mainnav .notentry a:visited {
     background: none !important;
+    padding: 0px !important;
+    display: inline;
 }
 
 .blog ul.metainfo li,
