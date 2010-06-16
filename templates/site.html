@@ -19,6 +19,20 @@
     <script type="text/javascript" src="${href.chrome('site/jquery.visage.init.js')}" ></script>
     <script type="text/javascript" src="${href.chrome('site/jsmath/easy/load.js')}" ></script>
   </head>
+  <py:match path="head//script[@type='text/javascript' and not(@src)]">
+    <script type="text/javascript">
+      <py:choose test="">
+        <py:when test="select('*|comment()|text()').__str__().find('(\x22#content\x22).find(\x22h1,h2,h3,h4,h5,h6\x22).addAnchor') != -1">
+          jQuery(document).ready(function($) {
+            $("#content").find("h1,h2,h3,h4,h5,h6").filter("[id]").addAnchor("Link to this section");
+          });
+        </py:when>
+        <py:otherwise>
+        ${select('*|comment()|text()').__str__()}
+        </py:otherwise>
+      </py:choose>
+    </script>
+  </py:match>
   <py:match path="title">
     <title>${Markup(select('text()').__str__().decode("utf-8").strip()).unescape()} – odprto brezžično omrežje Ljubljane</title>
   </py:match>
@@ -76,18 +90,18 @@
   <py:match path="div[@id='mainnav']//ul">
     <ul>
       ${select('*|text()')}
-		<li id="social" class="notentry"><a href="http://www.facebook.com/pages/wlan-ljubljana/179315462191"><img src="${href.chrome('/site/facebook_16.png')}" alt="Facebook" /></a>
-		<a href="http://twitter.com/wlanljubljana"><img src="${href.chrome('/site/twitter_16.png')}" alt="Twitter" /></a>
-		<a href="http://wlan-lj.net/lists/lists"><img src="${href.chrome('/site/mailinglists_16.png')}" alt="Mailing lists" /></a>
-		</li>
-		<li class="notentry"><a href="http://odpriokno.si"><img src="${href.chrome('/site/oo.banner.png')}" alt="odpri okno" /></a></li>
+        <li id="social" class="notentry"><a href="http://www.facebook.com/pages/wlan-ljubljana/179315462191"><img src="${href.chrome('/site/facebook_16.png')}" alt="Facebook" /></a>
+        <a href="http://twitter.com/wlanljubljana"><img src="${href.chrome('/site/twitter_16.png')}" alt="Twitter" /></a>
+        <a href="http://wlan-lj.net/lists/lists"><img src="${href.chrome('/site/mailinglists_16.png')}" alt="Mailing lists" /></a>
+        </li>
+        <li class="notentry"><a href="http://odpriokno.si"><img src="${href.chrome('/site/oo.banner.png')}" alt="odpri okno" /></a></li>
       <li id="donate" class="notentry"><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div>
         <input type="hidden" name="cmd" value="_s-xclick" />
         <input type="hidden" name="hosted_button_id" value="3295105" />
         <input type="image" src="https://www.paypal.com/en_GB/i/btn/btn_donate_SM.gif" style="border: none;" name="submit" alt="Donate" /></div>
-		</form></li>
+        </form></li>
     </ul>
-	</py:match>
+    </py:match>
   <py:match path="div[@id='content' or @id='blog-main']/h3">
     <h3 id="attachments_folder" class="folding closed">${select('text()')}</h3>
   </py:match>
