@@ -11,11 +11,44 @@ body {
     line-height:normal;
 }
 
-.milestone .info h2 em,
+.milestone .info h2 em, .milestone .info h3 em,
 dt em,
 *:link, *:visited {
     color: #528f63;
     border: none;
+}
+
+.milestone .info h3 :link, .milestone .info h3 :visited {
+	border-bottom:medium none;
+	color:#000000;
+	display:block;
+}
+
+.milestone .info h3 :link:hover, .milestone .info h3 :visited:hover {
+	color:#000000;
+}
+
+.milestone .info h3 em {
+	font-style:normal;
+}
+
+.milestone .info h3 {
+	margin: 0;
+}
+
+.milestone .info {
+	white-space:nowrap;
+}
+
+.milestone .info .date {
+	color:#888888;
+	font-size:11px;
+	font-style:italic;
+	margin:0;
+}
+
+.milestone .description {
+	margin:1em 0 1em;
 }
 
 *:link:hover, *:visited:hover {
