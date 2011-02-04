@@ -156,7 +156,16 @@ INSTALLED_APPS = (
     'menus',
     'south',
     'appmedia',
+    'easy_thumbnails',
+    'filer',
     'cms.plugins.text',
+    'cms.plugins.link',
+    'cms.plugins.snippet',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video',
 )
 
 CMS_TEMPLATES = (
@@ -164,7 +173,10 @@ CMS_TEMPLATES = (
     ('template_2.html', 'Template Two'),
 )
 
-CMS_PAGE_MEDIA_PATH = 'assets/'
+# Not really used as we are not using django-cms core plugins for files but django-filer
+#CMS_PAGE_MEDIA_PATH = 'assets/'
+
+CMS_USE_TINYMCE = False
 
 CMS_URL_OVERWRITE = False
 CMS_MENU_TITLE_OVERWRITE = False
@@ -177,3 +189,18 @@ CMS_MODERATOR = False
 CMS_SHOW_START_DATE = False
 CMS_SHOW_END_DATE = False
 CMS_SEO_FIELDS = False
+
+THUMBNAIL_DEBUG = DEBUG
+THUMBNAIL_QUALITY = 85
+THUMBNAIL_DEFAULT_STORAGE = 'easy_thumbnails.storage.ThumbnailFileSystemStorage'
+THUMBNAIL_BASEDIR = 'thumbnails'
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+THUMBNAIL_SOURCE_GENERATORS = (
+    'easy_thumbnails.source_generators.pil_image',
+)
