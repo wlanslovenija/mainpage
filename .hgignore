@@ -1,0 +1,5 @@
+syntax: regexp
+^media/admin
+^media/cms
+syntax: glob
+*.pyc
