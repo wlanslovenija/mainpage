@@ -1,6 +1,8 @@
 syntax: regexp
 ^media/admin
 ^media/cms
+^media/simple_translation
 ^media/filer
+^media/jquery
 syntax: glob
 *.pyc

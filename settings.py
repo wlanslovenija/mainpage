@@ -158,7 +158,11 @@ INSTALLED_APPS = (
     'appmedia',
     'easy_thumbnails',
     'filer',
-    'cms.plugins.text',
+    'tagging',
+    'reversion',
+    'djangocms_utils',
+    'simple_translation',
+    'cmsplugin_blog',
     'cms.plugins.link',
     'cms.plugins.snippet',
     'cmsplugin_filer_file',
@@ -166,6 +170,7 @@ INSTALLED_APPS = (
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
+    'cmsplugin_markup',
 )
 
 CMS_TEMPLATES = (
@@ -178,6 +183,12 @@ CMS_TEMPLATES = (
 
 CMS_USE_TINYMCE = False
 
+CMS_MARKUP_OPTIONS = (
+    'cmsplugin_markup.plugins.markdown',
+    'cmsplugin_markup.plugins.textile',
+    'cmsplugin_markup.plugins.restructuredtext',
+)
+
 CMS_URL_OVERWRITE = False
 CMS_MENU_TITLE_OVERWRITE = False
 CMS_REDIRECTS = False
@@ -186,9 +197,13 @@ CMS_SOFTROOT = True
 
 CMS_PERMISSION = False
 CMS_MODERATOR = False
-CMS_SHOW_START_DATE = False
-CMS_SHOW_END_DATE = False
+CMS_SHOW_START_DATE = True
+CMS_SHOW_END_DATE = True
 CMS_SEO_FIELDS = False
+
+JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
+JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
+JQUERY_UI_JS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.js")
 
 THUMBNAIL_DEBUG = DEBUG
 THUMBNAIL_QUALITY = 85
