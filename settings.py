@@ -10,13 +10,15 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Admin', 'webmaster@orange.biolab.si'),
+    ('Admin', 'webmaster@biolab.si'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': 'db.sqlite',
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'biolab',                                   # Or path to database file if using sqlite3.
         'USER': 'django',                                   # Not used with sqlite3.
@@ -95,7 +97,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '4vykt!9qae5r6mj!$n3)5ep(qh1%pt_h3&66#j#x4qpvmk_!rp'
 
-DEFAULT_FROM_EMAIL = 'webmaster@orange.biolab.si'
+DEFAULT_FROM_EMAIL = 'webmaster@biolab.si'
 EMAIL_SUBJECT_PREFIX = '[Orange] '
 
 # List of callables that know how to import templates from various sources.
@@ -113,6 +115,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.contrib.messages.context_processors.messages',
     'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -124,7 +127,6 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.media.PlaceholderMediaMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
@@ -170,6 +172,7 @@ INSTALLED_APPS = (
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
+    'sekizai',
     'cmsplugin_markup',
 )
 
@@ -184,9 +187,10 @@ CMS_TEMPLATES = (
 CMS_USE_TINYMCE = False
 
 CMS_MARKUP_OPTIONS = (
-    'cmsplugin_markup.plugins.markdown',
-    'cmsplugin_markup.plugins.textile',
-    'cmsplugin_markup.plugins.restructuredtext',
+    #'cmsplugin_markup.plugins.markdown',
+    #'cmsplugin_markup.plugins.textile',
+    #'cmsplugin_markup.plugins.restructuredtext',
+    'cmsplugin_markup_tracwiki',
 )
 
 CMS_URL_OVERWRITE = False
@@ -200,6 +204,8 @@ CMS_MODERATOR = False
 CMS_SHOW_START_DATE = True
 CMS_SHOW_END_DATE = True
 CMS_SEO_FIELDS = False
+
+CMSPLUGIN_BLOG_PLACEHOLDERS = ('main',)
 
 JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
