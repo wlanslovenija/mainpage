@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # Django settings for mainpage project.
 
+# Secrets are in a separate file so they are not visible in public repository
+from secrets import *
+
 import os
 
 _ = lambda s: s
@@ -94,8 +97,7 @@ MEDIA_URL = '/media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '4vykt!9qae5r6mj!$n3)5ep(qh1%pt_h3&66#j#x4qpvmk_!rp'
+# SECRET_KEY is in secrets
 
 DEFAULT_FROM_EMAIL = 'webmaster@biolab.si'
 EMAIL_SUBJECT_PREFIX = '[Orange] '
@@ -115,7 +117,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.contrib.messages.context_processors.messages',
     'cms.context_processors.media',
-    'sekizai.context_processors.sekizai',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,6 +128,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.media.PlaceholderMediaMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
@@ -172,7 +174,6 @@ INSTALLED_APPS = (
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
-    'sekizai',
     'cmsplugin_markup',
 )
 

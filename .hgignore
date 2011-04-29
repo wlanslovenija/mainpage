@@ -4,5 +4,6 @@ syntax: regexp
 ^media/simple_translation
 ^media/filer
 ^media/jquery
+^secrets.py$
 syntax: glob
 *.pyc
