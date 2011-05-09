@@ -212,10 +212,8 @@ JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
 JQUERY_UI_JS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.js")
 
-THUMBNAIL_DEBUG = DEBUG
-THUMBNAIL_QUALITY = 85
-THUMBNAIL_DEFAULT_STORAGE = 'easy_thumbnails.storage.ThumbnailFileSystemStorage'
-THUMBNAIL_BASEDIR = 'thumbnails'
+THUMBNAIL_DEBUG = False
+THUMBNAIL_QUALITY = 95
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
@@ -223,6 +221,21 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
-THUMBNAIL_SOURCE_GENERATORS = (
-    'easy_thumbnails.source_generators.pil_image',
-)
+
+FILER_PAGINATE_BY = 50
+FILER_SUBJECT_LOCATION_IMAGE_DEBUG = False
+FILER_IS_PUBLIC_DEFAULT = True
+FILER_PUBLICMEDIA_ROOT = os.path.join(MEDIA_ROOT, 'files')
+FILER_PUBLICMEDIA_URL = os.path.join(MEDIA_URL, 'files/')
+FILER_PUBLICMEDIA_THUMBNAIL_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
+FILER_PUBLICMEDIA_THUMBNAIL_URL = os.path.join(MEDIA_URL, 'thumbnails/')
+FILER_PRIVATEMEDIA_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'files'))
+FILER_PRIVATEMEDIA_URL = '/smedia/files/'
+FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
+FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
+
+if not DEBUG:
+    from filer.server.backends.xsendfile import ApacheXSendfileServer
+
+    FILER_PRIVATEMEDIA_SERVER = ApacheXSendfileServer()
+    FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = ApacheXSendfileServer()
