@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="month-links">
+<h2>{% trans "See entries for:" %}</h2>
+{% if dates %}
+    <ul>
+    {% for d in dates reversed %}
+        <li><a href="{% url blog_archive_month year=d|date:"Y",month=d|date:"m" %}">{{ d|date:"F Y" }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>{% trans "No entries." %}</p>
+{% endif %}
+</div>

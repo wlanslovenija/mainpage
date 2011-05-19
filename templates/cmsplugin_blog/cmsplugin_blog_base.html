@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% if request.LANGUAGE_CODE %}/{{ request.LANGUAGE_CODE }}{% endif %}{% url blog_rss_any %}" />
+{% endblock extrahead %}
+
+{% block title %} – Blog {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="left-col">
+        {% block left-col %}{% endblock %}
+    </div>
+    <div class="righ-col">
+        {% block right-col %}{% endblock %}
+    </div>
+{% endblock %}:

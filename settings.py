@@ -91,6 +91,7 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
+STATIC_URL = MEDIA_URL
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -127,7 +128,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
+    #'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
@@ -171,15 +172,16 @@ INSTALLED_APPS = (
     'cms.plugins.snippet',
     'cmsplugin_filer_file',
     'cmsplugin_filer_folder',
-    'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
+    'cmsplugin_filer_image',
     'cmsplugin_markup',
+    #'cms.plugins.text',
 )
 
 CMS_TEMPLATES = (
-    ('template_1.html', 'Template One'),
-    ('template_2.html', 'Template Two'),
+    ('main.html', 'Main Page'),
+    ('blog.html', 'Blog Page'),
 )
 
 # Not really used as we are not using django-cms core plugins for files but django-filer
@@ -205,8 +207,9 @@ CMS_MODERATOR = False
 CMS_SHOW_START_DATE = True
 CMS_SHOW_END_DATE = True
 CMS_SEO_FIELDS = False
+PLACEHOLDER_FRONTEND_EDITING = False
 
-CMSPLUGIN_BLOG_PLACEHOLDERS = ('main',)
+CMSPLUGIN_BLOG_PLACEHOLDERS = ('on_index_page', 'the_rest')
 
 JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
@@ -233,6 +236,7 @@ FILER_PRIVATEMEDIA_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia
 FILER_PRIVATEMEDIA_URL = '/smedia/files/'
 FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
+FILER_IMAGE_USE_ICON = True
 
 if not DEBUG:
     from filer.server.backends.xsendfile import ApacheXSendfileServer

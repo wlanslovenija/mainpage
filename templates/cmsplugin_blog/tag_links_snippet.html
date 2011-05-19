@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="tag-links">
+<h2>{% trans "See entries tagged:" %}</h2>
+{% if tags %}
+    <ul>
+    {% for tag in tags %}
+        <li><a href="{% url blog_archive_tagged tag=tag %}">{{ tag }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tags.</p>
+{% endif %}
+</div>
