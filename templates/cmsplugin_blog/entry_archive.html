@@ -1,25 +1,37 @@
 {% extends "cmsplugin_blog/cmsplugin_blog_base.html" %}
-{% load i18n cmsplugin_blog_tags simple_translation_tags %}
+{% load i18n cmsplugin_blog_tags simple_translation_tags placeholder_tags %}
 
-{% block title %}Latest entries{{ block.super }}{% endblock %}
+{% block title %}{% trans "Latest entries" %}{{ block.super }}{% endblock %}
 
 {% block left-col %}
-<h1>{% trans "Latest entries" %}</h1>
-
-{% for entry in latest|annotate_with_translations %}
-    {% with entry|get_preferred_translation_from_request:request as title %}
-	<p>{{ entry.pub_date|date:"d b Y" }}<br/><a href="{{ title.get_absolute_url }}">{{ title }}</a>
-	   {{ entry|render_language_choices:request|safe }}
-	<br/>{{ entry.excerpt }}</p>
-	{% endwith %}
+<div class="latest-list">
+{% for object in latest|annotate_with_translations %}
+    {% with object|get_preferred_translation_from_request:request as title %}
+        <h2><a href="{{ title.get_absolute_url }}">{{ title }}</a> {{ object|render_language_choices:request|safe }}</h2>
+        <div class="entry-content">
+        {% with object.placeholders|choose_placeholder:"on_index_page" as on_index_page %}
+            {% render_placeholder on_index_page %}
+        {% endwith %}
+        </div>
+        <div class="entry-read-more">
+        {% with object.placeholders|choose_placeholder:"the_rest" as the_rest %}
+            {% if the_rest.get_plugins %}
+                <a href="{{ title.get_absolute_url }}">{% trans "Read more, comment, like, share ..." %}</a>
+            {% else %}
+                <a href="{{ title.get_absolute_url }}">{% trans "Comment, like, share ..." %}</a>
+            {% endif %}
+        {% endwith %}
+        </div>
+        {% include "cmsplugin_blog/description_entry.html" %}
+    {% endwith %}
 {% empty %}
-	<p>{% trans "No entries" %}<p>
+    <p>{% trans "No entries." %}<p>
 {% endfor %}
-
-
+</div>
 {% endblock %}
 
 {% block right-col %}
+{% render_author_links %}
 {% render_month_links %}
 {% render_tag_links %}
 {% endblock %}

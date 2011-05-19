@@ -1,0 +1,1 @@
+{% load placeholder_tags cmsplugin_blog_tags %}{% with obj.entry.placeholders|choose_placeholder:"on_index_page" as on_index_page %}{% render_placeholder on_index_page %}{% endwith %}
