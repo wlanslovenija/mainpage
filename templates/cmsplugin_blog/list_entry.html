@@ -1,4 +1,4 @@
 {% load simple_translation_tags %}
 {% with object|get_preferred_translation_from_request:request as title %}
-	<li><a href="{{ title.get_absolute_url }}">{{ title }}</a> {{ object|render_language_choices:request|safe }} {% include "cmsplugin_blog/description_entry.html" %}</li>
+	<li><a href="{{ title.get_absolute_url }}">{{ title }}</a> {{ object|render_language_choices:request|safe }} {% include "cmsplugin_blog/description_entry_with_comments.html" %}</li>
 {% endwith %}

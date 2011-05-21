@@ -22,7 +22,7 @@
             {% endif %}
         {% endwith %}
         </div>
-        {% include "cmsplugin_blog/description_entry.html" %}
+        {% include "cmsplugin_blog/description_entry_with_comments.html" %}
     {% endwith %}
 {% empty %}
     <p>{% trans "No entries." %}<p>
@@ -34,4 +34,8 @@
 {% render_author_links %}
 {% render_month_links %}
 {% render_tag_links %}
+{% endblock %}
+
+{% block bodyend %}
+{% include "cmsplugin_blog/disqus_count.html" %}
 {% endblock %}

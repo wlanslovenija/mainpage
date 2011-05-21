@@ -23,3 +23,7 @@
 {% render_month_links %}
 {% render_tag_links %}
 {% endblock %}
+
+{% block bodyend %}
+{% include "cmsplugin_blog/disqus_count.html" %}
+{% endblock %}

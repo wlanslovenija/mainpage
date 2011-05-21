@@ -1,0 +1,3 @@
+{% extends "cmsplugin_blog/description_entry.html" %}
+
+{% block comments %} | <a href="{{ title.get_absolute_url }}#disqus_thread" data-disqus-identifier="cmsplugin-blog-id-{{ object.pk|escape }}">Comments and Reactions</a>{% endblock %}

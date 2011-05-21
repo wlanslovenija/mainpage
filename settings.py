@@ -183,6 +183,7 @@ INSTALLED_APPS = (
     'cmsplugin_filer_video',
     'cmsplugin_filer_image',
     'cmsplugin_markup',
+    'missing',
 )
 
 CMS_TEMPLATES = (
