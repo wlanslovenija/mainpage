@@ -13,15 +13,7 @@
             {% render_placeholder on_index_page %}
         {% endwith %}
         </div>
-        <div class="entry-read-more">
-        {% with object.placeholders|choose_placeholder:"the_rest" as the_rest %}
-            {% if the_rest.get_plugins %}
-                <a href="{{ title.get_absolute_url }}">{% trans "Read more, comment, like, share ..." %}</a>
-            {% else %}
-                <a href="{{ title.get_absolute_url }}">{% trans "Comment, like, share ..." %}</a>
-            {% endif %}
-        {% endwith %}
-        </div>
+        {% include "cmsplugin_blog/entry_read_more.html" %}
         {% include "cmsplugin_blog/description_entry_with_comments.html" %}
     {% endwith %}
 {% empty %}
