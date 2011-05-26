@@ -71,7 +71,7 @@ THOUSAND_SEPARATOR = ','
 NUMBER_GROUPING = 0
 
 # We override defaults
-FORMAT_MODULE_PATH = 'formats'
+FORMAT_MODULE_PATH = 'mainpage.formats'
 
 LOGIN_REDIRECT_URL = '/admin/'
 LOGIN_URL = '/admin/'
