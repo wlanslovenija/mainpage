@@ -250,6 +250,12 @@ FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
 FILER_IMAGE_USE_ICON = True
 
+class AllIPs(list):
+    def __contains__(self, ip):
+        return True
+
+INTERNAL_IPS = AllIPs()
+
 if not DEBUG:
     from filer.server.backends.xsendfile import ApacheXSendfileServer
 

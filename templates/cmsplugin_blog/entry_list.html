@@ -10,7 +10,7 @@
 
 {% block left-col %}
 <div class="entry-list">
-<h2>{% trans "Entries tagged" %} "{{ tag }}"</h2>
+<h2 id="entries-tagged">{% trans "Entries tagged" %} "{{ tag }}"</h2>
 {% if object_list %}
     <ul>
     {% for object in object_list|annotate_with_translations %}

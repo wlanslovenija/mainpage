@@ -5,7 +5,7 @@
 
 {% block left-col %}
 {% with object|get_preferred_translation_from_request:request as title %}
-    <h2>{{ title }} {{ object|render_language_choices:request|safe }}</h2>
+    <h2 id="{{ title.slug }}">{{ title }} {{ object|render_language_choices:request|safe }}</h2>
     <div class="entry-content">
     {% with object.placeholders|choose_placeholder:"on_index_page" as on_index_page %}
         {% render_placeholder on_index_page %}
