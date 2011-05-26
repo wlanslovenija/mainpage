@@ -5,15 +5,16 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="http://orange.biolab.si/trac/pygments/trac.css" type="text/css" />
         {% block extrahead %}{% endblock %}
         {% plugins_media %}
         {% block js %}{% endblock %}
         {% block css %}{% endblock %}
     </head>
-	<body>
-		{% include "header.html" %}
-		{% block content %}{% endblock %}
-		{% include "footer.html" %}
-		{% block bodyend %}{% endblock %}
+    <body>
+        {% include "header.html" %}
+        {% block content %}{% endblock %}
+        {% include "footer.html" %}
+        {% block bodyend %}{% endblock %}
     </body>
 </html>
