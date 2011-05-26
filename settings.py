@@ -200,6 +200,13 @@ CMS_MARKUP_OPTIONS = (
     'cmsplugin_markup_tracwiki',
 )
 
+CMS_MARKUP_TRAC_INTERTRAC = {
+    'trac': {
+        'TITLE': 'Orange Trac',
+        'URL': 'http://orange.biolab.si/trac',
+    },
+}
+
 CMS_URL_OVERWRITE = False
 CMS_MENU_TITLE_OVERWRITE = False
 CMS_REDIRECTS = False
