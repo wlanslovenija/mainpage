@@ -265,7 +265,22 @@ class AllIPs(list):
 INTERNAL_IPS = AllIPs()
 
 if not DEBUG:
-    from filer.server.backends.xsendfile import ApacheXSendfileServer
+    from filer.server.backends.nginx import NginxXAccelRedirectServer
+    from filer.storage import PrivateFileSystemStorage
 
-    FILER_PRIVATEMEDIA_SERVER = ApacheXSendfileServer()
-    FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = ApacheXSendfileServer()
+    FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
+        path=FILER_PRIVATEMEDIA_ROOT,
+        base_url=FILER_PRIVATEMEDIA_URL
+    )
+    FILER_PRIVATEMEDIA_SERVER = NginxXAccelRedirectServer(
+        location=FILER_PRIVATEMEDIA_ROOT,
+        nginx_location='/nginx_filer_private_files'
+    )
+    FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
+        location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+        base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
+    )
+    FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = NginxXAccelRedirectServer(
+        location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+        nginx_location='/nginx_filer_private_thumbnails'
+    )
