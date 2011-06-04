@@ -13,7 +13,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Admin', 'webmaster@biolab.si'),
+    ('Admin', 'webmaster@wlan-si.net'),
 )
 
 MANAGERS = ADMINS
@@ -23,10 +23,10 @@ DATABASES = {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': 'db.sqlite',
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'biolab',                                   # Or path to database file if using sqlite3.
-        'USER': 'django',                                   # Not used with sqlite3.
-        'PASSWORD': '',                                     # Not used with sqlite3.
-        'HOST': '',                                         # Set to empty string for localhost. Not used with sqlite3.
+        'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
+        'USER': 'wlansi_cms',                               # Not used with sqlite3.
+        'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
+        'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -106,8 +106,8 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # SECRET_KEY is in secrets
 
-DEFAULT_FROM_EMAIL = 'webmaster@biolab.si'
-EMAIL_SUBJECT_PREFIX = '[Orange] '
+DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
+EMAIL_SUBJECT_PREFIX = '[wlan-si] '
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -201,9 +201,17 @@ CMS_MARKUP_OPTIONS = (
 )
 
 CMS_MARKUP_TRAC_INTERTRAC = {
-    'trac': {
-        'TITLE': 'Orange Trac',
-        'URL': 'http://orange.biolab.si/trac',
+    'grow': {
+        'TITLE': 'wlan slovenia growing',
+        'URL': 'http://grow.wlan-si.net',
+    },
+    'interop': {
+        'TITLE': 'Open Networks Interoperability',
+        'URL': 'http://interop.wlan-si.net',
+    },
+    'dev': {
+        'TITLE': 'wlan slovenia development',
+        'URL': 'http://dev.wlan-si.net',
     },
 }
 
