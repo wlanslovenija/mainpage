@@ -6,3 +6,10 @@
     });
   }
 })(jQuery);
+
+jQuery(document).ready(function($) {
+  $("#content").find("h1,h2,h3,h4,h5,h6").addAnchor("Link to this section");
+  $("#content").find(".wikianchor").each(function() {
+    $(this).addAnchor("Link to " + $(this).attr('id'));
+  });
+});

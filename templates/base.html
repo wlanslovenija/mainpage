@@ -8,16 +8,6 @@
         <link rel="stylesheet" href="http://dev.wlan-si.net/pygments/trac.css" type="text/css" />
         <script type="text/javascript" src="{{ MEDIA_URL }}jquery/jquery.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
-        <script type="text/javascript">
-        /* <![CDATA[ */
-        jQuery(document).ready(function($) {
-          $("#content").find("h1,h2,h3,h4,h5,h6").addAnchor("Link to this section");
-          $("#content").find(".wikianchor").each(function() {
-            $(this).addAnchor("Link to " + $(this).attr('id'));
-          });
-        });
-        /* ]]> */
-        </script>
         {% block extrahead %}{% endblock %}
         {% plugins_media %}
         {% block js %}{% endblock %}
