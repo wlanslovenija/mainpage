@@ -248,6 +248,9 @@ VIDEO_FULLSCREEN = False
 FILER_PAGINATE_BY = 50
 FILER_SUBJECT_LOCATION_IMAGE_DEBUG = False
 FILER_IS_PUBLIC_DEFAULT = True
+FILER_IMAGE_USE_ICON = True
+FILER_ENABLE_PERMISSIONS = True
+
 FILER_PUBLICMEDIA_ROOT = os.path.join(MEDIA_ROOT, 'files')
 FILER_PUBLICMEDIA_URL = os.path.join(MEDIA_URL, 'files/')
 FILER_PUBLICMEDIA_THUMBNAIL_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
@@ -256,7 +259,6 @@ FILER_PRIVATEMEDIA_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia
 FILER_PRIVATEMEDIA_URL = '/smedia/files/'
 FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
-FILER_IMAGE_USE_ICON = True
 
 class AllIPs(list):
     def __contains__(self, ip):
@@ -264,21 +266,31 @@ class AllIPs(list):
 
 INTERNAL_IPS = AllIPs()
 
+from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
+
+FILER_PUBLICMEDIA_STORAGE = PublicFileSystemStorage(
+    location=FILER_PUBLICMEDIA_ROOT,
+    base_url=FILER_PUBLICMEDIA_URL
+)
+FILER_PUBLICMEDIA_THUMBNAIL_STORAGE = PublicFileSystemStorage(
+    location=FILER_PUBLICMEDIA_THUMBNAIL_ROOT,
+    base_url=FILER_PUBLICMEDIA_THUMBNAIL_URL
+)
+FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
+    location=FILER_PRIVATEMEDIA_ROOT,
+    base_url=FILER_PRIVATEMEDIA_URL
+)
+FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
+    location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+    base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
+)
+
 if not DEBUG:
     from filer.server.backends.nginx import NginxXAccelRedirectServer
-    from filer.storage import PrivateFileSystemStorage
 
-    FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
-        path=FILER_PRIVATEMEDIA_ROOT,
-        base_url=FILER_PRIVATEMEDIA_URL
-    )
     FILER_PRIVATEMEDIA_SERVER = NginxXAccelRedirectServer(
         location=FILER_PRIVATEMEDIA_ROOT,
         nginx_location='/nginx_filer_private_files'
-    )
-    FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
-        location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
-        base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
     )
     FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = NginxXAccelRedirectServer(
         location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
