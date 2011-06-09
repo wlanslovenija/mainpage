@@ -214,6 +214,10 @@ CMS_MARKUP_TRAC_INTERTRAC = {
         'URL': 'http://dev.wlan-si.net',
     },
 }
+CMS_MARKUP_TRAC_COMPONENTS = [
+    'tracdashessyntax.plugin.DashesSyntaxPlugin',
+    'footnotemacro.macro.FootNoteMacro',
+]
 
 CMS_URL_OVERWRITE = False
 CMS_MENU_TITLE_OVERWRITE = False

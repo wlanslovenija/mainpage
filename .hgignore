@@ -4,6 +4,9 @@ syntax: regexp
 ^media/simple_translation
 ^media/filer
 ^media/jquery
+^media/files
+^media/thumbnails
+^smedia
 ^templates/admin_base
 ^secrets.py$
 syntax: glob
