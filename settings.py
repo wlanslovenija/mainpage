@@ -151,6 +151,8 @@ TEMPLATE_DIRS = (
 )
 
 AUTHENTICATION_BACKENDS = (
+    'mainpage.account.auth.AprBackend',
+    'mainpage.account.auth.CryptBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
