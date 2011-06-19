@@ -219,10 +219,36 @@ CMS_MARKUP_TRAC_INTERTRAC = {
         'URL': 'http://dev.wlan-si.net',
     },
 }
-CMS_MARKUP_TRAC_COMPONENTS = [
+
+CMS_MARKUP_TRAC_INTERWIKI = {
+    'nodes': {
+        'URL': 'https://nodes.wlan-si.net/',
+    },
+    'lists': {
+        'URL': 'http://wlan-si.net/lists/arc/$1/$2-$3/msg$4.html',
+    },
+    'skypechat': {
+        'URL': 'skype:?chat&blob=',
+    },
+    'wlansi': {
+        'URL': 'http://wlan-si.net/',
+    },
+    'wikipedia': {
+        'URL': 'http://en.wikipedia.org/wiki/',
+    },
+    'slwikipedia': {
+        'URL': 'http://sl.wikipedia.org/wiki/',
+    },
+}
+
+CMS_MARKUP_TRAC_COMPONENTS = (
     'tracdashessyntax.plugin.DashesSyntaxPlugin',
     'footnotemacro.macro.FootNoteMacro',
-]
+)
+
+CMS_LANGUAGES_URL_IGNORE_PREFIXES = (
+    '/lists',
+)
 
 CMS_URL_OVERWRITE = False
 CMS_MENU_TITLE_OVERWRITE = False
