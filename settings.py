@@ -42,9 +42,10 @@ TIME_ZONE = 'Europe/Ljubljana'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'sl'
 
 LANGUAGES = (
+    ('sl', _('Slovenian')),
     ('en', _('English')),
 )
 
@@ -136,6 +137,8 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.user.CurrentUserMiddleware',
     #'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
+    'cms.middleware.multilingual.MultilingualURLMiddleware',
+    'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
