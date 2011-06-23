@@ -108,6 +108,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # SECRET_KEY is in secrets
 
 DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = '[wlan-si] '
 
 # List of callables that know how to import templates from various sources.

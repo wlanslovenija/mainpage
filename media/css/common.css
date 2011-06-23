@@ -14,3 +14,11 @@ h4:hover .anchor, h5:hover .anchor, h6:hover .anchor,
 span:hover .anchor {
 	visibility: visible;
 }
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
