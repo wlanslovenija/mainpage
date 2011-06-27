@@ -189,11 +189,13 @@ INSTALLED_APPS = (
     'cmsplugin_filer_video',
     'cmsplugin_filer_image',
     'cmsplugin_markup',
+    'contact',
     'missing',
 )
 
 CMS_TEMPLATES = (
     ('main.html', 'Main Page'),
+    ('simple.html', 'Simple Page'),
     ('blog.html', 'Blog Page'),
 )
 
