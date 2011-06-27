@@ -125,6 +125,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'django.contrib.messages.context_processors.messages',
+    'sekizai.context_processors.sekizai',
     'cms.context_processors.media',
 )
 
@@ -177,6 +178,7 @@ INSTALLED_APPS = (
     'filer',
     'tagging',
     'reversion',
+    'sekizai',
     'djangocms_utils',
     'simple_translation',
     'cmsplugin_blog',

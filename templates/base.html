@@ -1,4 +1,4 @@
-{% load cms_tags %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load cms_tags sekizai_tags %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{% block title %}{{ current_page.get_menu_title }}{% endblock %} – wlan slovenija</title>
@@ -8,10 +8,12 @@
         <link rel="stylesheet" href="http://dev.wlan-si.net/pygments/trac.css" type="text/css" />
         <link rel="stylesheet" href="{{ MEDIA_URL }}jquery-visage/res-alt/visage.css" type="text/css" />
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/common.css" type="text/css" />
+        {% render_block "css" %}
         <script type="text/javascript" src="{{ MEDIA_URL }}jquery/jquery.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}jquery-visage/src/jquery.visage.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.visage.init.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+        {% render_block "js" %}
         {% block extrahead %}{% endblock %}
         {% plugins_media %}
         {% block js %}{% endblock %}
