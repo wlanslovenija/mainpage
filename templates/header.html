@@ -1,2 +1,9 @@
-{% load i18n %}
-<h1>{% trans "wlan slovenia" %}</h1>
+{% load i18n menu_tags %}
+<h1><a href="/">{% trans "wlan slovenia" %}</a></h1>
+{% language_chooser %}
+<ul id="mainmenu">
+{% show_menu 0 0 %}
+</ul>
+<ul id="submenu">
+{% show_menu 1 1 %}
+</ul>

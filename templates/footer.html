@@ -1,4 +1,11 @@
-{% load i18n %}<div id="footer" style="text-align: center;">
-  <hr />
-  <a href="http://wlan-si.net/">{% trans "wlan slovenia" %}</a> | <a href="https://nodes.wlan-si.net/">{% trans "node database" %}</a> | <a href="http://dev.wlan-si.net/">{% trans "development" %}</a> | <a href="http://grow.wlan-si.net/">{% trans "grow" %}</a>
+{% load i18n menu_tags %}
+<div id="sitemap">
+<hr />
+<ul>
+{% show_menu 0 100 100 100 %}
+</ul>
+</div>
+<div id="footer" style="text-align: center;">
+<hr />
+<a href="http://wlan-si.net/">{% trans "wlan slovenia" %}</a> | <a href="https://nodes.wlan-si.net/">{% trans "node database" %}</a> | <a href="http://dev.wlan-si.net/">{% trans "development" %}</a> | <a href="http://grow.wlan-si.net/">{% trans "grow" %}</a>
 </div>
