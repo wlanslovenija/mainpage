@@ -1,3 +1,3 @@
-{% load tagging_tags %}
+{% load tagging_tags i18n %}
 {% tags_for_object object as tags %}
-<div class="blog-entry-description">published: {{ object.pub_date|date:"SHORT_DATETIME_FORMAT" }} | author: <a href="{% url blog_archive_author title.author %}">{{ title.author }}</a>{% if tags %} | tags:{% for tag in tags %} <a href="{% url blog_archive_tagged tag %}">{{ tag }}</a>{% endfor %}{% endif %}{% block comments %}{% endblock %}</div>
+<div class="blog-entry-description">{% trans "published:" %} {{ object.pub_date|date:"SHORT_DATETIME_FORMAT" }} | {% trans "author:" %} <a href="{% url blog_archive_author title.author %}">{{ title.author }}</a>{% if tags %} | {% trans "tags:" %}{% for tag in tags %} <a href="{% url blog_archive_tagged tag %}">{{ tag }}</a>{% endfor %}{% endif %}{% block comments %}{% endblock %}</div>

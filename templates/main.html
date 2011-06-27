@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% load cms_tags %}
+{% load cms_tags i18n %}
+
+{% block fulltitle %}{% trans "wlan slovenia – open wireless network of Slovenia" %}{% endblock %}
 
 {% block content %}
     {% placeholder main_content %}

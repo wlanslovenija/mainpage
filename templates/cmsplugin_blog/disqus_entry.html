@@ -1,9 +1,9 @@
-{% load url_tags %}
+{% load i18n url_tags %}
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 /* <![CDATA[ */
-var disqus_shortname = 'wlanslovenia';
-var disqus_identifier = 'cmsplugin-blog-id-{{ object.pk|escapejs }}';
+var disqus_shortname = '{% if LANGUAGE_CODE == "sl" %}wlanslovenija{% else %}wlanslovenia{% endif %}';
+var disqus_identifier = 'cmsplugin-blog-id-{{ object.pk|escapejs }}-{{ title.language|escapejs }}';
 var disqus_url = '{% fullurl title.get_absolute_url %}';
 var disqus_title = '{{ title|escapejs }}';
 (function() {
@@ -13,4 +13,4 @@ var disqus_title = '{{ title|escapejs }}';
 })();
 /* ]]> */
 </script>
-<noscript><p>Please enable JavaScript to view the comments.</p></noscript>
+<noscript><p>{% trans "Please enable JavaScript to view the comments." %}</p></noscript>

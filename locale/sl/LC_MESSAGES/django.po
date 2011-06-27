@@ -1,0 +1,146 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-28 00:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:48
+msgid "Slovenian"
+msgstr "slovenščna"
+
+#: settings.py:49
+msgid "English"
+msgstr "angleščina"
+
+#: templates/base.html:4 templates/footer.html:3 templates/header.html:2
+msgid "wlan slovenia"
+msgstr "wlan slovenija"
+
+#: templates/footer.html:3
+msgid "node database"
+msgstr "baza točk"
+
+#: templates/footer.html:3
+msgid "development"
+msgstr "razvoj"
+
+#: templates/footer.html:3
+msgid "grow"
+msgstr "rast"
+
+#: templates/main.html:5
+msgid "wlan slovenia – open wireless network of Slovenia"
+msgstr "wlan slovenija – odprto brezžično omrežje Slovenije"
+
+#: templates/cmsplugin_blog/author_links_snippet.html:3
+msgid "See entries by:"
+msgstr "Prispevki avtorja:"
+
+#: templates/cmsplugin_blog/description_entry.html:3
+msgid "published:"
+msgstr "objavljeno:"
+
+#: templates/cmsplugin_blog/description_entry.html:3
+msgid "author:"
+msgstr "avtor:"
+
+#: templates/cmsplugin_blog/description_entry.html:3
+msgid "tags:"
+msgstr "oznake:"
+
+#: templates/cmsplugin_blog/description_entry_with_comments.html:5
+msgid "Comments and Reactions"
+msgstr ""
+
+#: templates/cmsplugin_blog/disqus_entry.html:17
+msgid "Please enable JavaScript to view the comments."
+msgstr "Za komentarje je potrebno imeti omogočen JavaScript."
+
+#: templates/cmsplugin_blog/entry_archive.html:4
+msgid "Latest entries"
+msgstr "Zadnji prispevki"
+
+#: templates/cmsplugin_blog/entry_archive.html:11
+#: templates/cmsplugin_blog/entry_detail.html:9
+msgid "[not published]"
+msgstr ""
+
+#: templates/cmsplugin_blog/entry_archive.html:22
+#: templates/cmsplugin_blog/latest_entries.html:7
+#: templates/cmsplugin_blog/month_links_snippet.html:11
+msgid "No entries."
+msgstr "Ni prispevkov."
+
+#: templates/cmsplugin_blog/entry_archive_day.html:4
+#: templates/cmsplugin_blog/entry_archive_day.html:8
+#: templates/cmsplugin_blog/entry_archive_month.html:4
+#: templates/cmsplugin_blog/entry_archive_month.html:8
+#: templates/cmsplugin_blog/entry_archive_year.html:4
+#: templates/cmsplugin_blog/entry_archive_year.html:8
+msgid "Entries for"
+msgstr "Prispevki za"
+
+#: templates/cmsplugin_blog/entry_archive_day.html:16
+msgid "No entries for this day."
+msgstr "Ni prispevkov za ta dan."
+
+#: templates/cmsplugin_blog/entry_archive_month.html:16
+msgid "No entries for this month."
+msgstr "Ni prispevkov za ta mesec."
+
+#: templates/cmsplugin_blog/entry_archive_year.html:16
+msgid "No entries for this year."
+msgstr "Ni prispevkov za to leto."
+
+#: templates/cmsplugin_blog/entry_author_list.html:10
+#: templates/cmsplugin_blog/entry_author_list.html:14
+msgid "Entries by"
+msgstr "Prispevki avtorja"
+
+#: templates/cmsplugin_blog/entry_author_list.html:22
+msgid "No entries by"
+msgstr "Ni prispevkov avtorja"
+
+#: templates/cmsplugin_blog/entry_list.html:9
+#: templates/cmsplugin_blog/entry_list.html:13
+msgid "Entries tagged"
+msgstr "Prispevki z oznako"
+
+#: templates/cmsplugin_blog/entry_list.html:21
+msgid "No entries tagged"
+msgstr "Ni prispevkov z oznako"
+
+#: templates/cmsplugin_blog/entry_read_more.html:5
+msgid "Read more, comment, like, share ..."
+msgstr "Preberi več, komentiraj, likeaj, podeli ..."
+
+#: templates/cmsplugin_blog/entry_read_more.html:7
+msgid "Comment, like, share ..."
+msgstr "Komentiraj, likeaj, podeli ..."
+
+#: templates/cmsplugin_blog/month_links_snippet.html:3
+msgid "See entries for:"
+msgstr "Prispevki za mesec:"
+
+#: templates/cmsplugin_blog/tag_links_snippet.html:3
+msgid "See entries tagged:"
+msgstr "Prispevki z oznako:"
+
+#: templates/cmsplugin_filer_folder/folder.html:8
+msgid "Folders"
+msgstr "Mape"
+
+#: templates/cmsplugin_filer_folder/folder.html:16
+msgid "Files"
+msgstr "Datoteke"
+
+#: templates/cmsplugin_filer_folder/folder.html:24
+msgid "Images"
+msgstr "Slike"
