@@ -22,3 +22,7 @@ span:hover .anchor {
 .right {
 	float: right;
 }
+
+.notpublished {
+	background-color: #FFFFE0;
+}
