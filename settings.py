@@ -283,6 +283,8 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
 )
 
+VIDEO_WIDTH = 480
+VIDEO_HEIGHT = 360
 VIDEO_FULLSCREEN = False
 
 FILER_PAGINATE_BY = 50
