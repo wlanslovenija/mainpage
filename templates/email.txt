@@ -1,0 +1,3 @@
+[Poslano preko obrazca na spletni strani. Oseba najverjetneje ni prijavljena na postni seznam.]
+
+{{ data.content }}
