@@ -1,9 +1,14 @@
-{% load i18n menu_tags %}
+{% load i18n menu_tags cms_tags context_tags %}
+<div id="header">
+{% language_chooser "native" %}
 <h1><a href="/">{% trans "wlan slovenia" %}</a></h1>
-{% language_chooser %}
+</div>
+<div class="clear"></div>
 <ul id="mainmenu">
-{% show_menu 0 0 %}
+<li class="first{% if request.current_page.reverse_id == "about" %} seleced{% endif %}"><a href="{% page_url "about" %}">{% page_attribute "menu_title" "about" %}</a></li>
+<li{% if request.current_page.reverse_id == "map" %} class="seleced"{% endif %}><a href="{% page_url "map" %}">{% page_attribute "menu_title" "map" %}</a></li>
+<li{% if request.current_page.reverse_id == "deploy" %} class="seleced"{% endif %}><a href="{% page_url "deploy" %}">{% page_attribute "menu_title" "deploy" %}</a></li>
+<li{% if request.current_page.reverse_id == "participate" %} class="seleced"{% endif %}><a href="{% page_url "participate" %}">{% page_attribute "menu_title" "participate" %}</a></li>
+{% setcontext as blog_url %}{% page_url "blog" %}{% endsetcontext %}{% setcontext as blog_full_url %}/{{ current_language }}{{ blog_url }}{% endsetcontext %}<li class="last{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_url %} seleced{% else %}{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_full_url %} selected{% endif %}{% endif %}"><a href="{{ blog_url }}">{% page_attribute "menu_title" "blog" %}</a></li>
 </ul>
-<ul id="submenu">
-{% show_menu 1 1 %}
-</ul>
+<div class="clear"></div>

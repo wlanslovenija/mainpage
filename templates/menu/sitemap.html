@@ -1,0 +1,11 @@
+{% load menu_tags %}
+{% for child in children %}
+<li class="sitemap{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+	<a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+	{% if child.children %}
+    <ul>
+        {% show_menu from_level to_level extra_inactive extra_active "menu/menu.html" "" "" child %}
+    </ul>
+    {% endif %}
+</li>
+{% endfor %}

@@ -1,11 +1,15 @@
-{% load i18n menu_tags %}
+{% load i18n cms_tags menu_tags context_tags %}
+<div id="main-clear" class="clear"></div>
 <div id="sitemap">
 <hr />
-<ul>
-{% show_menu 0 100 100 100 %}
+<ul class="sitemap">
+{% show_menu 0 100 100 100 "menu/sitemap.html" %}
 </ul>
+<div class="clear"></div>
 </div>
-<div id="footer" style="text-align: center;">
+<div id="footer">
 <hr />
+{% setcontext as contentlicense_url %}{% page_url "contentlicense" %}{% endsetcontext %}{% blocktrans %}All content on this website is available under <a href="{{ contentlicense_url }}">Creative Commons Attribution-ShareAlike license</a> unless specified otherwise.{% endblocktrans %}
+<br />
 <a href="http://wlan-si.net/">{% trans "wlan slovenia" %}</a> | <a href="https://nodes.wlan-si.net/">{% trans "node database" %}</a> | <a href="http://dev.wlan-si.net/">{% trans "development" %}</a> | <a href="http://grow.wlan-si.net/">{% trans "grow" %}</a>
 </div>
