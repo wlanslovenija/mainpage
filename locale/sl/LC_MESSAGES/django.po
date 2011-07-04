@@ -38,7 +38,7 @@ msgid ""
 "\"%(contentlicense_url)s\">Creative Commons Attribution-ShareAlike license</"
 "a> unless specified otherwise."
 msgstr ""
-"Vse vsebine na tej spletni strani so na voljo pod <a href="
+"Vsa vsebina na tej spletni strani je na voljo pod <a href="
 "\"%(contentlicense_url)s\">Creative Commons PriznanjeAvtorstva-DeljenjePodEnakimiPogoji licenco</"
 "a>, v kolikor ni označeno drugače."
 
