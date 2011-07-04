@@ -24,7 +24,7 @@
         <p>{% trans "Images" %}</p>
         <ul>
             {% for image in folder_images %}
-                <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}" width="32" height="32" alt="{{ image.label }}"></li>
+                <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}" width="32" height="32" alt="{{ image.label }}" /></li>
             {% endfor %}
         </ul>
         {% endif %}
@@ -32,6 +32,6 @@
 {% else %}
     {% for image in folder_images %}
         {% thumbnail image.file 200x200 crop=False upscale=False as thumbnail %}
-        <a href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}></a>
+        <a href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
     {% endfor %}
 {% endif %}
