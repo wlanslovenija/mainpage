@@ -206,3 +206,7 @@ body {
 #disqus_thread {
 	margin-bottom: 0 !important;
 }
+
+.mail-link .icon {
+	display: none;
+}
