@@ -1,0 +1,6 @@
+{% load lang_tags %}{% spaceless %}
+{% if translations %}
+{% comment %}{% trans "Entry in English" %}{% endcomment %}
+<span class="translation">{% for translation in translations %}<a href="{{ translation.get_absolute_url }}" title="{% translate "Entry in English" translation.language %}">{{ translation.language|upper }}</a>{% if not forloop.last %}&nbsp;{% endif %}{% endfor %}</span>
+{% endif %}
+{% endspaceless %}

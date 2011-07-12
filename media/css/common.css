@@ -103,10 +103,14 @@ ul.sitemap ul {
 	border-right: medium none;
 }
 
-#language-chooser li *:link, #language-chooser li *:visited {
+#language-chooser li *:link, #language-chooser li *:visited, .translation *:link, .translation *:visited {
 	border: medium none;
 	color: #666666;
 	padding: 0 0 2px;
+}
+
+.translation {
+	font-size: 10px;
 }
 
 #mainmenu {

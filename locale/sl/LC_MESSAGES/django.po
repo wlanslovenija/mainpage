@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-04 01:53+0200\n"
+"POT-Creation-Date: 2011-07-12 19:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,8 +39,8 @@ msgid ""
 "a> unless specified otherwise."
 msgstr ""
 "Vsa vsebina na tej spletni strani je na voljo pod <a href="
-"\"%(contentlicense_url)s\">Creative Commons PriznanjeAvtorstva-DeljenjePodEnakimiPogoji licenco</"
-"a>, v kolikor ni označeno drugače."
+"\"%(contentlicense_url)s\">Creative Commons PriznanjeAvtorstva-"
+"DeljenjePodEnakimiPogoji licenco</a>, v kolikor ni označeno drugače."
 
 #: templates/footer.html:14
 msgid "node database"
@@ -163,3 +163,7 @@ msgstr "Datoteke"
 #: templates/cmsplugin_filer_folder/folder.html:24
 msgid "Images"
 msgstr "Slike"
+
+#: templates/simple_translation/language_choices.html:3
+msgid "Entry in English"
+msgstr "Prispevek v slovenščini"
