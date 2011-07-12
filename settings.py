@@ -306,7 +306,8 @@ class AllIPs(list):
     def __contains__(self, ip):
         return True
 
-INTERNAL_IPS = AllIPs()
+if DEBUG:
+    INTERNAL_IPS = AllIPs()
 
 from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
 

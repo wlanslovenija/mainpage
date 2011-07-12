@@ -6,6 +6,7 @@ syntax: regexp
 ^media/jquery
 ^media/files
 ^media/thumbnails
+^media/missing
 ^smedia
 ^templates/admin_base
 ^secrets.py$
