@@ -110,6 +110,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = '[wlan-si] '
+EMAIL_HOST = 'mail'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
