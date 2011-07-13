@@ -20,12 +20,12 @@
         {% block css %}{% endblock %}
     </head>
     <body>
-        {% include "header.html" %}
+        {% block header %}{% include "header.html" %}{% endblock %}
         <div id="content">
         {% block content %}{% endblock %}
         <div class="clear"></div>
         </div>
-        {% include "footer.html" %}
+        {% block footer %}{% include "footer.html" %}{% endblock %}
         {% block bodyend %}{% endblock %}
     </body>
 </html>
