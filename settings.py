@@ -142,6 +142,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.media.PlaceholderMediaMiddleware',
     'cms.middleware.multilingual.MultilingualURLMiddleware',
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
+    'cbv.middleware.DeferredRenderingMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
