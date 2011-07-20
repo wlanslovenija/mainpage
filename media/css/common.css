@@ -27,10 +27,6 @@ h1 *:link, h1 *:visited, h2 *:link, h2 *:visited, h3 *:link, h3 *:visited, h4 *:
 	float: right;
 }
 
-.notpublished {
-	background-color: #FFFFE0;
-}
-
 #sitemap {
 	border-top: 1px solid #BBBBBB;
 	font-size: 10px;

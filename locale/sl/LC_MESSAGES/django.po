@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-12 19:17+0200\n"
+"POT-Creation-Date: 2011-07-20 23:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr "404 Ne obstaja"
 msgid "The page you requested cannot be found."
 msgstr "Željena stran ne obstaja."
 
-#: templates/base.html:4 templates/footer.html:14 templates/header.html:4
+#: templates/base.html:4 templates/footer.html:14 templates/header.html:8
 msgid "wlan slovenia"
 msgstr "wlan slovenija"
 
@@ -85,11 +85,6 @@ msgstr "Za komentarje je potrebno imeti omogočen JavaScript."
 #: templates/cmsplugin_blog/entry_archive.html:4
 msgid "Latest entries"
 msgstr "Zadnji prispevki"
-
-#: templates/cmsplugin_blog/entry_archive.html:11
-#: templates/cmsplugin_blog/entry_detail.html:9
-msgid "[not published]"
-msgstr ""
 
 #: templates/cmsplugin_blog/entry_archive.html:22
 #: templates/cmsplugin_blog/latest_entries.html:7
