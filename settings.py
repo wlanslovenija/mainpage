@@ -197,6 +197,8 @@ INSTALLED_APPS = (
     'missing',
 )
 
+FORCE_LOWERCASE_TAGS = True
+
 CMS_TEMPLATES = (
     ('main.html', 'Main Page'),
     ('simple.html', 'Simple Page'),
