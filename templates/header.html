@@ -1,10 +1,6 @@
-{% load i18n menu_tags cms_tags context_tags cmsplugin_blog_tags %}
+{% load i18n menu_tags cms_tags context_tags %}
 <div id="header">
-{% if in_blog %}
-{% blog_language_chooser "native" %}
-{% else %}
 {% language_chooser "native" %}
-{% endif %}
 <h1><a href="/">{% trans "wlan slovenia" %}</a></h1>
 </div>
 <div class="clear"></div>

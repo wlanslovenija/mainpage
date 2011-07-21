@@ -7,12 +7,6 @@
 
 {% block title %} – Blog {{ block.super }}{% endblock %}
 
-{% block header %}
-{% with 1 as in_blog %}
-{{ block.super }}
-{% endwith %}
-{% endblock %}
-
 {% block content %}
     <div class="left-col">
         {% block left-col %}{% endblock %}
