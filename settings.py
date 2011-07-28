@@ -273,7 +273,6 @@ CMS_SEO_FIELDS = False
 PLACEHOLDER_FRONTEND_EDITING = False
 
 CMSPLUGIN_BLOG_PLACEHOLDERS = ('on_index_page', 'the_rest')
-CMSPLUGIN_BLOG_SLUG_LENGTH = 255
 
 JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
