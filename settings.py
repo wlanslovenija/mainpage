@@ -239,9 +239,6 @@ CMS_MARKUP_TRAC_INTERWIKI = {
     'skypechat': {
         'URL': 'skype:?chat&blob=',
     },
-    'wlansi': {
-        'URL': 'http://wlan-si.net/',
-    },
     'wikipedia': {
         'URL': 'http://en.wikipedia.org/wiki/',
     },
