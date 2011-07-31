@@ -200,8 +200,8 @@ INSTALLED_APPS = (
 FORCE_LOWERCASE_TAGS = True
 
 CMS_TEMPLATES = (
-    ('main.html', 'Main Page'),
     ('simple.html', 'Simple Page'),
+    ('main.html', 'Main Page'),
     ('blog.html', 'Blog Page'),
 )
 
