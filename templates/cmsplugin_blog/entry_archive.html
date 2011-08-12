@@ -5,7 +5,7 @@
 
 {% block left-col %}
 <div class="latest-list">
-{% for object in latest|annotate_with_translations %}
+{% for object in object_list|annotate_with_translations %}
     {% with object|get_preferred_translation_from_request:request as title %}
         <div class="blog-entry">
         <h2 id="{{ title.slug }}"><a href="{{ title.get_absolute_url }}">{{ title }}</a> {{ object|render_language_choices:request|safe }}</h2>
@@ -22,6 +22,31 @@
     <p>{% trans "No entries." %}</p>
 {% endfor %}
 </div>
+<div class="pagination">{% spaceless %}
+    <div class="prev-link">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" title="{% trans "Go to the previous page" %}">&lt;&lt;&lt;</a>
+    {% else %}
+        <span class="hidden">&lt;&lt;&lt;</span>
+    {% endif %}
+    </div>
+    <ul class="pages">
+    {% for page in page_obj.paginator.page_range %}
+        {% if page == page_obj.number %}
+            <li class="current-page{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">{{ page }}</li>
+        {% else %}
+            <li class="page-link{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}"><a href="?page={{ page }}" title="{% blocktrans with page as page %}Go to page {{ page }}{% endblocktrans %}">{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <div class="next-link">
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" title="{% trans "Go to the next page" %}">&gt;&gt;&gt;</a>
+    {% else %}
+        <span class="hidden">&gt;&gt;&gt;</span>
+    {% endif %}
+    </div>
+{% endspaceless %}</div>
 {% endblock %}
 
 {% block right-col %}

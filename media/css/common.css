@@ -50,7 +50,7 @@ h1 *:link, h1 *:visited, h2 *:link, h2 *:visited, h3 *:link, h3 *:visited, h4 *:
 	display: none;
 }
 
-ul.sitemap {
+ul.sitemap, .pagination ul {
 	list-style-type: none;
 	padding: 0;
 }
@@ -59,7 +59,7 @@ ul.sitemap ul {
 	padding-left: 15px;
 }
 
-#sitemap li *:link, #sitemap li *:visited {
+#sitemap li *:link, #sitemap li *:visited, .pagination *:link, .pagination *:visited {
 	border: medium none;
 	color: #666666;
 	padding: 0 0 2px;
@@ -220,4 +220,38 @@ table.wiki {
 table.wiki td {
 	border: 1px solid #CCCCCC;
 	padding: 0.1em 0.25em;
+}
+
+.pagination {
+	margin-top: 1em;
+	text-align: center;
+}
+
+.pagination div, .pagination li, .pagination ul {
+	display: inline;
+}
+
+.pagination .prev-link {
+	margin-right: 1em;
+}
+
+.pagination .next-link {
+	margin-left: 1em;
+}
+
+.pagination .page-link, .pagination .current-page {
+	border-right: 1px solid #D7D7D7;
+	padding: 0 0.4em;
+}
+
+.pagination .current-page {
+	font-weight: bold;
+}
+
+.pagination .page-link.last, .pagination .current-page.last {
+	border-right: medium none;
+}
+
+.hidden {
+	visibility: hidden;
 }
