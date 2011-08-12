@@ -193,7 +193,7 @@ INSTALLED_APPS = (
     'cmsplugin_filer_video',
     'cmsplugin_filer_image',
     'cmsplugin_markup',
-    'contact',
+    'cmsplugin_contact',
     'missing',
 )
 
