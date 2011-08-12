@@ -210,3 +210,14 @@ body {
 .mail-link .icon {
 	display: none;
 }
+
+table.wiki {
+	border: 2px solid #CCCCCC;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.wiki td {
+	border: 1px solid #CCCCCC;
+	padding: 0.1em 0.25em;
+}
