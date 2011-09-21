@@ -30,8 +30,10 @@
         {% endif %}
     </div>
 {% else %}
-    {% for image in folder_images %}
-        {% thumbnail image.file 200x200 crop=False upscale=False as thumbnail %}
-        <a href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
-    {% endfor %}
+    {% with max_images_number|default:"0"|add:"0" as max_images_number %}
+        {% for image in folder_images %}
+            {% thumbnail image.file 200x200 crop=False upscale=False as thumbnail %}
+            <a href="{{ image.image.url }}"{% if max_images_number and forloop.counter > max_images_number %} class="hidden-image"{% endif %}><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
+        {% endfor %}
+    {% endwith %}
 {% endif %}

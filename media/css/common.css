@@ -255,3 +255,7 @@ table.wiki td {
 .hidden {
 	visibility: hidden;
 }
+
+.hidden-image {
+	display: none;
+}

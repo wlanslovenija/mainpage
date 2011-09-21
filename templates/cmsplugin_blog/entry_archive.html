@@ -10,9 +10,9 @@
         <div class="blog-entry">
         <h2 id="{{ title.slug }}"><a href="{{ title.get_absolute_url }}">{{ title }}</a> {{ object|render_language_choices:request|safe }}</h2>
         <div class="entry-content">
-        {% with object.placeholders|choose_placeholder:"on_index_page" as on_index_page %}
+        {% with object.placeholders|choose_placeholder:"on_index_page" as on_index_page %}{% with "3" as max_images_number %}
             {% render_placeholder on_index_page %}
-        {% endwith %}
+        {% endwith %}{% endwith %}
         </div>
         {% include "cmsplugin_blog/entry_read_more.html" %}
         {% include "cmsplugin_blog/description_entry_with_comments.html" %}
