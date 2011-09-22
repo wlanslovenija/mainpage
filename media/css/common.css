@@ -259,3 +259,7 @@ table.wiki td {
 .hidden-image {
 	display: none;
 }
+
+.contact_field {
+	display: block;
+}
