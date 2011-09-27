@@ -247,9 +247,19 @@ CMS_MARKUP_TRAC_INTERWIKI = {
     },
 }
 
+CMS_MARKUP_TRAC_CONFIGURATION = {
+    'tracmath': {
+        'cache_dir': os.path.join(PROJECT_PATH, 'tracwiki', 'cache'),
+    }
+}
+
+CMS_MARKUP_TRAC_TEMPLATES_DIR = os.path.join(PROJECT_PATH, 'tracwiki', 'templates')
+
 CMS_MARKUP_TRAC_COMPONENTS = (
     'tracdashessyntax.plugin.DashesSyntaxPlugin',
     'footnotemacro.macro.FootNoteMacro',
+    'mathjax.api.MathJaxPlugin',
+    'tracmath.tracmath.TracMathPlugin',
 )
 
 CMS_LANGUAGES_URL_IGNORE_PREFIXES = (
