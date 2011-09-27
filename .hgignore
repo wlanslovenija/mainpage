@@ -8,7 +8,6 @@ syntax: regexp
 ^media/thumbnails
 ^media/missing
 ^smedia
-^templates/admin_base
 ^secrets.py$
 syntax: glob
 *.pyc
