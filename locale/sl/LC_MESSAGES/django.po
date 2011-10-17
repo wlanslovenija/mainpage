@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-20 23:51+0200\n"
+"POT-Creation-Date: 2011-10-17 04:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,7 @@ msgstr "404 Ne obstaja"
 msgid "The page you requested cannot be found."
 msgstr "Željena stran ne obstaja."
 
-#: templates/base.html:4 templates/footer.html:14 templates/header.html:8
-msgid "wlan slovenia"
-msgstr "wlan slovenija"
-
-#: templates/footer.html:12
+#: templates/footer.html:26
 #, python-format
 msgid ""
 "All content on this website is available under <a href="
@@ -42,41 +38,47 @@ msgstr ""
 "\"%(contentlicense_url)s\">Creative Commons PriznanjeAvtorstva-"
 "DeljenjePodEnakimiPogoji licenco</a>, v kolikor ni označeno drugače."
 
-#: templates/footer.html:14
+#: templates/footer.html:29
 msgid "node database"
 msgstr "baza točk"
 
-#: templates/footer.html:14
+#: templates/footer.html:29
 msgid "development"
 msgstr "razvoj"
 
-#: templates/footer.html:14
-msgid "grow"
+#: templates/footer.html:29
+msgid "growing"
 msgstr "rast"
 
+#: templates/header.html:16
+msgid "Like us on Facebook"
+msgstr "Likeaj na Facebooku"
+
+#: templates/header.html:17
+msgid "Follow us on Twitter"
+msgstr "Spremljaj na Twitterju"
+
 #: templates/main.html:5
-msgid "wlan slovenia – open wireless network of Slovenia"
+msgid "wlan slovenija – open wireless network of Slovenia"
 msgstr "wlan slovenija – odprto brezžično omrežje Slovenije"
 
 #: templates/cmsplugin_blog/author_links_snippet.html:3
 msgid "See entries by:"
 msgstr "Prispevki avtorja:"
 
-#: templates/cmsplugin_blog/description_entry.html:3
-msgid "published:"
-msgstr "objavljeno:"
-
-#: templates/cmsplugin_blog/description_entry.html:3
-msgid "author:"
-msgstr "avtor:"
-
-#: templates/cmsplugin_blog/description_entry.html:3
-msgid "tags:"
-msgstr "oznake:"
-
 #: templates/cmsplugin_blog/description_entry_with_comments.html:5
 msgid "Comments and Reactions"
 msgstr ""
+
+#: templates/cmsplugin_blog/description_published.html:3
+#, python-format
+msgid ""
+"<span class=\"timestamp\">Published on %(published_date)s at "
+"%(published_time)s</span><span class=\"author\"> by <a href=\"%(author_url)s"
+"\">%(author_name)s</a></span>"
+msgstr ""
+"<span class=\"author\">Objavil <a href=\"%(author_url)s\">%(author_name)s</a></span>"
+"<span class=\"timestamp\"> %(published_date)s ob %(published_time)s</span>"
 
 #: templates/cmsplugin_blog/disqus_entry.html:16
 msgid "Please enable JavaScript to view the comments."
@@ -86,11 +88,24 @@ msgstr "Za komentarje je potrebno imeti omogočen JavaScript."
 msgid "Latest entries"
 msgstr "Zadnji prispevki"
 
-#: templates/cmsplugin_blog/entry_archive.html:22
+#: templates/cmsplugin_blog/entry_archive.html:24
 #: templates/cmsplugin_blog/latest_entries.html:7
 #: templates/cmsplugin_blog/month_links_snippet.html:11
 msgid "No entries."
 msgstr "Ni prispevkov."
+
+#: templates/cmsplugin_blog/entry_archive.html:30
+msgid "Go to the previous page"
+msgstr "Na predhodno stran"
+
+#: templates/cmsplugin_blog/entry_archive.html:40
+#, python-format
+msgid "Go to page %(page)s"
+msgstr "Na %(page)s. stran"
+
+#: templates/cmsplugin_blog/entry_archive.html:46
+msgid "Go to the next page"
+msgstr "Na naslednjo stran"
 
 #: templates/cmsplugin_blog/entry_archive_day.html:4
 #: templates/cmsplugin_blog/entry_archive_day.html:8
