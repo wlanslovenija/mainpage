@@ -3,6 +3,6 @@
 {% load cms_tags url_tags %}
 
 {% block content %}
-    <h2 id="{{ current_page.get_menu_title|slugify2 }}">{{ current_page.get_menu_title }}</h2>
+    <h2 id="{{ current_page.get_page_title|slugify2 }}">{{ current_page.get_page_title }}</h2>
     {% placeholder content %}
 {% endblock %}

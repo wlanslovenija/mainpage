@@ -1,14 +1,19 @@
 {% load i18n menu_tags cms_tags context_tags %}
 <div id="header">
 {% language_chooser "native" %}
-<h1><a href="/">{% trans "wlan slovenia" %}</a></h1>
+<h1><a href="/">wlan slovenija</a></h1>
 </div>
 <div class="clear"></div>
 <ul id="mainmenu">
-<li class="first{% if request.current_page.reverse_id == "about" %} seleced{% endif %}"><a href="{% page_url "about" %}">{% filter force_escape %}{% page_attribute "menu_title" "about" %}{% endfilter %}</a></li>
-<li{% if request.current_page.reverse_id == "map" %} class="seleced"{% endif %}><a href="{% page_url "map" %}">{% filter force_escape %}{% page_attribute "menu_title" "map" %}{% endfilter %}</a></li>
-<li{% if request.current_page.reverse_id == "deploy" %} class="seleced"{% endif %}><a href="{% page_url "deploy" %}">{% filter force_escape %}{% page_attribute "menu_title" "deploy" %}{% endfilter %}</a></li>
-<li{% if request.current_page.reverse_id == "participate" %} class="seleced"{% endif %}><a href="{% page_url "participate" %}">{% filter force_escape %}{% page_attribute "menu_title" "participate" %}{% endfilter %}</a></li>
-{% setcontext as blog_url %}{% page_url "blog" %}{% endsetcontext %}{% setcontext as blog_full_url %}/{{ current_language }}{{ blog_url }}{% endsetcontext %}<li class="last{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_url %} seleced{% else %}{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_full_url %} selected{% endif %}{% endif %}"><a href="{{ blog_url }}">{% filter force_escape %}{% page_attribute "menu_title" "blog" %}{% endfilter %}</a></li>
+<li class="first{% if request.current_page.reverse_id == "about" %} seleced{% endif %}"><a href="{% page_url "about" %}">{% filter force_escape %}{% page_attribute "menu_title" "about" %}{% endfilter %}</a>
+</li><li{% if request.current_page.reverse_id == "map" %} class="seleced"{% endif %}>
+<a href="{% page_url "map" %}">{% filter force_escape %}{% page_attribute "menu_title" "map" %}{% endfilter %}</a>
+</li><li{% if request.current_page.reverse_id == "deploy" %} class="seleced"{% endif %}>
+<a href="{% page_url "deploy" %}">{% filter force_escape %}{% page_attribute "menu_title" "deploy" %}{% endfilter %}</a>
+</li><li{% if request.current_page.reverse_id == "participate" %} class="seleced"{% endif %}>
+<a href="{% page_url "participate" %}">{% filter force_escape %}{% page_attribute "menu_title" "participate" %}{% endfilter %}</a>
+</li>{% setcontext as blog_url %}{% page_url "blog" %}{% endsetcontext %}{% setcontext as blog_full_url %}/{{ current_language }}{{ blog_url }}{% endsetcontext %}<li class="last{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_url %} seleced{% else %}{% if request.current_page.reverse_id == "blog" and request.META.PATH_INFO == blog_full_url %} selected{% endif %}{% endif %}"><a href="{{ blog_url }}">{% filter force_escape %}{% page_attribute "menu_title" "blog" %}{% endfilter %}</a>
+</li><li class="external facebook_link"><a href="https://www.facebook.com/wlanljubljana" title="{% trans "Like us on Facebook" %}">Facebook</a>
+</li><li class="external twitter_link"><a href="http://twitter.com/#!/wlanslovenija" title="{% trans "Follow us on Twitter" %}">Twitter</a></li>
 </ul>
 <div class="clear"></div>

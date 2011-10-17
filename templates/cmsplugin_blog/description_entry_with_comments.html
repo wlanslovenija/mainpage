@@ -2,4 +2,4 @@
 
 {% load i18n %}
 
-{% block comments %} | <a href="{{ title.get_absolute_url }}#disqus_thread" data-disqus-identifier="cmsplugin-blog-id-{{ object.pk|escape }}-{{ title.language|escapejs }}">{% trans "Comments and Reactions" %}</a>{% endblock %}
+{% block comments %}<div class="comments-count"><a href="{{ title.get_absolute_url }}#disqus_thread" data-disqus-identifier="cmsplugin-blog-id-{{ object.pk|escape }}-{{ title.language|escapejs }}">{% trans "Comments and Reactions" %}</a></div>{% endblock %}

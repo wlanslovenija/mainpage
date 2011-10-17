@@ -22,18 +22,20 @@
         {% endif %}
         {% if folder_images %}
         <p>{% trans "Images" %}</p>
-        <ul>
+        <ul class="image-folder-list">
             {% for image in folder_images %}
-                <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}" width="32" height="32" alt="{{ image.label }}" /></li>
+                <li><img src="{% thumbnail image.file 32x32 crop="True" upscale="True" %}" width="32" height="32" alt="{{ image.label }}" /></li>
             {% endfor %}
         </ul>
         {% endif %}
     </div>
 {% else %}
     {% with max_images_number|default:"0"|add:"0" as max_images_number %}
+        <div class="image-folder">
         {% for image in folder_images %}
-            {% thumbnail image.file 200x200 crop=False upscale=False as thumbnail %}
+            {% thumbnail image.file 160x160 crop="True" upscale="False" as thumbnail %}
             <a href="{{ image.image.url }}"{% if max_images_number and forloop.counter > max_images_number %} class="hidden-image"{% endif %}><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
         {% endfor %}
+        </div>
     {% endwith %}
 {% endif %}

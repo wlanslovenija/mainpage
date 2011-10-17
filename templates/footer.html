@@ -8,8 +8,24 @@
 <div class="clear"></div>
 </div>
 <div id="footer">
-<hr />
+<div id="supporters">
+<a href="http://ec.europa.eu/dgs/education_culture/index_sl.html">
+<img src="{{ MEDIA_URL }}supporters/eu-mva-gray.png" alt="Evropska komisija, GD za izobraževanje in kulturo" />
+</a>
+<a href="http://www.mva.si">
+<img src="{{ MEDIA_URL }}supporters/mva-gray.png" alt="Mladi v Akciji" />
+</a>
+<a href="http://www.movit.si">
+<img src="{{ MEDIA_URL }}supporters/movit-gray.png" alt="Zavod Movit" />
+</a>
+</div>
+<div id="footer-comment">
+Izvedba tega projekta je sofinancirana s strani Evropske komisije. Vsebina spletnih strani je izključno odgovornost avtorjev in v nobenem primeru ne predstavlja stališč Evropske komisije.
+</div>
+<div id="footer-license">
 {% setcontext as contentlicense_url %}{% page_url "contentlicense" %}{% endsetcontext %}{% blocktrans %}All content on this website is available under <a href="{{ contentlicense_url }}">Creative Commons Attribution-ShareAlike license</a> unless specified otherwise.{% endblocktrans %}
-<br />
-<a href="http://wlan-si.net/">{% trans "wlan slovenia" %}</a> | <a href="https://nodes.wlan-si.net/">{% trans "node database" %}</a> | <a href="http://dev.wlan-si.net/">{% trans "development" %}</a> | <a href="http://grow.wlan-si.net/">{% trans "grow" %}</a>
+</div>
+<div id="footer-links">
+<a href="http://wlan-si.net/">wlan slovenija</a> | <a href="https://nodes.wlan-si.net/">{% trans "node database" %}</a> | <a href="http://dev.wlan-si.net/">{% trans "development" %}</a> | <a href="http://grow.wlan-si.net/">{% trans "growing" %}</a>
+</div>
 </div>

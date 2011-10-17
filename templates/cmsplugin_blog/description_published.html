@@ -1,0 +1,3 @@
+{% load i18n %}
+<div class="blog-entry-published"><span class="timestamp">{% trans "Published on" %} {{ object.pub_date|date:"j b. Y" }} {% trans "at" %} {{ object.pub_date|date:"H:i" }}</span>
+<span class="author">{% trans "by" %} <a href="{% url blog_archive_author title.author %}">{{ title.author }}</a></span></div>

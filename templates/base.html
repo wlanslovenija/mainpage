@@ -1,10 +1,10 @@
 {% load i18n cms_tags sekizai_tags %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>{% block fulltitle %}{% block title %}{{ current_page.get_menu_title }}{% endblock %} – {% trans "wlan slovenia" %}{% endblock %}</title>
+        <title>{% block fulltitle %}{% block title %}{{ current_page.get_page_title }}{% endblock %} – wlan slovenija{% endblock %}</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="{{ MEDIA_URL }}images/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="{{ MEDIA_URL }}jquery-visage/res-alt/visage.css" type="text/css" />
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/common.css" type="text/css" />
         {% render_block "css" %}
@@ -18,7 +18,7 @@
         {% block js %}{% endblock %}
         {% block css %}{% endblock %}
     </head>
-    <body>
+    <body class="locale-{{ LANGUAGE_CODE }}">
         {% block header %}{% include "header.html" %}{% endblock %}
         <div id="content">
         {% block content %}{% endblock %}

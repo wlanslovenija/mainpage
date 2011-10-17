@@ -7,6 +7,9 @@
 {% with object|get_preferred_translation_from_request:request as title %}
     <div class="blog-entry">
     <h2 id="{{ title.slug }}">{{ title }} {{ object|render_language_choices:request|safe }}</h2>
+    <div class="entry-header">
+    {% include "cmsplugin_blog/description_published.html" %}
+    </div>
     <div class="entry-content">
     {% with object.placeholders|choose_placeholder:"on_index_page" as on_index_page %}
         {% render_placeholder on_index_page %}
@@ -15,8 +18,10 @@
         {% render_placeholder the_rest %}
     {% endwith %}
     </div>
-    {% include "cmsplugin_blog/description_entry.html" %}
+    <div class="entry-footer">
+    {% include "cmsplugin_blog/description_tags.html" %}
     {% include "cmsplugin_blog/disqus_entry.html" %}
+    </div>
     </div>
 {% endwith %}
 {% endblock %}
