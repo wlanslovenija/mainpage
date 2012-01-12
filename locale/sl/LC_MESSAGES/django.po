@@ -13,7 +13,7 @@ msgstr ""
 
 #: settings.py:48
 msgid "Slovenian"
-msgstr "slovenščna"
+msgstr "slovenščina"
 
 #: settings.py:49
 msgid "English"
