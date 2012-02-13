@@ -25,10 +25,19 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
         'USER': 'wlansi_cms',                               # Not used with sqlite3.
-        'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
+        'PASSWORD': DB_CMS_PASSWORD,                        # Not used with sqlite3.
         'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
-    }
+    },
+
+    'users': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
+        'USER': 'wlansi_nw',                                # Not used with sqlite3.
+        'PASSWORD': DB_NW_PASSWORD,                         # Not used with sqlite3.
+        'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
+    },
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -161,6 +170,10 @@ AUTHENTICATION_BACKENDS = (
     'mainpage.account.auth.ModelBackend',
     'mainpage.account.auth.AprBackend',
     'mainpage.account.auth.CryptBackend',
+)
+
+DATABASE_ROUTERS = (
+    'mainpage.account.router.UserModelRouter',
 )
 
 INSTALLED_APPS = (
