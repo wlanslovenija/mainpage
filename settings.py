@@ -13,7 +13,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Admin', 'webmaster@wlan-si.net'),
+    ('Webmaster', 'webmaster@wlan-si.net'),
 )
 
 MANAGERS = ADMINS
@@ -25,16 +25,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
         'USER': 'wlansi_cms',                               # Not used with sqlite3.
-        'PASSWORD': DB_CMS_PASSWORD,                        # Not used with sqlite3.
-        'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
-    },
-
-    'users': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
-        'USER': 'wlansi_nw',                                # Not used with sqlite3.
-        'PASSWORD': DB_NW_PASSWORD,                         # Not used with sqlite3.
+        'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
         'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     },
@@ -57,6 +48,9 @@ LANGUAGES = (
     ('sl', _('Slovenian')),
     ('en', _('English')),
 )
+
+GEOIP_PATH = '/srv/nodewatcher/nodewatcher/geoip/'
+DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
 
@@ -88,6 +82,8 @@ LOGIN_URL = '/admin/'
 LOGOUT_URL = '/admin/'
 
 FORCE_SCRIPT_NAME = ''
+
+AUTH_PROFILE_MODULE = 'account.UserProfileAndSettings'
 
 SITE_ID = 1
 
@@ -167,13 +163,9 @@ TEMPLATE_DIRS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'mainpage.account.auth.ModelBackend',
-    'mainpage.account.auth.AprBackend',
-    'mainpage.account.auth.CryptBackend',
-)
-
-DATABASE_ROUTERS = (
-    'mainpage.account.router.UserModelRouter',
+    'web.account.auth.ModelBackend',
+    'web.account.auth.AprBackend',
+    'web.account.auth.CryptBackend',
 )
 
 INSTALLED_APPS = (
@@ -208,6 +200,8 @@ INSTALLED_APPS = (
     'cmsplugin_markup',
     'cmsplugin_contact',
     'missing',
+    'web.account',
+    'mainpage.wlansi',
 )
 
 FORCE_LOWERCASE_TAGS = True
