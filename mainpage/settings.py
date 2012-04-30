@@ -26,7 +26,7 @@ DATABASES = {
         'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
         'USER': 'wlansi_cms',                               # Not used with sqlite3.
         'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
-        'HOST': 'dbpgsql',                                  # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '46.54.226.42',                             # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     },
 }

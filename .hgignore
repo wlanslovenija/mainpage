@@ -1,15 +1,15 @@
 syntax: regexp
-^media/admin
-^media/cms
-^media/simple_translation
-^media/filer
-^media/jquery
-^media/files
-^media/thumbnails
-^media/missing
-^smedia
-^tracwiki/cache
-^secrets.py$
+^mainpage/media/admin
+^mainpage/media/cms
+^mainpage/media/simple_translation
+^mainpage/media/filer
+^mainpage/media/jquery
+^mainpage/media/files
+^mainpage/media/thumbnails
+^mainpage/media/missing
+^mainpage/smedia
+^mainpage/tracwiki/cache
+^mainpage/secrets.py$
 syntax: glob
 *.pyc
 *.swp
