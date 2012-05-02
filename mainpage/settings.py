@@ -26,7 +26,7 @@ DATABASES = {
         'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
         'USER': 'wlansi_cms',                               # Not used with sqlite3.
         'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
-        'HOST': '46.54.226.42',                             # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'localhost',                                # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     },
 }
@@ -49,7 +49,7 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
-GEOIP_PATH = '/srv/nodewatcher/nodewatcher/geoip/'
+GEOIP_PATH = '/srv/nodewatcher/nodewatcher/nodewatcher/geoip/'
 DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
@@ -115,7 +115,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = '[wlan-si] '
-EMAIL_HOST = 'mail'
+EMAIL_HOST = 'localhost'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
