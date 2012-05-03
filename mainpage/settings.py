@@ -163,9 +163,9 @@ TEMPLATE_DIRS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'web.account.auth.ModelBackend',
-    'web.account.auth.AprBackend',
-    'web.account.auth.CryptBackend',
+    'frontend.account.auth.ModelBackend',
+    'frontend.account.auth.AprBackend',
+    'frontend.account.auth.CryptBackend',
 )
 
 INSTALLED_APPS = (
@@ -200,7 +200,7 @@ INSTALLED_APPS = (
     'cmsplugin_markup',
     'cmsplugin_contact',
     'missing',
-    'web.account',
+    'frontend.account',
     'mainpage.wlansi',
 )
 
