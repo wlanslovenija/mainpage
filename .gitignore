@@ -1,8 +1,8 @@
 /mainpage/media/admin
-/mainpage/media/cms
+/mainpage/media/cms*
 /mainpage/media/simple_translation
 /mainpage/media/filer
-/mainpage/media/jquery
+/mainpage/media/jquery*
 /mainpage/media/files
 /mainpage/media/thumbnails
 /mainpage/media/missing
@@ -11,4 +11,3 @@
 /mainpage/secrets.py
 *.pyc
 *.swp
-*.mo
