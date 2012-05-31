@@ -133,6 +133,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
     'cms.context_processors.media',
+    'mainpage.wlansi.context_processors.global_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -345,6 +346,12 @@ FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
     location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
     base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
 )
+
+CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
+    ('slideshow', _("Slideshow")),
+)
+
+SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
 
 if not DEBUG:
     from filer.server.backends.nginx import NginxXAccelRedirectServer
