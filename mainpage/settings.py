@@ -349,6 +349,7 @@ FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
 
 CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
     ('slideshow', _("Slideshow")),
+    ('list', _("List")),
 )
 
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
