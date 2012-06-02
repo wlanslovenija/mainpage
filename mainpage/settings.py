@@ -203,9 +203,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.staticfiles',
 
-    # Until Django 1.4 for "static" template tag
-    'staticfiles',
-
     'cms',
     'mptt',
     'menus',
@@ -218,7 +215,6 @@ INSTALLED_APPS = (
     'djangocms_utils',
     'simple_translation',
     'cmsplugin_blog',
-    'cms.plugins.link',
     'cms.plugins.snippet',
     #'cms.plugins.inherit',
     'cmsplugin_filer_file',
@@ -348,9 +344,9 @@ PLACEHOLDER_FRONTEND_EDITING = False
 
 CMSPLUGIN_BLOG_PLACEHOLDERS = ('on_index_page', 'the_rest')
 
-JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
-JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
-JQUERY_UI_JS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.js")
+JQUERY_JS = os.path.join(STATIC_URL, 'wlansi', 'jquery', 'jquery.min.js')
+JQUERY_UI_CSS = os.path.join(STATIC_URL, 'wlansi', 'jquery', 'jquery-ui.min.css')
+JQUERY_UI_JS = os.path.join(STATIC_URL, 'wlansi', 'jquery', 'jquery-ui.min.js')
 
 THUMBNAIL_DEBUG = False
 THUMBNAIL_QUALITY = 95
