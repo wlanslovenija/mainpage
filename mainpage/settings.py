@@ -54,6 +54,8 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
+ADMIN_LANGUAGE_CODE = 'en'
+
 GEOIP_PATH = '/srv/nodewatcher/nodewatcher/nodewatcher/geoip/'
 DEFAULT_COUNTRY = 'SI'
 
@@ -169,6 +171,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'cms.middleware.multilingual.MultilingualURLMiddleware',
+    'wlansi.middleware.ForceAdminLanguage',
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
