@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
-# Django settings for mainpage project.
 
 # Secrets are in a separate file so they are not visible in public repository
 from secrets import *
 
 import os
 
+settings_dir = os.path.abspath(os.path.dirname(__file__))
+
+# Dummy function, so that "makemessages" can find strings which should be translated.
 _ = lambda s: s
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+# A tuple that lists people who get code error notifications. When
+# DEBUG=False and a view raises an exception, Django will e-mail these
+# people with the full exception information. Each member of the tuple
+# should be a tuple of (Full name, e-mail address).
 ADMINS = (
     ('Webmaster', 'webmaster@wlan-si.net'),
 )
@@ -77,10 +82,6 @@ NUMBER_GROUPING = 0
 # We override defaults
 FORMAT_MODULE_PATH = 'mainpage.formats'
 
-LOGIN_REDIRECT_URL = '/admin/'
-LOGIN_URL = '/admin/'
-LOGOUT_URL = '/admin/'
-
 FORCE_SCRIPT_NAME = ''
 
 AUTH_PROFILE_MODULE = 'account.UserProfileAndSettings'
@@ -97,42 +98,67 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
+MEDIA_ROOT = os.path.join(settings_dir, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
-STATIC_URL = MEDIA_URL
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+MEDIA_URL = '/media/'
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT = os.path.join(settings_dir, 'static')
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+STATIC_URL = '/static/'
+
+# URL prefix for admin static files -- CSS, JavaScript and images.
+# Make sure to use a trailing slash.
+# Examples: "http://foo.com/static/admin/", "/static/admin/".
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#   'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 # SECRET_KEY is in secrets
 
+EMAIL_HOST = 'localhost'
+EMAIL_SUBJECT_PREFIX = '[wlan-si] '
 DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-EMAIL_SUBJECT_PREFIX = '[wlan-si] '
-EMAIL_HOST = 'localhost'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#    'django.template.loaders.eggs.Loader',
+#   'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'sekizai.context_processors.sekizai',
     'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
     'mainpage.wlansi.context_processors.global_vars',
 )
 
@@ -142,13 +168,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'cms.middleware.multilingual.MultilingualURLMiddleware',
+    'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     #'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.media.PlaceholderMediaMiddleware',
-    'cms.middleware.multilingual.MultilingualURLMiddleware',
-    'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
-    'cbv.middleware.DeferredRenderingMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
@@ -160,16 +184,14 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_PATH, "templates"),
-)
-
-AUTHENTICATION_BACKENDS = (
-    'frontend.account.auth.ModelBackend',
-    'frontend.account.auth.AprBackend',
-    'frontend.account.auth.CryptBackend',
+#   os.path.join(settings_dir, 'templates'),
 )
 
 INSTALLED_APPS = (
+    # Ours are first so that we can override default templates in other apps
+    'frontend.account',
+    'mainpage.wlansi',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -177,11 +199,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.staticfiles',
+
+    # Until Django 1.4 for "static" template tag
+    'staticfiles',
+
     'cms',
     'mptt',
     'menus',
     'south',
-    'appmedia',
     'easy_thumbnails',
     'filer',
     'tagging',
@@ -201,8 +227,39 @@ INSTALLED_APPS = (
     'cmsplugin_markup',
     'cmsplugin_contact',
     'missing',
-    'frontend.account',
-    'mainpage.wlansi',
+)
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
+LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_URL = '/admin/'
+LOGOUT_URL = '/admin/'
+
+AUTHENTICATION_BACKENDS = (
+    'frontend.account.auth.ModelBackend',
+    'frontend.account.auth.AprBackend',
+    'frontend.account.auth.CryptBackend',
 )
 
 FORCE_LOWERCASE_TAGS = True
@@ -257,11 +314,11 @@ CMS_MARKUP_TRAC_INTERWIKI = {
 
 CMS_MARKUP_TRAC_CONFIGURATION = {
     'tracmath': {
-        'cache_dir': os.path.join(PROJECT_PATH, 'tracwiki', 'cache'),
+        'cache_dir': os.path.join(settings_dir, 'tracwiki', 'cache'),
     }
 }
 
-CMS_MARKUP_TRAC_TEMPLATES_DIR = os.path.join(PROJECT_PATH, 'tracwiki', 'templates')
+CMS_MARKUP_TRAC_TEMPLATES_DIR = os.path.join(settings_dir, 'tracwiki', 'templates')
 
 CMS_MARKUP_TRAC_COMPONENTS = (
     'tracdashessyntax.plugin.DashesSyntaxPlugin',
@@ -289,8 +346,8 @@ PLACEHOLDER_FRONTEND_EDITING = False
 
 CMSPLUGIN_BLOG_PLACEHOLDERS = ('on_index_page', 'the_rest')
 
-JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_JS = os.path.join(MEDIA_URL, "jquery", "jquery.min.js")
+JQUERY_UI_CSS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.css")
 JQUERY_UI_JS = os.path.join(MEDIA_URL, "jquery", "jquery-ui.min.js")
 
 THUMBNAIL_DEBUG = False
