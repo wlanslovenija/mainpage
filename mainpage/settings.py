@@ -172,7 +172,6 @@ MIDDLEWARE_CLASSES = (
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
-    #'cms.middleware.toolbar.ToolbarMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 )
 
