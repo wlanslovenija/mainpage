@@ -22,7 +22,7 @@ django-classy-tags==0.3.4.1
 django-cms==2.2
 django-filer==0.9a1
 django-missing==0.1.4
-django-mptt==0.5.2
+django-mptt==0.4.2
 django-phonenumber-field==0.2a3
 django-picklefield==0.2.1
 django-polymorphic==0.2
