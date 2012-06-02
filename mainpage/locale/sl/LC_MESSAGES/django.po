@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-31 14:45+0200\n"
+"POT-Creation-Date: 2012-06-02 22:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,27 +11,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:48
+#: settings.py:53
 msgid "Slovenian"
 msgstr "slovenščina"
 
-#: settings.py:49
+#: settings.py:54
 msgid "English"
 msgstr "angleščina"
 
-#: settings.py:351
-msgid "Slideshow"
-msgstr ""
-
-#: templates/404.html:5 templates/404.html.py:8
+#: wlansi/templates/404.html:5 wlansi/templates/404.html.py:10
 msgid "404 Not Found"
 msgstr "404 Ne obstaja"
 
-#: templates/404.html:11
+#: wlansi/templates/404.html:13
 msgid "The page you requested cannot be found."
 msgstr "Željena stran ne obstaja."
 
-#: templates/footer.html:19
+#: wlansi/templates/footer.html:19
 msgid ""
 "This project is co-funded by the European Commission. The content of this "
 "website is the sole responsibility of authors and in no way represents the "
@@ -41,7 +37,7 @@ msgstr ""
 "spletnih strani je izključno odgovornost avtorjev in v nobenem primeru ne "
 "predstavlja stališč Evropske komisije."
 
-#: templates/footer.html:22
+#: wlansi/templates/footer.html:22
 #, python-format
 msgid ""
 "All content on this website is available under <a href="
@@ -52,39 +48,39 @@ msgstr ""
 "\"%(contentlicense_url)s\">Creative Commons PriznanjeAvtorstva-"
 "DeljenjePodEnakimiPogoji licenco</a>, v kolikor ni označeno drugače."
 
-#: templates/footer.html:25
+#: wlansi/templates/footer.html:25
 msgid "node database"
 msgstr "baza točk"
 
-#: templates/footer.html:25
+#: wlansi/templates/footer.html:25
 msgid "development"
 msgstr "razvoj"
 
-#: templates/footer.html:25
+#: wlansi/templates/footer.html:25
 msgid "growing"
 msgstr "rast"
 
-#: templates/header.html:16
+#: wlansi/templates/header.html:16
 msgid "Like us on Facebook"
 msgstr "Likeaj na Facebooku"
 
-#: templates/header.html:17
+#: wlansi/templates/header.html:17
 msgid "Follow us on Twitter"
 msgstr "Spremljaj na Twitterju"
 
-#: templates/main.html:5
+#: wlansi/templates/main.html:5
 msgid "wlan slovenija – open wireless network of Slovenia"
 msgstr "wlan slovenija – odprto brezžično omrežje Slovenije"
 
-#: templates/cmsplugin_blog/author_links_snippet.html:3
+#: wlansi/templates/cmsplugin_blog/author_links_snippet.html:3
 msgid "See entries by:"
 msgstr "Prispevki avtorja:"
 
-#: templates/cmsplugin_blog/description_entry_with_comments.html:5
+#: wlansi/templates/cmsplugin_blog/description_entry_with_comments.html:5
 msgid "Comments and Reactions"
 msgstr ""
 
-#: templates/cmsplugin_blog/description_published.html:3
+#: wlansi/templates/cmsplugin_blog/description_published.html:3
 #, python-format
 msgid ""
 "<span class=\"timestamp\">Published on %(published_date)s at "
@@ -95,100 +91,99 @@ msgstr ""
 "a></span><span class=\"timestamp\"> %(published_date)s ob "
 "%(published_time)s</span>"
 
-#: templates/cmsplugin_blog/disqus_entry.html:16
+#: wlansi/templates/cmsplugin_blog/disqus_entry.html:16
 msgid "Please enable JavaScript to view the comments."
 msgstr "Za komentarje je potrebno imeti omogočen JavaScript."
 
-#: templates/cmsplugin_blog/entry_archive.html:4
+#: wlansi/templates/cmsplugin_blog/entry_archive.html:4
 msgid "Latest entries"
 msgstr "Zadnji prispevki"
 
-#: templates/cmsplugin_blog/entry_archive.html:24
-#: templates/cmsplugin_blog/latest_entries.html:7
-#: templates/cmsplugin_blog/month_links_snippet.html:11
+#: wlansi/templates/cmsplugin_blog/entry_archive.html:24
+#: wlansi/templates/cmsplugin_blog/latest_entries.html:7
+#: wlansi/templates/cmsplugin_blog/month_links_snippet.html:11
 msgid "No entries."
 msgstr "Ni prispevkov."
 
-#: templates/cmsplugin_blog/entry_archive.html:30
+#: wlansi/templates/cmsplugin_blog/entry_archive.html:30
 msgid "Go to the previous page"
 msgstr "Na predhodno stran"
 
-#: templates/cmsplugin_blog/entry_archive.html:40
+#: wlansi/templates/cmsplugin_blog/entry_archive.html:40
 #, python-format
 msgid "Go to page %(page)s"
 msgstr "Na %(page)s. stran"
 
-#: templates/cmsplugin_blog/entry_archive.html:46
+#: wlansi/templates/cmsplugin_blog/entry_archive.html:46
 msgid "Go to the next page"
 msgstr "Na naslednjo stran"
 
-#: templates/cmsplugin_blog/entry_archive_day.html:4
-#: templates/cmsplugin_blog/entry_archive_day.html:8
-#: templates/cmsplugin_blog/entry_archive_month.html:4
-#: templates/cmsplugin_blog/entry_archive_month.html:8
-#: templates/cmsplugin_blog/entry_archive_year.html:4
-#: templates/cmsplugin_blog/entry_archive_year.html:8
+#: wlansi/templates/cmsplugin_blog/entry_archive_day.html:4
+#: wlansi/templates/cmsplugin_blog/entry_archive_day.html:8
+#: wlansi/templates/cmsplugin_blog/entry_archive_month.html:4
+#: wlansi/templates/cmsplugin_blog/entry_archive_month.html:8
+#: wlansi/templates/cmsplugin_blog/entry_archive_year.html:4
+#: wlansi/templates/cmsplugin_blog/entry_archive_year.html:8
 msgid "Entries for"
 msgstr "Prispevki za"
 
-#: templates/cmsplugin_blog/entry_archive_day.html:16
+#: wlansi/templates/cmsplugin_blog/entry_archive_day.html:16
 msgid "No entries for this day."
 msgstr "Ni prispevkov za ta dan."
 
-#: templates/cmsplugin_blog/entry_archive_month.html:16
+#: wlansi/templates/cmsplugin_blog/entry_archive_month.html:16
 msgid "No entries for this month."
 msgstr "Ni prispevkov za ta mesec."
 
-#: templates/cmsplugin_blog/entry_archive_year.html:16
+#: wlansi/templates/cmsplugin_blog/entry_archive_year.html:16
 msgid "No entries for this year."
 msgstr "Ni prispevkov za to leto."
 
-#: templates/cmsplugin_blog/entry_author_list.html:10
-#: templates/cmsplugin_blog/entry_author_list.html:14
+#: wlansi/templates/cmsplugin_blog/entry_author_list.html:10
+#: wlansi/templates/cmsplugin_blog/entry_author_list.html:14
 msgid "Entries by"
 msgstr "Prispevki avtorja"
 
-#: templates/cmsplugin_blog/entry_author_list.html:22
+#: wlansi/templates/cmsplugin_blog/entry_author_list.html:22
 msgid "No entries by"
 msgstr "Ni prispevkov avtorja"
 
-#: templates/cmsplugin_blog/entry_list.html:9
-#: templates/cmsplugin_blog/entry_list.html:13
+#: wlansi/templates/cmsplugin_blog/entry_list.html:9
+#: wlansi/templates/cmsplugin_blog/entry_list.html:13
 msgid "Entries tagged"
 msgstr "Prispevki z oznako"
 
-#: templates/cmsplugin_blog/entry_list.html:21
+#: wlansi/templates/cmsplugin_blog/entry_list.html:21
 msgid "No entries tagged"
 msgstr "Ni prispevkov z oznako"
 
-#: templates/cmsplugin_blog/entry_read_more.html:5
+#: wlansi/templates/cmsplugin_blog/entry_read_more.html:5
 msgid "Read more, comment, like, share ..."
 msgstr "Preberi več, komentiraj, likeaj, podeli ..."
 
-#: templates/cmsplugin_blog/entry_read_more.html:7
+#: wlansi/templates/cmsplugin_blog/entry_read_more.html:7
 msgid "Comment, like, share ..."
 msgstr "Komentiraj, likeaj, podeli ..."
 
-#: templates/cmsplugin_blog/month_links_snippet.html:3
+#: wlansi/templates/cmsplugin_blog/month_links_snippet.html:3
 msgid "See entries for:"
 msgstr "Prispevki za mesec:"
 
-#: templates/cmsplugin_blog/tag_links_snippet.html:3
+#: wlansi/templates/cmsplugin_blog/tag_links_snippet.html:3
 msgid "See entries tagged:"
 msgstr "Prispevki z oznako:"
 
-#: templates/cmsplugin_filer_folder/folder.html:8
+#: wlansi/templates/cmsplugin_filer_folder/folder.html:8
 msgid "Folders"
 msgstr "Mape"
 
-#: templates/cmsplugin_filer_folder/folder.html:16
+#: wlansi/templates/cmsplugin_filer_folder/folder.html:16
 msgid "Files"
 msgstr "Datoteke"
 
-#: templates/cmsplugin_filer_folder/folder.html:24
+#: wlansi/templates/cmsplugin_filer_folder/folder.html:24
 msgid "Images"
 msgstr "Slike"
 
-#: templates/simple_translation/language_choices.html:3
-msgid "Entry in English"
-msgstr "Prispevek v slovenščini"
+#~ msgid "Entry in English"
+#~ msgstr "Prispevek v slovenščini"
