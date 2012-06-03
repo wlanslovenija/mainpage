@@ -13,14 +13,14 @@ TracMath==0.5
 amqplib==1.0.2
 anyjson==0.3.1
 chardet==1.0.1
-cmsplugin-blog==1.1.1
+-e git+https://github.com/mitar/cmsplugin-blog.git@bfd0cc5c6067af34587108a53161397f9c227643#egg=cmsplugin_blog-dev
 cmsplugin-contact==1.0.0
-cmsplugin-filer==0.8.0
+-e git+https://github.com/stefanfoulis/cmsplugin-filer.git@39980822c50c39c9f316d22598271c5710fbfd9b#egg=cmsplugin_filer-dev
 distribute==0.6.27
 django-appconf==0.5
 django-classy-tags==0.3.4.1
-django-cms==2.2
-django-filer==0.9a1
+-e git+https://github.com/mitar/django-cms.git@d6633343275c1cceb4f7329640bc3917b11cec12#egg=django_cms-dev
+-e git+https://github.com/mitar/django-filer.git@32eec80638dbface6690f55b4848b036f341df46#egg=django_filer-dev
 django-missing==0.1.4
 django-mptt==0.4.2
 django-phonenumber-field==0.2a3
