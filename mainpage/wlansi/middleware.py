@@ -5,7 +5,8 @@ from django.utils import translation
 class ForceAdminLanguage(object):
     def process_request(self, request):
         admin_url = urlresolvers.reverse('admin:index')
-        if request.path.startswith(admin_url):
+        admin_preview_url = admin_url + 'r/'
+        if request.path.startswith(admin_url) and not request.path.startswith(admin_preview_url):
             translation.activate(settings.ADMIN_LANGUAGE_CODE)
 
         return None
