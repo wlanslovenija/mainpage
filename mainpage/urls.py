@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     url(r'^admin/cms/plugin/markup/', include('cmsplugin_markup.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('cmsplugin_markup.urls')),
     url(r'^', include('cms.urls')),
     url(r'^', include('filer.server.urls')),
 )
