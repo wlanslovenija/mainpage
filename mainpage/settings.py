@@ -190,6 +190,9 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    # Here because of the weird import order problems with templates and sekizai
+    'cmsplugin_markup_tracwiki',
+
     # Ours are first so that we can override default templates in other apps
     'frontend.account',
     'mainpage.wlansi',
