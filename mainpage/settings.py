@@ -56,7 +56,8 @@ LANGUAGES = (
 
 ADMIN_LANGUAGE_CODE = 'en'
 
-GEOIP_PATH = '/srv/nodewatcher/nodewatcher/nodewatcher/geoip/'
+import frontend
+GEOIP_PATH = os.path.join(os.path.abspath(os.path.dirname(frontend.__file__)), '../geoip')
 DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
