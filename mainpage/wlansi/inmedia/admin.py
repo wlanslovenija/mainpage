@@ -46,6 +46,5 @@ class EntryAdmin(admin.ModelAdmin):
     list_display = ('source', 'date', 'languages', 'has_link', 'has_local_copy')
     list_filter = ('date', 'descriptions__language')
     search_fields = ('date', 'descriptions__language', 'descriptions__source', 'descriptions__description')
-    list_select_related = True
 
 admin.site.register(models.Entry, EntryAdmin)

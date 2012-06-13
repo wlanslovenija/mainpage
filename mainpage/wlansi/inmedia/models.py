@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 from filer.fields import file
@@ -19,11 +20,16 @@ class Entry(models.Model):
     has_local_copy.boolean = True
 
     def source(self):
+        # We assume each entry has at least one description (enforced by admin)
         return self.descriptions.all()[0].source
     source.admin_order_field = 'descriptions__source'
 
     def languages(self):
         return ', '.join([desc.get_language_display() for desc in self.descriptions.all()])
+
+    def get_language(self):
+        language = translation.get_language()
+        return self.descriptions.get(language=language)
 
     class Meta:
         verbose_name = _("entry")
