@@ -9,7 +9,6 @@ from frontend.account import geo_fields
 class InMediaEntry(models.Model):
     date = models.DateField()
     link = models.URLField(blank=True, help_text=_("URL of official publication, if available."))
-    local_copy = file.FilerFileField(blank=True, null=True, help_text=_("Because official publications often disappear, we try to make also local copies (PDFs, audio and video recordings, etc.)."))
 
     class Meta:
         verbose_name = _("in media entry")
@@ -22,7 +21,7 @@ class InMediaEntry(models.Model):
     has_link.boolean = True
 
     def has_local_copy(self):
-        return bool(self.local_copy)
+        return bool(self.local_copies.count())
     has_local_copy.boolean = True
 
     def source(self):
@@ -36,6 +35,18 @@ class InMediaEntry(models.Model):
     def get_language(self):
         language = translation.get_language()
         return self.descriptions.get(language=language)
+
+    def __unicode__(self):
+        return unicode(_(u"%(source)s on %(date)s" % {'source': self.source(), 'date': self.date}))
+
+class InMediaLocalCopy(models.Model):
+    entry = models.ForeignKey(InMediaEntry, related_name='local_copies')
+    local_copy = file.FilerFileField(help_text=_("Because official publications often disappear, we try to make also local copies (PDFs, audio and video recordings, etc.)."))
+
+    class Meta:
+        verbose_name = _("local copy")
+        verbose_name_plural = _("local copies")
+        app_label = 'wlansi'
 
 class InMediaDescription(models.Model):
     entry = models.ForeignKey(InMediaEntry, related_name='descriptions')

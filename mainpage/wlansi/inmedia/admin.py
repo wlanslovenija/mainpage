@@ -30,7 +30,7 @@ class RequireOneFormSet(models_forms.BaseInlineFormSet):
                 completed += 1
 
         if completed < 1:
-            raise forms.ValidationError(_("At least one %(name)s is required." % {'name': self.model._meta.verbose_name}))
+            raise forms.ValidationError(_("At least one %(name)s is required." % {'name': unicode(self.model._meta.verbose_name)}))
 
 class DescriptionInline(admin.StackedInline):
     model = models.InMediaDescription
@@ -38,8 +38,13 @@ class DescriptionInline(admin.StackedInline):
     max_num = len(settings.LANGUAGES)
     formset = RequireOneFormSet
 
+class LocalCopyInline(admin.StackedInline):
+    model = models.InMediaLocalCopy
+    extra = 1
+
 class EntryAdmin(admin.ModelAdmin):
     inlines = (
+        LocalCopyInline,
         DescriptionInline,
     )
     date_hierarchy = 'date'
