@@ -1,8 +1,8 @@
-{% load i18n %}
+{% load i18n tracwiki %}
 
 <dl class="inmedia">
     {% for entry in entries %}
         <dt>{{ entry.date }}, {% if entry.link %}<a href="{{ entry.link }}">{{ entry.get_language.source }}</a>{% else %}{{ entry.get_language.source }}{% endif %}{% if entry.local_copy %} <a href="{{ entry.local_copy.url }}">{% trans "(local copy)" %}</a>{% endif %}</dt>
-        <dd>{{ entry.get_language.description }}</dd>
+        <dd>{% tracwiki entry.get_language.description %}</dd>
     {% endfor %}
 </dl>

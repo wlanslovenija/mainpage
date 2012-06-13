@@ -196,6 +196,7 @@ INSTALLED_APPS = (
     # Ours are first so that we can override default templates in other apps
     'frontend.account',
     'mainpage.wlansi',
+    'mainpage.wlansi.inmedia',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',

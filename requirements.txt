@@ -17,7 +17,7 @@ chardet==1.0.1
 cmsplugin-contact==1.0.0
 -e git+https://github.com/mitar/cmsplugin-filer.git@ee0dd260639c3d19494299a21e64fd24db57d5d9#egg=cmsplugin_filer-dev
 cmsplugin-markup==0.2
-cmsplugin-markup-tracwiki==0.2.1
+cmsplugin-markup-tracwiki==0.2.2
 distribute==0.6.27
 django-appconf==0.5
 django-classy-tags==0.3.4.1
