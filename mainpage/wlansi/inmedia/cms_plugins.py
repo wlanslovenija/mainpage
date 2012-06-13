@@ -16,7 +16,7 @@ class InMediaPlugin(plugin_base.CMSPluginBase):
     def render(self, context, instance, placeholder):
         language = translation.get_language()
         context.update({
-            'entries': models.Entry.objects.filter(descriptions__language=language),
+            'entries': models.InMediaEntry.objects.filter(descriptions__language=language),
         })
         return context
 

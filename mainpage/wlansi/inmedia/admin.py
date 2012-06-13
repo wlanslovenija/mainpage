@@ -33,7 +33,7 @@ class RequireOneFormSet(models_forms.BaseInlineFormSet):
             raise forms.ValidationError(_("At least one %(name)s is required." % {'name': self.model._meta.verbose_name}))
 
 class DescriptionInline(admin.StackedInline):
-    model = models.Description
+    model = models.InMediaDescription
     extra = len(settings.LANGUAGES)
     max_num = len(settings.LANGUAGES)
     formset = RequireOneFormSet
@@ -47,4 +47,4 @@ class EntryAdmin(admin.ModelAdmin):
     list_filter = ('date', 'descriptions__language')
     search_fields = ('date', 'descriptions__language', 'descriptions__source', 'descriptions__description')
 
-admin.site.register(models.Entry, EntryAdmin)
+admin.site.register(models.InMediaEntry, EntryAdmin)
