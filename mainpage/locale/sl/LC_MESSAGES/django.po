@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-02 22:48+0200\n"
+"POT-Creation-Date: 2012-06-14 09:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,120 @@ msgstr "slovenščina"
 #: settings.py:54
 msgid "English"
 msgstr "angleščina"
+
+#: wlansi/donations/cms_plugins.py:12
+msgid "Donations"
+msgstr ""
+
+#: wlansi/donations/models.py:8
+msgid "Date of donation on the account."
+msgstr ""
+
+#: wlansi/donations/models.py:9
+msgid "In EUR, without any processing costs, final amount on the account."
+msgstr ""
+
+#: wlansi/donations/models.py:10
+msgid "Leave blank if anonymous."
+msgstr ""
+
+#: wlansi/donations/models.py:12
+msgid "Internal comment, like donation source, circumstances, etc."
+msgstr ""
+
+#: wlansi/donations/models.py:15
+msgid "donation"
+msgstr ""
+
+#: wlansi/donations/models.py:16
+msgid "donations"
+msgstr ""
+
+#: wlansi/donations/models.py:25
+#, python-format
+msgid "%(amount)s on %(date)s"
+msgstr ""
+
+#: wlansi/donations/templates/donations/list.html:5
+msgid "anonymous"
+msgstr "anonimno"
+
+#: wlansi/inmedia/admin.py:33
+#, python-format
+msgid "At least one %(name)s is required."
+msgstr ""
+
+#: wlansi/inmedia/cms_plugins.py:13
+msgid "In media"
+msgstr ""
+
+#: wlansi/inmedia/models.py:11
+msgid "URL of official publication, if available."
+msgstr ""
+
+#: wlansi/inmedia/models.py:14
+msgid "in media entry"
+msgstr ""
+
+#: wlansi/inmedia/models.py:15
+msgid "in media entries"
+msgstr ""
+
+#: wlansi/inmedia/models.py:40
+#, python-format
+msgid "%(source)s on %(date)s"
+msgstr ""
+
+#: wlansi/inmedia/models.py:44
+msgid ""
+"Because official publications often disappear, we try to make also local "
+"copies (PDFs, audio and video recordings, etc.)."
+msgstr ""
+
+#: wlansi/inmedia/models.py:47
+msgid "local copy"
+msgstr ""
+
+#: wlansi/inmedia/models.py:48
+msgid "local copies"
+msgstr ""
+
+#: wlansi/inmedia/models.py:54
+msgid "Name of the publication source. In chosen language, if possible."
+msgstr ""
+
+#: wlansi/inmedia/models.py:55
+msgid "You can use Trac formatting."
+msgstr ""
+
+#: wlansi/inmedia/models.py:58
+msgid "description"
+msgstr ""
+
+#: wlansi/inmedia/models.py:59
+msgid "descriptions"
+msgstr ""
+
+#: wlansi/inmedia/models.py:63
+#, python-format
+msgid "for language %(language)s"
+msgstr ""
+
+#: wlansi/inmedia/templates/inmedia/list.html:5
+msgid "(local copy)"
+msgstr "(lokalna kopija)"
+
+#: wlansi/news/cms_plugins.py:8
+msgid "News"
+msgstr ""
+
+#: wlansi/news/templates/news/form.html:8
+msgid "Your e-mail address:"
+msgstr "Tvoja naslov elektronske pošte:"
+
+#: wlansi/news/templates/news/form.html:9
+msgid "Subscribe"
+msgstr "Prijavi"
 
 #: wlansi/templates/404.html:5 wlansi/templates/404.html.py:10
 msgid "404 Not Found"
@@ -184,6 +298,3 @@ msgstr "Datoteke"
 #: wlansi/templates/cmsplugin_filer_folder/folder.html:24
 msgid "Images"
 msgstr "Slike"
-
-#~ msgid "Entry in English"
-#~ msgstr "Prispevek v slovenščini"
