@@ -57,7 +57,7 @@ LANGUAGES = (
 ADMIN_LANGUAGE_CODE = 'en'
 
 import frontend
-GEOIP_PATH = os.path.join(os.path.abspath(os.path.dirname(frontend.__file__)), '../geoip')
+GEOIP_PATH = os.path.join(os.path.abspath(os.path.dirname(frontend.__file__)), '..', 'geoip')
 DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
