@@ -2,7 +2,7 @@
 
 <dl class="inmedia">
     {% for entry in entries %}
-        <dt>{{ entry.date }}, {% if entry.link %}<a href="{{ entry.link }}">{{ entry.get_language.source }}</a>{% else %}{{ entry.get_language.source }}{% endif %}{% if entry.local_copy %} <a href="{{ entry.local_copy.url }}">{% trans "(local copy)" %}</a>{% endif %}</dt>
+        <dt>{{ entry.date }}, {% if entry.link %}<a href="{{ entry.link }}">{{ entry.get_language.source }}</a>{% else %}{{ entry.get_language.source }}{% endif %}{% for copy in entry.local_copies.all %} <a href="{{ copy.local_copy.url }}">{% trans "(local copy)" %}</a>{% endfor %}</dt>
         <dd>{% tracwiki entry.get_language.description %}</dd>
     {% endfor %}
 </dl>
