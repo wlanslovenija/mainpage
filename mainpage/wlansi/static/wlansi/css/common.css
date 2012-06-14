@@ -184,13 +184,13 @@ ul.sitemap li.sitemap > *:visited {
 
 #mainmenu li {
 	display: inline-block;
-	border-left: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9;
 	list-style: none outside none;
 }
 
 #mainmenu a {
 	display: inline-block;
-	width: 150px;
+	width: 155px;
 	padding: 10px;
 	text-align: center;
 	color: #545454;
@@ -223,10 +223,6 @@ ul.sitemap li.sitemap > *:visited {
 #mainmenu a:hover, #mainmenu a:active {
 	color: #68ae2c;
 	text-shadow: 0 0 5px white;
-}
-
-#mainmenu li.last {
-	border-right: 1px solid #D9D9D9;
 }
 
 #mainmenu li *:link, #mainmenu li *:visited {
