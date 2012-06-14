@@ -48,6 +48,9 @@ class InMediaLocalCopy(models.Model):
         verbose_name_plural = _("local copies")
         app_label = 'wlansi'
 
+    def __unicode__(self):
+        return unicode(self.local_copy)
+
 class InMediaDescription(models.Model):
     entry = models.ForeignKey(InMediaEntry, related_name='descriptions')
     language = geo_fields.LanguageField()
