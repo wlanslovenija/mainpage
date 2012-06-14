@@ -196,8 +196,9 @@ INSTALLED_APPS = (
     # Ours are first so that we can override default templates in other apps
     'frontend.account',
     'mainpage.wlansi',
-    'mainpage.wlansi.inmedia',
     'mainpage.wlansi.donations',
+    'mainpage.wlansi.inmedia',
+    'mainpage.wlansi.news',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -269,6 +270,7 @@ FORCE_LOWERCASE_TAGS = True
 
 CMS_TEMPLATES = (
     ('simple.html', 'Simple Page'),
+    ('simple_with_right.html', 'Simple Page with Right Column'),
     ('main.html', 'Main Page'),
     ('blog.html', 'Blog Page'),
 )

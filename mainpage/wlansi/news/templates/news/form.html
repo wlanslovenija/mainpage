@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<form action="/lists" method="post" class="news">
+    <div>
+        <input type="hidden" name="list" value="news" />
+        <input type="hidden" name="action" value="subrequest" />
+        <input type="hidden" name="action_subrequest" value="subscribe" />
+        <label for="news-email">{% trans "Your e-mail address:" %}</label> <input name="email" size="30" id="news-email" />
+        <input type="submit" value="{% trans "Subscribe" %}" />
+    </div>
+</form>
