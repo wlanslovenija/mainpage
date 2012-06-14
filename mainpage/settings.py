@@ -197,6 +197,7 @@ INSTALLED_APPS = (
     'frontend.account',
     'mainpage.wlansi',
     'mainpage.wlansi.inmedia',
+    'mainpage.wlansi.donations',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',

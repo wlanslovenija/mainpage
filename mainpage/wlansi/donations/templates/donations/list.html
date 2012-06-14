@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<dl class="donations">
+    {% for donation in donations %}
+        <dt>{{ donation.date }}, {{ donation.amount }} EUR, {{ donation.donor|default:_("anonymous") }}</dt>
+        <dd>{{ donation.message }}</dd>
+    {% endfor %}
+</dl>
