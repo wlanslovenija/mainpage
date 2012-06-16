@@ -1,4 +1,4 @@
-import itertools, optparse, os
+import itertools, optparse
 
 from django.core.management import base
 from django.core import serializers
@@ -51,7 +51,7 @@ class Command(base.NoArgsCommand):
         objects = itertools.chain(
             placeholders,
             pages,
-            itertools.chain(*[page.title_set.all() for page in pages]),
+            models.Title.objects.filter(page__in=pages),
             plugins,
             plugin_objects,
         )
@@ -61,4 +61,4 @@ class Command(base.NoArgsCommand):
         except Exception, e:
             if show_traceback:
                 raise
-            raise CommandError("Unable to serialize database: %s" % e)
+            raise base.CommandError("Unable to serialize database: %s" % e)
