@@ -1,4 +1,4 @@
-import itertools, optparse, os
+import itertools, optparse
 
 from django.core.management import base
 from django.core import serializers
@@ -38,20 +38,20 @@ class Command(base.NoArgsCommand):
         try:
             serializers.get_serializer(format)
         except KeyError:
-            raise CommandError("Unknown serialization format: %s" % format)
+            raise base.CommandError("Unknown serialization format: %s" % format)
 
         pages = models.Page.objects.filter(published=True)
-        placeholders = itertools.chain(*[page.placeholders.all() for page in pages])
+        placeholders = models.Placeholder.objects.filter(page__in=pages)
         
         plugins = models.CMSPlugin.objects.filter(placeholder__in=placeholders)
         if not export_all:
             plugins = plugins.filter(plugin_type='MarkupPlugin')
-        plugin_objects = [plugin.get_plugin_instance()[0] for plugin in plugins]
+        plugin_objects = (plugin.get_plugin_instance()[0] for plugin in plugins)
         
         objects = itertools.chain(
             placeholders,
             pages,
-            itertools.chain(*[page.title_set.all() for page in pages]),
+            models.Title.objects.filter(page__in=pages),
             plugins,
             plugin_objects,
         )
@@ -61,4 +61,4 @@ class Command(base.NoArgsCommand):
         except Exception, e:
             if show_traceback:
                 raise
-            raise CommandError("Unable to serialize database: %s" % e)
+            raise base.CommandError("Unable to serialize database: %s" % e)
