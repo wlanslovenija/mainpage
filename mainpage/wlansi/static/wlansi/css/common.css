@@ -482,3 +482,7 @@ table.wiki td {
 .image-folder a:hover img {
 	border: 1px solid #68ae2c;
 }
+
+.blog_latest_entries p {
+	margin: 0;
+}
