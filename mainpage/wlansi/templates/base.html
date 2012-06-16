@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}wlansi/jquery-visage/src/jquery.visage.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/jquery.visage.init.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/common.js"></script>
+		<script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
         {% render_block "js" %}
         {% block extrahead %}{% endblock %}
         {% block js %}{% endblock %}

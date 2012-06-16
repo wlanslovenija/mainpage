@@ -219,6 +219,7 @@ INSTALLED_APPS = (
     'simple_translation',
     'cmsplugin_blog',
     'cms.plugins.snippet',
+    'cms.plugins.twitter',
     #'cms.plugins.inherit',
     'cmsplugin_filer_file',
     'cmsplugin_filer_folder',

@@ -1,0 +1,51 @@
+{% load i18n sekizai_tags %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}wlansi/jquery/jquery.tweet.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function ($) {
+	function extract_relative_time(date) {
+		var toInt = function(val) { return parseInt(val, 10); };
+		var relative_to = new Date();
+		var delta = toInt((relative_to.getTime() - date) / 1000);
+		if (delta < 1) delta = 0;
+		return {
+			days: toInt(delta / 86400),
+			hours: toInt(delta / 3600),
+			minutes: toInt(delta / 60),
+			seconds: toInt(delta)
+		};
+	}
+	function format_relative_time(time_ago) {
+		if ( time_ago.days > 2 ) return interpolate(ngettext('', '%s days ago', time_ago.days), [time_ago.days]);
+		if ( time_ago.hours > 24 ) return gettext('a day ago');
+		if ( time_ago.hours > 2 ) return interpolate(ngettext('', '%s hours ago', time_ago.hours), [time_ago.hours]);
+		if ( time_ago.minutes > 45 ) return gettext('an hour ago');
+		if ( time_ago.minutes > 2 ) return interpolate(ngettext('', '%s minutes ago', time_ago.minutes), [time_ago.minutes]);
+		if ( time_ago.seconds > 1 ) return interpolate(ngettext('', '%s seconds ago', time_ago.seconds), [time_ago.seconds]);
+		return gettext('just now');
+	}
+	$('#twitter-container-{{ object.pk }}').tweet({
+		username: '{{ object.twitter_user }}',
+		avatar_size: 32,
+		refresh_interval: 60,
+		fetch: 20,
+		count: {{ object.count }},
+		filter: function (t) {
+			// Hijacking filter to modify time formating
+			t.tweet_relative_time = format_relative_time(extract_relative_time(t.tweet_time));
+			return t.retweet || ! /– +Blog +– +wlan slovenija/.test(t.tweet_raw_text);
+		},
+		loading_text: '{% trans "Loading tweets..." %}',
+		query: 'to:wlanslovenija OR from:wlanslovenija OR #wlanslovenija OR @wlanslovenija',
+		template: '{avatar}<span class="tweet_time"><a href="{tweet_url}" title="{% trans "View tweet on Twitter" %}">{tweet_relative_time}</a></span>{join}{text}'
+	});
+});
+//]]>
+</script>
+{% endaddtoblock %}
+
+<div class="plugin_twitter">
+	<div id="twitter-container-{{ object.pk }}"></div>
+	{% if object.twitter_user %}<p><a href="https://www.twitter.com/#!/{{ object.twitter_user }}" class="twitter-link">{% trans "More on Twitter..." %}</a></p>{% endif %}
+</div>
