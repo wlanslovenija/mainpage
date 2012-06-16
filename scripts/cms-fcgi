@@ -29,7 +29,7 @@ FCGI_PORT=9145
 STARTSTOP_OPTS='--quiet --exec $DAEMON --chdir $DAEMON_CHDIR \
  --chuid $DAEMON_USER --user $DAEMON_USER --group $DAEMON_GROUP'
 #START_OPTS='--background --make-pidfile'
-DAEMON_ARGS='manage.py runfcgi --settings=mainpage.settings --pythonpath=$PROJECT_PATH \
+DAEMON_ARGS='manage.py runfcgi --settings=mainpage.settings_production --pythonpath=$PROJECT_PATH \
  protocol=fcgi maxrequests=200 host=$FCGI_HOST port=$FCGI_PORT pidfile=$PIDFILE'
 export PYTHONPATH="/srv/nodewatcher/nodewatcher/nodewatcher/web:/srv/nodewatcher/nodewatcher/nodewatcher${PYTHONPATH:+:$PYTHONPATH}"
 

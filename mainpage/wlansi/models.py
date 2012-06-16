@@ -1,18 +1,11 @@
-"""
-Set search path to include nodewatcher's schema, so we
-can share some tables (like users) between them.
-
-This only works with PostgreSQL.
-"""
+from django.conf import settings
+from django.db.backends.signals import connection_created
 
 def set_schema_search_path(sender, **kwargs):
     from django.db import connection
     
     cursor = connection.cursor()
-    cursor.execute('SET search_path TO wlansi_cms, wlansi_nw')
+    cursor.execute('SET search_path TO %s' % ', '.join(settings.DATABASES['default']['SCHEMA_SEARCH_PATH']))
 
-from django.conf import settings
-from django.db.backends.signals import connection_created
-
-if 'postgresql' in settings.DATABASES['default']['ENGINE']:
+if 'postgresql' in settings.DATABASES['default']['ENGINE'] and settings.DATABASES['default'].get('SCHEMA_SEARCH_PATH'):
     connection_created.connect(set_schema_search_path)

@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Secrets are in a separate file so they are not visible in public repository
-from secrets import *
-
 import os
 
 settings_dir = os.path.abspath(os.path.dirname(__file__))
@@ -10,7 +7,7 @@ settings_dir = os.path.abspath(os.path.dirname(__file__))
 # Dummy function, so that "makemessages" can find strings which should be translated.
 _ = lambda s: s
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # A tuple that lists people who get code error notifications. When
@@ -18,7 +15,6 @@ TEMPLATE_DEBUG = DEBUG
 # people with the full exception information. Each member of the tuple
 # should be a tuple of (Full name, e-mail address).
 ADMINS = (
-    ('Webmaster', 'webmaster@wlan-si.net'),
 )
 
 MANAGERS = ADMINS
@@ -30,8 +26,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
         'USER': 'wlansi_cms',                               # Not used with sqlite3.
-        'PASSWORD': DB_PASSWORD,                            # Not used with sqlite3.
-        'HOST': 'localhost',                                # Set to empty string for localhost. Not used with sqlite3.
+        'PASSWORD': '',                                     # Not used with sqlite3.
+        'HOST': '',                                         # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     },
 }
@@ -57,7 +53,7 @@ LANGUAGES = (
 ADMIN_LANGUAGE_CODE = 'en'
 
 import frontend
-GEOIP_PATH = os.path.join(os.path.abspath(os.path.dirname(frontend.__file__)), '..', 'geoip')
+GEOIP_PATH = os.path.abspath(os.path.join(os.path.dirname(frontend.__file__), '..', 'geoip'))
 DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
@@ -138,7 +134,7 @@ STATICFILES_FINDERS = (
 #   'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# SECRET_KEY is in secrets
+SECRET_KEY = 'u=@fy7qlo@e2ga1xv5=f(d1xx1$6bzj@em(9-5dhu)7as*#^5$'
 
 EMAIL_HOST = 'localhost'
 EMAIL_SUBJECT_PREFIX = '[wlan-si] '
@@ -389,6 +385,7 @@ class AllIPs(list):
         return True
 
 if DEBUG:
+    # So that headers and template contexts are populated with debug data
     INTERNAL_IPS = AllIPs()
 
 from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
@@ -416,15 +413,3 @@ CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
 )
 
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
-
-if not DEBUG:
-    from filer.server.backends.nginx import NginxXAccelRedirectServer
-
-    FILER_PRIVATEMEDIA_SERVER = NginxXAccelRedirectServer(
-        location=FILER_PRIVATEMEDIA_ROOT,
-        nginx_location='/nginx_filer_private_files'
-    )
-    FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = NginxXAccelRedirectServer(
-        location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
-        nginx_location='/nginx_filer_private_thumbnails'
-    )
