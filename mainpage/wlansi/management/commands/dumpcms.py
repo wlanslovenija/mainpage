@@ -41,7 +41,7 @@ class Command(base.NoArgsCommand):
             raise CommandError("Unknown serialization format: %s" % format)
 
         pages = models.Page.objects.filter(published=True)
-        placeholders = list(itertools.chain(*[page.placeholders.all() for page in pages]))
+        placeholders = models.Placeholder.objects.filter(page__in=pages)
         
         plugins = models.CMSPlugin.objects.filter(placeholder__in=placeholders)
         if not export_all:
