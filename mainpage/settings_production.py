@@ -37,9 +37,13 @@ DATABASES = {
 # RECAPTCHA_PUBLIC_KEY is in secrets
 # RECAPTCHA_PRIVATE_KEY is in secrets
 
+GIT_REPOSITORIES_DIR = '/srv/git/'
+
 if DEBUG:
     # So that headers and template contexts are populated with debug data
     INTERNAL_IPS = AllIPs()
+else:
+    INTERNAL_IPS = ()
 
 if not DEBUG:
     from filer.server.backends.nginx import NginxXAccelRedirectServer

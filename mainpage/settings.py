@@ -197,6 +197,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi.donations',
     'mainpage.wlansi.inmedia',
     'mainpage.wlansi.news',
+    'mainpage.wlansi.participants',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -415,3 +416,5 @@ CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
 )
 
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
+
+GIT_REPOSITORIES_DIR = None

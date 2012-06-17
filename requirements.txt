@@ -1,6 +1,7 @@
 Django==1.3.1
 -e svn+http://trac-hacks.org/svn/footnotemacro/0.11@10434#egg=FootNoteMacro-dev_r10434
 Genshi==0.6
+GitPython==0.3.2.RC1
 Markdown==2.1.1
 -e hg+https://bitbucket.org/mitar/trac-mathjax@8aad2f1b17e2b6f0ddb1a616a109b9b88428de59#egg=MathJaxPlugin-tip
 PIL==1.1.7
@@ -12,6 +13,7 @@ Trac==0.12.3
 -e hg+https://bitbucket.org/kisielk/tracmathplugin@05cd705cc9eadf322d5b8395fad1ffb0a6efeab5#egg=TracMath-tip
 amqplib==1.0.2
 anyjson==0.3.1
+async==0.6.1
 chardet==1.0.1
 -e git+https://github.com/mitar/cmsplugin-blog.git@bfd0cc5c6067af34587108a53161397f9c227643#egg=cmsplugin_blog-1.1.2.post.0-py2.6-mitar
 cmsplugin-contact==1.0.0
@@ -37,6 +39,7 @@ djangocms-utils==0.9.5
 docutils==0.9
 easy-thumbnails==1.0.3
 flup==1.0.2
+gitdb==0.5.4
 html5lib==0.95
 importlib==1.0.2
 kombu==2.1.7
@@ -52,5 +55,6 @@ python-memcached==1.48
 pytz==2012c
 recaptcha-client==1.0.6
 simple-translation==0.8.6
+smmap==0.8.2
 textile==2.1.5
 wsgiref==0.1.2
