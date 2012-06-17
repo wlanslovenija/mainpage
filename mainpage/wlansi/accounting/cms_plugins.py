@@ -12,6 +12,10 @@ from ..donations import models as donations_models
 from . import models
 
 class AccountPlugin(plugin_base.CMSPluginBase):
+    """
+    This plugin displays a list of transactions on wlan slovenija bank account.
+    """
+
     module = 'wlan slovenija'
     name = _("Account")
     render_template = 'accounting/list.html'
@@ -25,6 +29,10 @@ class AccountPlugin(plugin_base.CMSPluginBase):
 plugin_pool.register_plugin(AccountPlugin)
 
 class BalancePlugin(plugin_base.CMSPluginBase):
+    """
+    This plugin displays current balance of wlan slovenija bank account.
+    """
+
     module = 'wlan slovenija'
     name = _("Balance")
     render_template = 'accounting/balance.html'

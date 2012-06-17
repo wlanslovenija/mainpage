@@ -9,6 +9,10 @@ from cms.plugin_pool import plugin_pool
 from . import models
 
 class InMediaPlugin(plugin_base.CMSPluginBase):
+    """
+    This plugin displays a list of publications about wlan slovenija in media and elsewhere.
+    """
+
     module = 'wlan slovenija'
     name = _("In media")
     render_template = 'inmedia/list.html'

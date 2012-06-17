@@ -8,6 +8,10 @@ from cms.plugin_pool import plugin_pool
 from . import models
 
 class DonationsPlugin(plugin_base.CMSPluginBase):
+    """
+    This plugin displays a list of donations.
+    """
+
     module = 'wlan slovenija'
     name = _("Donations")
     render_template = 'donations/list.html'
