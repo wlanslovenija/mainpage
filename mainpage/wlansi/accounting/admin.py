@@ -9,7 +9,14 @@ from . import models
 
 descriptions = tuple('description_%s' % language_code for language_code, language_name in settings.LANGUAGES)
 
+class PaperInline(admin.StackedInline):
+    model = models.TransactionPaper
+    extra = 0
+
 class TransactionAdmin(admin.ModelAdmin):
+    inlines = (
+        PaperInline,
+    )
     date_hierarchy = 'date'
     list_display = descriptions + ('amount', 'date')
     list_display_links = ('amount',)

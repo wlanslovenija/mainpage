@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
+from filer.fields import file
+
 class TransactionMetaclass(models.Model.__metaclass__):
     def __new__(cls, name, bases, attrs):
         for language_code, language_name in settings.LANGUAGES:
@@ -28,3 +30,17 @@ class Transaction(models.Model):
 
     def __unicode__(self):
         return unicode(_(u"%(amount)s on %(date)s" % {'amount': self.amount, 'date': self.date}))
+
+class TransactionPaper(models.Model):
+    transaction = models.ForeignKey(Transaction, related_name='papers')
+    is_final = models.BooleanField(help_text=_("Is this paper final version for transaction?")) 
+    paper = file.FilerFileField(help_text=_("Bills, invoices, estimates, calculations, and other statements connected with transaction."))
+
+    class Meta:
+        verbose_name = _("paper")
+        verbose_name_plural = _("papers")
+        app_label = 'wlansi'
+
+    def __unicode__(self):
+        return unicode(self.paper)
+
