@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n tracwiki %}
 
 <dl class="transactons">
     {% for transaction in transactions|dictsortreversed:"date" %}
@@ -6,7 +6,7 @@
 		{% if transaction.donor or transaction.is_anonymous %}
 	        <dd>{% if transaction.is_anonymous %}{% trans "Anonymous donation" %}{% else %}{% blocktrans with donor=transaction.donor %}Donation from {{ donor }}{% endblocktrans %}{% endif %}</dd>
 		{% else %}
-	        <dd>{{ transaction.get_description }}</dd>
+	        <dd>{% tracwiki transaction.get_description %}</dd>
 		{% endif %}
     {% endfor %}
 </dl>
