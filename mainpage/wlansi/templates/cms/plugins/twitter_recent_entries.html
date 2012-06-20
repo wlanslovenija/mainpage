@@ -37,7 +37,7 @@ jQuery(document).ready(function ($) {
 			return t.retweet || ! /– +Blog +– +wlan slovenija/.test(t.tweet_raw_text);
 		},
 		loading_text: '{% trans "Loading tweets..." %}',
-		query: 'to:wlanslovenija OR from:wlanslovenija OR #wlanslovenija OR @wlanslovenija',
+		query: 'to:wlanslovenija OR from:wlanslovenija OR #wlanslovenija OR @wlanslovenija OR to:wlanljubljana OR from:wlanljubljana OR #wlanljubljana OR @wlanljubljana',
 		template: '{avatar}<span class="tweet_time"><a href="{tweet_url}" title="{% trans "View tweet on Twitter" %}">{tweet_relative_time}</a></span>{join}{text}'
 	});
 });
