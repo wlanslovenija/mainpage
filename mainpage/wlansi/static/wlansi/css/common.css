@@ -493,3 +493,13 @@ table.wiki td {
 	padding: 2px;
 	line-height: 2em;
 }
+
+.two-column-left {
+	width: 50%;
+	float: left;
+}
+
+.two-column-right {
+	width: 50%;
+	float: right;
+}

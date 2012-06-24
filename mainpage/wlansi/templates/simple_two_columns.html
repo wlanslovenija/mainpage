@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load cms_tags url_tags %}
+
+{% block content %}
+    <h2 id="{{ current_page.get_page_title|slugify2 }}">{{ current_page.get_page_title }}</h2>
+    <div class="two-column-left">
+        {% placeholder left %}
+    </div>
+    <div class="two-column-right">
+        {% placeholder right %}
+    </div>
+{% endblock %}

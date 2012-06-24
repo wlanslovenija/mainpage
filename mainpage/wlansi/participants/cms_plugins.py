@@ -28,6 +28,8 @@ class ParticipantsPlugin(plugin_base.CMSPluginBase):
     def render(self, context, instance, placeholder):
         participants = []
 
+        # Donors-only are not listed in participants, but under supporters
+
         # Manually added participants or from external sources
         participants.extend(models.Participant.objects.filter(duplicate_of=None, user=None).values_list('name', flat=True))
         # Mapped participants to users

@@ -271,6 +271,7 @@ FORCE_LOWERCASE_TAGS = True
 CMS_TEMPLATES = (
     ('simple.html', 'Simple Page'),
     ('simple_with_right.html', 'Simple Page with Right Column'),
+    ('simple_two_columns.html', 'Simple Page with Two Columns'),
     ('main.html', 'Main Page'),
     ('blog.html', 'Blog Page'),
 )
@@ -413,6 +414,7 @@ FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
 CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
     ('slideshow', 'Slideshow'),
     ('list', 'List'),
+    ('supporters', 'Supporters'),
 )
 
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'

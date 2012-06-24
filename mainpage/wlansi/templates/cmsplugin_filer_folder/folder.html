@@ -30,6 +30,13 @@
         {% endif %}
     </div>
 {% else %}
+{% if object.view_option == "supporters" %}
+	<ul class="supporters-logo">
+	{% for image in folder_images %}
+		<li><a href="{{ image.image.description }}"><img src="{{ image.image.url }}" alt="{{ image.image.default_alt_text }}" title="{{ image.image.default_caption|default:image.image.default_alt_text }}"{% if image.image.width %} width="{{ image.image.width }}"{% endif %}{% if image.image.height %} height="{{ image.image.height }}"{% endif %} /></a></li>
+	{% endfor %}
+	</ul>
+{% else %}
     {% with max_images_number|default:"0"|add:"0" as max_images_number %}
         <div class="image-folder">
         {% for image in folder_images %}
@@ -38,4 +45,5 @@
         {% endfor %}
         </div>
     {% endwith %}
+{% endif %}
 {% endif %}
