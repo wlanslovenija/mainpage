@@ -36,12 +36,11 @@ django-sekizai==0.5
 django-staticfiles==1.2.1
 django-tagging==0.3.1
 djangocms-utils==0.9.5
-docutils==0.9
+docutils==0.9.1
 easy-thumbnails==1.0.3
 flup==1.0.2
 gitdb==0.5.4
 html5lib==0.95
-importlib==1.0.2
 kombu==2.1.7
 lxml==2.3.4
 ordereddict==1.1

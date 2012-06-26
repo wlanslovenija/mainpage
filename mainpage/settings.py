@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import os
+import os, sys
 
 settings_dir = os.path.abspath(os.path.dirname(__file__))
+
+try:
+    sys.path.append(os.path.abspath(os.path.join(settings_dir, '..', 'nodewatcher', 'nodewatcher')))
+except:
+    pass
 
 # Dummy function, so that "makemessages" can find strings which should be translated.
 _ = lambda s: s
@@ -21,11 +26,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': 'db.sqlite',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'wlansi',                                   # Or path to database file if using sqlite3.
-        'USER': 'wlansi_cms',                               # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.abspath(os.path.join(settings_dir, 'wlansi.sqlite')),
+        'USER': '',                                         # Not used with sqlite3.
         'PASSWORD': '',                                     # Not used with sqlite3.
         'HOST': '',                                         # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
@@ -191,6 +194,7 @@ INSTALLED_APPS = (
     'cmsplugin_markup_tracwiki',
 
     # Ours are first so that we can override default templates in other apps
+    'frontend.nodes',
     'frontend.account',
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
