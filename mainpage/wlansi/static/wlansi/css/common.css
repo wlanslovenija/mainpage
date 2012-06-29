@@ -190,7 +190,7 @@ ul.sitemap li.sitemap > *:visited {
 
 #mainmenu a {
 	display: inline-block;
-	width: 155px;
+	width: 149px;
 	padding: 10px;
 	text-align: center;
 	color: #545454;
@@ -204,7 +204,8 @@ ul.sitemap li.sitemap > *:visited {
 }
 
 #mainmenu li.facebook_link a,
-#mainmenu li.twitter_link a {
+#mainmenu li.twitter_link a,
+#mainmenu li.contact_link a {
 	padding: 10px;
 	margin: 0;
 	white-space: pre;
@@ -213,11 +214,27 @@ ul.sitemap li.sitemap > *:visited {
 }
 
 #mainmenu li.facebook_link a {
-	background: url("images/fb-tw.png") no-repeat scroll 7px 11px transparent;
+	background: url("images/social.png") no-repeat scroll 7px 11px transparent;
 }
 
 #mainmenu li.twitter_link a {
-	background: url("images/fb-tw.png") no-repeat scroll 8px -42px transparent;
+	background: url("images/social.png") no-repeat scroll 7px -22px transparent;
+}
+
+#mainmenu li.contact_link a {
+	background: url("images/social.png") no-repeat scroll 7px -55px transparent;
+}
+
+#mainmenu li.facebook_link a:hover {
+	background: url("images/social.png") no-repeat scroll -26px 11px transparent;
+}
+
+#mainmenu li.twitter_link a:hover {
+	background: url("images/social.png") no-repeat scroll -26px -22px transparent;
+}
+
+#mainmenu li.contact_link a:hover {
+	background: url("images/social.png") no-repeat scroll -26px -55px transparent;
 }
 
 #mainmenu a:hover, #mainmenu a:active {
