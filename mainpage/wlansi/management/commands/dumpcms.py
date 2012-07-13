@@ -1,9 +1,15 @@
 import itertools, optparse
 
+from django.contrib.contenttypes import models as contenttypes_models
 from django.core.management import base
+from django.core.management.commands import dumpdata
 from django.core import serializers
 
-from cms import models
+from cms import models as cms_models
+
+from filer import models as filer_models
+
+from easy_thumbnails import models as easy_thumbnails_models
 
 class Command(base.NoArgsCommand):
     """
@@ -38,18 +44,26 @@ class Command(base.NoArgsCommand):
         except KeyError:
             raise base.CommandError("Unknown serialization format: %s" % format)
 
-        pages = models.Page.objects.filter(published=True)
-        placeholders = models.Placeholder.objects.filter(page__in=pages)
+        pages = cms_models.Page.objects.filter(published=True)
+        placeholders = cms_models.Placeholder.objects.filter(page__in=pages)
         
-        plugins = models.CMSPlugin.objects.filter(placeholder__in=placeholders)
+        plugins = cms_models.CMSPlugin.objects.filter(placeholder__in=placeholders)
         plugin_objects = (plugin.get_plugin_instance()[0] for plugin in plugins)
+
+        folders = filer_models.Folder.objects.all()
+        files = filer_models.File.objects.non_polymorphic().filter(is_public=True)
+        images = filer_models.Image.objects.non_polymorphic().filter(is_public=True)
         
         objects = itertools.chain(
+            contenttypes_models.ContentType.objects.all(),
             placeholders,
             pages,
-            models.Title.objects.filter(page__in=pages),
+            cms_models.Title.objects.filter(page__in=pages),
             plugins,
             plugin_objects,
+            folders,
+            files,
+            images,
         )
         
         try:
@@ -58,3 +72,29 @@ class Command(base.NoArgsCommand):
             if show_traceback:
                 raise
             raise base.CommandError("Unable to serialize database: %s" % e)
+
+def get_dependencies(models):
+    """
+    Function to help finding model dependencies.
+    """
+
+    all_models = set()
+
+    to_process = models
+    while len(to_process):
+        new_to_process = []
+        for model in to_process:
+            if model in all_models:
+                continue
+
+            all_models.add(model)
+
+            for field in model._meta.fields:
+                if hasattr(field.rel, 'to'):
+                    new_to_process.append(field.rel.to)
+            for field in model._meta.many_to_many:
+                new_to_process.append(field.rel.to)
+
+        to_process = new_to_process
+
+    return dumpdata.sort_dependencies([(None, (model,)) for model in all_models])
