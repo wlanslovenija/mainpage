@@ -15,8 +15,10 @@ print "Installing requirements:\n"
 subprocess.check_call(('pip', 'install', '-r', requirements))
 
 print "\nSetting up the database:\n"
+os.remove(os.path.abspath(os.path.join(root, 'mainpage', 'db.sqlite')))
 subprocess.check_call(('python', manage_script, 'syncdb'))
 subprocess.check_call(('python', manage_script, 'migrate'))
+subprocess.check_call(('python', manage_script, 'reset', '--noinput', 'contenttypes'))
 
 print "\nDownloading and importing database dump:\n"
 tempFile = tempfile.NamedTemporaryFile(delete=False)

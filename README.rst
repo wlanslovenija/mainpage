@@ -9,7 +9,7 @@ Development installation
     git clone https://github.com/wlanslovenija/mainpage.git
     git clone https://github.com/wlanslovenija/nodewatcher.git
 
-   You can also use SSH-based URLs or URLs of your fork.
+   You can also use SSH-based URLs or URLs of your forks.
 
 2. Create and activate new `Python virtual environment`_::
 
@@ -29,9 +29,8 @@ Development installation
 
    and start developing!
 
-You can safely rerun the ``devsetup`` as needed, but be advised that database
-content might not be preserved or might get corrupted. In the latter case,
-simply delete ``db.sqlite`` file and run the script again.
+You can safely rerun the ``devsetup`` as needed, but be advised that local
+database content **will NOT be preserved**.
 
 .. _GitHub: https://github.com/
 .. _nodewatcher: http://dev.wlan-si.net/wiki/Nodewatcher
