@@ -3,11 +3,12 @@
 import os, sys
 
 settings_dir = os.path.abspath(os.path.dirname(__file__))
+database_file = os.path.join(settings_dir, 'db.sqlite')
 
-try:
-    sys.path.append(os.path.abspath(os.path.join(settings_dir, '..', 'nodewatcher', 'nodewatcher')))
-except:
-    pass
+# Website requires nodewatcher, so for easier development we assume
+# it is accessible in the same directory website repository is
+nodewatcher_dir = os.path.abspath(os.path.join(settings_dir, '..', '..', 'nodewatcher', 'nodewatcher'))
+sys.path.insert(0, nodewatcher_dir)
 
 # Dummy function, so that "makemessages" can find strings which should be translated.
 _ = lambda s: s
@@ -26,12 +27,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.abspath(os.path.join(settings_dir, 'wlansi.sqlite')),
-        'USER': '',                                         # Not used with sqlite3.
-        'PASSWORD': '',                                     # Not used with sqlite3.
-        'HOST': '',                                         # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': database_file,                  # Or path to database file if using sqlite3.
+        'USER': '',                             # Not used with sqlite3.
+        'PASSWORD': '',                         # Not used with sqlite3.
+        'HOST': '',                             # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
     },
 }
 
@@ -143,6 +144,8 @@ EMAIL_HOST = 'localhost'
 EMAIL_SUBJECT_PREFIX = '[wlan-si] '
 DEFAULT_FROM_EMAIL = 'open@wlan-si.net'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

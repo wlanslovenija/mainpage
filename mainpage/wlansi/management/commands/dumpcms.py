@@ -15,7 +15,6 @@ class Command(base.NoArgsCommand):
         optparse.make_option('--format', default='yaml', dest='format', help="Specifies the output serialization format for the dump."),
         optparse.make_option('--indent', default=None, dest='indent', type='int', help="Specifies the indent level to use when pretty-printing output."),
         optparse.make_option('-n', '--natural', action='store_true', default=False, dest='use_natural_keys', help="Use natural keys if they are available."),
-        optparse.make_option('-a', '--all', action='store_true', default=False, dest='export_all', help="Export all plugins (not only Markup plugin)."),
     )
     help = "Generates a dump of Django CMS database."
     
@@ -27,7 +26,6 @@ class Command(base.NoArgsCommand):
         format = options.get('format')
         indent = options.get('indent')
         use_natural_keys = options.get('use_natural_keys')
-        export_all = options.get('export_all')
         show_traceback = options.get('traceback')
 
         # Check that the serialization format exists; this is a shortcut to
@@ -44,8 +42,6 @@ class Command(base.NoArgsCommand):
         placeholders = models.Placeholder.objects.filter(page__in=pages)
         
         plugins = models.CMSPlugin.objects.filter(placeholder__in=placeholders)
-        if not export_all:
-            plugins = plugins.filter(plugin_type='MarkupPlugin')
         plugin_objects = (plugin.get_plugin_instance()[0] for plugin in plugins)
         
         objects = itertools.chain(

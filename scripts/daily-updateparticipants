@@ -3,7 +3,5 @@
 # Activate virtualenv Python environment
 . /srv/cms/env_cms/bin/activate
 
-export PYTHONPATH="/srv/nodewatcher/nodewatcher/nodewatcher/web:/srv/nodewatcher/nodewatcher/nodewatcher${PYTHONPATH:+:$PYTHONPATH}"
-
 cd /srv/cms/mainpage/mainpage
 python manage.py updateparticipants --settings=mainpage.settings_production

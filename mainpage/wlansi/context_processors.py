@@ -8,18 +8,14 @@ def global_vars(request):
     """
 
     supporters_images = {}
-    try:
-        for supporter in foldermodels.Folder.objects.get(name=settings.SUPPORTERS_FILER_FOLDER_NAME).files.instance_of(imagemodels.Image).filter(is_public=True).order_by('name'):
-            if '-color' in supporter.label:
-                name = supporter.label.replace('-color', '')
-                supporters_images.setdefault(name, {})['color'] = supporter
-            elif '-gray' in supporter.label:
-                name = supporter.label.replace('-gray', '')
-                supporters_images.setdefault(name, {})['gray'] = supporter
-    
-    except foldermodels.Folder.DoesNotExist:
-       pass
-    
+    for supporter in foldermodels.Folder.objects.get(name=settings.SUPPORTERS_FILER_FOLDER_NAME).files.instance_of(imagemodels.Image).filter(is_public=True).order_by('name'):
+        if '-color' in supporter.label:
+            name = supporter.label.replace('-color', '')
+            supporters_images.setdefault(name, {})['color'] = supporter
+        elif '-gray' in supporter.label:
+            name = supporter.label.replace('-gray', '')
+            supporters_images.setdefault(name, {})['gray'] = supporter
+
     supporters = []
     for name, images in supporters_images.items():
         if len(images) != 2:

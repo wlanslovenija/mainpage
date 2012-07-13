@@ -3,8 +3,6 @@
 # Activate virtualenv Python environment
 . /srv/cms/env_cms/bin/activate
 
-export PYTHONPATH="/srv/nodewatcher/nodewatcher/nodewatcher/web:/srv/nodewatcher/nodewatcher/nodewatcher${PYTHONPATH:+:$PYTHONPATH}"
-
 # Dump database
 cd /srv/cms/mainpage/mainpage
 python manage.py dumpcms --settings=mainpage.settings_production > /srv/www/bindist/data/dumpcms.yaml

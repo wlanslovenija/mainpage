@@ -34,6 +34,8 @@ DATABASES = {
 
 # SECRET_KEY is in secrets
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # RECAPTCHA_PUBLIC_KEY is in secrets
 # RECAPTCHA_PRIVATE_KEY is in secrets
 
