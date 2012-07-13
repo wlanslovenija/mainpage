@@ -4,12 +4,15 @@ from django.contrib.contenttypes import models as contenttypes_models
 from django.core.management import base
 from django.core.management.commands import dumpdata
 from django.core import serializers
+from django.db.models import Q
 
 from cms import models as cms_models
 
 from filer import models as filer_models
 
-from easy_thumbnails import models as easy_thumbnails_models
+from cmsplugin_blog import models as blog_models
+
+from cmsplugin_filer_image import models as filer_image_models
 
 class Command(base.NoArgsCommand):
     """
@@ -46,24 +49,33 @@ class Command(base.NoArgsCommand):
 
         pages = cms_models.Page.objects.filter(published=True)
         placeholders = cms_models.Placeholder.objects.filter(page__in=pages)
-        
-        plugins = cms_models.CMSPlugin.objects.filter(placeholder__in=placeholders)
-        plugin_objects = (plugin.get_plugin_instance()[0] for plugin in plugins)
 
-        folders = filer_models.Folder.objects.all()
-        files = filer_models.File.objects.non_polymorphic().filter(is_public=True)
-        images = filer_models.Image.objects.non_polymorphic().filter(is_public=True)
+        blog_entries = blog_models.Entry.published.all()
+        blog_placeholders = cms_models.Placeholder.objects.filter(entry__in=blog_entries)
+
+        plugins = cms_models.CMSPlugin.objects.filter(Q(placeholder__in=placeholders) | Q(placeholder__in=blog_placeholders))
+
+        def plugin_objects():
+            for plugin in plugins:
+                instance = plugin.get_plugin_instance()[0]
+                if instance is None:
+                    raise base.CommandError("Invalid plugin instance: %s from placeholder %s" % (plugin.pk, plugin.placeholder.pk))
+                yield instance
         
         objects = itertools.chain(
             contenttypes_models.ContentType.objects.all(),
             placeholders,
             pages,
             cms_models.Title.objects.filter(page__in=pages),
+            blog_placeholders,
+            blog_entries,
+            blog_models.EntryTitle.objects.filter(entry__in=blog_entries),
             plugins,
-            plugin_objects,
-            folders,
-            files,
-            images,
+            plugin_objects(),
+            filer_models.Folder.objects.all(),
+            filer_models.File.objects.non_polymorphic().filter(is_public=True),
+            filer_models.Image.objects.non_polymorphic().filter(is_public=True),
+            filer_image_models.ThumbnailOption.objects.all(),
         )
         
         try:
