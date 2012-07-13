@@ -3,6 +3,7 @@
 import os, subprocess, sys, tempfile, urllib
 
 root = os.path.join(os.path.dirname(__file__), '..')
+database_file = os.path.abspath(os.path.join(root, 'mainpage', 'db.sqlite'))
 
 if sys.version_info <= (2, 6):
     requirements = os.path.abspath(os.path.join(root, 'requirements-python26.txt'))
@@ -15,7 +16,7 @@ print "Installing requirements:\n"
 subprocess.check_call(('pip', 'install', '-r', requirements))
 
 print "\nSetting up the database:\n"
-os.remove(os.path.abspath(os.path.join(root, 'mainpage', 'db.sqlite')))
+os.remove(database_file)
 subprocess.check_call(('python', manage_script, 'syncdb'))
 subprocess.check_call(('python', manage_script, 'migrate'))
 subprocess.check_call(('python', manage_script, 'reset', '--noinput', 'contenttypes'))
@@ -29,6 +30,8 @@ tempFile.close()
 os.rename(tempFile.name, tempFile.name + '.yaml.bz2')
 subprocess.check_call(('python', manage_script, 'loaddata', tempFile.name))
 os.remove(tempFile.name + '.yaml.bz2')
+
+subprocess.check_call(('sqlite3', database_file, """UPDATE cmsplugin_blog_entrytitle SET author_id=1"""))
 
 print "\nPreparing directories."
 
