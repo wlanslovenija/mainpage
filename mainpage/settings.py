@@ -382,6 +382,14 @@ FILER_IS_PUBLIC_DEFAULT = True
 FILER_IMAGE_USE_ICON = True
 FILER_ENABLE_PERMISSIONS = True
 
+class AllIPs(list):
+    def __contains__(self, ip):
+        return True
+
+if DEBUG:
+    # So that headers and template contexts are populated with debug data
+    INTERNAL_IPS = AllIPs()
+
 FILER_PUBLICMEDIA_ROOT = os.path.join(MEDIA_ROOT, 'files')
 FILER_PUBLICMEDIA_URL = os.path.join(MEDIA_URL, 'files/')
 FILER_PUBLICMEDIA_THUMBNAIL_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
@@ -391,15 +399,9 @@ FILER_PRIVATEMEDIA_URL = '/smedia/files/'
 FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
 
-class AllIPs(list):
-    def __contains__(self, ip):
-        return True
+from wlansi.storage import PublicFileSystemStorage, PrivateFileSystemStorage
 
-if DEBUG:
-    # So that headers and template contexts are populated with debug data
-    INTERNAL_IPS = AllIPs()
-
-from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
+FILE_STORAGE_PREFIX = 'http://wlan-si.net'
 
 FILER_PUBLICMEDIA_STORAGE = PublicFileSystemStorage(
     location=FILER_PUBLICMEDIA_ROOT,

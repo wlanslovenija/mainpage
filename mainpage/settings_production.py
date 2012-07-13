@@ -47,6 +47,25 @@ if DEBUG:
 else:
     INTERNAL_IPS = ()
 
+from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
+
+FILER_PUBLICMEDIA_STORAGE = PublicFileSystemStorage(
+    location=FILER_PUBLICMEDIA_ROOT,
+    base_url=FILER_PUBLICMEDIA_URL
+)
+FILER_PUBLICMEDIA_THUMBNAIL_STORAGE = PublicFileSystemStorage(
+    location=FILER_PUBLICMEDIA_THUMBNAIL_ROOT,
+    base_url=FILER_PUBLICMEDIA_THUMBNAIL_URL
+)
+FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
+    location=FILER_PRIVATEMEDIA_ROOT,
+    base_url=FILER_PRIVATEMEDIA_URL
+)
+FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
+    location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+    base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
+)
+
 if not DEBUG:
     from filer.server.backends.nginx import NginxXAccelRedirectServer
 

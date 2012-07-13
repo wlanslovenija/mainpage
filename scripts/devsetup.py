@@ -30,4 +30,12 @@ os.rename(tempFile.name, tempFile.name + '.yaml.bz2')
 subprocess.check_call(('python', manage_script, 'loaddata', tempFile.name))
 os.remove(tempFile.name + '.yaml.bz2')
 
+print "\nPreparing directories."
+
+for path in (('media', 'files'), ('media', 'thumbnails'), ('smedia', 'files'), ('smedia', 'thumbnails')):
+    try:
+        os.makedirs(os.path.join(root, 'mainpage', *path))
+    except OSError:
+        pass
+
 print "\nAll done!"
