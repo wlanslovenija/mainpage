@@ -29,8 +29,7 @@
         </ul>
         {% endif %}
     </div>
-{% else %}
-{% if object.view_option == "supporters" %}
+{% elif object.view_option == "supporters" %}
 	<ul class="supporters-logo">
 	{% for image in folder_images %}
 		<li><a href="{{ image.image.description }}"><img src="{{ image.image.url }}" alt="{{ image.image.default_alt_text }}" title="{{ image.image.default_caption|default:image.image.default_alt_text }}"{% if image.image.width %} width="{{ image.image.width }}"{% endif %}{% if image.image.height %} height="{{ image.image.height }}"{% endif %} /></a></li>
@@ -45,5 +44,4 @@
         {% endfor %}
         </div>
     {% endwith %}
-{% endif %}
 {% endif %}
