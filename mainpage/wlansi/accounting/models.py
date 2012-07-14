@@ -45,6 +45,14 @@ class Transaction(models.Model):
         ordering = ('-date',)
         app_label = 'wlansi'
 
+    def has_paper(self):
+        return bool(self.papers.count())
+    has_paper.boolean = True
+
+    def has_final_paper(self):
+        return bool(self.papers.filter(is_final=True).count())
+    has_final_paper.boolean = True
+
     def get_description(self):
         language = translation.get_language()
         return getattr(self, 'description_%s' % language)

@@ -1,15 +1,49 @@
 from __future__ import absolute_import
 
+from django import forms
 from django.conf import settings
 from django.contrib import admin
-from django import forms
+from django.db.models import aggregates
 from django.forms import models as models_forms
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
 
 # TODO: With Django 1.4, set initial values for language in descriptions to different (all supported) languages
-# TODO: We could also filter by has_link and has_local_copy
+
+class HasLinkListFilter(admin.SimpleListFilter):
+    title = _("has link")
+    parameter_name = 'haslink'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('1', _("Yes")),
+            ('0', _("No")),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == '1':
+            return queryset.exclude(link__isnull=True).exclude(link__exact='')
+        if self.value() == '0':
+            return queryset.filter(Q(link__isnull=True) | Q(link__exact=''))
+
+class HasLocalCopyListFilter(admin.SimpleListFilter):
+    title = _("has local copy")
+    parameter_name = 'haslocalcopy'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('1', _("Yes")),
+            ('0', _("No")),
+        )
+
+    def queryset(self, request, queryset):
+        queryset = queryset.annotate(local_copies_count=aggregates.Count('local_copies'))
+        if self.value() == '1':
+            return queryset.exclude(local_copies_count=0)
+        if self.value() == '0':
+            return queryset.filter(local_copies_count=0)
 
 # Based on: https://code.google.com/p/wadofstuff/source/browse/trunk/python/forms/wadofstuff/django/forms/forms.py
 class RequireOneFormSet(models_forms.BaseInlineFormSet):
@@ -49,7 +83,7 @@ class EntryAdmin(admin.ModelAdmin):
     )
     date_hierarchy = 'date'
     list_display = ('source', 'date', 'languages', 'has_link', 'has_local_copy')
-    list_filter = ('date', 'descriptions__language')
+    list_filter = ('date', 'descriptions__language', HasLinkListFilter, HasLocalCopyListFilter)
     search_fields = ('date', 'descriptions__language', 'descriptions__source', 'descriptions__description')
 
 admin.site.register(models.InMediaEntry, EntryAdmin)

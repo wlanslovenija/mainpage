@@ -2,15 +2,30 @@ from __future__ import absolute_import
 
 from django.contrib import admin
 from django.db import models as django_models
+from django.utils.translation import ugettext_lazy as _
 
 from . import models
 
-# TODO: We could also filter by duplicate or not
+class DuplicateListFilter(admin.SimpleListFilter):
+    title = _("is duplicate")
+    parameter_name = 'duplicate'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('1', _("Yes")),
+            ('0', _("No")),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == '1':
+            return queryset.filter(duplicate_of__isnull=False)
+        if self.value() == '0':
+            return queryset.filter(duplicate_of__isnull=True)
 
 class ParticipantAdmin(admin.ModelAdmin):
     date_hierarchy = 'added'
     list_display = ('name', 'source', 'added', 'duplicate_of')
-    list_filter = ('added', 'source')
+    list_filter = ('added', 'source', DuplicateListFilter)
     search_fields = ('name', 'source', 'internal_comment')
 
     def formfield_for_dbfield(self, db_field, **kwargs):
