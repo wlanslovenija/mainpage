@@ -15,7 +15,7 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DESC="Django CMS on FastCGI Django"
 NAME=cms-fcgi
-PROJECT_PATH=/srv/cms/mainpage/mainpage
+PROJECT_PATH=/srv/cms/mainpage
 SCRIPTNAME=/etc/init.d/$NAME
 DAEMON=/srv/cms/env_cms/bin/python
 DAEMON_CHDIR=$PROJECT_PATH

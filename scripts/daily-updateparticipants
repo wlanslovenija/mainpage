@@ -3,5 +3,5 @@
 # Activate virtualenv Python environment
 . /srv/cms/env_cms/bin/activate
 
-cd /srv/cms/mainpage/mainpage
+cd /srv/cms/mainpage
 python manage.py updateparticipants --settings=mainpage.settings_production

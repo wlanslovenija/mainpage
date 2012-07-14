@@ -174,7 +174,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'cms.middleware.multilingual.MultilingualURLMiddleware',
-    'wlansi.middleware.ForceAdminLanguage',
+    'mainpage.wlansi.middleware.ForceAdminLanguage',
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
@@ -197,8 +197,9 @@ INSTALLED_APPS = (
     'cmsplugin_markup_tracwiki',
 
     # Ours are first so that we can override default templates in other apps
-    'frontend.nodes',
     'frontend.account',
+    'frontend.dns',
+    'frontend.nodes',
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
     'mainpage.wlansi.donations',
@@ -399,26 +400,44 @@ FILER_PRIVATEMEDIA_URL = '/smedia/files/'
 FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
 
-from wlansi.storage import PublicFileSystemStorage, PrivateFileSystemStorage
-
 FILE_STORAGE_PREFIX = 'http://wlan-si.net'
 
-FILER_PUBLICMEDIA_STORAGE = PublicFileSystemStorage(
-    location=FILER_PUBLICMEDIA_ROOT,
-    base_url=FILER_PUBLICMEDIA_URL
-)
-FILER_PUBLICMEDIA_THUMBNAIL_STORAGE = PublicFileSystemStorage(
-    location=FILER_PUBLICMEDIA_THUMBNAIL_ROOT,
-    base_url=FILER_PUBLICMEDIA_THUMBNAIL_URL
-)
-FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
-    location=FILER_PRIVATEMEDIA_ROOT,
-    base_url=FILER_PRIVATEMEDIA_URL
-)
-FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
-    location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
-    base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
-)
+FILER_STORAGES = {
+    'public': {
+        'main': {
+            'ENGINE': 'mainpage.wlansi.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': FILER_PUBLICMEDIA_ROOT,
+                'base_url': FILER_PUBLICMEDIA_URL,
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.by_date',
+        },
+        'thumbnails': {
+            'ENGINE': 'mainpage.wlansi.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': FILER_PUBLICMEDIA_THUMBNAIL_ROOT,
+                'base_url': FILER_PUBLICMEDIA_THUMBNAIL_URL,
+            },
+        },
+    },
+    'private': {
+        'main': {
+            'ENGINE': 'mainpage.wlansi.storage.PrivateFileSystemStorage',
+            'OPTIONS': {
+                'location': FILER_PRIVATEMEDIA_ROOT,
+                'base_url': FILER_PRIVATEMEDIA_URL,
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.by_date',
+        },
+        'thumbnails': {
+            'ENGINE': 'mainpage.wlansi.storage.PrivateFileSystemStorage',
+            'OPTIONS': {
+                'location': FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+                'base_url': FILER_PRIVATEMEDIA_THUMBNAIL_URL,
+            },
+        },
+    },
+}
 
 CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
     ('slideshow', 'Slideshow'),

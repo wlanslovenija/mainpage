@@ -47,33 +47,27 @@ if DEBUG:
 else:
     INTERNAL_IPS = ()
 
-from filer.storage import PublicFileSystemStorage, PrivateFileSystemStorage
-
-FILER_PUBLICMEDIA_STORAGE = PublicFileSystemStorage(
-    location=FILER_PUBLICMEDIA_ROOT,
-    base_url=FILER_PUBLICMEDIA_URL
-)
-FILER_PUBLICMEDIA_THUMBNAIL_STORAGE = PublicFileSystemStorage(
-    location=FILER_PUBLICMEDIA_THUMBNAIL_ROOT,
-    base_url=FILER_PUBLICMEDIA_THUMBNAIL_URL
-)
-FILER_PRIVATEMEDIA_STORAGE = PrivateFileSystemStorage(
-    location=FILER_PRIVATEMEDIA_ROOT,
-    base_url=FILER_PRIVATEMEDIA_URL
-)
-FILER_PRIVATEMEDIA_THUMBNAIL_STORAGE = PrivateFileSystemStorage(
-    location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
-    base_url=FILER_PRIVATEMEDIA_THUMBNAIL_URL
-)
+FILER_STORAGES['public']['main']['ENGINE'] = 'filer.storage.PublicFileSystemStorage'
+FILER_STORAGES['public']['thumbnails']['ENGINE'] = 'filer.storage.PublicFileSystemStorage'
+FILER_STORAGES['private']['main']['ENGINE'] = 'filer.storage.PrivateFileSystemStorage'
+FILER_STORAGES['private']['thumbnails']['ENGINE'] = 'filer.storage.PrivateFileSystemStorage'
 
 if not DEBUG:
-    from filer.server.backends.nginx import NginxXAccelRedirectServer
-
-    FILER_PRIVATEMEDIA_SERVER = NginxXAccelRedirectServer(
-        location=FILER_PRIVATEMEDIA_ROOT,
-        nginx_location='/nginx_filer_private_files'
-    )
-    FILER_PRIVATEMEDIA_THUMBNAIL_SERVER = NginxXAccelRedirectServer(
-        location=FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
-        nginx_location='/nginx_filer_private_thumbnails'
-    )
+    FILER_SERVERS = {
+        'private': {
+            'main': {
+                'ENGINE': 'filer.server.backends.nginx.NginxXAccelRedirectServer',
+                'OPTIONS': {
+                    'location': FILER_PRIVATEMEDIA_ROOT,
+                    'nginx_location': '/nginx_filer_private_files',
+                },
+            },
+            'thumbnails': {
+                'ENGINE': 'filer.server.backends.nginx.NginxXAccelRedirectServer',
+                'OPTIONS': {
+                    'location': FILER_PRIVATEMEDIA_THUMBNAIL_ROOT,
+                    'nginx_location': '/nginx_filer_private_thumbnails',
+                },
+            },
+        },
+    }

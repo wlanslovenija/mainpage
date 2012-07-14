@@ -10,7 +10,7 @@ if sys.version_info <= (2, 6):
 else:
     requirements = os.path.abspath(os.path.join(root, 'requirements.txt'))
 
-manage_script = os.path.abspath(os.path.join(root, 'mainpage', 'manage.py'))
+manage_script = os.path.abspath(os.path.join(root, 'manage.py'))
 
 print "Installing requirements:\n"
 subprocess.check_call(('pip', 'install', '-r', requirements))

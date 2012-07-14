@@ -4,6 +4,6 @@
 . /srv/cms/env_cms/bin/activate
 
 # Dump database
-cd /srv/cms/mainpage/mainpage
+cd /srv/cms/mainpage
 python manage.py dumpcms --settings=mainpage.settings_production --traceback > /srv/www/bindist/data/dumpcms.yaml
 bzip2 -f /srv/www/bindist/data/dumpcms.yaml
