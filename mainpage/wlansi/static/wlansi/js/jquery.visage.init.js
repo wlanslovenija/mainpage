@@ -1,13 +1,13 @@
 $.fn.visage.defaults.files = $.extend(true, {}, $.fn.visage.defaults.files, {
-	"blank": "/media/jquery-visage/res-alt/images/blank.gif",
-	"error": "/media/jquery-visage/res-alt/images/error.png"
+	"blank": "/static/wlansi/jquery-visage/res-alt/images/blank.gif",
+	"error": "/static/wlansi/jquery-visage/res-alt/images/error.png"
 });
 $.fn.visage.defaults.attr = $.extend(true, {}, $.fn.visage.defaults.attr, {
 	"close": {"id": "visage-alt-close"},
 	"title": {"id": "visage-alt-title"},
 	"count": {"id": "visage-alt-count"},
 	"container": {"id": "visage-alt-container"},
-	"image": {"id": "visage-alt-image", "src": "/media/jquery-visage/res-alt/images/blank.gif"},
+	"image": {"id": "visage-alt-image", "src": "/static/wlansi/jquery-visage/res-alt/images/blank.gif"},
 	"visage": {"id": "visage-alt"},
 	"overlay": {"id": "visage-alt-overlay"},
 	"prev": {"id": "visage-alt-nav-prev"},
