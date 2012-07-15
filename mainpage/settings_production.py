@@ -52,7 +52,8 @@ FILER_STORAGES['public']['thumbnails']['ENGINE'] = 'filer.storage.PublicFileSyst
 FILER_STORAGES['private']['main']['ENGINE'] = 'filer.storage.PrivateFileSystemStorage'
 FILER_STORAGES['private']['thumbnails']['ENGINE'] = 'filer.storage.PrivateFileSystemStorage'
 
-if not DEBUG:
+# TODO: Enable when Nginx backend will properly set MIME
+if False and not DEBUG:
     FILER_SERVERS = {
         'private': {
             'main': {
