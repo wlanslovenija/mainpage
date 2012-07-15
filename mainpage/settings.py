@@ -353,6 +353,7 @@ CMS_MARKUP_TRAC_COMPONENTS = (
 
 CMS_LANGUAGES_URL_IGNORE_PREFIXES = (
     '/lists',
+    '/smedia/',
 )
 
 CMS_URL_OVERWRITE = False
