@@ -23,7 +23,7 @@ cmsplugin-markup-tracwiki==0.2.2
 distribute==0.6.27
 django-appconf==0.5
 django-classy-tags==0.3.4.1
--e git+https://github.com/mitar/django-cms.git@625e8de8b4a4c390c88c37c42c2df6884738045d#egg=django_cms-dev
+-e git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
 -e git+https://github.com/stefanfoulis/django-filer.git@92328ceabcf7ab0415c5985bfdd3810feac5a937#egg=django_filer-dev
 django-missing==0.1.4
 django-mptt==0.5.2
