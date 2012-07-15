@@ -68,6 +68,7 @@ class TransactionPaper(models.Model):
     class Meta:
         verbose_name = _("paper")
         verbose_name_plural = _("papers")
+        unique_together = (('transaction', 'paper'),)
         app_label = 'wlansi'
 
     def __unicode__(self):

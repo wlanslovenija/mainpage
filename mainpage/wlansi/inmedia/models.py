@@ -46,6 +46,7 @@ class InMediaLocalCopy(models.Model):
     class Meta:
         verbose_name = _("local copy")
         verbose_name_plural = _("local copies")
+        unique_together = (('entry', 'local_copy'),)
         app_label = 'wlansi'
 
     def __unicode__(self):
@@ -60,6 +61,7 @@ class InMediaDescription(models.Model):
     class Meta:
         verbose_name = _("description")
         verbose_name_plural = _("descriptions")
+        unique_together = (('entry', 'language'),)
         app_label = 'wlansi'
 
     def __unicode__(self):
