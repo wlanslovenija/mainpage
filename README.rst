@@ -13,7 +13,7 @@ Development installation
 
 2. Create and activate new `Python virtual environment`_::
 
-    virtualenv --no-site-packages ~/.virtualenv/mainpage
+    virtualenv --no-site-packages --distribute ~/.virtualenv/mainpage
     source ~/.virtualenv/mainpage/bin/activate
     
 3. Move to location where you cloned webpage repository and run ``devsetup``
