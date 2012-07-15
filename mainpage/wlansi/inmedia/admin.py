@@ -10,8 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from . import models
 
-# TODO: With Django 1.4, set initial values for language in descriptions to different (all supported) languages
-
 class HasLinkListFilter(admin.SimpleListFilter):
     title = _("has link")
     parameter_name = 'haslink'
@@ -66,11 +64,26 @@ class RequireOneFormSet(models_forms.BaseInlineFormSet):
         if completed < 1:
             raise forms.ValidationError(_("At least one %(name)s is required." % {'name': unicode(self.model._meta.verbose_name)}))
 
+class InitialLanguagesFormSet(RequireOneFormSet):
+    """
+    Sets initial languages to not yet existing languages in the formset.
+    """
+
+    def _construct_form(self, i, **kwargs):
+        if i >= self.initial_form_count():
+            existing = self.queryset.values_list('language', flat=True)
+            initial = [{'language': language_code} for language_code, language_name in settings.LANGUAGES if language_code not in existing]
+            try:
+                kwargs['initial'] = initial[i-self.initial_form_count()]
+            except IndexError:
+                pass
+        return super(InitialLanguagesFormSet, self)._construct_form(i, **kwargs)
+
 class DescriptionInline(admin.StackedInline):
     model = models.InMediaDescription
     extra = len(settings.LANGUAGES)
     max_num = len(settings.LANGUAGES)
-    formset = RequireOneFormSet
+    formset = InitialLanguagesFormSet
 
 class LocalCopyInline(admin.StackedInline):
     model = models.InMediaLocalCopy
