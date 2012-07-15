@@ -3,14 +3,14 @@
 
 {% block extrahead %}
 {{ block.super }}
-<link rel="alternate" type="application/rss+xml" title="RSS feed for tag &quot;{{ tag|escape }}&quot;" href="{% if request.LANGUAGE_CODE %}/{{ request.LANGUAGE_CODE }}{% endif %}{% url blog_rss_tagged tag %}" />
+<link rel="alternate" type="application/rss+xml" title="RSS feed for tag &quot;{{ tag.name|escape }}&quot;" href="{% if request.LANGUAGE_CODE %}/{{ request.LANGUAGE_CODE }}{% endif %}{% url blog_rss_tagged tag.name %}" />
 {% endblock extrahead %}
 
-{% block title %}{% trans "Entries tagged" %} "{{ tag }}"{{ block.super }}{% endblock %}
+{% block title %}{% trans "Entries tagged" %} "{{ tag.name }}"{{ block.super }}{% endblock %}
 
 {% block left-col %}
 <div class="entry-list">
-<h2 id="entries-tagged">{% trans "Entries tagged" %} "{{ tag }}"</h2>
+<h2 id="entries-tagged">{% trans "Entries tagged" %} "{{ tag.name }}"</h2>
 {% if object_list %}
     <ul>
     {% for object in object_list|annotate_with_translations %}
@@ -18,7 +18,7 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>{% trans "No entries tagged" %} "{{ tag }}".</p>
+    <p>{% trans "No entries tagged" %} "{{ tag.name }}".</p>
 {% endif %}
 </div>
 {% endblock %}
