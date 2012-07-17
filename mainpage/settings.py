@@ -164,6 +164,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
+    'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
     'cms.context_processors.media',
@@ -177,6 +178,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cms.middleware.multilingual.MultilingualURLMiddleware',
     'mainpage.wlansi.middleware.ForceAdminLanguage',
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
@@ -189,11 +191,13 @@ ROOT_URLCONF = 'mainpage.urls'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'mainpage.wsgi.application'
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-#   os.path.join(settings_dir, 'templates'),
 )
 
 INSTALLED_APPS = (
