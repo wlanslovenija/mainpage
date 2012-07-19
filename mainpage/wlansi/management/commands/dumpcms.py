@@ -1,5 +1,6 @@
 import itertools, optparse
 
+from django.contrib.contenttypes import models as contenttypes_models
 from django.contrib.sites import models as sites_models
 from django.core.management import base
 from django.core.management.commands import dumpdata
@@ -64,6 +65,7 @@ class Command(base.NoArgsCommand):
         
         objects = itertools.chain(
             sites_models.Site.objects.all(),
+            contenttypes_models.ContentType.objects.all(),
             placeholders,
             pages,
             cms_models.Title.objects.filter(page__in=pages),
