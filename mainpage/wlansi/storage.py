@@ -19,4 +19,4 @@ class PublicFileSystemStorage(PrefixedStorageMixin, storage.PublicFileSystemStor
     pass
 
 class PrivateFileSystemStorage(PrefixedStorageMixin, storage.PrivateFileSystemStorage):
-	pass
+    pass
