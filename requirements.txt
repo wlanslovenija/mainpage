@@ -25,7 +25,7 @@ django-appconf==0.5
 django-classy-tags==0.3.4.1
 -e git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
 -e git+https://github.com/stefanfoulis/django-filer.git@92328ceabcf7ab0415c5985bfdd3810feac5a937#egg=django_filer-dev
-django-missing==0.1.4
+django-missing==0.1.5
 django-mptt==0.5.2
 django-phonenumber-field==0.2a3
 django-picklefield==0.2.1

@@ -180,7 +180,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cms.middleware.multilingual.MultilingualURLMiddleware',
-    'mainpage.wlansi.middleware.ForceAdminLanguage',
+    'missing.middleware.ForceAdminLanguage',
     'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
