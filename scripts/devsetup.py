@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os, subprocess, sys, tempfile, urllib
+import os, sqlite3, subprocess, sys, tempfile, urllib
 
 root = os.path.join(os.path.dirname(__file__), '..')
 database_file = os.path.abspath(os.path.join(root, 'mainpage', 'db.sqlite'))
@@ -32,7 +32,11 @@ os.rename(tempFile.name, tempFile.name + '.yaml.bz2')
 subprocess.check_call(('python', manage_script, 'loaddata', tempFile.name))
 os.remove(tempFile.name + '.yaml.bz2')
 
-subprocess.check_call(('sqlite3', database_file, """UPDATE cmsplugin_blog_entrytitle SET author_id=1"""))
+connection = sqlite3.connect(database_file)
+cursor = connection.cursor()
+cursor.execute("""UPDATE cmsplugin_blog_entrytitle SET author_id=1""")
+connection.commit()
+cursor.close()
 
 print "\nPreparing directories."
 
