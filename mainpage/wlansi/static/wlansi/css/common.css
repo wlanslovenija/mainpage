@@ -509,6 +509,7 @@ table.wiki td {
 	border-radius: 2px 2px 2px 2px;
 	padding: 2px;
 	line-height: 2em;
+	white-space: nowrap;
 }
 
 .two-column-left {
