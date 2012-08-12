@@ -284,8 +284,6 @@ LOGOUT_URL = '/admin/'
 
 AUTHENTICATION_BACKENDS = (
     'frontend.account.auth.ModelBackend',
-    'frontend.account.auth.AprBackend',
-    'frontend.account.auth.CryptBackend',
 )
 
 FORCE_LOWERCASE_TAGS = True
@@ -349,10 +347,6 @@ CMS_MARKUP_TRAC_CONFIGURATION = {
 CMS_MARKUP_TRAC_TEMPLATES_DIR = os.path.join(settings_dir, 'tracwiki', 'templates')
 
 CMS_MARKUP_TRAC_COMPONENTS = (
-    'tracdashessyntax.plugin.DashesSyntaxPlugin',
-    'footnotemacro.macro.FootNoteMacro',
-    'mathjax.api.MathJaxPlugin',
-    'tracmath.tracmath.TracMathPlugin',
 )
 
 CMS_LANGUAGES_URL_IGNORE_PREFIXES = (

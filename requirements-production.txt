@@ -1,0 +1,9 @@
+-e svn+http://trac-hacks.org/svn/footnotemacro/trunk@11926#egg=FootNoteMacro-dev_r11926
+GitPython==0.3.2.RC1
+-e hg+https://bitbucket.org/mitar/trac-mathjax@8aad2f1b17e2b6f0ddb1a616a109b9b88428de59#egg=MathJaxPlugin-dev
+-e svn+http://trac-hacks.org/svn/dashessyntaxplugin/0.11@8543#egg=TracDashesSyntaxPlugin-dev_r8543
+-e hg+https://bitbucket.org/kisielk/tracmathplugin@05cd705cc9eadf322d5b8395fad1ffb0a6efeab5#egg=TracMath-dev
+gitdb==0.5.4
+psycopg2==2.2.1
+python-aprmd5==0.2
+-r requirements.txt

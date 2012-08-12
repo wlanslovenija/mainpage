@@ -36,10 +36,20 @@ DATABASES = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+AUTHENTICATION_BACKENDS += (
+    'frontend.account.auth.AprBackend',
+    'frontend.account.auth.CryptBackend',
+)
+
 # RECAPTCHA_PUBLIC_KEY is in secrets
 # RECAPTCHA_PRIVATE_KEY is in secrets
 
-GIT_REPOSITORIES_DIR = '/srv/git/'
+CMS_MARKUP_TRAC_COMPONENTS += (
+    'tracdashessyntax.plugin.DashesSyntaxPlugin',
+    'footnotemacro.macro.FootNoteMacro',
+    'mathjax.api.MathJaxPlugin',
+    'tracmath.tracmath.TracMathPlugin',
+)
 
 if DEBUG:
     # So that headers and template contexts are populated with debug data
@@ -72,3 +82,5 @@ if False and not DEBUG:
             },
         },
     }
+
+GIT_REPOSITORIES_DIR = '/srv/git/'

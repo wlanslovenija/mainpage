@@ -1,16 +1,11 @@
 Django==1.4
--e svn+http://trac-hacks.org/svn/footnotemacro/trunk@11926#egg=FootNoteMacro-dev_r11926
 Genshi==0.6
-GitPython==0.3.2.RC1
 Markdown==2.1.1
--e hg+https://bitbucket.org/mitar/trac-mathjax@8aad2f1b17e2b6f0ddb1a616a109b9b88428de59#egg=MathJaxPlugin-dev
 PIL==1.1.7
 PyYAML==3.10
 Pygments==1.5
 South==0.7.5
 Trac==0.12.3
--e svn+http://trac-hacks.org/svn/dashessyntaxplugin/0.11@8543#egg=TracDashesSyntaxPlugin-dev_r8543
--e hg+https://bitbucket.org/kisielk/tracmathplugin@05cd705cc9eadf322d5b8395fad1ffb0a6efeab5#egg=TracMath-dev
 amqplib==1.0.2
 anyjson==0.3.1
 async==0.6.1
@@ -39,16 +34,13 @@ djangocms-utils==0.9.5
 docutils==0.9.1
 easy-thumbnails==1.0.3
 flup==1.0.2
-gitdb==0.5.4
 html5lib==0.95
 kombu==2.1.7
 lxml==2.3.4
 ordereddict==1.1
 phonenumbers==4.8b1
-psycopg2==2.2.1
 pymongo==2.1.1
 pyparsing==1.5.6
-python-aprmd5==0.2
 python-dateutil==1.5
 python-memcached==1.48
 pytz==2012c
