@@ -1,5 +1,5 @@
 Django==1.4
--e svn+http://trac-hacks.org/svn/footnotemacro/0.11@10434#egg=FootNoteMacro-dev_r10434
+-e svn+http://trac-hacks.org/svn/footnotemacro/trunk@11926#egg=FootNoteMacro-dev_r11926
 Genshi==0.6
 GitPython==0.3.2.RC1
 Markdown==2.1.1

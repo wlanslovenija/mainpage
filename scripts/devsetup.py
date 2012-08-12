@@ -16,7 +16,7 @@ print "Installing requirements:\n"
 subprocess.check_call(('pip', 'install', '-r', requirements))
 
 print "\nSetting up the database:\n"
-if os.path.isfile(database_file)
+if os.path.isfile(database_file):
     os.remove(database_file)
 subprocess.check_call(('python', manage_script, 'syncdb'))
 subprocess.check_call(('python', manage_script, 'migrate'))
