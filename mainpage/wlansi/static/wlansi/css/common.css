@@ -521,3 +521,13 @@ table.wiki td {
 	width: 50%;
 	float: right;
 }
+
+.dummy {
+	border: 1px dashed black;
+	text-align: center;
+	margin: -1px;
+}
+
+.dummy-content {
+	margin: 5px;
+}

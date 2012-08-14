@@ -214,6 +214,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi.inmedia',
     'mainpage.wlansi.news',
     'mainpage.wlansi.participants',
+    'mainpage.wlansi.dummy',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
