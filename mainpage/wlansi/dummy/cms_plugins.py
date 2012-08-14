@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from cms import plugin_base
@@ -16,11 +17,15 @@ class DummyPlugin(plugin_base.CMSPluginBase):
     model = models.Dummy
     name = _("Dummy")
     render_template = 'dummy/dummy.html'
+    text_enabled = True
 
     def render(self, context, instance, placeholder):
         context.update({
             'instance': instance,
         })
         return context
+
+    def icon_src(self, instance):
+        return settings.STATIC_URL + u"cms/images/plugins/snippet.png"
 
 plugin_pool.register_plugin(DummyPlugin)
