@@ -605,3 +605,21 @@ label {
 	margin-bottom: 5px;
 }
 
+
+ul.supporters {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.supporters li {
+	display: inline-block;
+	margin: 3px;
+	padding: 7px;
+	font-size: 110%;
+	font-weight: bold;
+	border-radius: 4px 4px 4px 4px;
+	border: none;
+	background-color: #E0E0E0;
+	color: #676767;
+}
