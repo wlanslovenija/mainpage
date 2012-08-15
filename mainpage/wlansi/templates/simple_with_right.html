@@ -4,8 +4,10 @@
 
 {% block content %}
     <h2 id="{{ current_page.get_page_title|slugify2 }}">{{ current_page.get_page_title }}</h2>
-    <div class="right-col">
+    <div class="two-column-left-main">
+    {% placeholder content %}
+    </div>
+    <div class="two-column-right-side">
         {% placeholder right %}
     </div>
-    {% placeholder content %}
 {% endblock %}

@@ -4,9 +4,20 @@
 
 {% block fulltitle %}{% trans "wlan slovenija – open wireless network of Slovenia" %}{% endblock %}
 
+{% block css %}<link rel="stylesheet" href="{{ STATIC_URL }}wlansi/css/main.css" type="text/css" />{% endblock %}
+
 {% block content %}
+    <div class="showcase">
+    {% placeholder main_content %}
+    </div>
+
+    <div class="left-col">
+        {% placeholder main_left %}
+    </div>
+    <div class="middle-col">
+        {% placeholder main_middle %}
+    </div>
     <div class="right-col">
         {% placeholder main_right %}
     </div>
-    {% placeholder main_content %}
 {% endblock %}

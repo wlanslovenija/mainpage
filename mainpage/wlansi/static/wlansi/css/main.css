@@ -1,0 +1,33 @@
+
+.right-col, .middle-col, .left-col {
+	display: inline-block;
+	width: 260px;
+	padding: 25px;
+	float: none;
+	vertical-align: top;
+}
+
+
+.ssid {
+	background-color: #68ae2c;
+	color: #ffffff;
+	text-align: center;
+	font-size: 110%;
+	padding: 20px 10px;
+	font-weight: bold;
+	border-radius: 4px 4px 4px 4px;
+}
+
+.blog_latest_entries p {
+	margin-bottom: 10px;
+}
+
+.blog_latest_entries p a {
+	border: none;
+}
+
+.blog_latest_entries p .date {
+	display: block;
+	text-align: right;
+	font-size: 90%;
+}
