@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
 //]]>
 </script>
 {% endaddtoblock %}
-
+<h3>{{object.title }}</h3>
 <div class="plugin_twitter">
 	<div id="twitter-container-{{ object.pk }}"></div>
 	{% if object.twitter_user %}<p><a href="https://www.twitter.com/#!/{{ object.twitter_user }}" class="twitter-link">{% trans "More on Twitter..." %}</a></p>{% endif %}
