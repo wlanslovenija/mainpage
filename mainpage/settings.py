@@ -293,6 +293,7 @@ CMS_TEMPLATES = (
     ('simple.html', 'Simple Page'),
     ('simple_with_right.html', 'Simple Page with Right Column'),
     ('simple_two_columns.html', 'Simple Page with Two Columns'),
+    ('layered_two_columns.html', 'Page with Two Columns, a header and a footer'),
     ('main.html', 'Main Page'),
     ('blog.html', 'Blog Page'),
 )
