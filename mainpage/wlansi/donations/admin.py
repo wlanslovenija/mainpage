@@ -1,7 +1,9 @@
 from __future__ import absolute_import
 
+from django.conf import settings
 from django.contrib import admin
 from django.db.models import Q
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 from . import models
@@ -24,11 +26,30 @@ class IsAnonymousListFilter(admin.SimpleListFilter):
 
 # TODO: We could also filter by amount ranges
 
+titles = tuple('title_%s' % language_code for language_code, language_name in settings.LANGUAGES)
+
+class DonationSourceAdmin(admin.ModelAdmin):
+    list_display = titles
+    list_display_links = titles
+    search_fields = titles + ('internal_comment',)
+
+admin.site.register(models.DonationSource, DonationSourceAdmin)
+
 class DonationAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
-    list_display = ('donor', 'amount', 'date', 'is_anonymous')
+    list_display = ('donor', 'amount', 'date')
     list_display_links = ('amount',)
-    list_filter = ('date', IsAnonymousListFilter)
+    list_filter = ('date', 'donation_source', IsAnonymousListFilter)
     search_fields = ('date', 'amount', 'donor', 'message', 'internal_comment')
+
+    def get_list_display(self, request):
+        language = translation.get_language()
+
+        # We have to do all this because we want column to be ordered by current language title and not donation source pk
+        def donation_source(obj):
+            return getattr(obj.donation_source, 'title_%s' % language)
+        donation_source.admin_order_field = 'donation_source__title_%s' % language
+
+        return self.list_display + (donation_source, 'is_anonymous')
 
 admin.site.register(models.Donation, DonationAdmin)
