@@ -6,6 +6,7 @@ from cms.models import pluginmodel
 class Dummy(pluginmodel.CMSPlugin):
     width = models.CharField(max_length=100, help_text=_("Width of the dummy content, in CSS format."))
     height = models.CharField(max_length=100, help_text=_("Height of the dummy content, in CSS format."))
+    custom_css = models.TextField(_("custom CSS"), blank=True)
     content = models.TextField(blank=True)
 
     class Meta:
