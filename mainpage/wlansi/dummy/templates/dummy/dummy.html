@@ -1,3 +1,3 @@
 {% load i18n %}
 
-{% if user.is_staff %}<div class="dummy" style="width: {{ instance.width }}; height: {{ instance.height }};{% if instance.custom_css %} {{ instance.custom_css }}{% endif %}"><div class="dummy-content">{% if instance.content %}{{ instance.content }}{% else %}{% trans "Dummy content." %}{% endif %}</div></div>{% endif %}
+{% if user.is_staff %}<span class="dummy" style="width: {{ instance.width }}; height: {{ instance.height }};{% if instance.custom_css %} {{ instance.custom_css }}{% endif %}"><span class="dummy-content">{% if instance.content %}{{ instance.content }}{% else %}{% trans "Dummy content." %}{% endif %}</span></span>{% endif %}

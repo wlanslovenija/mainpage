@@ -559,10 +559,12 @@ table.wiki td {
 	border: 1px dashed black;
 	text-align: center;
 	margin: -1px;
+	display: block;
 }
 
 .dummy-content {
 	margin: 5px;
+	display: block;
 }
 
 .contact #id_email,
