@@ -1,12 +1,38 @@
-{% load i18n tracwiki %}
+{% load i18n tracwiki context_tags accounting %}
 
-<dl class="transactons">
-    {% for transaction in transactions|dictsortreversed:"date" %}
-        <dt>{{ transaction.date }}, {{ transaction.amount }} EUR</dt>
-		{% if transaction.donor or transaction.is_anonymous %}
-	        <dd>{% if transaction.is_anonymous %}{% trans "Anonymous donation" %}{% else %}{% blocktrans with donor=transaction.donor %}Donation from {{ donor }}{% endblocktrans %}{% endif %}</dd>
-		{% else %}
-	        <dd>{% tracwiki transaction.get_description %}</dd>
-		{% endif %}
-    {% endfor %}
-</dl>
+{% for transaction in transactions|dictsortreversed:"date" %}
+    {% ifchanged transaction.date|date:"Y" %}
+        {% if not forloop.first %}
+            </dl>
+            <p>{% year_summary transaction.date|date:"Y"|add:"1" %}</p>
+        {% endif %}
+        <h3 id="year-{{ transaction.date|date:"Y" }}">{% blocktrans with year=transaction.date|date:"Y" %}Year {{ year }}{% endblocktrans %}</h3>
+        <dl class="transactions">
+    {% endifchanged %}
+        <dt>{% blocktrans with date=transaction.date amount=transaction.amount %}{{ date }}, {{ amount }} EUR{% endblocktrans %}</dt>
+        {% if transaction.donor or transaction.is_anonymous %}
+            <dd>
+                {% if transaction.is_anonymous %}
+                    {% if transaction.message %}
+                        {% setcontext as message %}{% tracwiki transaction.message %}{% endsetcontext %}
+                        {% blocktrans with message=message %}Anonymous donation:<blockquote>{{ message }}</blockquote>{% endblocktrans %}
+                    {% else %}
+                        {% trans "Anonymous donation." %}
+                    {% endif %}
+                {% else %}
+                    {% if transaction.message %}
+                        {% setcontext as message %}{% tracwiki transaction.message %}{% endsetcontext %}
+                        {% blocktrans with donor=transaction.donor message=message %}Donation from {{ donor }}:<blockquote>{{ message }}</blockquote>{% endblocktrans %}
+                    {% else %}
+                        {% blocktrans with donor=transaction.donor %}Donation from {{ donor }}.{% endblocktrans %}
+                    {% endif %}
+                {% endif %}
+            </dd>
+        {% else %}
+            <dd>{% tracwiki transaction.get_description %}</dd>
+        {% endif %}
+    {% if forloop.last %}
+        </dl>
+        <p>{% year_summary transaction.date|date:"Y" %}</p>
+    {% endif %}
+{% endfor %}

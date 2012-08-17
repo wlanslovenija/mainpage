@@ -560,6 +560,7 @@ table.wiki td {
 	text-align: center;
 	margin: -1px;
 	display: block;
+	vertical-align: top;
 }
 
 .dummy-content {
@@ -624,4 +625,13 @@ ul.supporters li {
 	border: none;
 	background-color: #E0E0E0;
 	color: #676767;
+}
+
+.transactions p, .transactions blockquote {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.transactions blockquote {
+	font-style: italic;
 }
