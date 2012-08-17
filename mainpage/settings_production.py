@@ -41,6 +41,12 @@ AUTHENTICATION_BACKENDS += (
     'frontend.account.auth.CryptBackend',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+}
+
 # RECAPTCHA_PUBLIC_KEY is in secrets
 # RECAPTCHA_PRIVATE_KEY is in secrets
 

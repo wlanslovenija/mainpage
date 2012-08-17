@@ -1,11 +1,28 @@
-{% load gallery %}
+{% load i18n cache simple_translation_tags gallery %}
 
-{% with "5" as max_images_number %}
-    {% for plugin, instance in plugins %}
-        {% ifchanged plugin.pk %}
-            <div class="gallery-entry">
-                {% render_gallery plugin %}
-            </div>
-        {% endifchanged %}
-    {% endfor %}
-{% endwith %}
+{% cache 1800 gallery %}
+    {% with "5" as max_images_number %}
+        {% for plugin, instance in plugins %}
+            {% with plugin.placeholder.entry_set.all as blog_entries %}
+                {% ifchanged plugin.pk %}
+                    {% ifchanged blog_entries.0.pub_date|date:"Y" %}
+                        <h3 id="year-{{ blog_entries.0.pub_date|date:"Y" }}">{% blocktrans with year=blog_entries.0.pub_date|date:"Y" %}Year {{ year }}{% endblocktrans %}</h3>
+                    {% endifchanged %}
+                    <div class="gallery-entry">
+                        {% with blog_entries.0|annotate_with_translations|get_preferred_translation_from_request:request as first_title %}
+                            <h4 id="{{ first_title.slug }}">
+                        {% endwith %}
+                            {% for entry in blog_entries|annotate_with_translations %}
+                                {% if not forloop.first %},{% endif %}
+                                {% with entry|get_preferred_translation_from_request:request as title %}
+                                    <a href="{{ title.get_absolute_url }}">{{ title }}</a>
+                                {% endwith %}
+                            {% endfor %}
+                        </h4>
+                        {% render_gallery plugin %}
+                    </div>
+                {% endifchanged %}
+            {% endwith %}
+        {% endfor %}
+    {% endwith %}
+{% endcache %}
