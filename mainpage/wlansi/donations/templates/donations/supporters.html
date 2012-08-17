@@ -1,5 +1,7 @@
 <ul class="supporters">
     {% for supporter in supporters %}
-        <li>{{ supporter.donor }}</li>
+        {% ifchanged supporter.donor %}
+            <li>{{ supporter.donor }}</li>
+        {% endifchanged %}
     {% endfor %}
 </ul>

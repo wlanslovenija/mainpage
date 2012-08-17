@@ -1,0 +1,9 @@
+{% load gallery %}
+
+{% with "7" as max_images_number %}
+    {% for plugin, instance in plugins %}
+        {% ifchanged plugin.pk %}
+            {% render_gallery plugin %}
+        {% endifchanged %}
+    {% endfor %}
+{% endwith %}

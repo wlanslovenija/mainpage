@@ -35,7 +35,7 @@ class SupportersPlugin(plugin_base.CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({
-            'supporters': models.Donation.objects.exclude(donor=None).exclude(donor='').order_by('donor').distinct('donor'),
+            'supporters': models.Donation.objects.exclude(donor=None).exclude(donor='').order_by('donor'),
         })
         return context
 

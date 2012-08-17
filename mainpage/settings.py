@@ -211,10 +211,11 @@ INSTALLED_APPS = (
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
     'mainpage.wlansi.donations',
+    'mainpage.wlansi.dummy',
+    'mainpage.wlansi.gallery',
     'mainpage.wlansi.inmedia',
     'mainpage.wlansi.news',
     'mainpage.wlansi.participants',
-    'mainpage.wlansi.dummy',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
