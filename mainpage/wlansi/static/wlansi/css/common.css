@@ -635,3 +635,11 @@ ul.supporters li {
 .transactions blockquote {
 	font-style: italic;
 }
+
+.infobox {
+	background: #68ae2c url('images/infobox.png') repeat center center;
+	color: #ffffff;
+	text-align: center;
+	padding: 10px;
+	border-radius: 4px 4px 4px 4px;
+}
