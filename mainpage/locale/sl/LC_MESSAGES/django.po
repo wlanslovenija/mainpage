@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-14 09:38+0200\n"
+"POT-Creation-Date: 2012-08-17 10:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,49 +19,236 @@ msgstr "slovenščina"
 msgid "English"
 msgstr "angleščina"
 
-#: wlansi/donations/cms_plugins.py:12
+#: wlansi/accounting/admin.py:12
+msgid "has paper"
+msgstr ""
+
+#: wlansi/accounting/admin.py:17 wlansi/accounting/admin.py:34
+#: wlansi/donations/admin.py:17 wlansi/inmedia/admin.py:19
+#: wlansi/inmedia/admin.py:35 wlansi/participants/admin.py:15
+msgid "Yes"
+msgstr ""
+
+#: wlansi/accounting/admin.py:18 wlansi/accounting/admin.py:35
+#: wlansi/donations/admin.py:18 wlansi/inmedia/admin.py:20
+#: wlansi/inmedia/admin.py:36 wlansi/participants/admin.py:16
+msgid "No"
+msgstr ""
+
+#: wlansi/accounting/admin.py:29
+msgid "has final paper"
+msgstr ""
+
+#: wlansi/accounting/cms_plugins.py:20
+msgid "Account"
+msgstr ""
+
+#: wlansi/accounting/cms_plugins.py:37
+msgid "Balance"
+msgstr ""
+
+#: wlansi/accounting/models.py:12
+msgid "Internal comment, like conditions, etc."
+msgstr ""
+
+#: wlansi/accounting/models.py:19
+msgid "funding source"
+msgstr ""
+
+#: wlansi/accounting/models.py:20
+msgid "funding sources"
+msgstr ""
+
+#: wlansi/accounting/models.py:31 wlansi/inmedia/models.py:59
+msgid "You can use Trac formatting."
+msgstr ""
+
+#: wlansi/accounting/models.py:38
+msgid "Date of transaction on the account."
+msgstr ""
+
+#: wlansi/accounting/models.py:39
+msgid "In EUR, final amount on the account."
+msgstr ""
+
+#: wlansi/accounting/models.py:40
+msgid "Internal comment, like circumstances, etc."
+msgstr ""
+
+#: wlansi/accounting/models.py:43
+msgid "transaction"
+msgstr ""
+
+#: wlansi/accounting/models.py:44
+msgid "transactions"
+msgstr ""
+
+#: wlansi/accounting/models.py:61 wlansi/donations/models.py:48
+#, python-format
+msgid "%(amount)s on %(date)s"
+msgstr ""
+
+#: wlansi/accounting/models.py:65
+msgid "Is this paper final version for transaction?"
+msgstr ""
+
+#: wlansi/accounting/models.py:66
+msgid ""
+"Bills, invoices, estimates, calculations, and other statements connected "
+"with transaction."
+msgstr ""
+
+#: wlansi/accounting/models.py:69
+msgid "paper"
+msgstr ""
+
+#: wlansi/accounting/models.py:70
+msgid "papers"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:9
+#, python-format
+msgid "Year %(year)s"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:12
+#, python-format
+msgid "%(date)s, %(amount)s EUR"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:18
+#, python-format
+msgid "Anonymous donation:<blockquote>%(message)s</blockquote>"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:20
+msgid "Anonymous donation."
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:25
+#, python-format
+msgid "Donation from %(donor)s:<blockquote>%(message)s</blockquote>"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/list.html:27
+#, python-format
+msgid "Donation from %(donor)s."
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/summary.html:3
+msgid "Summary:"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/summary.html:5
+#, python-format
+msgid "Income: %(income)s EUR"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/summary.html:6
+#, python-format
+msgid "Expenditure: %(expenditure)s EUR"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/summary.html:7
+#, python-format
+msgid "Balance: %(balance)s EUR"
+msgstr ""
+
+#: wlansi/donations/admin.py:12
+msgid "is anonymous"
+msgstr ""
+
+#: wlansi/donations/cms_plugins.py:16
 msgid "Donations"
 msgstr ""
 
-#: wlansi/donations/models.py:8
+#: wlansi/donations/cms_plugins.py:33
+msgid "Supporters"
+msgstr ""
+
+#: wlansi/donations/models.py:20
+msgid "donation source"
+msgstr ""
+
+#: wlansi/donations/models.py:21
+msgid "donation sources"
+msgstr ""
+
+#: wlansi/donations/models.py:31
 msgid "Date of donation on the account."
 msgstr ""
 
-#: wlansi/donations/models.py:9
+#: wlansi/donations/models.py:32
 msgid "In EUR, without any processing costs, final amount on the account."
 msgstr ""
 
-#: wlansi/donations/models.py:10
+#: wlansi/donations/models.py:33
 msgid "Leave blank if anonymous."
 msgstr ""
 
-#: wlansi/donations/models.py:12
+#: wlansi/donations/models.py:35
 msgid "Internal comment, like donation source, circumstances, etc."
 msgstr ""
 
-#: wlansi/donations/models.py:15
+#: wlansi/donations/models.py:38
 msgid "donation"
 msgstr ""
 
-#: wlansi/donations/models.py:16
+#: wlansi/donations/models.py:39
 msgid "donations"
-msgstr ""
-
-#: wlansi/donations/models.py:25
-#, python-format
-msgid "%(amount)s on %(date)s"
 msgstr ""
 
 #: wlansi/donations/templates/donations/list.html:5
 msgid "anonymous"
 msgstr "anonimno"
 
-#: wlansi/inmedia/admin.py:33
+#: wlansi/dummy/cms_plugins.py:19
+msgid "Dummy"
+msgstr ""
+
+#: wlansi/dummy/models.py:7
+msgid "Width of the dummy content, in CSS format."
+msgstr ""
+
+#: wlansi/dummy/models.py:8
+msgid "Height of the dummy content, in CSS format."
+msgstr ""
+
+#: wlansi/dummy/models.py:9
+msgid "custom CSS"
+msgstr ""
+
+#: wlansi/dummy/models.py:13
+msgid "dummy"
+msgstr ""
+
+#: wlansi/dummy/models.py:14
+msgid "dummies"
+msgstr ""
+
+#: wlansi/dummy/models.py:17
+#, python-format
+msgid "%(width)sx%(height)s dummy (%(content)s)"
+msgstr ""
+
+#: wlansi/dummy/templates/dummy/dummy.html:3
+msgid "Dummy content."
+msgstr ""
+
+#: wlansi/inmedia/admin.py:14
+msgid "has link"
+msgstr ""
+
+#: wlansi/inmedia/admin.py:30
+msgid "has local copy"
+msgstr ""
+
+#: wlansi/inmedia/admin.py:65
 #, python-format
 msgid "At least one %(name)s is required."
 msgstr ""
 
-#: wlansi/inmedia/cms_plugins.py:13
+#: wlansi/inmedia/cms_plugins.py:17
 msgid "In media"
 msgstr ""
 
@@ -96,23 +283,19 @@ msgstr ""
 msgid "local copies"
 msgstr ""
 
-#: wlansi/inmedia/models.py:54
+#: wlansi/inmedia/models.py:58
 msgid "Name of the publication source. In chosen language, if possible."
 msgstr ""
 
-#: wlansi/inmedia/models.py:55
-msgid "You can use Trac formatting."
-msgstr ""
-
-#: wlansi/inmedia/models.py:58
+#: wlansi/inmedia/models.py:62
 msgid "description"
 msgstr ""
 
-#: wlansi/inmedia/models.py:59
+#: wlansi/inmedia/models.py:63
 msgid "descriptions"
 msgstr ""
 
-#: wlansi/inmedia/models.py:63
+#: wlansi/inmedia/models.py:68
 #, python-format
 msgid "for language %(language)s"
 msgstr ""
@@ -121,17 +304,55 @@ msgstr ""
 msgid "(local copy)"
 msgstr "(lokalna kopija)"
 
-#: wlansi/news/cms_plugins.py:8
+#: wlansi/news/cms_plugins.py:12
 msgid "News"
 msgstr ""
 
 #: wlansi/news/templates/news/form.html:8
 msgid "Your e-mail address:"
-msgstr "Tvoja naslov elektronske pošte:"
+msgstr "Naslov tvoje elektronske pošte:"
 
 #: wlansi/news/templates/news/form.html:9
 msgid "Subscribe"
 msgstr "Prijavi"
+
+#: wlansi/participants/admin.py:10
+msgid "is duplicate"
+msgstr ""
+
+#: wlansi/participants/cms_plugins.py:25
+msgid "Participants"
+msgstr ""
+
+#: wlansi/participants/models.py:7
+msgid "Manually added"
+msgstr ""
+
+#: wlansi/participants/models.py:8
+msgid "Git source code"
+msgstr ""
+
+#: wlansi/participants/models.py:9
+msgid "Trac wiki and tickets"
+msgstr ""
+
+#: wlansi/participants/models.py:14
+msgid ""
+"Full name, nickname, username, etc. Make sure you verify how and if person "
+"wants to be listed among participants."
+msgstr ""
+
+#: wlansi/participants/models.py:16
+msgid "Internal comment, description, reason, circumstances, etc."
+msgstr ""
+
+#: wlansi/participants/models.py:21
+msgid "participant"
+msgstr ""
+
+#: wlansi/participants/models.py:22
+msgid "participants"
+msgstr ""
 
 #: wlansi/templates/404.html:5 wlansi/templates/404.html.py:10
 msgid "404 Not Found"
@@ -182,9 +403,29 @@ msgstr "Likeaj na Facebooku"
 msgid "Follow us on Twitter"
 msgstr "Spremljaj na Twitterju"
 
+#: wlansi/templates/header.html:18
+msgid "Contact us"
+msgstr ""
+
+#: wlansi/templates/header.html:18
+msgid "Contact"
+msgstr ""
+
 #: wlansi/templates/main.html:5
 msgid "wlan slovenija – open wireless network of Slovenia"
 msgstr "wlan slovenija – odprto brezžično omrežje Slovenije"
+
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:39
+msgid "Loading tweets..."
+msgstr ""
+
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:41
+msgid "View tweet on Twitter"
+msgstr ""
+
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:50
+msgid "More on Twitter..."
+msgstr ""
 
 #: wlansi/templates/cmsplugin_blog/author_links_snippet.html:3
 msgid "See entries by:"
@@ -214,7 +455,7 @@ msgid "Latest entries"
 msgstr "Zadnji prispevki"
 
 #: wlansi/templates/cmsplugin_blog/entry_archive.html:24
-#: wlansi/templates/cmsplugin_blog/latest_entries.html:7
+#: wlansi/templates/cmsplugin_blog/latest_entries.html:9
 #: wlansi/templates/cmsplugin_blog/month_links_snippet.html:11
 msgid "No entries."
 msgstr "Ni prispevkov."
@@ -279,6 +520,14 @@ msgstr "Preberi več, komentiraj, likeaj, podeli ..."
 msgid "Comment, like, share ..."
 msgstr "Komentiraj, likeaj, podeli ..."
 
+#: wlansi/templates/cmsplugin_blog/latest_entries.html:3
+msgid "Blog"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_blog/latest_entries.html:13
+msgid "More on blog..."
+msgstr ""
+
 #: wlansi/templates/cmsplugin_blog/month_links_snippet.html:3
 msgid "See entries for:"
 msgstr "Prispevki za mesec:"
@@ -286,6 +535,34 @@ msgstr "Prispevki za mesec:"
 #: wlansi/templates/cmsplugin_blog/tag_links_snippet.html:3
 msgid "See entries tagged:"
 msgstr "Prispevki z oznako:"
+
+#: wlansi/templates/cmsplugin_contact/contact.html:39
+msgid "Incorrect please try again"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:42
+msgid "Enter the words above:"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:43
+msgid "Enter the numbers you hear:"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:48
+msgid "Get another CAPTCHA"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:49
+msgid "Get an audio CAPTCHA"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:50
+msgid "Get an image CAPTCHA"
+msgstr ""
+
+#: wlansi/templates/cmsplugin_contact/contact.html:52
+msgid "Help"
+msgstr ""
 
 #: wlansi/templates/cmsplugin_filer_folder/folder.html:8
 msgid "Folders"
