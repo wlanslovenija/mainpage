@@ -288,6 +288,12 @@ AUTHENTICATION_BACKENDS = (
     'frontend.account.auth.ModelBackend',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    },
+}
+
 FORCE_LOWERCASE_TAGS = True
 
 CMS_TEMPLATES = (
