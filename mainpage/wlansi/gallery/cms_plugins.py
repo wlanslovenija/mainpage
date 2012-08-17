@@ -21,6 +21,8 @@ class GalleryPlugin(plugin_base.CMSPluginBase):
         blog_placeholders = cms_models.Placeholder.objects.filter(entry__in=blog_entries)
         plugins = cms_models.CMSPlugin.objects.filter(placeholder__in=blog_placeholders, plugin_type=cms_plugins.FilerFolderPlugin.__name__).order_by('-placeholder__entry__pub_date')
 
+        seen_folders = set()
+
         def distinct_plugins():
             for plugin in plugins:
                 instance = plugin.get_plugin_instance()[0]
@@ -29,7 +31,8 @@ class GalleryPlugin(plugin_base.CMSPluginBase):
                     # Invalid plugin instance, we ignore it
                     continue
 
-                if not distinct_plugins or distinct_plugins[-1][1].folder != instance.folder:
+                if instance.folder not in seen_folders:
+                    seen_folders.add(instance.folder)
                     yield (plugin, instance)
 
         context.update({

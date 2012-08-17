@@ -1,9 +1,11 @@
 {% load gallery %}
 
-{% with "7" as max_images_number %}
+{% with "5" as max_images_number %}
     {% for plugin, instance in plugins %}
         {% ifchanged plugin.pk %}
-            {% render_gallery plugin %}
+            <div class="gallery-entry">
+                {% render_gallery plugin %}
+            </div>
         {% endifchanged %}
     {% endfor %}
 {% endwith %}
