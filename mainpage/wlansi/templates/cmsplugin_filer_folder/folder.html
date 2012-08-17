@@ -35,6 +35,18 @@
 		<li><a href="{{ image.image.description }}"><img src="{{ image.image.url }}" alt="{{ image.image.default_alt_text }}" title="{{ image.image.default_caption|default:image.image.default_alt_text }}"{% if image.image.width %} width="{{ image.image.width }}"{% endif %}{% if image.image.height %} height="{{ image.image.height }}"{% endif %} /></a></li>
 	{% endfor %}
 	</ul>
+{% elif object.view_option == "panoramajs" %}
+	<script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/panorama.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	var panoramas = [ {% for image in folder_images %}"{{ image.image.url }}", {% endfor %} ];
+	jQuery(document).ready(function ($) {
+		$('#panorama').panorama({
+			images: panoramas
+		});
+	});
+	//]]>
+	</script><div id="panorama"></div>
 {% else %}
     {% with max_images_number|default:"0"|add:"0" as max_images_number %}
         <div class="image-folder">

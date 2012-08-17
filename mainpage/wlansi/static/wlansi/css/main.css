@@ -1,21 +1,30 @@
 
 .right-col, .middle-col, .left-col {
 	display: inline-block;
-	width: 260px;
-	padding: 25px;
+	width: 298px;
+	padding: 25px 0;
 	float: none;
 	vertical-align: top;
 }
 
+.middle-col, .left-col {
+	padding-right: 25px;
+}
+
+.motivation {
+	height: 150px;
+	display: inline-block;
+	width: 20%;
+	text-align: center;
+}
+
+.motivation-1, .motivation-5 {
+	width: 19%;
+}
 
 .ssid {
-	background-color: #68ae2c;
-	color: #ffffff;
-	text-align: center;
-	font-size: 110%;
-	padding: 20px 10px;
+	font-size: 180%;
 	font-weight: bold;
-	border-radius: 4px 4px 4px 4px;
 }
 
 .blog_latest_entries p {
@@ -30,4 +39,10 @@
 	display: block;
 	text-align: right;
 	font-size: 90%;
+}
+
+#panorama {
+	width: 960px;
+	height: 250px;
+	overflow: hidden;
 }

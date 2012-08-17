@@ -455,6 +455,7 @@ CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
     ('slideshow', 'Slideshow'),
     ('list', 'List'),
     ('supporters', 'Supporters'),
+    ('panoramajs', 'Panoramas (JavaScript)'),
 )
 
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
