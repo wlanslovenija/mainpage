@@ -661,3 +661,12 @@ ul.supporters li {
 	padding: 10px;
 	border-radius: 4px 4px 4px 4px;
 }
+
+.infobox :link, .infobox *:visited {
+	border-bottom: 1px dotted #222222;
+	color: #555555;
+}
+
+.infobox :link:hover, .infobox *:visited:hover {
+	color: #050505;
+}
