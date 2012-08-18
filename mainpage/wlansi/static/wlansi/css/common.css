@@ -498,19 +498,23 @@ table.wiki td {
 	clear: both;
 }
 
+.randomimage,
 .image-folder {
 	margin: 0 auto;
 }
 
+.randomimage a,
 .image-folder a {
 	border: none;
 }
 
+.randomimage a img,
 .image-folder a img {
 	padding: 2px;
 	border: 1px solid #EEEEEE;
 }
 
+.randomimage a:hover img,
 .image-folder a:hover img {
 	border: 1px solid #68ae2c;
 }
@@ -670,4 +674,8 @@ ul.supporters li {
 
 .infobox :link:hover, .infobox *:visited:hover {
 	color: #050505;
+}
+
+li.empty {
+	color: #676767;
 }

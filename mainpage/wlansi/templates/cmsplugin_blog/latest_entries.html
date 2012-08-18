@@ -1,14 +1,14 @@
 {% load i18n simple_translation_tags %}
 <div class="blog_latest_entries">
 <h3>{% trans "Blog" %}</h3>
+<ul>
 {% for object in latest|annotate_with_translations %}
     {% with object|get_preferred_translation_from_request:request as title %}
-	<p><a href="{{ title.get_absolute_url }}">{{ title }}<span class="date">{{ object.pub_date|date:"DATE_FORMAT" }}</span></a></p>
+	<li><span class="date">{{ object.pub_date|date:"DATE_FORMAT" }}</span><a href="{{ title.get_absolute_url }}">{{ title }}</a></li>
 	{% endwith %}
 {% empty %}
-	<p>{% trans "No entries." %}</p>
+	<li>{% trans "No entries." %}</li>
 {% endfor %}
-</div>
-<p>
+</ul>
 <a class="blog-link" href="{% url blog_archive_index %}">{% trans "More on blog..." %}</a>
-</p>
+</div>

@@ -36,24 +36,54 @@
 	margin: 20px 0;
 }
 
-.blog_latest_entries p {
-	margin-bottom: 10px;
+ul.tweet_list,
+.blog_latest_entries ul {
+	list-style: none;
+	padding: 0;
 }
 
-.blog_latest_entries p a {
+ul.tweet_list li,
+.blog_latest_entries li {
+	margin-bottom: 15px;
+}
+
+.blog_latest_entries li a {
 	border: none;
+	font-size: 110%;
 }
 
-.blog_latest_entries p .date {
+.blog_latest_entries li .date {
 	display: block;
+	font-size: 80%;
+	color: #676767;
+}
+
+a.blog-link,
+a.twitter-link {
+	border: none;
+	display: block;
+	margin: 10px;
 	text-align: right;
-	font-size: 90%;
+	padding-right: 25px;
+	height: 17px;
+	background: transparent url('images/go_right.png') no-repeat 100% 0px;
+}
+
+a.blog-link:hover,
+a.twitter-link:hover {
+	background: transparent url('images/go_right.png') no-repeat 100% -18px;
+}
+
+ul.tweet_list li.empty {
+	font-size: 110%;
+	text-align: center;
 }
 
 #panorama {
 	width: 960px;
 	height: 250px;
 	overflow: hidden;
+	background-color: #ffffff;
 }
 
 .statistics {
