@@ -1,6 +1,7 @@
 {% load i18n cms_tags thumbnail simple_translation_tags context_tags %}
 
 <div class="randomimage">
+    <h3>{% trans "Gallery" %}</h3>
     {% for image in images %}
         {% thumbnail image.file 130x130 crop="True" upscale=0 as thumbnail %}
         <a class="image" href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
