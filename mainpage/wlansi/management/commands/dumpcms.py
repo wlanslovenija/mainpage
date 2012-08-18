@@ -9,6 +9,8 @@ from django.db.models import Q
 
 from cms import models as cms_models
 
+from cms.plugins.snippet import models as snippet_models
+
 from filer import models as filer_models
 
 from cmsplugin_blog import models as blog_models
@@ -78,6 +80,7 @@ class Command(base.NoArgsCommand):
             filer_models.File.objects.non_polymorphic().filter(is_public=True),
             filer_models.Image.objects.non_polymorphic().filter(is_public=True),
             filer_image_models.ThumbnailOption.objects.all(),
+            snippet_models.Snippet.objects.all(),
         )
         
         try:
