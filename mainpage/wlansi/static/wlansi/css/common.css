@@ -663,8 +663,9 @@ ul.supporters li {
 }
 
 .infobox :link, .infobox *:visited {
-	border-bottom: 1px dotted #222222;
-	color: #555555;
+	color: #ffffff;
+	border: none;
+	text-decoration: underline;
 }
 
 .infobox :link:hover, .infobox *:visited:hover {
