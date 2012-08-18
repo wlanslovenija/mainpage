@@ -115,6 +115,33 @@ ul.tweet_list li.empty {
 	border-radius: 4px 4px 0px 0px;
 }
 
+#panorama .toggle {
+	display: none;
+	width: 16px;
+	height: 16px;
+	background: transparent url('images/pause.png') no-repeat 0px 0px;
+	overflow: hidden;
+	text-indent: 16px;
+	outline: none;
+	border: none;
+}
+
+#panorama .toggle.play {
+	background: transparent url('images/play.png') no-repeat 0px 0px;
+}
+
+#panorama .toggle:hover {
+	background: transparent url('images/pause.png') no-repeat 0px -19px;
+}
+
+#panorama .toggle.play:hover {
+	background: transparent url('images/play.png') no-repeat 0px -19px;
+}
+
+#panorama:hover .toggle {
+	display: block;
+}
+
 .statistics {
 	padding: 10px;
 }
