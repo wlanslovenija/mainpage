@@ -1,5 +1,5 @@
 $.fn.panorama=function(o){
-	var s = $.extend({images : [], transitionTime : 2000, panoramaTime : 30000}, o);
+	var s = $.extend({images : [], transitionTime : 2000, panoramaTime : 60000}, o);
 
 	var c = this;
 	var cWidth = this.width();
@@ -26,8 +26,17 @@ $.fn.panorama=function(o){
 			}
 
 			var x = -(img.width * (cHeight / img.height) - cWidth);
-			x1 = Math.min(0, Math.max(x, Math.round(x * Math.random())));
-			x2 = Math.min(0, Math.max(x, Math.round(x * Math.random())));
+
+			if (Math.random() > 0.5) {
+				var x1 = x;
+				var x2 = 0;
+			} else {
+				var x1 = 0;
+				var x2 = x;
+			}
+
+			/*x1 = Math.round(Math.min(0, Math.max(x, x * Math.random())));
+			x2 = Math.round(Math.min(0, Math.max(x, x * Math.random())));*/
 
 			var nImage = $("<img />").attr({
 				src : imgurl, 
