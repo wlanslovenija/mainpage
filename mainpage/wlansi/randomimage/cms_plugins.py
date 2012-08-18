@@ -27,7 +27,7 @@ class RandomImagePlugin(plugin_base.CMSPluginBase):
         context.update({
             'object': instance,
             'placeholder': placeholder,
-            'images': images.order_by('?')[0:3],
+            'images': images.order_by('?')[:4],
         })
 
         return context

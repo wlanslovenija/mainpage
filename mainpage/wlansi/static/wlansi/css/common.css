@@ -687,3 +687,7 @@ ul.supporters li {
 li.empty {
 	color: #676767;
 }
+
+.paypal-donate img, .paypal-donate input {
+	border: none;
+}
