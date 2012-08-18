@@ -39,6 +39,12 @@ jQuery(document).ready(function ($) {
 		loading_text: '{% trans "Loading tweets..." %}',
 		query: 'to:wlanslovenija OR from:wlanslovenija OR #wlanslovenija OR @wlanslovenija OR to:wlanljubljana OR from:wlanljubljana OR #wlanljubljana OR @wlanljubljana',
 		template: '{avatar}<span class="tweet_time"><a href="{tweet_url}" title="{% trans "View tweet on Twitter" %}">{tweet_relative_time}</a></span>{join}{text}'
+	}).bind("loaded", function() {
+		var list = $(this).find(".tweet_list");
+		console.log(list);
+		if (list.is(":empty")) {
+			list.append('<li class="empty">{% trans "No recent tweets" %}</li>');
+		} 
 	});
 });
 //]]>
