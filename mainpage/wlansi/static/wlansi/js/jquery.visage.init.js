@@ -24,7 +24,7 @@ $.fn.visage.defaults.addDOM = function (visageDOM, options) {
 };
 $(document).ready(function () {
 	var exts = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-	$(".entry-content").add(".gallery-entry").each(function (i, el) {
+	$(".entry-content").add(".gallery-entry").add(".randomimage").each(function (i, el) {
 		$("a[href]:has(img)", el).filter(function (i) {
 			return exts.test($(this).attr('href'));
 		}).visage();
