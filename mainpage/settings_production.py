@@ -36,6 +36,7 @@ DATABASES = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+# We support some common password formats to ease transition
 AUTHENTICATION_BACKENDS += (
     'frontend.account.auth.AprBackend',
     'frontend.account.auth.CryptBackend',
