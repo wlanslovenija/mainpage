@@ -33,6 +33,7 @@
 .ssid {
 	font-size: 180%;
 	font-weight: bold;
+	margin: 20px 0;
 }
 
 .blog_latest_entries p {
@@ -53,4 +54,29 @@
 	width: 960px;
 	height: 250px;
 	overflow: hidden;
+}
+
+.statistics {
+	padding: 10px;
+}
+
+.statistics span {
+	display: block;
+	font-size: 150%;
+	color: #969696;
+	font-weight: bold;
+	padding: 25px 5px 5px 50px;
+	height: 42px;
+}
+
+.statistics .statistics-nodes {
+	background: transparent url('images/online_nodes.png') no-repeat center left;
+}
+
+.statistics .statistics-online {
+	background: transparent url('images/online_clients.png') no-repeat center left;
+}
+
+.statistics .statistics-clients {
+	background: transparent url('images/total_clients.png') no-repeat center left;
 }
