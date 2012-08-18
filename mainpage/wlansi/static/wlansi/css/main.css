@@ -10,6 +10,7 @@
 .showcase {
 	border-radius: 0px 0px 4px 4px;
 	background-color: #68ae2c;
+	text-align: center;
 }
 
 .middle-col, .left-col {
@@ -26,9 +27,9 @@
 	font-size: 110%;
 }
 
-.motivation-1 { text-align: left; padding-left: 15px; }
+.motivation-1 { text-align: left; }
 
-.motivation-5 { text-align: right; padding-right: 15px; }
+.motivation-5 { text-align: right; }
 
 .ssid {
 	font-size: 180%;
