@@ -297,12 +297,13 @@ CACHES = {
 FORCE_LOWERCASE_TAGS = True
 
 CMS_TEMPLATES = (
-    ('simple.html', 'Simple Page'),
-    ('simple_with_right.html', 'Simple Page with Right Column'),
-    ('simple_two_columns.html', 'Simple Page with Two Columns'),
-    ('layered_two_columns.html', 'Page with Two Columns, a header and a footer'),
-    ('main.html', 'Main Page'),
-    ('blog.html', 'Blog Page'),
+    ('simple.html', 'Simple page'),
+    ('simple_with_right.html', 'Page with right column'),
+    ('simple_two_columns.html', 'Page with two columns'),
+    ('layered_two_columns.html', 'Page with two columns, a header and a footer'),
+    ('layered_three_columns.html', 'Page with three columns, a header and a footer'),
+    ('main.html', 'Main page'),
+    ('blog.html', 'Blog page'),
 )
 
 # Not really used as we are not using django-cms core plugins for files but django-filer

@@ -540,6 +540,26 @@ table.wiki td {
 	width: 460px;
 }
 
+.three-column-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin-right: 25px;
+}
+
+.three-column-middle {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin-right: 25px;
+}
+
+.three-column-right {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+}
+
 .two-column-left-main {
 	display: inline-block;
 	vertical-align: top;
@@ -547,13 +567,11 @@ table.wiki td {
 	margin-right: 30px;
 }
 
-
 .two-column-right-side {
 	display: inline-block;
 	vertical-align: top;
 	width: 260px;
 }
-
 
 .dummy {
 	border: 1px dashed black;
