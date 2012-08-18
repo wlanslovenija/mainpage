@@ -217,6 +217,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi.news',
     'mainpage.wlansi.participants',
     'mainpage.wlansi.randomimage',
+    'mainpage.wlansi.simplemap',
     'mainpage.wlansi.statistics',
 
     'django.contrib.auth',
