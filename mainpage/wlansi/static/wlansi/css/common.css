@@ -498,14 +498,22 @@ table.wiki td {
 	clear: both;
 }
 
-.randomimage,
 .image-folder {
 	margin: 0 auto;
 }
 
-.randomimage a,
+.randomimage {
+	margin: 10px;
+}
+
 .image-folder a {
 	border: none;
+}
+
+.randomimage a {
+	border: none;
+	display: inline-block;
+	margin: 5px;
 }
 
 .randomimage a img,

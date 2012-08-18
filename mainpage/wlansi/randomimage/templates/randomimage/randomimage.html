@@ -1,12 +1,9 @@
 {% load i18n cms_tags thumbnail simple_translation_tags context_tags %}
 
 <div class="randomimage">
-    {% thumbnail image.file 298x200 crop="True" upscale=0 as thumbnail %}
-    <a href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
-    {% with image.folder.filerfolder_set.all.0.placeholder.entry_set.all.0|annotate_with_translations|get_preferred_translation_from_request:request as blog_title %}
-        {% if blog_title.slug %}
-            {% setcontext as gallery_url %}{% page_url "gallery" %}#{{ blog_title.slug }}{% endsetcontext %}
-            {% blocktrans with gallery_url=gallery_url %}<a href="{{ gallery_url }}">More images...</a>{% endblocktrans %}
-        {% endif %}
-    {% endwith %}
+    {% for image in images %}
+    {% thumbnail image.file 150x150 crop="True" upscale=0 as thumbnail %}
+    <a class="image" href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
+    {% endfor %}
+    {% blocktrans with gallery_url=gallery_url %}<a class="more" href="{% page_url "gallery" %}">More images...</a>{% endblocktrans %}
 </div>
