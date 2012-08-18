@@ -7,3 +7,4 @@
 cd /srv/cms/mainpage
 python manage.py dumpcms --settings=mainpage.settings_production --traceback > /srv/www/bindist/data/dumpcms.yaml
 bzip2 -f /srv/www/bindist/data/dumpcms.yaml
+python manage.py dumptestdata --settings=mainpage.settings_production --traceback /srv/www/bindist/data/dumpcms-nodewatcher.tar.bz2 nodes.Node nodes.APClient nodes.Project dns.Zone
