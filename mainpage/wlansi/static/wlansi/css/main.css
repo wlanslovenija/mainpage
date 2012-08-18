@@ -8,7 +8,7 @@
 }
 
 .showcase {
-	border-radius: 0px 0px 4px 4px;
+	border-radius: 4px;
 	background-color: #68ae2c;
 	text-align: center;
 }
@@ -112,6 +112,7 @@ ul.tweet_list li.empty {
 	height: 250px;
 	overflow: hidden;
 	background-color: #ffffff;
+	border-radius: 4px 4px 0px 0px;
 }
 
 .statistics {
