@@ -30,28 +30,29 @@
         {% endif %}
     </div>
 {% elif object.view_option == "supporters" %}
-	<ul class="supporters-logo">
-	{% for image in folder_images %}
-		<li><a href="{{ image.image.description }}"><img src="{{ image.image.url }}" alt="{{ image.image.default_alt_text }}" title="{{ image.image.default_caption|default:image.image.default_alt_text }}"{% if image.image.width %} width="{{ image.image.width }}"{% endif %}{% if image.image.height %} height="{{ image.image.height }}"{% endif %} /></a></li>
-	{% endfor %}
-	</ul>
+    <ul class="supporters-logo">
+    {% for image in folder_images %}
+        {% thumbnail image.file 180x0 crop=0 upscale=0 as thumbnail %}
+        <li><a href="{{ image.image.description }}"><img src="{{ thumbnail.url }}" alt="{{ image.image.default_alt_text }}" title="{{ image.image.default_caption|default:image.image.default_alt_text }}"  width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" /></a></li>
+    {% endfor %}
+    </ul>
 {% elif object.view_option == "panoramajs" %}
-	<script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/panorama.js"></script>
-	<script type="text/javascript">
-	//<![CDATA[
-	var panoramas = [ {% for image in folder_images %}"{{ image.image.url }}", {% endfor %} ];
-	jQuery(document).ready(function ($) {
-		$('#panorama').panorama({
-			images: panoramas
-		});
-	});
-	//]]>
-	</script><div id="panorama"></div>
+    <script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/panorama.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+    var panoramas = [ {% for image in folder_images %}"{{ image.image.url }}", {% endfor %} ];
+    jQuery(document).ready(function ($) {
+        $('#panorama').panorama({
+            images: panoramas
+        });
+    });
+    //]]>
+    </script><div id="panorama"></div>
 {% else %}
     {% with max_images_number|default:"0"|add:"0" as max_images_number %}
         <div class="image-folder">
         {% for image in folder_images %}
-            {% thumbnail image.file 160x160 crop="True" upscale="False" as thumbnail %}
+            {% thumbnail image.file 160x160 crop="True" upscale=0 as thumbnail %}
             <a href="{{ image.image.url }}"{% if max_images_number and forloop.counter > max_images_number %} class="hidden-image"{% endif %}><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
         {% endfor %}
         </div>
