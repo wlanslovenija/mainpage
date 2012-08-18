@@ -7,7 +7,7 @@
 	<li><span class="date">{{ object.pub_date|date:"DATE_FORMAT" }}</span><a href="{{ title.get_absolute_url }}">{{ title }}</a></li>
 	{% endwith %}
 {% empty %}
-	<li>{% trans "No entries." %}</li>
+	<li class="empty">{% trans "No entries." %}</li>
 {% endfor %}
 </ul>
 <a class="blog-link" href="{% url blog_archive_index %}">{% trans "More on blog..." %}</a>

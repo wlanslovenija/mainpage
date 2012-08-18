@@ -36,6 +36,19 @@
 	margin: 20px 0;
 }
 
+.ssid p {
+	margin: 5px 0;
+}
+
+.migration {
+	font-size: 110%;
+	padding: 10px;
+	text-align: center;
+	margin: 20px 0;
+	border: 1px #aaaaaa solid;
+	border-radius: 4px 4px 4px 4px;
+}
+
 ul.tweet_list,
 .blog_latest_entries ul {
 	list-style: none;
@@ -45,6 +58,7 @@ ul.tweet_list,
 ul.tweet_list li,
 .blog_latest_entries li {
 	margin-bottom: 15px;
+	clear: both;
 }
 
 .blog_latest_entries li a {
@@ -52,11 +66,22 @@ ul.tweet_list li,
 	font-size: 110%;
 }
 
+ul.tweet_list .tweet_time,
 .blog_latest_entries li .date {
 	display: block;
 	font-size: 80%;
 	color: #676767;
 }
+
+ul.tweet_list a {
+	border: none;
+}
+
+ul.tweet_list .tweet_avatar {
+	margin-right: 5px;
+	float: left;
+}
+
 
 a.blog-link,
 a.twitter-link {
