@@ -2,10 +2,9 @@
 
 <div class="randomimage">
     {% for image in images %}
-    <h3>{% trans "From the gallery" %}</h3>
         {% thumbnail image.file 130x130 crop="True" upscale=0 as thumbnail %}
         <a class="image" href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
     {% endfor %}
     {% setcontext as gallery_url %}{% page_url "gallery" %}{% endsetcontext %}
-    {% blocktrans with gallery_url=gallery_url %}<a class="more" href="{{ gallery_url }}">More images...</a>{% endblocktrans %}
+    {% blocktrans with gallery_url=gallery_url %}<a class="more" href="{{ gallery_url }}">More in gallery...</a>{% endblocktrans %}
 </div>
