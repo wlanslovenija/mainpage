@@ -29,7 +29,7 @@ class SimpleMapPlugin(plugin_base.CMSPluginBase):
             'zoom': 7,
             'size': '%dx%d' % (SIMPLEMAP_WIDTH, SIMPLEMAP_HEIGHT),
             'sensor': 'false',
-            'style': ('feature:road|visibility:off', 'element:labels|visibility:off'),
+            'style': ('feature:road|visibility:off', 'element:labels|visibility:off', 'feature:all|hue:0x1072b1|gamma:3'),
             'markers': '|'.join(['shadow:false', 'icon:%s' % MARKER_URL] + list(markers)),
         }
 
