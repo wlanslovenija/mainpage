@@ -502,7 +502,7 @@ table.wiki td {
 	margin: 0 auto;
 }
 
-.randomimage {
+.randomimages {
 	margin: 5px 0px;
 }
 
@@ -510,21 +510,29 @@ table.wiki td {
 	border: none;
 }
 
-.randomimage a {
+.randomimages a {
 	border: none;
 	display: inline-block;
 	margin: 5px;
 }
 
-.randomimage a img,
+.randomimages a img,
 .image-folder a img {
 	padding: 2px;
 	border: 1px solid #EEEEEE;
 }
 
-.randomimage a:hover img,
+.randomimages a:hover img,
 .image-folder a:hover img {
 	border: 1px solid #68ae2c;
+}
+
+.image-title {
+    display: none;
+}
+
+.image-title h4 {
+    margin: 0;
 }
 
 .blog_latest_entries p {

@@ -1,9 +1,18 @@
 {% load i18n cms_tags thumbnail simple_translation_tags context_tags %}
 
-<div class="randomimage">
+<div class="randomimages">
     <h3>{% trans "Gallery" %}</h3>
     {% for image in images %}
         {% thumbnail image.file 130x130 crop="True" upscale=0 as thumbnail %}
+        <div class="image-title">
+            {% with image.folder.filerfolder_set.all.0.placeholder.entry_set.all as blog_entries %}
+                {% for entry in blog_entries|annotate_with_translations %}
+                    {% with entry|get_preferred_translation_from_request:request as title %}
+                        <h4><a href="{{ title.get_absolute_url }}">{{ title }}</a></h4>
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
+        </div>
         <a class="image" href="{{ image.image.url }}"><img src="{{ thumbnail.url }}" alt="{{ image.label }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %} /></a>
     {% endfor %}
     {% setcontext as gallery_url %}{% page_url "gallery" %}{% endsetcontext %}

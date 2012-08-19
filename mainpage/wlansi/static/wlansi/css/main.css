@@ -84,7 +84,7 @@ ul.tweet_list .tweet_avatar {
 }
 
 
-.randomimage a.more,
+.randomimages a.more,
 a.blog-link,
 a.twitter-link {
 	border: none;
@@ -96,7 +96,7 @@ a.twitter-link {
 	background: transparent url('images/go_right.png') no-repeat 100% 0px;
 }
 
-.randomimage a.more:hover,
+.randomimages a.more:hover,
 a.blog-link:hover,
 a.twitter-link:hover {
 	background: transparent url('images/go_right.png') no-repeat 100% -18px;
