@@ -1,3 +1,5 @@
 {% load i18n cms_tags %}
 
-<a href="{% page_url "map" %}"><img src="https://maps.googleapis.com/maps/api/staticmap?{{ parameters }}" width="{{ width }}" height="{{ height }}" alt="{% trans "Network map" %}" title="{% trans "Network map" %}" /></a>
+<div class="simplemap">
+    <a href="{% page_url "map" %}"><img src="https://maps.googleapis.com/maps/api/staticmap?{{ parameters }}" width="{{ width }}" height="{{ height }}" alt="{% trans "Network map" %}" title="{% trans "Network map" %}" /></a>
+</div>

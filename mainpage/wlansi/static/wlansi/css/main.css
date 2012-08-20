@@ -18,11 +18,12 @@
 }
 
 .motivation {
-	height: 150px;
+	/* height: 150px; */
+	/* vertical-align: top; */
+	vertical-align: middle;
 	display: inline-block;
 	width: 19%;
 	text-align: center;
-	vertical-align: top;
 	color: #ffffff;
 	font-size: 110%;
 }
@@ -31,13 +32,13 @@
 
 .motivation-5 { text-align: right; }
 
-.ssid {
+.connect {
 	font-size: 180%;
 	font-weight: bold;
 	margin: 20px 0;
 }
 
-.ssid p {
+.connect p {
 	margin: 5px 0;
 }
 
@@ -83,10 +84,10 @@ ul.tweet_list .tweet_avatar {
 	float: left;
 }
 
-
 .randomimages a.more,
 a.blog-link,
-a.twitter-link {
+a.twitter-link,
+.donate a.more {
 	border: none;
 	display: block;
 	margin: 10px;
@@ -98,8 +99,13 @@ a.twitter-link {
 
 .randomimages a.more:hover,
 a.blog-link:hover,
-a.twitter-link:hover {
+a.twitter-link:hover,
+.donate a.more:hover {
 	background: transparent url('images/go_right.png') no-repeat 100% -18px;
+}
+
+.donate a.more {
+    margin-top: -2em;
 }
 
 ul.tweet_list li.empty {
@@ -165,4 +171,32 @@ ul.tweet_list li.empty {
 
 .statistics .statistics-clients {
 	background: transparent url('images/total_clients.png') no-repeat center left;
+}
+
+.showcase :link, .showcase *:visited {
+    color: #ffffff;
+    border: none;
+    text-decoration: underline;
+}
+
+.showcase :link:hover, .showcase *:visited:hover {
+    color: #050505;
+}
+
+.motivation-5 p {
+    margin-bottom: 0.4em;
+}
+
+.wlan-description p {
+    margin-top: 0;
+    font-size: 0.66em;
+    margin-bottom: 1.66em;
+}
+
+#content h3 {
+    display: none;
+}
+
+.simplemap a {
+    border: none;
 }
