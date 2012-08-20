@@ -170,8 +170,8 @@ ul.tweet_list li.empty {
 	background: transparent url('images/online_nodes.png') no-repeat center left;
 }
 
-.statistics .statistics-online {
-	background: transparent url('images/online_clients.png') no-repeat center left;
+.statistics .statistics-connected {
+	background: transparent url('images/connected_clients.png') no-repeat center left;
 }
 
 .statistics .statistics-clients {
