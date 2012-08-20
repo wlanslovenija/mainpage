@@ -1,5 +1,5 @@
-{% load i18n sekizai_tags %}
-{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}wlansi/jquery/jquery.tweet.js"></script>{% endaddtoblock %}
+{% load i18n staticfiles sekizai_tags %}
+{% addtoblock "js" %}<script type="text/javascript" src="{% static "wlansi/jquery/jquery.tweet.js" %}"></script>{% endaddtoblock %}
 {% addtoblock "js" %}
 <script type="text/javascript">
 //<![CDATA[

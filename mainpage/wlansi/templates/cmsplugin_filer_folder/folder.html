@@ -1,4 +1,4 @@
-{% load i18n thumbnail %}
+{% load i18n staticfiles sekizai_tags thumbnail %}
 
 {% if object.view_option == "list" %}
     {% firstof object.title object.folder.name  %}
@@ -37,7 +37,8 @@
     {% endfor %}
     </ul>
 {% elif object.view_option == "panoramajs" %}
-    <script type="text/javascript" src="{{ STATIC_URL }}wlansi/js/panorama.js"></script>
+    {% addtoblock "js" %}<script type="text/javascript" src="{% static "wlansi/js/panorama.js" %}"></script>{% endaddtoblock %}
+    {% addtoblock "js" %}
     <script type="text/javascript">
     //<![CDATA[
     var panoramas = [ {% for image in folder_images %}"{{ image.image.url }}", {% endfor %} ];
@@ -47,7 +48,9 @@
         });
     });
     //]]>
-    </script><div id="panorama"></div>
+    </script>
+    {% endaddtoblock %}
+    <div id="panorama"></div>
 {% else %}
     {% with max_images_number|default:"0"|add:"0" as max_images_number %}
         <div class="image-folder">

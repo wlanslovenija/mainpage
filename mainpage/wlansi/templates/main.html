@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 
-{% load cms_tags i18n %}
+{% load i18n staticfiles cms_tags sekizai_tags %}
 
 {% block fulltitle %}{% trans "wlan slovenija – open wireless network of Slovenia" %}{% endblock %}
 
-{% block css %}<link rel="stylesheet" href="{{ STATIC_URL }}wlansi/css/main.css" type="text/css" />{% endblock %}
-
 {% block content %}
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static "wlansi/css/main.css" %}" type="text/css" />{% endaddtoblock %}
     <div class="showcase">
-    {% placeholder main_content %}
+        {% placeholder main_content %}
     </div>
-
     <div class="left-col">
         {% placeholder main_left %}
     </div>
