@@ -18,7 +18,7 @@ class StatisticsPlugin(plugin_base.CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({
             'nodes_count': models.Node.objects.exclude(node_type__in=(models.NodeType.Test, models.NodeType.Dead)).filter(status=models.NodeStatus.Up).count(),
-            'clients_online' : models.APClient.objects.all().count(),
+            'clients_connected' : models.APClient.objects.all().count(),
             'clients_ever' : models.Node.objects.aggregate(num=django_models.Sum('clients_so_far'))['num'] or 0,
         })
 
