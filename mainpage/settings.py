@@ -214,6 +214,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi.dummy',
     'mainpage.wlansi.gallery',
     'mainpage.wlansi.inmedia',
+    'mainpage.wlansi.map',
     'mainpage.wlansi.news',
     'mainpage.wlansi.participants',
     'mainpage.wlansi.randomimage',

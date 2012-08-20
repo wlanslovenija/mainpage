@@ -10,6 +10,8 @@ from frontend.nodes import models
 SIMPLEMAP_WIDTH = 298
 SIMPLEMAP_HEIGHT = 200
 MARKER_URL = 'http://bit.ly/RpSQDF'
+MAP_CENTER = '46.15,14.97'
+MAP_ZOOM = 7
 
 class SimpleMapPlugin(plugin_base.CMSPluginBase):
     """
@@ -27,8 +29,8 @@ class SimpleMapPlugin(plugin_base.CMSPluginBase):
         markers = set(['%(geo_lat).1f,%(geo_long).1f' % node for node in nodes.values('geo_lat', 'geo_long')])
 
         parameters = {
-            'center': '46.15,14.97',
-            'zoom': 7,
+            'center': MAP_CENTER,
+            'zoom': MAP_ZOOM,
             'size': '%dx%d' % (SIMPLEMAP_WIDTH, SIMPLEMAP_HEIGHT),
             'sensor': 'false',
             'style': ('feature:road|visibility:off', 'element:labels|visibility:off', 'feature:all|hue:0x1072b1|gamma:3'),
