@@ -22,6 +22,8 @@ class SimpleMapPlugin(plugin_base.CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         nodes = models.Node.objects.exclude(node_type__in=(models.NodeType.Test, models.NodeType.Dead)).exclude(geo_lat__isnull=True).exclude(geo_long__isnull=True).filter(status=models.NodeStatus.Up)
+        # There is a 2048 character limit to HTTP GET request URL length, so we round locations to one decimal and display them only once
+        # TODO: We could count how many nodes fall into the same location and use different (max 5) markers of intensity (like heatmap)
         markers = set(['%(geo_lat).1f,%(geo_long).1f' % node for node in nodes.values('geo_lat', 'geo_long')])
 
         parameters = {
