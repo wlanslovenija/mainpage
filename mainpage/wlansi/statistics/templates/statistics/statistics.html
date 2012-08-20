@@ -1,13 +1,15 @@
-{% load i18n %}
+{% load i18n cms_tags %}
 
-<div class="statistics">
-    <span class="statistics-nodes">
-        {% blocktrans count nodes_count=nodes_count %}{{ nodes_count }} active node{% plural %}{{ nodes_count }} active nodes{% endblocktrans %}
+<a href="{% page_url "opennetwork" %}" title="{% trans "Open network" %}">
+    <span class="statistics">
+        <span class="statistics-nodes">
+            {% blocktrans count nodes_count=nodes_count %}{{ nodes_count }} active node{% plural %}{{ nodes_count }} active nodes{% endblocktrans %}
+        </span>
+        <span class="statistics-online">
+            {% blocktrans count clients_online=clients_online %}{{ clients_online }} online client{% plural %}{{ clients_online }} online clients{% endblocktrans %}
+        </span>
+        <span class="statistics-clients">
+            {% blocktrans count clients_ever=clients_ever %}{{ clients_ever }} client so far{% plural %}{{ clients_ever }} clients so far{% endblocktrans %}
+        </span>
     </span>
-    <span class="statistics-online">
-        {% blocktrans count clients_online=clients_online %}{{ clients_online }} online client{% plural %}{{ clients_online }} online clients{% endblocktrans %}
-    </span>
-    <span class="statistics-clients">
-        {% blocktrans count clients_ever=clients_ever %}{{ clients_ever }} client so far{% plural %}{{ clients_ever }} clients so far{% endblocktrans %}
-    </span>
-</div>
+</a>

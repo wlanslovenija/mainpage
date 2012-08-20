@@ -42,6 +42,10 @@
 	margin: 5px 0;
 }
 
+.connect :link, .connect *:visited {
+	text-decoration: none;
+}
+
 .migration {
 	font-size: 110%;
 	padding: 10px;
@@ -150,6 +154,7 @@ ul.tweet_list li.empty {
 
 .statistics {
 	padding: 10px;
+	display: block;
 }
 
 .statistics span {
