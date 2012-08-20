@@ -119,13 +119,21 @@ $.fn.panorama=function(o){
 
 	loadRandom();
 
-	var toggle = $('<a href="#">Pause</a>').addClass("toggle").attr("style", "z-index: 100; position: absolute; bottom: 10px; right: 10px; ");
+	var toggle = $('<a/>').attr({
+        'href': '',
+        'title': gettext("Pause panorama scrolling")
+    }).text(gettext("Pause")).addClass("toggle").attr("style", "z-index: 100; position: absolute; bottom: 10px; right: 10px;");
 
 	if (!cFlow) toggle.addClass("play");
 
 	toggle.click(function (e) { 
 		cFlow = !cFlow;
-		$(this).html(cFlow ? "Pause" : "Play");
+        if (cFlow) {
+            $(this).text(gettext("Pause")).attr("title", gettext("Pause panorama scrolling"));
+        }
+        else {
+            $(this).text(gettext("Resume")).attr("title", gettext("Resume panorama scrolling"));
+        }
 		$(this).toggleClass("play");
 		e.preventDefault();
 		document.cookie = "panorama_stop=" + (cFlow ? "" : "1") + ";";
