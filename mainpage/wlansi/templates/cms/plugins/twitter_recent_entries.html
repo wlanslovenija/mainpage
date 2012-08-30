@@ -34,7 +34,7 @@ jQuery(document).ready(function ($) {
 		filter: function (t) {
 			// Hijacking filter to modify time formating
 			t.tweet_relative_time = format_relative_time(extract_relative_time(t.tweet_time));
-			return t.retweet || ! /– +Blog +– +wlan slovenija/.test(t.tweet_raw_text);
+			return t.retweet || t.screen_name != 'wlanslovenija' || ! /– +Blog +– +wlan slovenija/.test(t.tweet_raw_text);
 		},
 		loading_text: '{% trans "Loading tweets..." %}',
 		query: 'to:wlanslovenija OR from:wlanslovenija OR #wlanslovenija OR @wlanslovenija OR to:wlanljubljana OR from:wlanljubljana OR #wlanljubljana OR @wlanljubljana',
