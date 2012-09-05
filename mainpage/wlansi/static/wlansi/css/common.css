@@ -710,3 +710,11 @@ li.empty {
 	margin-left: auto;
 	margin-top: 1em;
 }
+
+.alignleft {
+	text-align: left;
+}
+
+.alignright {
+	text-align: right;
+}
