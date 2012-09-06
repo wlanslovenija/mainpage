@@ -5,6 +5,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from filer.fields import file
 
+REIMBURSED_CHOICES = (
+    ('pending', _("Pending")),
+    ('reimbursed', _("Reimbursed")),
+)
+
 class FundingSourceMetaclass(models.Model.__metaclass__):
     def __new__(cls, name, bases, attrs):
         for language_code, language_name in settings.LANGUAGES:
@@ -38,6 +43,7 @@ class Transaction(models.Model):
     date = models.DateField(help_text=_("Date of transaction on the account."))
     amount = models.DecimalField(max_digits=12, decimal_places=2, help_text=_("In EUR, final amount on the account."))
     internal_comment = models.TextField(blank=True, help_text=_("Internal comment, like circumstances, etc."))
+    reimbursed = models.CharField(max_length=10, blank=True, choices=REIMBURSED_CHOICES, help_text=_("Does this transaction need to be reimbursed? Was it already?"))
 
     class Meta:
         verbose_name = _("transaction")

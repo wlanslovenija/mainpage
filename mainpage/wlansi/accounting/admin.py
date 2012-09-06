@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.admin.views import main
 from django.db.models import aggregates
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
@@ -47,6 +48,18 @@ class HasFinalPaperListFilter(admin.SimpleListFilter):
                '%s=0' % count,
             ))
 
+class BlankChoicesFieldListFilter(admin.ChoicesFieldListFilter):
+    def choices(self, cl):
+        for choice in super(BlankChoicesFieldListFilter, self).choices(cl):
+            yield choice
+        yield {
+            'selected': self.lookup_val == '',
+            'query_string': cl.get_query_string({self.lookup_kwarg: ''}),
+            'display': main.EMPTY_CHANGELIST_VALUE,
+        }
+
+admin.FieldListFilter.register(lambda f: bool(f.choices) and f.blank, BlankChoicesFieldListFilter, True)
+
 titles = tuple('title_%s' % language_code for language_code, language_name in settings.LANGUAGES)
 
 class FundingSourceAdmin(admin.ModelAdmin):
@@ -71,7 +84,7 @@ class TransactionAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     list_display = ('amount',)
     list_display_links = ('amount',)
-    list_filter = ('date', 'funding_source', HasPaperListFilter, HasFinalPaperListFilter)
+    list_filter = ('date', 'funding_source', HasPaperListFilter, HasFinalPaperListFilter, 'reimbursed')
     search_fields = ('date', 'amount') + descriptions + ('internal_comment',)
 
     def get_list_display(self, request):
@@ -82,6 +95,6 @@ class TransactionAdmin(admin.ModelAdmin):
             return getattr(obj.funding_source, 'title_%s' % language)
         funding_source.admin_order_field = 'funding_source__title_%s' % language
 
-        return descriptions + self.list_display + ('date', funding_source, 'has_paper', 'has_final_paper')
+        return descriptions + self.list_display + ('date', funding_source, 'has_paper', 'has_final_paper', 'reimbursed')
 
 admin.site.register(models.Transaction, TransactionAdmin)
