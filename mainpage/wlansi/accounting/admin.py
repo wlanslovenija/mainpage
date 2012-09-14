@@ -1,9 +1,12 @@
 from __future__ import absolute_import
 
+import decimal
+
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.views import main
 from django.db.models import aggregates
+from django.template import response
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
@@ -86,6 +89,31 @@ class TransactionAdmin(admin.ModelAdmin):
     list_display_links = ('amount',)
     list_filter = ('date', 'funding_source', HasPaperListFilter, HasFinalPaperListFilter, 'reimbursed')
     search_fields = ('date', 'amount') + descriptions + ('internal_comment',)
+    actions = ('compute_summary',)
+
+    def compute_summary(self, request, queryset):
+        income = decimal.Decimal(0)
+        expenditure = decimal.Decimal(0)
+        balance = decimal.Decimal(0)
+
+        for transaction in queryset:
+            balance += transaction.amount
+            if transaction.amount > 0:
+                income += transaction.amount
+            else:
+                expenditure -= transaction.amount
+
+        context = {
+            'title': _("Summary"),
+            'opts': self.model._meta,
+            'app_label': self.model._meta.app_label,
+            'count': queryset.count(),
+            'income': income,
+            'expenditure': expenditure,
+            'balance': balance,
+        }
+
+        return response.TemplateResponse(request, 'accounting/admin_summary.html', context, current_app=self.admin_site.name)
 
     def get_list_display(self, request):
         language = translation.get_language()

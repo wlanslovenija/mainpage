@@ -10,7 +10,7 @@ from .. import models
 
 register = template.Library()
 
-@register.inclusion_tag('accounting/summary.html')
+@register.inclusion_tag('accounting/templatetag_summary.html')
 def year_summary(year):
     year = int(year)
 
