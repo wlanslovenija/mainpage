@@ -350,6 +350,15 @@ CMS_MARKUP_TRAC_INTERWIKI = {
     'slwikipedia': {
         'URL': 'http://sl.wikipedia.org/wiki/',
     },
+    'nodewatcher': {
+        'URL': 'http://nodewatcher.readthedocs.org/en/latest/',
+    },
+    'pad': {
+        'URL': 'https://common.tnode.com/pad/p/',
+    },
+    'github': {
+        'URL': 'https://github.com/wlanslovenija/',
+    },
 }
 
 CMS_MARKUP_TRAC_CONFIGURATION = {
