@@ -339,7 +339,7 @@ CMS_MARKUP_TRAC_INTERWIKI = {
         'URL': 'https://nodes.wlan-si.net/',
     },
     'lists': {
-        'URL': 'http://wlan-si.net/lists/arc/$1/$2-$3/msg$4.html',
+        'URL': 'https://wlan-si.net/lists/arc/$1/$2-$3/msg$4.html',
     },
     'skypechat': {
         'URL': 'skype:?chat&blob=',
@@ -432,7 +432,7 @@ FILER_PRIVATEMEDIA_URL = '/smedia/files/'
 FILER_PRIVATEMEDIA_THUMBNAIL_ROOT = os.path.abspath(os.path.join(MEDIA_ROOT, '..', 'smedia', 'thumbnails'))
 FILER_PRIVATEMEDIA_THUMBNAIL_URL = '/smedia/thumbnails/'
 
-FILE_STORAGE_PREFIX = 'http://wlan-si.net'
+FILE_STORAGE_PREFIX = 'https://wlan-si.net'
 
 FILER_STORAGES = {
     'public': {
