@@ -25,4 +25,21 @@ jQuery(document).ready(function($) {
         };
         img.src = $(this).prop('src').replace('-gray', '-color');
     });
+    $('.hoveanimation').each(function (i, el) {
+        var static_image = $(el).attr('src');
+        var animation = $(el).data('animation');
+        if (animation) {
+            $(el).hover(function (event) {
+                $(el).attr('src', animation)
+            }, function (event) {
+                $(el).attr('src', static_image)
+            });
+            var preload = new Image();
+            preload.onload = function () {
+                preload.onload = function () {};
+                preload = null;
+            };
+            preload.src = animation;
+        }
+    });
 });

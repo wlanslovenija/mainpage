@@ -213,6 +213,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi.donations',
     'mainpage.wlansi.dummy',
     'mainpage.wlansi.gallery',
+    'mainpage.wlansi.hoveranimation',
     'mainpage.wlansi.inmedia',
     'mainpage.wlansi.map',
     'mainpage.wlansi.news',
