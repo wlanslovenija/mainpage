@@ -83,7 +83,7 @@ def new_order(obj, is_pdt):
     if not created:
         if is_pdt:
             reversion.set_comment("Got PDT, setting ID.")
-            order.ptd_id = obj.pk
+            order.pdt_id = obj.pk
         else:
             reversion.set_comment("Got IPN, setting ID.")
             order.ipn_id = obj.pk
