@@ -1,6 +1,6 @@
 {% load i18n %}{% blocktrans with name=obj.first_name %}Hello {{ name }}!{% endblocktrans %}
 {% filter wordwrap:68 %}
-{% blocktrans with site_name=site.name %}This {{ site_name }} e-mail was sent to you to confirm your order.{% endblocktrans %}
+{% blocktrans with site_name=site.name %}This e-mail was sent to you to confirm your {{ site_name }} order.{% endblocktrans %}
 
 {% blocktrans %}Thank you for your order. If you have any questions about your order or order status, feel free to simply reply to this e-mail.{% endblocktrans %}
 
