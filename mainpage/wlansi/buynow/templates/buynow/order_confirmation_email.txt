@@ -1,0 +1,34 @@
+{% load i18n %}{% blocktrans with name=obj.first_name %}Hello {{ name }}!{% endblocktrans %}
+{% filter wordwrap:68 %}
+{% blocktrans with site_name=site.name %}This {{ site_name }} e-mail was sent to you to confirm your order.{% endblocktrans %}
+
+{% blocktrans %}Thank you for your order. If you have any questions about your order or order status, feel free to simply reply to this e-mail.{% endblocktrans %}
+
+{% blocktrans %}Please save the e-mail for your records.{% endblocktrans %}
+
+{% trans "Ordered by:" %}
+{{ ordered_by }}{% if ptd_obj.payer_business_name %} {{ pdf_obj.payer_business_name }}){% endif %}
+{% trans "E-mail address:" %}
+{{ obj.payer_email }}
+{% trans "Order amount:" %}
+{{ obj.mc_gross }} {{ obj.mc_currency }}
+{% trans "Item name:" %}
+{{ obj.item_name }}
+{% trans "Item number:" %}
+{{ obj.item_number }}
+{% trans "Quantity:" %}
+{{ obj.quantity }}
+{% trans "Shipping method:" %}
+{{ obj.shipping_method }}
+{% trans "Shipping address:" %}
+{{ shipping_address }}
+{% trans "Contact phone:" %}
+{{ obj.contact_phone }}
+{% trans "Reference:"%}
+{{ obj.txn_id }}
+
+{% blocktrans %}Yours,{% endblocktrans %}
+{% endfilter %}
+
+{{ site.name }}
+{{ home_url }}

@@ -1,0 +1,13 @@
+{% load i18n %}{% blocktrans %}Hello!{% endblocktrans %}
+{% filter wordwrap:68 %}
+{% blocktrans with site_name=site.name %}There was an error with {{ site_name }} order.{% endblocktrans %}
+
+{% blocktrans %}For more information please visit:{% endblocktrans %}
+
+{{ obj_url }}
+
+{% blocktrans %}Yours,{% endblocktrans %}
+{% endfilter %}
+
+{{ site.name }}
+{{ home_url }}

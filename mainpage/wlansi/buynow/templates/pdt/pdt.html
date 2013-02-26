@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load i18n cms_tags context_tags %}
+
+{% block title %}{% trans "Order Results" %}{% endblock %}
+
+{% block content %}
+    <h2>Order Results</h2>
+    {% if pdt_obj.st == "SUCCESS" %}
+        <h3 class="success">{% trans "Order processed successfully" %}</h3>
+        {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
+        <p>{% blocktrans with contact_url=contact_url %}Thank you for your order. If you have any questions about your order or order status, feel free to <a href="{{ contact_url }}">contact us</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Please save the following data for your records. A confirmation e-mail with it was send to your e-mail address, too.{% endblocktrans %}</p>
+        <dl>
+            <dt>{% trans "Ordered by" %}</dt>
+            <dd>{{ pdt_obj.first_name }} {{ pdt_obj.last_name }}{% if ptd_obj.payer_business_name %} {{ pdf_obj.payer_business_name }}){% endif %}</dd>
+            <dt>{% trans "E-mail address" %}</dt>
+            <dd>{{ pdt_obj.payer_email }}</dd>
+            <dt>{% trans "Order amount" %}</dt>
+            <dd>{{ pdt_obj.mc_gross }} {{ pdt_obj.mc_currency }}</dd>
+            <dt>{% trans "Item name" %}</dt>
+            <dd>{{ pdt_obj.item_name }}</dd>
+            <dt>{% trans "Item number" %}</dt>
+            <dd>{{ pdt_obj.item_number }}</dd>
+            <dt>{% trans "Quantity" %}</dt>
+            <dd>{{ pdt_obj.quantity }}</dd>
+            <dt>{% trans "Shipping method" %}</dt>
+            <dd>{{ pdt_obj.shipping_method }}</dd>
+            <dt>{% trans "Shipping address" %}</dt>
+            <dd>{{ pdt_obj.address_name }}, {{ pdt_obj.address_street }}, {{ pdt_obj.address_city }}, {{ pdt_obj.address_state }} {{ pdt_obj.address_zip }}, {{ pdt_obj.address_country }}</dd>
+            <dt>{% trans "Contact phone" %}</dt>
+            <dd>{{ pdt_obj.contact_phone }}</dd>
+            <dt>{% trans "Reference" %}</dt>
+            <dd>{{ pdt_obj.txn_id }}</dd>
+        </dl>
+    {% else %}
+        <h3 class="error">{% trans "Order processing failed" %}</h3>
+        {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
+        <p>{% blocktrans with contact_url=contact_url %}Sorry, order processing failed. Please <a href="{{ contact_url }}">contact us</a> if money has been transferred from your account.{% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}

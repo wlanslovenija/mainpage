@@ -210,6 +210,7 @@ INSTALLED_APPS = (
     'frontend.nodes',
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
+    'mainpage.wlansi.buynow',
     'mainpage.wlansi.donations',
     'mainpage.wlansi.dummy',
     'mainpage.wlansi.gallery',
@@ -254,6 +255,8 @@ INSTALLED_APPS = (
     'cmsplugin_markup',
     'cmsplugin_contact',
     'missing',
+    'paypal.standard.ipn',
+    'paypal.standard.pdt',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -482,3 +485,19 @@ CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS = (
 SUPPORTERS_FILER_FOLDER_NAME = 'Supporters'
 
 GIT_REPOSITORIES_DIR = None
+
+paypal_dir = os.path.join(settings_dir, 'paypal')
+
+PAYPAL_IMAGE = 'https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif'
+PAYPAL_SANDBOX_IMAGE = PAYPAL_IMAGE
+
+PAYPAL_TEST = DEBUG
+PAYPAL_DEBUG = PAYPAL_TEST
+PAYPAL_IDENTITY_TOKEN = 'alyuTeTqU6f5sEX68chZLASdUU2ZDSW0C5N21NBO13P6UlTwF_cCkuVWU04'
+PAYPAL_RECEIVER_EMAIL = 'mitar1_1271975562_biz@tnode.com'
+PAYPAL_PRIVATE_CERT = os.path.join(paypal_dir, 'sandbox.private')
+PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'sandbox.public')
+PAYPAL_CERT = os.path.join(paypal_dir, 'paypal_sandbox.pem')
+PAYPAL_CERT_ID = 'VCGS7EDY5NQ8J'
+
+USE_HTTPS = False

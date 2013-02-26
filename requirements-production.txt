@@ -7,4 +7,5 @@ GitPython==0.3.2.RC1
 gitdb==0.5.4
 psycopg2==2.2.1
 python-aprmd5==0.2
+M2Crypto==0.21.1
 -r requirements.txt

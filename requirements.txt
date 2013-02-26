@@ -22,6 +22,7 @@ django-classy-tags==0.3.4.1
 -e git+https://github.com/mitar/django-filer.git@d9917b1458c5abd41f47bc98c56d197d4ccd6fa0#egg=django_filer-dev
 django-missing==0.1.5
 django-mptt==0.5.2
+django-paypal==0.1.2
 django-phonenumber-field==0.2a3
 django-picklefield==0.2.1
 django-polymorphic==0.2

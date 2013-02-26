@@ -1,0 +1,1 @@
+{% load i18n %}{{ EMAIL_SUBJECT_PREFIX }}{% blocktrans with order_id=obj.txn_id %}Order confirmation ({{ order_id }}){% endblocktrans %}

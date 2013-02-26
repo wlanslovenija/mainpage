@@ -725,3 +725,11 @@ li.empty {
 	text-align: left;
 	padding: 0;
 }
+
+.error, .error_msg {
+    color: red;
+}
+
+.success {
+    color: green;
+}
