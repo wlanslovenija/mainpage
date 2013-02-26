@@ -5,6 +5,7 @@
 /mainpage/secrets.py
 /mainpage/wlansi/static/wlansi/jquery-visage/lib
 /mainpage/wlansi/static/wlansi/jquery-visage/visage.html
+/mainpage/paypal/production.*
 *.pyc
 *.swp
 *.sqlite
