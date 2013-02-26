@@ -18,7 +18,7 @@ class HoverAnimationPlugin(plugin_base.CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({
             'object': instance,
-            'placeholder': placeholder
+            'placeholder': placeholder,
         })
         return context
 
