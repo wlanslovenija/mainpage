@@ -99,7 +99,8 @@ GIT_REPOSITORIES_DIR = '/srv/git/'
 if False and not DEBUG: # Use Sandbox also in production for now
     PAYPAL_TEST = DEBUG
     PAYPAL_DEBUG = PAYPAL_TEST
-    # PAYPAL_IDENTITY_TOKEN is in secrets
+    # PAYPAL_IDENTITY_TOKEN_PRODUCTION is in secrets
+    PAYPAL_IDENTITY_TOKEN = PAYPAL_IDENTITY_TOKEN_PRODUCTION
     PAYPAL_RECEIVER_EMAIL = 'order@wlan-si.net'
     PAYPAL_PRIVATE_CERT = os.path.join(paypal_dir, 'production.private')
     PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'production.public')
