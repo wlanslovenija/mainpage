@@ -19,8 +19,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^i18n/js/$', 'django.views.i18n.javascript_catalog', js_info_dict),
 
-    url(r'^paypal/pdt/', include('paypal.standard.pdt.urls')),
-    url(r'^paypal/ipn/', include('paypal.standard.ipn.urls')),
+    url(r'^paypal/ipn/$', 'mainpage.wlansi.buynow.views.ipn', name='paypal-ipn'),
+    url(r'^paypal/pdt/$', 'mainpage.wlansi.buynow.views.pdt', name='paypal-pdt'),
 
     url(r'^', include('filer.server.urls')),
 
