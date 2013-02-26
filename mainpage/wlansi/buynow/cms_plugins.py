@@ -51,7 +51,7 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
 plugin_pool.register_plugin(BuyNowPlugin)
 
 @reversion.create_revision()
-def new_order(obj, is_pdt=True):
+def new_order(obj, is_pdt):
     order_by = ' '.join((obj.first_name, obj.last_name))
 
     shipping_address_tuple = (
@@ -82,8 +82,10 @@ def new_order(obj, is_pdt=True):
 
     if not created:
         if is_pdt:
+            reversion.set_comment("Got PDT, setting ID.")
             order.ptd_id = obj.pk
         else:
+            reversion.set_comment("Got IPN, setting ID.")
             order.ipn_id = obj.pk
 
         if obj.test_ipn:
