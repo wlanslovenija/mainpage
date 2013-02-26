@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django import forms
 from django.conf import settings
 from django.contrib import admin
@@ -7,6 +5,8 @@ from django.db.models import aggregates
 from django.forms import models as models_forms
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
+
+import reversion
 
 from . import models
 
@@ -89,7 +89,7 @@ class LocalCopyInline(admin.StackedInline):
     model = models.InMediaLocalCopy
     extra = 1
 
-class EntryAdmin(admin.ModelAdmin):
+class EntryAdmin(reversion.VersionAdmin):
     inlines = (
         LocalCopyInline,
         DescriptionInline,

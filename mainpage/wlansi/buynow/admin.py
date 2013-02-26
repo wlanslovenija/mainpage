@@ -6,8 +6,10 @@ from django.forms import widgets
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
 
-from paypal.standard.pdt import admin as pdt_admin, models as pdt_models
 from paypal.standard.ipn import admin as ipn_admin, models as ipn_models
+from paypal.standard.pdt import admin as pdt_admin, models as pdt_models
+
+import reversion
 
 from . import models
 
@@ -26,7 +28,7 @@ class LinkedSelect(widgets.Select):
 
         return safestring.mark_safe(u''.join(output))
 
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(reversion.VersionAdmin):
     date_hierarchy = 'timestamp'
     ordering = ('-timestamp',)
     list_display = ('txn_id', 'timestamp', 'item', 'quantity', 'order_by', 'email', 'phone', 'node_name', 'state')
@@ -41,7 +43,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Order, OrderAdmin)
 
-class PayPalPDTAdmin(pdt_admin.PayPalPDTAdmin):
+class PayPalPDTAdmin(pdt_admin.PayPalPDTAdmin, reversion.VersionAdmin):
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
     list_filter = ('created_at', 'payment_status', 'flag')
@@ -52,7 +54,7 @@ class PayPalPDTAdmin(pdt_admin.PayPalPDTAdmin):
 admin.site.unregister(pdt_models.PayPalPDT)
 admin.site.register(pdt_models.PayPalPDT, PayPalPDTAdmin)
 
-class PayPalIPNAdmin(ipn_admin.PayPalIPNAdmin):
+class PayPalIPNAdmin(ipn_admin.PayPalIPNAdmin, reversion.VersionAdmin):
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
     list_filter = ('created_at', 'payment_status', 'flag')

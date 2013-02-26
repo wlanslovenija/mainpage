@@ -7,6 +7,8 @@ from django.utils import encoding
 
 import git
 
+import reversion
+
 from mainpage.wlansi.participants import models
 
 class Command(base.NoArgsCommand):
@@ -16,7 +18,8 @@ class Command(base.NoArgsCommand):
     """
 
     help = "Updates database of participants with code authors in git repositories."
-    
+
+    @reversion.create_revision()
     def handle_noargs(self, **options):
         """
         Updates database of participants with code authors in git repositories.

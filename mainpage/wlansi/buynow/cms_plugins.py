@@ -9,8 +9,10 @@ from django.utils.translation import ugettext_lazy as _
 from cms import plugin_base
 from cms.plugin_pool import plugin_pool
 
-from paypal.standard.pdt import signals as pdt_signals
 from paypal.standard.ipn import signals as ipn_signals
+from paypal.standard.pdt import signals as pdt_signals
+
+import reversion
 
 from . import forms, models
 
@@ -48,6 +50,7 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
 
 plugin_pool.register_plugin(BuyNowPlugin)
 
+@reversion.create_revision()
 def new_order(obj, is_pdt=True):
     order_by = ' '.join((obj.first_name, obj.last_name))
 
@@ -84,12 +87,15 @@ def new_order(obj, is_pdt=True):
             order.ipn_id = obj.pk
 
         if obj.test_ipn:
+            reversion.set_comment("Got a test IPN, setting test state.")
             order.state = 'test'
 
         order.save()
 
         # Order has already been created
         return
+    else:
+        reversion.set_comment("Initial version.")
 
     site = sites_models.Site.objects.get_current()
     protocol = 'https' if getattr(settings, 'USE_HTTPS', False) else 'http'
@@ -161,10 +167,17 @@ def error_order(obj, is_pdt=True):
 
 @dispatch.receiver(pdt_signals.pdt_successful)
 def pdt_successful(sender, **kwargs):
+    # Save initial revision
+    with reversion.create_revision():
+        reversion.set_comment("Initial version.")
+        sender.save()
+
     if sender.flag_info:
         # django-paypal is buggy in handling invalid PDTs, so we check flag_info manually
         sender.flag = True
-        sender.save()
+        with reversion.create_revision():
+            reversion.set_comment("Flagging PDT.")
+            sender.save()
         sender.send_signals()
         return
 
@@ -176,6 +189,11 @@ def pdt_failed(sender, **kwargs):
 
 @dispatch.receiver(ipn_signals.payment_was_successful)
 def payment_was_successful(sender, **kwargs):
+    # Save initial revision
+    with reversion.create_revision():
+        reversion.set_comment("Initial version.")
+        sender.save()
+
     new_order(sender, False)
 
 @dispatch.receiver(ipn_signals.payment_was_flagged)

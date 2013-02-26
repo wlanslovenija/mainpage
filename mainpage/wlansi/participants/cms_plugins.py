@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import itertools
 
 from django.contrib.auth import models as auth_models

@@ -1,10 +1,10 @@
-from __future__ import absolute_import
-
 from django.conf import settings
 from django.contrib import admin
 from django.db.models import Q
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
+
+import reversion
 
 from . import models
 
@@ -35,7 +35,7 @@ class DonationSourceAdmin(admin.ModelAdmin):
 
 admin.site.register(models.DonationSource, DonationSourceAdmin)
 
-class DonationAdmin(admin.ModelAdmin):
+class DonationAdmin(reversion.VersionAdmin):
     date_hierarchy = 'date'
     list_display = ('donor', 'amount', 'date')
     list_display_links = ('amount',)

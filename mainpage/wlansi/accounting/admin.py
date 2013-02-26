@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import decimal
 
 from django.conf import settings
@@ -9,6 +7,8 @@ from django.db.models import aggregates
 from django.template import response
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
+
+import reversion
 
 from . import models
 
@@ -65,7 +65,7 @@ admin.FieldListFilter.register(lambda f: bool(f.choices) and f.blank, BlankChoic
 
 titles = tuple('title_%s' % language_code for language_code, language_name in settings.LANGUAGES)
 
-class FundingSourceAdmin(admin.ModelAdmin):
+class FundingSourceAdmin(reversion.VersionAdmin):
     list_display = titles
     list_display_links = titles
     search_fields = titles + ('internal_comment',)
@@ -80,7 +80,7 @@ class PaperInline(admin.StackedInline):
 
 # TODO: We could also filter by amount ranges
 
-class TransactionAdmin(admin.ModelAdmin):
+class TransactionAdmin(reversion.VersionAdmin):
     inlines = (
         PaperInline,
     )

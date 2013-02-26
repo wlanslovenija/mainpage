@@ -1,8 +1,7 @@
-from __future__ import absolute_import
-
 from django.contrib import admin
-from django.db import models as django_models
 from django.utils.translation import ugettext_lazy as _
+
+import reversion
 
 from . import models
 
@@ -22,7 +21,7 @@ class DuplicateListFilter(admin.SimpleListFilter):
         if self.value() == '0':
             return queryset.filter(duplicate_of__isnull=True)
 
-class ParticipantAdmin(admin.ModelAdmin):
+class ParticipantAdmin(reversion.VersionAdmin):
     date_hierarchy = 'added'
     list_display = ('name', 'source', 'added', 'duplicate_of')
     list_filter = ('added', 'source', DuplicateListFilter)
