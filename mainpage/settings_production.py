@@ -96,7 +96,7 @@ if False and not DEBUG:
 
 GIT_REPOSITORIES_DIR = '/srv/git/'
 
-if False and not DEBUG: # Use Sandbox also in production for now
+if not DEBUG:
     PAYPAL_TEST = DEBUG
     PAYPAL_DEBUG = PAYPAL_TEST
     # PAYPAL_IDENTITY_TOKEN_PRODUCTION is in secrets
