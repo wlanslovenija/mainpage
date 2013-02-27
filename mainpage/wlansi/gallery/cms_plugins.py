@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy
 
 from cms import models as cms_models, plugin_base
 from cms.plugin_pool import plugin_pool
@@ -13,7 +13,7 @@ class GalleryPlugin(plugin_base.CMSPluginBase):
     """
 
     module = 'wlan slovenija'
-    name = _("Gallery")
+    name = pgettext_lazy(u'admin', u"Gallery")
     render_template = 'gallery/gallery.html'
 
     def render(self, context, instance, placeholder):

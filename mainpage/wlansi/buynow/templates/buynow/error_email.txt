@@ -6,7 +6,7 @@
 
 {{ obj_url }}
 
-{% blocktrans %}Yours,{% endblocktrans %}
+{% blocktrans context "admin" %}Yours,{% endblocktrans %}
 {% endfilter %}
 
 {{ site.name }}

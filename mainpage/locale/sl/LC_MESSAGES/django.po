@@ -2,14 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 10:26+0200\n"
+"POT-Creation-Date: 2013-02-27 10:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3)\n"
 
 #: settings.py:53
 msgid "Slovenian"
@@ -19,150 +21,444 @@ msgstr "slovenščina"
 msgid "English"
 msgstr "angleščina"
 
-#: wlansi/accounting/admin.py:12
+#: wlansi/accounting/admin.py:16
 msgid "has paper"
 msgstr ""
 
-#: wlansi/accounting/admin.py:17 wlansi/accounting/admin.py:34
+#: wlansi/accounting/admin.py:21 wlansi/accounting/admin.py:38
 #: wlansi/donations/admin.py:17 wlansi/inmedia/admin.py:19
-#: wlansi/inmedia/admin.py:35 wlansi/participants/admin.py:15
+#: wlansi/inmedia/admin.py:35 wlansi/participants/admin.py:14
 msgid "Yes"
 msgstr ""
 
-#: wlansi/accounting/admin.py:18 wlansi/accounting/admin.py:35
+#: wlansi/accounting/admin.py:22 wlansi/accounting/admin.py:39
 #: wlansi/donations/admin.py:18 wlansi/inmedia/admin.py:20
-#: wlansi/inmedia/admin.py:36 wlansi/participants/admin.py:16
+#: wlansi/inmedia/admin.py:36 wlansi/participants/admin.py:15
 msgid "No"
 msgstr ""
 
-#: wlansi/accounting/admin.py:29
+#: wlansi/accounting/admin.py:33
 msgid "has final paper"
 msgstr ""
 
-#: wlansi/accounting/cms_plugins.py:20
+#: wlansi/accounting/admin.py:107
+#: wlansi/accounting/templates/accounting/admin_summary.html:10
+msgid "Summary"
+msgstr ""
+
+#: wlansi/accounting/cms_plugins.py:18
 msgid "Account"
 msgstr ""
 
-#: wlansi/accounting/cms_plugins.py:37
+#: wlansi/accounting/cms_plugins.py:35
 msgid "Balance"
 msgstr ""
 
-#: wlansi/accounting/models.py:12
+#: wlansi/accounting/models.py:9 wlansi/buynow/models.py:14
+msgid "Pending"
+msgstr ""
+
+#: wlansi/accounting/models.py:10
+msgid "Reimbursed"
+msgstr ""
+
+#: wlansi/accounting/models.py:17
 msgid "Internal comment, like conditions, etc."
 msgstr ""
 
-#: wlansi/accounting/models.py:19
+#: wlansi/accounting/models.py:24
 msgid "funding source"
 msgstr ""
 
-#: wlansi/accounting/models.py:20
+#: wlansi/accounting/models.py:25
 msgid "funding sources"
 msgstr ""
 
-#: wlansi/accounting/models.py:31 wlansi/inmedia/models.py:59
+#: wlansi/accounting/models.py:36 wlansi/inmedia/models.py:59
 msgid "You can use Trac formatting."
 msgstr ""
 
-#: wlansi/accounting/models.py:38
+#: wlansi/accounting/models.py:43
 msgid "Date of transaction on the account."
 msgstr ""
 
-#: wlansi/accounting/models.py:39
+#: wlansi/accounting/models.py:44
 msgid "In EUR, final amount on the account."
 msgstr ""
 
-#: wlansi/accounting/models.py:40
+#: wlansi/accounting/models.py:45
 msgid "Internal comment, like circumstances, etc."
 msgstr ""
 
-#: wlansi/accounting/models.py:43
+#: wlansi/accounting/models.py:46
+msgid "Does this transaction need to be reimbursed? Was it already?"
+msgstr ""
+
+#: wlansi/accounting/models.py:49
 msgid "transaction"
 msgstr ""
 
-#: wlansi/accounting/models.py:44
+#: wlansi/accounting/models.py:50
 msgid "transactions"
 msgstr ""
 
-#: wlansi/accounting/models.py:61 wlansi/donations/models.py:48
+#: wlansi/accounting/models.py:67 wlansi/donations/models.py:48
 #, python-format
 msgid "%(amount)s on %(date)s"
 msgstr ""
 
-#: wlansi/accounting/models.py:65
+#: wlansi/accounting/models.py:71
 msgid "Is this paper final version for transaction?"
 msgstr ""
 
-#: wlansi/accounting/models.py:66
+#: wlansi/accounting/models.py:72
 msgid ""
 "Bills, invoices, estimates, calculations, and other statements connected "
 "with transaction."
 msgstr ""
 
-#: wlansi/accounting/models.py:69
+#: wlansi/accounting/models.py:75
 msgid "paper"
 msgstr ""
 
-#: wlansi/accounting/models.py:70
+#: wlansi/accounting/models.py:76
 msgid "papers"
 msgstr ""
 
+#: wlansi/accounting/templates/accounting/admin_summary.html:7
+msgid "Home"
+msgstr ""
+
+#: wlansi/accounting/templates/accounting/admin_summary.html:15
+#, python-format
+msgid "Summary for %(count)s transaction:"
+msgid_plural "Summary for %(count)s transactions:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
 #: wlansi/accounting/templates/accounting/list.html:9
+#: wlansi/gallery/templates/gallery/gallery.html:9
 #, python-format
 msgid "Year %(year)s"
-msgstr ""
+msgstr "Leto %(year)s"
 
 #: wlansi/accounting/templates/accounting/list.html:12
 #, python-format
 msgid "%(date)s, %(amount)s EUR"
-msgstr ""
+msgstr "%(date)s, %(amount)s EUR"
 
 #: wlansi/accounting/templates/accounting/list.html:18
 #, python-format
 msgid "Anonymous donation:<blockquote>%(message)s</blockquote>"
-msgstr ""
+msgstr "Anonimna donacija:<blockquote>%(message)s</blockquote>"
 
 #: wlansi/accounting/templates/accounting/list.html:20
 msgid "Anonymous donation."
-msgstr ""
+msgstr "Anonimna donacija."
 
 #: wlansi/accounting/templates/accounting/list.html:25
 #, python-format
 msgid "Donation from %(donor)s:<blockquote>%(message)s</blockquote>"
-msgstr ""
+msgstr "Donacija od %(donor)s:<blockquote>%(message)s</blockquote>"
 
 #: wlansi/accounting/templates/accounting/list.html:27
 #, python-format
 msgid "Donation from %(donor)s."
-msgstr ""
+msgstr "Donacija od %(donor)s."
 
-#: wlansi/accounting/templates/accounting/summary.html:3
-msgid "Summary:"
-msgstr ""
+#: wlansi/accounting/templates/accounting/summary.html:4
+#, python-format
+msgid "Income: %(income)s EUR"
+msgstr "Prihodki: %(income)s EUR"
 
 #: wlansi/accounting/templates/accounting/summary.html:5
 #, python-format
-msgid "Income: %(income)s EUR"
-msgstr ""
+msgid "Expenditure: %(expenditure)s EUR"
+msgstr "Izdatki: %(expenditure)s EUR"
 
 #: wlansi/accounting/templates/accounting/summary.html:6
 #, python-format
-msgid "Expenditure: %(expenditure)s EUR"
+msgid "Balance: %(balance)s EUR"
+msgstr "Stanje: %(balance)s EUR"
+
+#: wlansi/accounting/templates/accounting/templatetag_summary.html:3
+msgid "Summary:"
+msgstr "Povzetek:"
+
+#: wlansi/buynow/admin.py:25
+msgid "Change Object"
 msgstr ""
 
-#: wlansi/accounting/templates/accounting/summary.html:7
-#, python-format
-msgid "Balance: %(balance)s EUR"
+#: wlansi/buynow/cms_plugins.py:73
+msgid "Buy now"
 msgstr ""
+
+#: wlansi/buynow/models.py:15
+msgid "Invalid"
+msgstr ""
+
+#: wlansi/buynow/models.py:16
+msgid "Canceled"
+msgstr ""
+
+#: wlansi/buynow/models.py:17
+msgid "Processing"
+msgstr ""
+
+#: wlansi/buynow/models.py:18
+msgid "Sent"
+msgstr ""
+
+#: wlansi/buynow/models.py:19
+msgid "Delivered"
+msgstr ""
+
+#: wlansi/buynow/models.py:20
+msgid "Online"
+msgstr ""
+
+#: wlansi/buynow/models.py:21
+msgid "Test"
+msgstr ""
+
+#: wlansi/buynow/models.py:26
+msgid ""
+"In EUR, with all processing costs but without shipping, amount to charge per "
+"unit."
+msgstr ""
+
+#: wlansi/buynow/models.py:27
+msgid "In kg, per unit, with all packaging and extra content."
+msgstr ""
+
+#: wlansi/buynow/models.py:33
+msgid "transaction ID"
+msgstr ""
+
+#: wlansi/buynow/models.py:38
+msgid "e-mail address"
+msgstr ""
+
+#: wlansi/buynow/models.py:44
+msgid "What is the state of this order?"
+msgstr ""
+
+#: wlansi/buynow/models.py:49
+msgid "order"
+msgstr ""
+
+#: wlansi/buynow/models.py:50
+msgid "orders"
+msgstr ""
+
+#: wlansi/buynow/models.py:55
+#, python-format
+msgid "%(quantity)sx%(item)s/%(state)s"
+msgstr ""
+
+#: wlansi/buynow/views.py:23 wlansi/buynow/views.py:25
+#, python-format
+msgid "Invalid value: %(handling)s"
+msgstr "Neveljavna vrednost: %(handling)s"
+
+#: wlansi/buynow/templates/buynow/button.html:13
+msgid ""
+"We are non-profit. Prices shown are the same as prices we pay ourselves. If "
+"you want to award us for our work, decide for yourself how much you want "
+"donate for our handling of your order."
+msgstr ""
+"Smo neprofitni. Prikazane cene so takšne, kot jih plačujemo sami. Če nas "
+"želiš nagraditi za naše delo, se sam/a odloči, koliko želiš donirati za našo "
+"izvedbo tvojega naročila."
+
+#: wlansi/buynow/templates/buynow/error_email.txt:1
+#: wlansi/buynow/templates/buynow/new_order_email.txt:1
+msgid "Hello!"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/error_email.txt:3
+#, python-format
+msgid "There was an error with %(site_name)s order."
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/error_email.txt:5
+#: wlansi/buynow/templates/buynow/new_order_email.txt:5
+msgid "For more information please visit:"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/error_email.txt:9
+#: wlansi/buynow/templates/buynow/new_order_email.txt:9
+msgctxt "admin"
+msgid "Yours,"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/error_subject.txt:1
+msgid "Order error"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/new_order_email.txt:3
+#, python-format
+msgid "New %(site_name)s order has been made."
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/new_order_subject.txt:1
+#, python-format
+msgid "New order (%(order_id)s)"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:1
+#, python-format
+msgid "Hello %(name)s!"
+msgstr "Zdravo %(name)s!"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:3
+#, python-format
+msgid "This e-mail was sent to you to confirm your %(site_name)s order."
+msgstr "Ta e-mail ti je bil poslan, da potrdi tvoje %(site_name)s narocilo."
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:5
+msgid ""
+"Thank you for your order. If you have any questions about your order or "
+"order status, feel free to simply reply to this e-mail."
+msgstr ""
+"Hvala za tvoje narocilo. Ce imas kakrsnokoli vprasanje glede tvojega "
+"narocila oziroma njegovega stanja, kar odgovori na ta e-mail."
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:7
+msgid "Please save the e-mail for your records."
+msgstr "Prosimo, shrani ta e-mail za arhiv."
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:9
+msgid "Ordered by:"
+msgstr "Naroceno od:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:11
+msgid "E-mail address:"
+msgstr "Naslov elektronske poste:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:13
+msgid "Order amount:"
+msgstr "Znesek narocila:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:15
+msgid "Item name:"
+msgstr "Ime artikla:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:17
+msgid "Item number:"
+msgstr "Stevilka artikla:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:19
+msgid "Quantity:"
+msgstr "Kolicina:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:21
+msgid "Shipping address:"
+msgstr "Naslov dostave:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:23
+msgid "Contact phone:"
+msgstr "Kontaktni telefon:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:25
+msgid "Reference:"
+msgstr "Referenca:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:28
+msgid "Yours,"
+msgstr "Tvoj,"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_subject.txt:1
+#, python-format
+msgid "Order confirmation (%(order_id)s)"
+msgstr "Potrditev narocila (%(order_id)s)"
+
+#: wlansi/buynow/templates/pdt/pdt.html:5
+msgid "Order Results"
+msgstr "Rezultati naročila"
+
+#: wlansi/buynow/templates/pdt/pdt.html:10
+msgid "Order processed successfully"
+msgstr "Naročilo je bilo uspešno"
+
+#: wlansi/buynow/templates/pdt/pdt.html:12
+#, python-format
+msgid ""
+"Thank you for your order. If you have any questions about your order or "
+"order status, feel free to <a href=\"%(contact_url)s\">contact us</a>."
+msgstr ""
+"Hvala za tvoje naročilo. Če imaš kakršnokoli vprašanje glede tvojega "
+"naročila oziroma njegovega stanja, nas kar <a href=\"%(contact_url)s"
+"\">kontaktiraj</a>."
+
+#: wlansi/buynow/templates/pdt/pdt.html:13
+msgid ""
+"Please save the following data for your records. A confirmation e-mail with "
+"it was send to your e-mail address, too."
+msgstr ""
+"Prosimo, shrani sledeče podatke za arhiv. Potrditvena elektronska pošta je "
+"bila prav tako poslana na tvoj naslov."
+
+#: wlansi/buynow/templates/pdt/pdt.html:15
+msgid "Ordered by"
+msgstr "Naročeno od"
+
+#: wlansi/buynow/templates/pdt/pdt.html:17
+msgid "E-mail address"
+msgstr "Naslov elektronske pošte"
+
+#: wlansi/buynow/templates/pdt/pdt.html:19
+msgid "Order amount"
+msgstr "Znesek narocila"
+
+#: wlansi/buynow/templates/pdt/pdt.html:21
+msgid "Item name"
+msgstr "Ime artikla"
+
+#: wlansi/buynow/templates/pdt/pdt.html:23
+msgid "Item number"
+msgstr "Stevilka artikla"
+
+#: wlansi/buynow/templates/pdt/pdt.html:25
+msgid "Quantity"
+msgstr "Kolicina"
+
+#: wlansi/buynow/templates/pdt/pdt.html:27
+msgid "Shipping address"
+msgstr "Naslov dostave"
+
+#: wlansi/buynow/templates/pdt/pdt.html:29
+msgid "Contact phone"
+msgstr "Kontaktni telefon"
+
+#: wlansi/buynow/templates/pdt/pdt.html:31
+msgid "Reference"
+msgstr "Referenca"
+
+#: wlansi/buynow/templates/pdt/pdt.html:35
+msgid "Order processing failed"
+msgstr "Naročilo ni uspelo"
+
+#: wlansi/buynow/templates/pdt/pdt.html:37
+#, python-format
+msgid ""
+"Sorry, order processing failed. Please <a href=\"%(contact_url)s\">contact "
+"us</a> if money has been transferred from your account."
+msgstr ""
+"Oprosti, naročilo ni uspelo. Prosimo, <a href=\"%(contact_url)s"
+"\">kontaktiraj nas</a>, če je bil denar nakazan s tvojega računa."
 
 #: wlansi/donations/admin.py:12
 msgid "is anonymous"
 msgstr ""
 
-#: wlansi/donations/cms_plugins.py:16
+#: wlansi/donations/cms_plugins.py:14
 msgid "Donations"
 msgstr ""
 
-#: wlansi/donations/cms_plugins.py:33
+#: wlansi/donations/cms_plugins.py:31
 msgid "Supporters"
 msgstr ""
 
@@ -235,6 +531,23 @@ msgstr ""
 msgid "Dummy content."
 msgstr ""
 
+#: wlansi/gallery/cms_plugins.py:16
+msgctxt "admin"
+msgid "Gallery"
+msgstr ""
+
+#: wlansi/hoveranimation/cms_plugins.py:15
+msgid "Hover animation"
+msgstr ""
+
+#: wlansi/hoveranimation/models.py:12
+msgid "static image"
+msgstr ""
+
+#: wlansi/hoveranimation/models.py:13
+msgid "animation"
+msgstr ""
+
 #: wlansi/inmedia/admin.py:14
 msgid "has link"
 msgstr ""
@@ -248,7 +561,7 @@ msgstr ""
 msgid "At least one %(name)s is required."
 msgstr ""
 
-#: wlansi/inmedia/cms_plugins.py:17
+#: wlansi/inmedia/cms_plugins.py:15
 msgid "In media"
 msgstr ""
 
@@ -304,6 +617,10 @@ msgstr ""
 msgid "(local copy)"
 msgstr "(lokalna kopija)"
 
+#: wlansi/map/cms_plugins.py:23
+msgid "Map"
+msgstr ""
+
 #: wlansi/news/cms_plugins.py:12
 msgid "News"
 msgstr ""
@@ -316,11 +633,11 @@ msgstr "Naslov tvoje elektronske pošte:"
 msgid "Subscribe"
 msgstr "Prijavi"
 
-#: wlansi/participants/admin.py:10
+#: wlansi/participants/admin.py:9
 msgid "is duplicate"
 msgstr ""
 
-#: wlansi/participants/cms_plugins.py:25
+#: wlansi/participants/cms_plugins.py:23
 msgid "Participants"
 msgstr ""
 
@@ -353,6 +670,62 @@ msgstr ""
 #: wlansi/participants/models.py:22
 msgid "participants"
 msgstr ""
+
+#: wlansi/randomimage/cms_plugins.py:18
+msgid "Random image"
+msgstr ""
+
+#: wlansi/randomimage/templates/randomimage/randomimage.html:4
+msgid "Gallery"
+msgstr "Galerija"
+
+#: wlansi/randomimage/templates/randomimage/randomimage.html:19
+#, python-format
+msgid "<a class=\"more\" href=\"%(gallery_url)s\">More in gallery...</a>"
+msgstr "<a class=\"more\" href=\"%(gallery_url)s\">Več v galeriji ...</a>"
+
+#: wlansi/simplemap/cms_plugins.py:22
+msgid "Simple map"
+msgstr ""
+
+#: wlansi/simplemap/templates/simplemap/simplemap.html:4
+msgid "Network map"
+msgstr "Zemljevid omrežja"
+
+#: wlansi/statistics/cms_plugins.py:15
+msgid "Statistics"
+msgstr ""
+
+#: wlansi/statistics/templates/statistics/statistics.html:3
+msgid "Open network"
+msgstr "Odprto omrežje"
+
+#: wlansi/statistics/templates/statistics/statistics.html:6
+#, python-format
+msgid "%(nodes_count)s active node"
+msgid_plural "%(nodes_count)s active nodes"
+msgstr[0] "%(nodes_count)s aktivna točka"
+msgstr[1] "%(nodes_count)s aktivni točki"
+msgstr[2] "%(nodes_count)s aktivne točke"
+msgstr[3] "%(nodes_count)s aktivnih točk"
+
+#: wlansi/statistics/templates/statistics/statistics.html:9
+#, python-format
+msgid "%(clients_connected)s client connected"
+msgid_plural "%(clients_connected)s clients connected"
+msgstr[0] "%(clients_connected)s prijavljen uporabnik"
+msgstr[1] "%(clients_connected)s prijavljena uporabnika"
+msgstr[2] "%(clients_connected)s prijavljeni uporabniki"
+msgstr[3] "%(clients_connected)s prijavljenih uporabnikov"
+
+#: wlansi/statistics/templates/statistics/statistics.html:12
+#, python-format
+msgid "%(clients_ever)s client so far"
+msgid_plural "%(clients_ever)s clients so far"
+msgstr[0] "do sedaj %(clients_ever)s uporabnik"
+msgstr[1] "do sedaj %(clients_ever)s uporabnika"
+msgstr[2] "do sedaj %(clients_ever)s uporabniki"
+msgstr[3] "do sedaj %(clients_ever)s uporabnikov"
 
 #: wlansi/templates/404.html:5 wlansi/templates/404.html.py:10
 msgid "404 Not Found"
@@ -405,11 +778,11 @@ msgstr "Spremljaj na Twitterju"
 
 #: wlansi/templates/header.html:18
 msgid "Contact us"
-msgstr ""
+msgstr "Stopi v stik"
 
 #: wlansi/templates/header.html:18
 msgid "Contact"
-msgstr ""
+msgstr "Stik"
 
 #: wlansi/templates/main.html:5
 msgid "wlan slovenija – open wireless network of Slovenia"
@@ -423,9 +796,13 @@ msgstr ""
 msgid "View tweet on Twitter"
 msgstr ""
 
-#: wlansi/templates/cms/plugins/twitter_recent_entries.html:50
-msgid "More on Twitter..."
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:45
+msgid "No recent tweets"
 msgstr ""
+
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:55
+msgid "More on Twitter..."
+msgstr "Več na Twitterju ..."
 
 #: wlansi/templates/cmsplugin_blog/author_links_snippet.html:3
 msgid "See entries by:"
@@ -455,7 +832,7 @@ msgid "Latest entries"
 msgstr "Zadnji prispevki"
 
 #: wlansi/templates/cmsplugin_blog/entry_archive.html:24
-#: wlansi/templates/cmsplugin_blog/latest_entries.html:9
+#: wlansi/templates/cmsplugin_blog/latest_entries.html:10
 #: wlansi/templates/cmsplugin_blog/month_links_snippet.html:11
 msgid "No entries."
 msgstr "Ni prispevkov."
@@ -522,11 +899,11 @@ msgstr "Komentiraj, likeaj, podeli ..."
 
 #: wlansi/templates/cmsplugin_blog/latest_entries.html:3
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: wlansi/templates/cmsplugin_blog/latest_entries.html:13
 msgid "More on blog..."
-msgstr ""
+msgstr "Več na blogu ..."
 
 #: wlansi/templates/cmsplugin_blog/month_links_snippet.html:3
 msgid "See entries for:"
@@ -575,3 +952,21 @@ msgstr "Datoteke"
 #: wlansi/templates/cmsplugin_filer_folder/folder.html:24
 msgid "Images"
 msgstr "Slike"
+
+#: wlansi/templates/snippets/connect.html:4
+msgid "Connect to<br /><tt>open.wlan-si.net</tt>"
+msgstr "Poveži se na<br /><tt>open.wlan-si.net</tt>"
+
+#: wlansi/templates/snippets/donate_main.html:4
+msgid "Donate"
+msgstr "Doniraj"
+
+#: wlansi/templates/snippets/donate_main.html:7
+#, python-format
+msgid "<a class=\"more\" href=\"%(donate_url)s\">More ways to donate...</a>"
+msgstr ""
+"<a class=\"more\" href=\"%(donate_url)s\">Več načinov doniranja ...</a>"
+
+#: wlansi/templates/snippets/donate_normal.html:7
+msgid "Donate with PayPal"
+msgstr "Doniraj preko PayPal-a"
