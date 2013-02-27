@@ -411,7 +411,7 @@ msgstr "Naslov elektronske pošte"
 
 #: wlansi/buynow/templates/pdt/pdt.html:19
 msgid "Order amount"
-msgstr "Znesek narocila"
+msgstr "Znesek naročila"
 
 #: wlansi/buynow/templates/pdt/pdt.html:21
 msgid "Item name"
@@ -419,11 +419,11 @@ msgstr "Ime artikla"
 
 #: wlansi/buynow/templates/pdt/pdt.html:23
 msgid "Item number"
-msgstr "Stevilka artikla"
+msgstr "Številka artikla"
 
 #: wlansi/buynow/templates/pdt/pdt.html:25
 msgid "Quantity"
-msgstr "Kolicina"
+msgstr "Količina"
 
 #: wlansi/buynow/templates/pdt/pdt.html:27
 msgid "Shipping address"
