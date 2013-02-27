@@ -21,10 +21,12 @@ h1 *:link, h1 *:visited, h2 *:link, h2 *:visited, h3 *:link, h3 *:visited, h4 *:
 
 .left {
 	float: left;
+	margin-right: 7px;
 }
 
 .right {
 	float: right;
+	margin-left: 7px;
 }
 
 #sitemap {
