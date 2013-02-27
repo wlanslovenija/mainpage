@@ -19,22 +19,26 @@ import reversion
 from . import forms, models
 
 def shipping(instance):
-    if instance.weight <= 2:
-        return decimal.Decimal('4.47')
-    elif instance.weight <= 5:
-        return decimal.Decimal('5.34')
-    elif instance.weight <= 10:
-        return decimal.Decimal('7.85')
-    elif instance.weight <= 15:
-        return decimal.Decimal('8.26')
-    elif instance.weight <= 20:
-        return decimal.Decimal('9.51')
-    elif instance.weight <= 25:
-        return decimal.Decimal('11.20')
-    elif instance.weight <= 30:
-        return decimal.Decimal('13.27')
-    else:
-        raise ValueError("Invalid weight: %s" % instance.weight)
+    def by_weight():
+        if instance.weight <= 2:
+            return '4.47'
+        elif instance.weight <= 5:
+            return '5.34'
+        elif instance.weight <= 10:
+            return '7.85'
+        elif instance.weight <= 15:
+            return '8.26'
+        elif instance.weight <= 20:
+            return '9.51'
+        elif instance.weight <= 25:
+            return '11.20'
+        elif instance.weight <= 30:
+            return '13.27'
+        else:
+            raise ValueError("Invalid weight: %s" % instance.weight)
+
+    # Packaging + shipping
+    return decimal.Decimal('0.65') + decimal.Decimal(by_weight())
 
 def paypal_static():
     return decimal.Decimal('0.25')
