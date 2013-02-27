@@ -24,6 +24,7 @@ def paypal_button(request):
     except decimal.DecimalException:
         return http.HttpResponseBadRequest(_("Invalid value: %(handling)s") % {'handling': request.POST['handling']})
 
-    form = cms_plugins.button_form(request, instance, handling)
+    # TODO: Can we just like this pass cancel_return parameter? Is this secure?
+    form = cms_plugins.button_form(request, instance, handling, request.POST['cancel_return'])
 
     return http.HttpResponse(form.render())

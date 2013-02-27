@@ -1,8 +1,9 @@
-{% load future i18n %}
+{% load future i18n url_tags %}
 <div class="paypal-buynow">
     <form class="paypal-buynow-form" action="{% url "paypal-button" %}">
         {% csrf_token %}
         <input type="hidden" name="instance" value="{{ object.pk }}" />
+        <input type="hidden" name="cancel_return" value="{% fullurl %}" />
         <input type="image" border="0" alt="Buy it Now" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" class="paypal-buynow-button">
         <div class="paypal-buynow-handling">
             <input type="text" value="10" name="handling" /> EUR
