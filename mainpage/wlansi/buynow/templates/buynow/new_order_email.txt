@@ -5,7 +5,11 @@
 {% blocktrans %}For more information please visit:{% endblocktrans %}
 
 {{ order_url }}
+{% if instructions_url %}
+{% blocktrans %}Instructions:{% endblocktrans %}
 
+{{ instructions_url }}
+{% endif %}
 {% blocktrans context "admin" %}Yours,{% endblocktrans %}
 {% endfilter %}
 

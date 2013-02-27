@@ -501,4 +501,6 @@ PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'sandbox.public')
 PAYPAL_CERT = os.path.join(paypal_dir, 'paypal_sandbox.pem')
 PAYPAL_CERT_ID = 'VCGS7EDY5NQ8J'
 
+SHOP_INSTRUCTIONS = 'http://grow.wlan-si.net/wiki/Navodila/Narocilo'
+
 USE_HTTPS = False

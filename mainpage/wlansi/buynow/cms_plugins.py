@@ -170,6 +170,7 @@ def new_order(obj, is_pdt):
         'protocol': protocol,
         'base_url': base_url,
         'home_url': home_url,
+        'instructions_url': getattr(settings, 'SHOP_INSTRUCTIONS', None),
         'order_url': order_url,
         'obj': obj,
         'ordered_by': order_by,
@@ -209,6 +210,7 @@ def error_order(obj, is_pdt=True):
         'protocol': protocol,
         'base_url': base_url,
         'home_url': home_url,
+        'instructions_url': getattr(settings, 'SHOP_INSTRUCTIONS', None),
         'obj_url': obj_url,
         'obj': obj,
     }
