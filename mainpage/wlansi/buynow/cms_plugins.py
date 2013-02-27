@@ -106,6 +106,8 @@ def new_order(obj, is_pdt):
         'email': obj.payer_email,
         'phone': obj.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
+        'gross': obj.mc_gross,
+        'fee': obj.mc_fee,
         'state': 'test' if obj.test_ipn else 'pending',
     }
 
@@ -137,7 +139,8 @@ def new_order(obj, is_pdt):
 
         shipping_one = shipping(order.item)
         item_and_shipping = decimal.Decimal('%.2f' % (order.item.price + shipping_one))
-        order.handling = obj.mc_gross - obj.mc_fee - obj.quantity * item_and_shipping
+        order.shipping = order.quantity * shipping_one
+        order.handling = order.gross - order.fee - order.quantity * item_and_shipping
         order.save()
 
     site = sites_models.Site.objects.get_current()
