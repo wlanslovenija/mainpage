@@ -18,8 +18,6 @@
 {{ obj.item_number }}
 {% trans "Quantity:" %}
 {{ obj.quantity }}
-{% trans "Shipping method:" %}
-{{ obj.shipping_method }}
 {% trans "Shipping address:" %}
 {{ shipping_address }}
 {% trans "Contact phone:" %}

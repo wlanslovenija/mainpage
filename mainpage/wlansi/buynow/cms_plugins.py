@@ -1,3 +1,5 @@
+import decimal
+
 from django import dispatch
 from django.conf import settings
 from django.contrib.sites import models as sites_models
@@ -16,6 +18,30 @@ import reversion
 
 from . import forms, models
 
+def shipping(instance):
+    if instance.weight <= 2:
+        return decimal.Decimal('4.47')
+    elif instance.weight <= 5:
+        return decimal.Decimal('5.34')
+    elif instance.weight <= 10:
+        return decimal.Decimal('7.85')
+    elif instance.weight <= 15:
+        return decimal.Decimal('8.26')
+    elif instance.weight <= 20:
+        return decimal.Decimal('9.51')
+    elif instance.weight <= 25:
+        return decimal.Decimal('11.20')
+    elif instance.weight <= 30:
+        return decimal.Decimal('13.27')
+    else:
+        raise ValueError("Invalid weight: %s" % instance.weight)
+
+def paypal_static():
+    return decimal.Decimal('0.25')
+
+def paypal_variate(price):
+    return decimal.Decimal('0.029') * price
+
 class BuyNowPlugin(plugin_base.CMSPluginBase):
     """
     This plugin displays a button to buy now through PayPal.
@@ -29,11 +55,19 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
     def render(self, context, instance, placeholder):
         request = context['request']
 
+        handling = decimal.Decimal('0.0') # TODO: You decide!
+        shipping_one = shipping(instance)
+        shipping1 = paypal_static() + paypal_variate(instance.price + shipping_one + handling) + shipping_one
+        shipping2 = paypal_variate(instance.price + shipping_one) + shipping_one
+
         form = forms.BuyNowForm(initial={
             'item_number': instance.pk,
             'item_name': instance.item_name,
             'amount': instance.price,
-            'weight': instance.weight,
+            'quantity': '1',
+            'handling': '%.2f' % handling,
+            'shipping': '%.2f' % shipping1,
+            'shipping2': '%.2f' % shipping2,
             'cancel_return': request.build_absolute_uri(),
             'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
             'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-pdt')),
@@ -69,7 +103,6 @@ def new_order(obj, is_pdt):
         'email': obj.payer_email,
         'phone': obj.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
-        'shipping_method': obj.shipping_method,
         'state': 'test' if obj.test_ipn else 'pending',
     }
 
@@ -98,6 +131,11 @@ def new_order(obj, is_pdt):
         return
     else:
         reversion.set_comment("Initial version.")
+
+        shipping_one = shipping(order.item)
+        item_and_shipping = decimal.Decimal('%.2f' % (order.item.price + shipping_one))
+        order.handling = obj.mc_gross - obj.mc_fee - obj.quantity * item_and_shipping
+        order.save()
 
     site = sites_models.Site.objects.get_current()
     protocol = 'https' if getattr(settings, 'USE_HTTPS', False) else 'http'

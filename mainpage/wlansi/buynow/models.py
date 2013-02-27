@@ -38,7 +38,7 @@ class Order(models.Model):
     email = models.CharField(_("e-mail address"), max_length=129)
     phone = models.CharField(max_length=20)
     shipping_address = models.TextField()
-    shipping_method = models.CharField(max_length=255)
+    handling = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     pdt = models.ForeignKey(pdt_models.PayPalPDT, verbose_name="PDT", blank=True, null=True)
     ipn = models.ForeignKey(ipn_models.PayPalIPN, verbose_name="IPN", blank=True, null=True)
     state = models.CharField(max_length=10, choices=STATE_CHOICES, help_text=_("What is the state of this order?"), default='pending')
