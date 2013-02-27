@@ -34,7 +34,7 @@ class OrderAdmin(reversion.VersionAdmin):
     list_display = ('txn_id', 'timestamp', 'item', 'quantity', 'order_by', 'email', 'phone', 'gross', 'fee', 'shipping', 'handling', 'node_name', 'state')
     list_display_links = ('txn_id',)
     list_filter = ('timestamp', 'item', 'quantity', 'state')
-    search_fields = ('item__item_name', 'email', 'phone', 'shipping_address', 'notes', 'internal_comment')
+    search_fields = ('item__item_name', 'email', 'phone', 'shipping_address', 'optional', 'notes', 'internal_comment')
     formfield_overrides = {
         related.ForeignKey: {
             'widget': LinkedSelect,

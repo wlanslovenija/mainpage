@@ -48,7 +48,9 @@ jQuery(document).ready(function($) {
             $(data).addClass('hidden').appendTo('body').submit();
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.error(jqXHR.responseText, jqXHR.status, textStatus, errorThrown);
-            alert(jqXHR.responseText);
+            if (jqXHR.responseText) {
+                alert(jqXHR.responseText);
+            }
         });
     })
 });

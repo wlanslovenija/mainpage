@@ -25,6 +25,8 @@ class BuyNow(plugin_base.CMSPlugin):
     item_name = models.CharField(max_length=127, unique=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.01'))], help_text=_("In EUR, with all processing costs but without shipping, amount to charge per unit."))
     weight = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.01'))], help_text=_("In kg, per unit, with all packaging and extra content."))
+    initial_handling = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.00'))], default=decimal.Decimal('10.00'), help_text=_("In EUR."))
+    options = models.CharField(max_length=255, blank=True, null=True, help_text=_("Display options? A comma-separated list of possible values."))
 
     def __unicode__(self):
         return self.item_name
@@ -38,6 +40,7 @@ class Order(models.Model):
     email = models.CharField(_("e-mail address"), max_length=129)
     phone = models.CharField(max_length=20)
     shipping_address = models.TextField()
+    optional = models.CharField(max_length=256)
     notes = models.TextField()
     gross = models.DecimalField(max_digits=12, decimal_places=2)
     fee = models.DecimalField(max_digits=12, decimal_places=2)

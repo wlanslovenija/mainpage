@@ -46,7 +46,7 @@ def paypal_static():
 def paypal_variate(price):
     return decimal.Decimal('0.029') * price
 
-def button_form(request, instance, handling, cancel_return=None):
+def button_form(request, instance, handling, custom=None, cancel_return=None):
     shipping_one = shipping(instance)
     shipping1 = paypal_static() + paypal_variate(instance.price + shipping_one + handling) + shipping_one
     shipping2 = paypal_variate(instance.price + shipping_one) + shipping_one
@@ -63,6 +63,7 @@ def button_form(request, instance, handling, cancel_return=None):
         'handling': '%.2f' % handling,
         'shipping': '%.2f' % shipping1,
         'shipping2': '%.2f' % shipping2,
+        'custom': custom,
         'cancel_return': cancel_return,
         'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
         'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-pdt')),
@@ -85,11 +86,16 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
         request = context['request']
         form = button_form(request, instance, decimal.Decimal('0.0'))
 
+        options = instance.options
+        if options:
+            options = options.split(',')
+
         context.update({
             'paypal_test': getattr(settings, 'PAYPAL_TEST', True),
             'form': form,
             'object': instance,
             'placeholder': placeholder,
+            'options': options,
         })
         return context
 
@@ -114,6 +120,7 @@ def new_order(obj, is_pdt):
         'email': obj.payer_email,
         'phone': obj.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
+        'optional': obj.custom,
         'notes': obj.memo,
         'gross': obj.mc_gross,
         'fee': obj.mc_fee,

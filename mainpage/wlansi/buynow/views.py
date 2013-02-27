@@ -17,14 +17,24 @@ pdt = pdt_views.pdt
 def paypal_button(request):
     instance = shortcuts.get_object_or_404(models.BuyNow, pk=request.POST['instance'])
 
+    option = request.POST.get('option') or None
+    if option:
+        options = []
+        if instance.options:
+            options = instance.options.split(',')
+        if option not in options:
+            return http.HttpResponseBadRequest()
+
     try:
-        handling = decimal.Decimal(request.POST['handling'])
+        # We allow empty value for handling and replace , with .
+        handling = request.POST['handling'] or '0'
+        handling = decimal.Decimal(handling.replace(',', '.'))
         if not handling.is_finite() or handling.is_signed():
             return http.HttpResponseBadRequest(_("Invalid value: %(handling)s") % {'handling': request.POST['handling']})
     except decimal.DecimalException:
         return http.HttpResponseBadRequest(_("Invalid value: %(handling)s") % {'handling': request.POST['handling']})
 
     # TODO: Can we just like this pass cancel_return parameter? Is this secure?
-    form = cms_plugins.button_form(request, instance, handling, request.POST['cancel_return'])
+    form = cms_plugins.button_form(request, instance, handling, option, request.POST['cancel_return'])
 
     return http.HttpResponse(form.render())

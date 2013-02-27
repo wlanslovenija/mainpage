@@ -761,3 +761,7 @@ li.empty {
 .center {
 	text-align: center;
 }
+
+.options {
+    margin: 2px 5px;
+}
