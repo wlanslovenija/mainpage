@@ -42,6 +42,27 @@ def paypal_static():
 def paypal_variate(price):
     return decimal.Decimal('0.029') * price
 
+def button_form(request, instance, handling):
+    shipping_one = shipping(instance)
+    shipping1 = paypal_static() + paypal_variate(instance.price + shipping_one + handling) + shipping_one
+    shipping2 = paypal_variate(instance.price + shipping_one) + shipping_one
+
+    form = forms.BuyNowForm(initial={
+        'item_number': instance.pk,
+        'item_name': instance.item_name,
+        'amount': instance.price,
+        'quantity': '1',
+        'handling': '%.2f' % handling,
+        'shipping': '%.2f' % shipping1,
+        'shipping2': '%.2f' % shipping2,
+        'cancel_return': request.build_absolute_uri(),
+        'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
+        'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-pdt')),
+        'image_url': request.build_absolute_uri(staticfiles_storage.url('wlansi/images/paypal-logo.png')),
+    })
+
+    return form
+
 class BuyNowPlugin(plugin_base.CMSPluginBase):
     """
     This plugin displays a button to buy now through PayPal.
@@ -54,25 +75,8 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         request = context['request']
-
         handling = decimal.Decimal('0.0') # TODO: You decide!
-        shipping_one = shipping(instance)
-        shipping1 = paypal_static() + paypal_variate(instance.price + shipping_one + handling) + shipping_one
-        shipping2 = paypal_variate(instance.price + shipping_one) + shipping_one
-
-        form = forms.BuyNowForm(initial={
-            'item_number': instance.pk,
-            'item_name': instance.item_name,
-            'amount': instance.price,
-            'quantity': '1',
-            'handling': '%.2f' % handling,
-            'shipping': '%.2f' % shipping1,
-            'shipping2': '%.2f' % shipping2,
-            'cancel_return': request.build_absolute_uri(),
-            'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
-            'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-pdt')),
-            'image_url': request.build_absolute_uri(staticfiles_storage.url('wlansi/images/paypal-logo.png')),
-        })
+        form = button_form(request, instance, handling)
 
         context.update({
             'paypal_test': getattr(settings, 'PAYPAL_TEST', True),

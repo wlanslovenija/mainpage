@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 
     url(r'^paypal/ipn/$', 'mainpage.wlansi.buynow.views.ipn', name='paypal-ipn'),
     url(r'^paypal/pdt/$', 'mainpage.wlansi.buynow.views.pdt', name='paypal-pdt'),
+    url(r'^paypal/button/$', 'mainpage.wlansi.buynow.views.paypal_button', name='paypal-button'),
 
     url(r'^', include('filer.server.urls')),
 

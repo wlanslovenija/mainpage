@@ -1,3 +1,16 @@
+{% load future i18n %}
 <div class="paypal-buynow">
-    {{ form.render }}
+    <form class="paypal-buynow-form" action="{% url "paypal-button" %}">
+        {% csrf_token %}
+        <input type="hidden" name="instance" value="{{ object.pk }}" />
+        <input type="image" border="0" alt="Buy it Now" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" class="paypal-buynow-button">
+        <div class="paypal-buynow-handling">
+            <input type="text" value="10" name="handling" /> EUR
+        </div>
+        <div class="clear"></div>
+    </form>
+    <div class="paypal-buynow-text">
+        {% blocktrans %}We are non-profit. Prices shown are the same as prices we pay ourselves. If you want to award us for our work, you are invited to decide for yourself how much to donate for our handling and processing of your order.{% endblocktrans %}
+    </div>
+    <div class="clear"></div>
 </div>

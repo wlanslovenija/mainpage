@@ -733,3 +733,25 @@ li.empty {
 .success {
     color: green;
 }
+
+.paypal-buynow-form, .paypal-buynow-button, .paypal-buynow-handling {
+    float: right;
+    margin: 0 5px;
+}
+
+.paypal-buynow-handling input {
+    width: 25px;
+    margin: 2px 0;
+}
+
+.paypal-buynow-text {
+    font-style: italic;
+}
+
+.paypal-buynow-text, .paypal-buynow-form {
+    font-size: 10px;
+}
+
+.hidden {
+    display: none;
+}

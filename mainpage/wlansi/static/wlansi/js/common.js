@@ -42,4 +42,13 @@ jQuery(document).ready(function($) {
             preload.src = animation;
         }
     });
+    $('.paypal-buynow-form').submit(function (event) {
+        event.preventDefault();
+        $.post($(this).attr('action'), $(this).serialize(), function (data, textStatus, jqXHR) {
+            $(data).addClass('hidden').appendTo('body').submit();
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            console.error(jqXHR.responseText, jqXHR.status, textStatus, errorThrown);
+            alert(jqXHR.responseText);
+        });
+    })
 });
