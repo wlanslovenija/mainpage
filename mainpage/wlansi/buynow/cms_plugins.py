@@ -75,8 +75,7 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         request = context['request']
-        handling = decimal.Decimal('0.0') # TODO: You decide!
-        form = button_form(request, instance, handling)
+        form = button_form(request, instance, decimal.Decimal('0.0'))
 
         context.update({
             'paypal_test': getattr(settings, 'PAYPAL_TEST', True),
