@@ -328,7 +328,7 @@ msgstr ""
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:7
 msgid "Please save the e-mail for your records."
-msgstr "Prosimo, shrani ta e-mail za arhiv."
+msgstr "Prosimo, shrani ta e-mail za evidenco."
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:9
 msgid "Ordered by:"
@@ -398,7 +398,7 @@ msgid ""
 "Please save the following data for your records. A confirmation e-mail with "
 "it was send to your e-mail address, too."
 msgstr ""
-"Prosimo, shrani sledeče podatke za arhiv. Potrditvena elektronska pošta je "
+"Prosimo, shrani sledeče podatke za evidenco. Potrditvena elektronska pošta je "
 "bila prav tako poslana na tvoj naslov."
 
 #: wlansi/buynow/templates/pdt/pdt.html:15
