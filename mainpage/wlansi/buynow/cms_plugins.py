@@ -114,6 +114,7 @@ def new_order(obj, is_pdt):
         'email': obj.payer_email,
         'phone': obj.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
+        'notes': obj.memo,
         'gross': obj.mc_gross,
         'fee': obj.mc_fee,
         'state': 'test' if obj.test_ipn else 'pending',

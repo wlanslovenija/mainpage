@@ -22,8 +22,10 @@
 {{ shipping_address }}
 {% trans "Contact phone:" %}
 {{ obj.contact_phone }}
-{% trans "Reference:"%}
+{% trans "Reference:" %}
 {{ obj.txn_id }}
+{% trans "Notes:" %}
+{{ obj.memo|safe }}
 
 {% blocktrans %}Yours,{% endblocktrans %}
 {% endfilter %}

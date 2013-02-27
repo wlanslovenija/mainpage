@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 10:56+0100\n"
+"POT-Creation-Date: 2013-02-27 18:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,7 +191,7 @@ msgstr "Povzetek:"
 msgid "Change Object"
 msgstr ""
 
-#: wlansi/buynow/cms_plugins.py:73
+#: wlansi/buynow/cms_plugins.py:81
 msgid "Buy now"
 msgstr ""
 
@@ -241,19 +241,19 @@ msgstr ""
 msgid "e-mail address"
 msgstr ""
 
-#: wlansi/buynow/models.py:47
+#: wlansi/buynow/models.py:48
 msgid "What is the state of this order?"
 msgstr ""
 
-#: wlansi/buynow/models.py:52
+#: wlansi/buynow/models.py:53
 msgid "order"
 msgstr ""
 
-#: wlansi/buynow/models.py:53
+#: wlansi/buynow/models.py:54
 msgid "orders"
 msgstr ""
 
-#: wlansi/buynow/models.py:58
+#: wlansi/buynow/models.py:59
 #, python-format
 msgid "%(quantity)sx%(item)s/%(state)s"
 msgstr ""
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Invalid value: %(handling)s"
 msgstr "Neveljavna vrednost: %(handling)s"
 
-#: wlansi/buynow/templates/buynow/button.html:13
+#: wlansi/buynow/templates/buynow/button.html:14
 msgid ""
 "We are non-profit. Prices shown are the same as prices we pay ourselves. If "
 "you want to award us for our work, decide for yourself how much you want "
@@ -366,7 +366,11 @@ msgstr "Kontaktni telefon:"
 msgid "Reference:"
 msgstr "Referenca:"
 
-#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:28
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:27
+msgid "Notes:"
+msgstr "Opombe:"
+
+#: wlansi/buynow/templates/buynow/order_confirmation_email.txt:30
 msgid "Yours,"
 msgstr "Tvoj,"
 
@@ -438,11 +442,15 @@ msgstr "Kontaktni telefon"
 msgid "Reference"
 msgstr "Referenca"
 
-#: wlansi/buynow/templates/pdt/pdt.html:35
+#: wlansi/buynow/templates/pdt/pdt.html:33
+msgid "Notes"
+msgstr "Opombe"
+
+#: wlansi/buynow/templates/pdt/pdt.html:37
 msgid "Order processing failed"
 msgstr "Naročilo ni uspelo"
 
-#: wlansi/buynow/templates/pdt/pdt.html:37
+#: wlansi/buynow/templates/pdt/pdt.html:39
 #, python-format
 msgid ""
 "Sorry, order processing failed. Please <a href=\"%(contact_url)s\">contact "

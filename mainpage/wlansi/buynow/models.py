@@ -38,6 +38,7 @@ class Order(models.Model):
     email = models.CharField(_("e-mail address"), max_length=129)
     phone = models.CharField(max_length=20)
     shipping_address = models.TextField()
+    notes = models.TextField()
     gross = models.DecimalField(max_digits=12, decimal_places=2)
     fee = models.DecimalField(max_digits=12, decimal_places=2)
     shipping = models.DecimalField(max_digits=12, decimal_places=2, default=0)

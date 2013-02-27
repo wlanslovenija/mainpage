@@ -30,6 +30,8 @@
             <dd>{{ pdt_obj.contact_phone }}</dd>
             <dt>{% trans "Reference" %}</dt>
             <dd>{{ pdt_obj.txn_id }}</dd>
+            <dt>{% trans "Notes" %}</dt>
+            <dd>{{ pdt_obj.memo }}</dd>
         </dl>
     {% else %}
         <h3 class="error">{% trans "Order processing failed" %}</h3>
