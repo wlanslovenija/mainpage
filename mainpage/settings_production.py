@@ -101,7 +101,8 @@ if not DEBUG:
     PAYPAL_DEBUG = PAYPAL_TEST
     # PAYPAL_IDENTITY_TOKEN_PRODUCTION is in secrets
     PAYPAL_IDENTITY_TOKEN = PAYPAL_IDENTITY_TOKEN_PRODUCTION
-    PAYPAL_RECEIVER_EMAIL = 'order@wlan-si.net'
+    PAYPAL_RECEIVER_EMAIL = 'mitar@tnode.com'
+    PAYPAL_RECEIVER_EMAIL_ALIAS = 'order@wlan-si.net'
     PAYPAL_PRIVATE_CERT = os.path.join(paypal_dir, 'production.private')
     PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'production.public')
     PAYPAL_CERT = os.path.join(paypal_dir, 'paypal_production.pem')

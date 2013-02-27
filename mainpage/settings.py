@@ -495,6 +495,7 @@ PAYPAL_TEST = DEBUG
 PAYPAL_DEBUG = PAYPAL_TEST
 PAYPAL_IDENTITY_TOKEN = 'alyuTeTqU6f5sEX68chZLASdUU2ZDSW0C5N21NBO13P6UlTwF_cCkuVWU04'
 PAYPAL_RECEIVER_EMAIL = 'mitar1_1271975562_biz@tnode.com'
+PAYPAL_RECEIVER_EMAIL_ALIAS = PAYPAL_RECEIVER_EMAIL
 PAYPAL_PRIVATE_CERT = os.path.join(paypal_dir, 'sandbox.private')
 PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'sandbox.public')
 PAYPAL_CERT = os.path.join(paypal_dir, 'paypal_sandbox.pem')

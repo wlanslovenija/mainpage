@@ -55,6 +55,7 @@ def button_form(request, instance, handling, cancel_return=None):
         cancel_return = request.build_absolute_uri()
 
     form = forms.BuyNowForm(initial={
+        'business': settings.PAYPAL_RECEIVER_EMAIL_ALIAS,
         'item_number': instance.pk,
         'item_name': instance.item_name,
         'amount': instance.price,
