@@ -682,6 +682,7 @@ ul.supporters li {
     text-align: center;
     padding: 10px;
     border-radius: 4px 4px 4px 4px;
+	margin: 5px 0;
 }
 
 .infobox :link, .infobox *:visited {
