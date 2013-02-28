@@ -40,16 +40,31 @@ def shipping(instance):
     # Packaging + shipping
     return decimal.Decimal('0.65') + decimal.Decimal(by_weight())
 
+# TODO: We should really compute PayPal fee properly. Currently it is off by few cents.
+
 def paypal_static():
     return decimal.Decimal('0.25')
 
 def paypal_variate(price):
     return decimal.Decimal('0.029') * price
 
-def button_form(request, instance, handling, custom=None, cancel_return=None):
+def compute_shipping(instance, quantity, handling):
     shipping_one = shipping(instance)
-    shipping1 = paypal_static() + paypal_variate(instance.price + shipping_one + handling) + shipping_one
-    shipping2 = paypal_variate(instance.price + shipping_one) + shipping_one
+    real_costs = (instance.price + shipping_one) * quantity + handling
+
+    def fee(current_fee, current_gross):
+        new_fee = paypal_static() + paypal_variate(real_costs + current_fee)
+        new_gross = decimal.Decimal('%.2f' % (real_costs + new_fee))
+        if current_gross != new_gross:
+            return fee(new_fee, new_gross)
+        else:
+            return new_fee
+
+    return shipping_one * quantity + fee(decimal.Decimal('0.0'), real_costs)
+
+def button_form(request, instance, handling, custom=None, cancel_return=None):
+    shipping1 = compute_shipping(instance, 1, handling)
+    shipping2 = (compute_shipping(instance, 100, handling) - shipping1) / decimal.Decimal('99.0')
 
     if not cancel_return:
         cancel_return = request.build_absolute_uri()
