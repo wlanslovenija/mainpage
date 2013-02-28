@@ -766,3 +766,7 @@ li.empty {
 .options {
     margin: 2px 5px;
 }
+
+.smalltext {
+	font-size: 10px;
+}
