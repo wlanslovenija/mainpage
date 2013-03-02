@@ -40,13 +40,14 @@ def shipping(instance):
     # Packaging + shipping
     return decimal.Decimal('0.65') + decimal.Decimal(by_weight())
 
-# TODO: We should really compute PayPal fee properly. Currently it is off by few cents.
+# PayPal rates for EU: https://www.paypal.com/ie/cgi-bin/webscr?cmd=_wp-standard-overview-outside
+# Sandbox might use different rates (if sandbox seller is not in EU)
 
 def paypal_static():
-    return decimal.Decimal('0.25')
+    return decimal.Decimal('0.35')
 
 def paypal_variate(price):
-    return decimal.Decimal('0.029') * price
+    return decimal.Decimal('0.034') * price
 
 def compute_shipping(instance, quantity, handling):
     shipping_one = shipping(instance)
