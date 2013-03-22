@@ -205,14 +205,14 @@ def new_order(obj, is_pdt):
     subject = ''.join(subject.splitlines())
     email = loader.render_to_string('buynow/new_order_email.txt', context)
 
-    mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL])
+    mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL_ALIAS])
 
     subject = loader.render_to_string('buynow/order_confirmation_subject.txt', context)
     # Email subject *must not* contain newlines
     subject = ''.join(subject.splitlines())
     email = loader.render_to_string('buynow/order_confirmation_email.txt', context)
 
-    mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL, [obj.payer_email])
+    mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL_ALIAS, [obj.payer_email])
 
 def error_order(obj, is_pdt=True):
     site = sites_models.Site.objects.get_current()
@@ -243,7 +243,7 @@ def error_order(obj, is_pdt=True):
     subject = ''.join(subject.splitlines())
     email = loader.render_to_string('buynow/error_email.txt', context)
 
-    mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL])
+    mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL_ALIAS])
 
 @dispatch.receiver(pdt_signals.pdt_successful)
 def pdt_successful(sender, **kwargs):
