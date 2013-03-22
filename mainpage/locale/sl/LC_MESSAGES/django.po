@@ -269,7 +269,7 @@ msgid ""
 "you want to award us for our work, decide for yourself how much you want "
 "donate for our handling of your order."
 msgstr ""
-"Smo neprofitni. Prikazane cene so takšne, kot jih plačujemo sami. Če nas "
+"Opreme ne ponujamo s pridobitnim namenom. Prikazane cene so takšne, kot jih plačujemo sami. Če nas "
 "želiš nagraditi za naše delo, se sam/a odloči, koliko želiš donirati za našo "
 "izvedbo tvojega naročila."
 
