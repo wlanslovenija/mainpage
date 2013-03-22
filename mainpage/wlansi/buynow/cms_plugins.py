@@ -18,28 +18,6 @@ import reversion
 
 from . import forms, models
 
-def shipping(instance):
-    def by_weight():
-        if instance.weight <= 2:
-            return '4.47'
-        elif instance.weight <= 5:
-            return '5.34'
-        elif instance.weight <= 10:
-            return '7.85'
-        elif instance.weight <= 15:
-            return '8.26'
-        elif instance.weight <= 20:
-            return '9.51'
-        elif instance.weight <= 25:
-            return '11.20'
-        elif instance.weight <= 30:
-            return '13.27'
-        else:
-            raise ValueError("Invalid weight: %s" % instance.weight)
-
-    # Packaging + shipping
-    return decimal.Decimal('0.65') + decimal.Decimal(by_weight())
-
 # PayPal rates for EU: https://www.paypal.com/ie/cgi-bin/webscr?cmd=_wp-standard-overview-outside
 # Sandbox might use different rates (if sandbox seller is not in EU)
 
@@ -50,7 +28,7 @@ def paypal_variate(price):
     return decimal.Decimal('0.034') * price
 
 def compute_shipping(instance, quantity, handling):
-    shipping_one = shipping(instance)
+    shipping_one = instance.shipping
     real_costs = (instance.price + shipping_one) * quantity + handling
 
     def fee(current_fee, current_gross):
@@ -169,7 +147,7 @@ def new_order(obj, is_pdt):
     else:
         reversion.set_comment("Initial version.")
 
-        shipping_one = shipping(order.item)
+        shipping_one = order.item.shipping
         item_and_shipping = decimal.Decimal('%.2f' % (order.item.price + shipping_one))
         order.shipping = order.quantity * shipping_one
         order.handling = order.gross - order.fee - order.quantity * item_and_shipping

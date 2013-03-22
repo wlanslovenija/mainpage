@@ -24,7 +24,7 @@ STATE_CHOICES = (
 class BuyNow(plugin_base.CMSPlugin):
     item_name = models.CharField(max_length=127, unique=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.01'))], help_text=_("In EUR, with all processing costs but without shipping, amount to charge per unit."))
-    weight = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.01'))], help_text=_("In kg, per unit, with all packaging and extra content."))
+    shipping = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.01'))], help_text=_("In EUR, packaging and shipping inside Slovenia, amount to charge per unit."))
     initial_handling = models.DecimalField(max_digits=12, decimal_places=2, validators=[validators.MinValueValidator(decimal.Decimal('0.00'))], default=decimal.Decimal('10.00'), help_text=_("In EUR."))
     options = models.CharField(max_length=255, blank=True, null=True, help_text=_("Display options? A comma-separated list of possible values."))
 
