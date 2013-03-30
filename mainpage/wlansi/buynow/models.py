@@ -41,7 +41,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=20)
     shipping_address = models.TextField()
     optional = models.CharField(max_length=256, blank=True)
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
     gross = models.DecimalField(max_digits=12, decimal_places=2)
     fee = models.DecimalField(max_digits=12, decimal_places=2)
     shipping = models.DecimalField(max_digits=12, decimal_places=2, default=0)
