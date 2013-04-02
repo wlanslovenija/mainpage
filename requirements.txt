@@ -11,7 +11,7 @@ anyjson==0.3.1
 async==0.6.1
 chardet==1.0.1
 -e git+https://github.com/fivethreeo/cmsplugin-blog.git@169eb9c42cfbf14181e07c06a328e01afadf9478#egg=cmsplugin_blog-dev
-cmsplugin-contact==1.0.0
+-e git+https://github.com/maccesch/cmsplugin-contact.git@ea95740655582faf603cb2f0f772f3600f952a6b#egg=cmsplugin_contact-dev
 -e git+https://github.com/stefanfoulis/cmsplugin-filer.git@9f2e5959c25b849ba64d4a6be10d6ccd7278e050#egg=cmsplugin_filer-dev
 cmsplugin-markup==0.2.2
 cmsplugin-markup-tracwiki==0.2.2
