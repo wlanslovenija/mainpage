@@ -52,5 +52,8 @@ jQuery(document).ready(function($) {
                 alert(jqXHR.responseText);
             }
         });
-    })
+    });
 });
+
+window._idl = {};
+_idl.variant = 'banner';

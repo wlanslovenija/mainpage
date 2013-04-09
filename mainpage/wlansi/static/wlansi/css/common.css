@@ -103,6 +103,10 @@ ul.sitemap li.sitemap > *:visited {
     margin-right: auto;
 }
 
+#header {
+    padding: 30px 0 10px 0;
+}
+
 #header h1 {
     margin: 0;
 }
@@ -112,7 +116,6 @@ ul.sitemap li.sitemap > *:visited {
     width: 326px;
     height: 100px;
     background: transparent url('images/logo-sl.png') no-repeat top left;
-    margin: 30px 0 10px 0;
     white-space: pre;
     text-indent: 350px;
     overflow: hidden;
@@ -310,8 +313,13 @@ ul.supporters-logo li a {
 
 body {
     font: 13px Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;
-    background: white url('images/background.png') repeat-x top left;
     color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background: white url('images/background.png') repeat-x top left;
     margin: 0;
     padding: 0;
 }
