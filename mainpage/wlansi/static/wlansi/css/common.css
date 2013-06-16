@@ -267,12 +267,20 @@ h1 *:link, h1 *:visited {
     display: none;
 }
 
-#footer-comment, #footer-license, #footer-links {
+#footer-comment, #footer-license, #footer-cookies, #footer-links {
     margin: 1.3em 0;
 }
 
 #footer-links {
     margin-bottom: 0;
+}
+
+#footer-license {
+    margin-bottom: 0.3em;
+}
+
+#footer-cookies {
+    margin-top: 0.3em;
 }
 
 #footer *:link, #footer *:visited {

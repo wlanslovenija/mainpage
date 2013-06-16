@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 18:41+0100\n"
+"POT-Creation-Date: 2013-06-16 12:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,7 +191,7 @@ msgstr "Povzetek:"
 msgid "Change Object"
 msgstr ""
 
-#: wlansi/buynow/cms_plugins.py:81
+#: wlansi/buynow/cms_plugins.py:76
 msgid "Buy now"
 msgstr ""
 
@@ -230,48 +230,57 @@ msgid ""
 msgstr ""
 
 #: wlansi/buynow/models.py:27
-msgid "In kg, per unit, with all packaging and extra content."
+msgid ""
+"In EUR, packaging and shipping inside Slovenia, amount to charge per unit."
 msgstr ""
 
-#: wlansi/buynow/models.py:33
+#: wlansi/buynow/models.py:28
+msgid "In EUR."
+msgstr ""
+
+#: wlansi/buynow/models.py:29
+msgid "Display options? A comma-separated list of possible values."
+msgstr ""
+
+#: wlansi/buynow/models.py:35
 msgid "transaction ID"
 msgstr ""
 
-#: wlansi/buynow/models.py:38
+#: wlansi/buynow/models.py:40
 msgid "e-mail address"
 msgstr ""
 
-#: wlansi/buynow/models.py:48
+#: wlansi/buynow/models.py:51
 msgid "What is the state of this order?"
 msgstr ""
 
-#: wlansi/buynow/models.py:53
+#: wlansi/buynow/models.py:56
 msgid "order"
 msgstr ""
 
-#: wlansi/buynow/models.py:54
+#: wlansi/buynow/models.py:57
 msgid "orders"
 msgstr ""
 
-#: wlansi/buynow/models.py:59
+#: wlansi/buynow/models.py:62
 #, python-format
 msgid "%(quantity)sx%(item)s/%(state)s"
 msgstr ""
 
-#: wlansi/buynow/views.py:23 wlansi/buynow/views.py:25
+#: wlansi/buynow/views.py:33 wlansi/buynow/views.py:35
 #, python-format
 msgid "Invalid value: %(handling)s"
 msgstr "Neveljavna vrednost: %(handling)s"
 
-#: wlansi/buynow/templates/buynow/button.html:14
+#: wlansi/buynow/templates/buynow/button.html:21
 msgid ""
 "We are non-profit. Prices shown are the same as prices we pay ourselves. If "
 "you want to award us for our work, decide for yourself how much you want "
 "donate for our handling of your order."
 msgstr ""
-"Opreme ne ponujamo s pridobitnim namenom. Prikazane cene so takšne, kot jih plačujemo sami. Če nas "
-"želiš nagraditi za naše delo, se sam/a odloči, koliko želiš donirati za našo "
-"izvedbo tvojega naročila."
+"Opreme ne ponujamo s pridobitnim namenom. Prikazane cene so takšne, kot jih "
+"plačujemo sami. Če nas želiš nagraditi za naše delo, se sam/a odloči, koliko "
+"želiš donirati za našo izvedbo tvojega naročila."
 
 #: wlansi/buynow/templates/buynow/error_email.txt:1
 #: wlansi/buynow/templates/buynow/new_order_email.txt:1
@@ -290,6 +299,11 @@ msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_email.txt:9
 #: wlansi/buynow/templates/buynow/new_order_email.txt:9
+msgid "Instructions:"
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/error_email.txt:13
+#: wlansi/buynow/templates/buynow/new_order_email.txt:13
 msgctxt "admin"
 msgid "Yours,"
 msgstr ""
@@ -751,7 +765,7 @@ msgid ""
 "views of the European Commission."
 msgstr ""
 "Izvedba tega projekta je sofinancirana s strani Evropske komisije. Vsebina "
-"spletnih strani je izključno odgovornost avtorjev in v nobenem primeru ne "
+"spletne strani je izključno odgovornost avtorjev in v nobenem primeru ne "
 "predstavlja stališč Evropske komisije."
 
 #: wlansi/templates/footer.html:22
@@ -766,14 +780,22 @@ msgstr ""
 "DeljenjePodEnakimiPogoji licenco</a>, v kolikor ni označeno drugače."
 
 #: wlansi/templates/footer.html:25
+msgid ""
+"This website uses cookies to store your website preferences and login "
+"information."
+msgstr ""
+"Spletna stran uporablja piškotke, da shrani tvoje nastavitve spletne strani "
+"in podatke o prijavi."
+
+#: wlansi/templates/footer.html:28
 msgid "node database"
 msgstr "baza točk"
 
-#: wlansi/templates/footer.html:25
+#: wlansi/templates/footer.html:28
 msgid "development"
 msgstr "razvoj"
 
-#: wlansi/templates/footer.html:25
+#: wlansi/templates/footer.html:28
 msgid "growing"
 msgstr "rast"
 
