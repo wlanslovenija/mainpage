@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-16 12:32+0200\n"
+"POT-Creation-Date: 2013-06-18 13:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -780,12 +780,13 @@ msgstr ""
 "DeljenjePodEnakimiPogoji licenco</a>, v kolikor ni označeno drugače."
 
 #: wlansi/templates/footer.html:25
+#, python-format
 msgid ""
-"This website uses cookies to store your website preferences and login "
-"information."
+"This website uses <a href=\"%(cookies_url)s\">cookies to store your website "
+"preferences and login information</a>."
 msgstr ""
-"Spletna stran uporablja piškotke, da shrani tvoje nastavitve spletne strani "
-"in podatke o prijavi."
+"Spletna stran uporablja <a href=\"%(cookies_url)s\">piškotke, da shrani "
+"tvoje nastavitve spletne strani in podatke o prijavi</a>."
 
 #: wlansi/templates/footer.html:28
 msgid "node database"
