@@ -136,7 +136,7 @@ $.fn.panorama=function(o){
         }
         $(this).toggleClass("play");
         e.preventDefault();
-        document.cookie = "panorama_stop=" + (cFlow ? "" : "1") + ";";
+        document.cookie = "panorama_stop=" + (cFlow ? "" : "1") + "; path=/";
     });
 
     c.append(toggle);
