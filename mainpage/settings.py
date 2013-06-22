@@ -368,7 +368,10 @@ CMS_MARKUP_TRAC_INTERWIKI = {
 CMS_MARKUP_TRAC_CONFIGURATION = {
     'tracmath': {
         'cache_dir': os.path.join(settings_dir, 'tracwiki', 'cache'),
-    }
+    },
+    'wiki': {
+        'render_unsafe_content': True,
+    },
 }
 
 CMS_MARKUP_TRAC_TEMPLATES_DIR = os.path.join(settings_dir, 'tracwiki', 'templates')
