@@ -1,6 +1,9 @@
 <script type="text/javascript">
 /* <![CDATA[ */
 var disqus_shortname = 'wlanslovenija';
+var disqus_config = function () { 
+  this.language = '{{ title.language|escapejs }}';
+};
 (function () {
   var s = document.createElement('script'); s.async = true;
   s.type = 'text/javascript';

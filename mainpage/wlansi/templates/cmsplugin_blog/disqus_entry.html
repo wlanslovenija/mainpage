@@ -6,6 +6,9 @@ var disqus_shortname = 'wlanslovenija';
 var disqus_identifier = 'cmsplugin-blog-id-{{ object.pk|escapejs }}-{{ title.language|escapejs }}';
 var disqus_url = '{% fullurl title.get_absolute_url %}';
 var disqus_title = '{{ title|escapejs }}';
+var disqus_config = function () { 
+  this.language = '{{ title.language|escapejs }}';
+};
 (function() {
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
   dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
