@@ -64,7 +64,7 @@ def button_form(request, instance, handling, custom=None, cancel_return=None):
         'cancel_return': cancel_return,
         'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
         'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-order')),
-        'image_url': request.build_absolute_uri(staticfiles_storage.url('wlansi/images/paypal-logo.png')),
+        'image_url': request.build_absolute_uri(staticfiles_storage.url('wlansi/images/paypal-logo-%s.png' % request.LANGUAGE_CODE)),
     })
 
     return form
