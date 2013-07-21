@@ -7,7 +7,7 @@ from django.core import mail, urlresolvers
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.template import loader
 from django.utils import timezone, translation
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy, ugettext_lazy as _
 
 from cms import plugin_base
 from cms.plugin_pool import plugin_pool
@@ -77,7 +77,7 @@ class DonatePlugin(plugin_base.CMSPluginBase):
 
     module = 'wlan slovenija'
     model = models.Donate
-    name = _("Donate")
+    name = pgettext_lazy(u'admin', u"Donate")
     render_template = "donations/button.html"
 
     def render(self, context, instance, placeholder):

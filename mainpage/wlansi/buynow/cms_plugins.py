@@ -59,7 +59,7 @@ def button_form(request, instance, handling, custom=None, cancel_return=None):
         'shipping2': '%.2f' % shipping2,
         'custom': custom,
         'no_note': '0',
-        'cn': _("Add special instructions to merchant."),
+        'cn': _("Add special instructions or notes."),
         'cancel_return': cancel_return,
         'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
         'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-order')),

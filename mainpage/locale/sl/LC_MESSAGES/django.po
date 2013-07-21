@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-18 13:03+0200\n"
+"POT-Creation-Date: 2013-07-21 12:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,13 @@ msgid "has paper"
 msgstr ""
 
 #: wlansi/accounting/admin.py:21 wlansi/accounting/admin.py:38
-#: wlansi/donations/admin.py:17 wlansi/inmedia/admin.py:19
+#: wlansi/donations/admin.py:20 wlansi/inmedia/admin.py:19
 #: wlansi/inmedia/admin.py:35 wlansi/participants/admin.py:14
 msgid "Yes"
 msgstr ""
 
 #: wlansi/accounting/admin.py:22 wlansi/accounting/admin.py:39
-#: wlansi/donations/admin.py:18 wlansi/inmedia/admin.py:20
+#: wlansi/donations/admin.py:21 wlansi/inmedia/admin.py:20
 #: wlansi/inmedia/admin.py:36 wlansi/participants/admin.py:15
 msgid "No"
 msgstr ""
@@ -102,7 +102,7 @@ msgstr ""
 msgid "transactions"
 msgstr ""
 
-#: wlansi/accounting/models.py:67 wlansi/donations/models.py:48
+#: wlansi/accounting/models.py:67 wlansi/donations/models.py:70
 #, python-format
 msgid "%(amount)s on %(date)s"
 msgstr ""
@@ -191,7 +191,11 @@ msgstr "Povzetek:"
 msgid "Change Object"
 msgstr ""
 
-#: wlansi/buynow/cms_plugins.py:76
+#: wlansi/buynow/cms_plugins.py:62
+msgid "Add special instructions or notes."
+msgstr "Dodaj posebna navodila ali opombe."
+
+#: wlansi/buynow/cms_plugins.py:78
 msgid "Buy now"
 msgstr ""
 
@@ -242,11 +246,11 @@ msgstr ""
 msgid "Display options? A comma-separated list of possible values."
 msgstr ""
 
-#: wlansi/buynow/models.py:35
+#: wlansi/buynow/models.py:35 wlansi/donations/models.py:50
 msgid "transaction ID"
 msgstr ""
 
-#: wlansi/buynow/models.py:40
+#: wlansi/buynow/models.py:40 wlansi/donations/models.py:53
 msgid "e-mail address"
 msgstr ""
 
@@ -284,37 +288,39 @@ msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_email.txt:1
 #: wlansi/buynow/templates/buynow/new_order_email.txt:1
+#: wlansi/donations/templates/donations/new_donation_email.txt:1
 msgid "Hello!"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_email.txt:3
 #, python-format
-msgid "There was an error with %(site_name)s order."
+msgid "There was an error with %(site_name)s PayPal transaction."
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_email.txt:5
 #: wlansi/buynow/templates/buynow/new_order_email.txt:5
+#: wlansi/donations/templates/donations/new_donation_email.txt:5
 msgid "For more information please visit:"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_email.txt:9
-#: wlansi/buynow/templates/buynow/new_order_email.txt:9
-msgid "Instructions:"
-msgstr ""
-
-#: wlansi/buynow/templates/buynow/error_email.txt:13
 #: wlansi/buynow/templates/buynow/new_order_email.txt:13
+#: wlansi/donations/templates/donations/new_donation_email.txt:9
 msgctxt "admin"
 msgid "Yours,"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/error_subject.txt:1
-msgid "Order error"
+msgid "PayPal transaction error"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/new_order_email.txt:3
 #, python-format
 msgid "New %(site_name)s order has been made."
+msgstr ""
+
+#: wlansi/buynow/templates/buynow/new_order_email.txt:9
+msgid "Instructions:"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/new_order_subject.txt:1
@@ -323,6 +329,7 @@ msgid "New order (%(order_id)s)"
 msgstr ""
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:1
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:1
 #, python-format
 msgid "Hello %(name)s!"
 msgstr "Zdravo %(name)s!"
@@ -335,7 +342,7 @@ msgstr "Ta e-mail ti je bil poslan, da potrdi tvoje %(site_name)s narocilo."
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:5
 msgid ""
 "Thank you for your order. If you have any questions about your order or "
-"order status, feel free to simply reply to this e-mail."
+"order status, feel free to reply to this e-mail."
 msgstr ""
 "Hvala za tvoje narocilo. Ce imas kakrsnokoli vprasanje glede tvojega "
 "narocila oziroma njegovega stanja, kar odgovori na ta e-mail."
@@ -350,7 +357,7 @@ msgstr "Naroceno od:"
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:11
 msgid "E-mail address:"
-msgstr "Naslov elektronske poste:"
+msgstr "E-mail naslov:"
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:13
 msgid "Order amount:"
@@ -385,6 +392,7 @@ msgid "Notes:"
 msgstr "Opombe:"
 
 #: wlansi/buynow/templates/buynow/order_confirmation_email.txt:30
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:19
 msgid "Yours,"
 msgstr "Tvoj,"
 
@@ -417,8 +425,8 @@ msgid ""
 "Please save the following data for your records. A confirmation e-mail with "
 "it was send to your e-mail address, too."
 msgstr ""
-"Prosimo, shrani sledeče podatke za evidenco. Potrditvena elektronska pošta "
-"je bila prav tako poslana na tvoj naslov."
+"Prosimo, shrani sledeče podatke za evidenco. Potrditveni e-mail je bil prav "
+"tako poslan na tvoj naslov."
 
 #: wlansi/buynow/templates/pdt/pdt.html:15
 msgid "Ordered by"
@@ -426,7 +434,7 @@ msgstr "Naročeno od"
 
 #: wlansi/buynow/templates/pdt/pdt.html:17
 msgid "E-mail address"
-msgstr "Naslov elektronske pošte"
+msgstr "E-mail naslov"
 
 #: wlansi/buynow/templates/pdt/pdt.html:19
 msgid "Order amount"
@@ -456,15 +464,15 @@ msgstr "Kontaktni telefon"
 msgid "Reference"
 msgstr "Referenca"
 
-#: wlansi/buynow/templates/pdt/pdt.html:33
+#: wlansi/buynow/templates/pdt/pdt.html:34
 msgid "Notes"
 msgstr "Opombe"
 
-#: wlansi/buynow/templates/pdt/pdt.html:37
+#: wlansi/buynow/templates/pdt/pdt.html:39
 msgid "Order processing failed"
 msgstr "Naročilo ni uspelo"
 
-#: wlansi/buynow/templates/pdt/pdt.html:39
+#: wlansi/buynow/templates/pdt/pdt.html:41
 #, python-format
 msgid ""
 "Sorry, order processing failed. Please <a href=\"%(contact_url)s\">contact "
@@ -473,53 +481,183 @@ msgstr ""
 "Oprosti, naročilo ni uspelo. Prosimo, <a href=\"%(contact_url)s"
 "\">kontaktiraj nas</a>, če je bil denar nakazan s tvojega računa."
 
-#: wlansi/donations/admin.py:12
+#: wlansi/donations/admin.py:15
 msgid "is anonymous"
 msgstr ""
 
-#: wlansi/donations/cms_plugins.py:14
+#: wlansi/donations/admin.py:56
+msgid "PayPal"
+msgstr ""
+
+#: wlansi/donations/cms_plugins.py:27
 msgid "Donations"
 msgstr ""
 
-#: wlansi/donations/cms_plugins.py:31
+#: wlansi/donations/cms_plugins.py:44
 msgid "Supporters"
 msgstr ""
 
+#: wlansi/donations/cms_plugins.py:64
+#: wlansi/donations/templates/donations/pdt.html:20
+msgid "Public message"
+msgstr "Javno sporočilo"
+
+#: wlansi/donations/cms_plugins.py:80
+msgctxt "admin"
+msgid "Donate"
+msgstr ""
+
+#: wlansi/donations/forms.py:19 wlansi/donations/forms.py:26
+#: wlansi/templates/snippets/donate_normal.html:7
+msgid "Donate with PayPal"
+msgstr "Doniraj preko PayPal-a"
+
 #: wlansi/donations/models.py:20
-msgid "donation source"
-msgstr ""
-
-#: wlansi/donations/models.py:21
-msgid "donation sources"
-msgstr ""
-
-#: wlansi/donations/models.py:31
-msgid "Date of donation on the account."
-msgstr ""
-
-#: wlansi/donations/models.py:32
-msgid "In EUR, without any processing costs, final amount on the account."
+#, python-format
+msgid "%(organization_name_or_service)s/%(donation_id)s"
 msgstr ""
 
 #: wlansi/donations/models.py:33
+msgid "donation source"
+msgstr ""
+
+#: wlansi/donations/models.py:34
+msgid "donation sources"
+msgstr ""
+
+#: wlansi/donations/models.py:44
+msgid "Date of donation on the account."
+msgstr ""
+
+#: wlansi/donations/models.py:45
+msgid "In EUR, without any processing costs, final amount on the account."
+msgstr ""
+
+#: wlansi/donations/models.py:46
 msgid "Leave blank if anonymous."
 msgstr ""
 
-#: wlansi/donations/models.py:35
+#: wlansi/donations/models.py:48
 msgid "Internal comment, like donation source, circumstances, etc."
 msgstr ""
 
-#: wlansi/donations/models.py:38
+#: wlansi/donations/models.py:60
 msgid "donation"
 msgstr ""
 
-#: wlansi/donations/models.py:39
+#: wlansi/donations/models.py:61
 msgid "donations"
 msgstr ""
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:3
+#, python-format
+msgid ""
+"Thank you for your %(site_name)s donation! This e-mail was sent to you to "
+"confirm we received it. Your donation enables life and growth of the network."
+msgstr ""
+"Hvala za tvojo %(site_name)s donacijo! Ta e-mail ti je bil poslan, da "
+"potrdi, da smo jo prejeli. Tvoja donacija omogoča življenje in rast omrežja."
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:5
+msgid "Donation by:"
+msgstr "Donacija od:"
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:7
+msgid "Amount:"
+msgstr "Znesek:"
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:9
+msgid "Public message:"
+msgstr "Javno sporočilo:"
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:12
+msgid ""
+"We added your donation publicly to the list of incomes and your name to the "
+"list of supporters:"
+msgstr ""
+"Dodali smo tvojo donacijo javno na seznam prihodkov in tvoje ime na seznam "
+"podpornikov:"
+
+#: wlansi/donations/templates/donations/donation_confirmation_email.txt:17
+msgid ""
+"If you would prefer to be anonymous, feel free to tell us by replying to "
+"this e-mail."
+msgstr ""
+"Če bi raje bil/a anonimen/a, kar odgovori na ta e-mail in nam to povej."
+
+#: wlansi/donations/templates/donations/donation_confirmation_subject.txt:1
+msgid "Thank you for your donation!"
+msgstr "Hvala za tvojo donacijo!"
 
 #: wlansi/donations/templates/donations/list.html:5
 msgid "anonymous"
 msgstr "anonimno"
+
+#: wlansi/donations/templates/donations/new_donation_email.txt:3
+#, python-format
+msgid "New %(site_name)s donation has been made."
+msgstr ""
+
+#: wlansi/donations/templates/donations/new_donation_subject.txt:1
+#, python-format
+msgid "New donation (%(donation_id)s)"
+msgstr ""
+
+#: wlansi/donations/templates/donations/pdt.html:5
+#: wlansi/donations/templates/donations/pdt.html:8
+msgid "Donation Results"
+msgstr "Rezultati donacije"
+
+#: wlansi/donations/templates/donations/pdt.html:10
+msgid "Donation processed successfully"
+msgstr "Donacija je bila uspešna"
+
+#: wlansi/donations/templates/donations/pdt.html:12
+#, python-format
+msgid ""
+"Thank you for your %(site_name)s donation! Your donation enables life and "
+"growth of the network."
+msgstr ""
+"Hvala za tvojo %(site_name)s donacijo! Tvoja donacija omogoča življenje in "
+"rast omrežja."
+
+#: wlansi/donations/templates/donations/pdt.html:13
+msgid "A confirmation e-mail was send to your e-mail address, too."
+msgstr "Potrditveni e-mail je bil prav tako poslan na tvoj naslov."
+
+#: wlansi/donations/templates/donations/pdt.html:15
+msgid "Donation by"
+msgstr "Donacija od"
+
+#: wlansi/donations/templates/donations/pdt.html:17
+msgid "Amount"
+msgstr "Znesek"
+
+#: wlansi/donations/templates/donations/pdt.html:26
+#, python-format
+msgid ""
+"We added your donation publicly to <a href=\"%(opengrowth_url)s\">the list "
+"of incomes</a> and your name to <a href=\"%(supporters_url)s\">the list of "
+"supporters</a>. If you would prefer to be anonymous, feel free to tell us by "
+"<a href=\"%(contact_url)s\">contacting us</a>."
+msgstr ""
+"Dodali smo tvojo donacijo javno na <a href=\"%(opengrowth_url)s\">seznam "
+"prihodkov</a> in tvoje ime na <a href=\"%(supporters_url)s\">seznam "
+"podpornikov</a>. Če bi raje bil/a anonimen/a, nas kar <a href="
+"\"%(contact_url)s\">kontaktiraj</a> in nam to povej."
+
+#: wlansi/donations/templates/donations/pdt.html:28
+msgid "Donation processing failed"
+msgstr "Donacija ni uspela"
+
+#: wlansi/donations/templates/donations/pdt.html:30
+#, python-format
+msgid ""
+"Sorry, donation processing failed. Please <a href=\"%(contact_url)s"
+"\">contact us</a> if money has been transferred from your account."
+msgstr ""
+"Oprosti, donacija ni uspela. Prosimo, <a href=\"%(contact_url)s"
+"\">kontaktiraj nas</a>, če je bil denar nakazan s tvojega računa."
 
 #: wlansi/dummy/cms_plugins.py:19
 msgid "Dummy"
@@ -650,7 +788,7 @@ msgstr ""
 
 #: wlansi/news/templates/news/form.html:8
 msgid "Your e-mail address:"
-msgstr "Naslov tvoje elektronske pošte:"
+msgstr "Tvoj e-mail naslov:"
 
 #: wlansi/news/templates/news/form.html:9
 msgid "Subscribe"
@@ -820,19 +958,7 @@ msgstr "Stik"
 msgid "wlan slovenija – open wireless network of Slovenia"
 msgstr "wlan slovenija – odprto brezžično omrežje Slovenije"
 
-#: wlansi/templates/cms/plugins/twitter_recent_entries.html:39
-msgid "Loading tweets..."
-msgstr ""
-
-#: wlansi/templates/cms/plugins/twitter_recent_entries.html:41
-msgid "View tweet on Twitter"
-msgstr ""
-
-#: wlansi/templates/cms/plugins/twitter_recent_entries.html:45
-msgid "No recent tweets"
-msgstr ""
-
-#: wlansi/templates/cms/plugins/twitter_recent_entries.html:55
+#: wlansi/templates/cms/plugins/twitter_recent_entries.html:6
 msgid "More on Twitter..."
 msgstr "Več na Twitterju ..."
 
@@ -855,7 +981,7 @@ msgstr ""
 "a></span><span class=\"timestamp\"> %(published_date)s ob "
 "%(published_time)s</span>"
 
-#: wlansi/templates/cmsplugin_blog/disqus_entry.html:16
+#: wlansi/templates/cmsplugin_blog/disqus_entry.html:19
 msgid "Please enable JavaScript to view the comments."
 msgstr "Za komentarje je potrebno imeti omogočen JavaScript."
 
@@ -998,7 +1124,3 @@ msgstr "Doniraj"
 msgid "<a class=\"more\" href=\"%(donate_url)s\">More ways to donate...</a>"
 msgstr ""
 "<a class=\"more\" href=\"%(donate_url)s\">Več načinov doniranja ...</a>"
-
-#: wlansi/templates/snippets/donate_normal.html:7
-msgid "Donate with PayPal"
-msgstr "Doniraj preko PayPal-a"
