@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-21 12:10+0200\n"
+"POT-Creation-Date: 2013-07-21 12:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -508,7 +508,6 @@ msgid "Donate"
 msgstr ""
 
 #: wlansi/donations/forms.py:19 wlansi/donations/forms.py:26
-#: wlansi/templates/snippets/donate_normal.html:7
 msgid "Donate with PayPal"
 msgstr "Doniraj preko PayPal-a"
 
@@ -1114,13 +1113,3 @@ msgstr "Slike"
 #: wlansi/templates/snippets/connect.html:4
 msgid "Connect to<br /><tt>open.wlan-si.net</tt>"
 msgstr "Poveži se na<br /><tt>open.wlan-si.net</tt>"
-
-#: wlansi/templates/snippets/donate_main.html:4
-msgid "Donate"
-msgstr "Doniraj"
-
-#: wlansi/templates/snippets/donate_main.html:7
-#, python-format
-msgid "<a class=\"more\" href=\"%(donate_url)s\">More ways to donate...</a>"
-msgstr ""
-"<a class=\"more\" href=\"%(donate_url)s\">Več načinov doniranja ...</a>"

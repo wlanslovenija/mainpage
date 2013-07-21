@@ -94,7 +94,7 @@ ul.tweet_list .tweet_avatar {
 .randomimages a.more,
 a.blog-link,
 a.twitter-link,
-.donate a.more {
+.donate a {
 	border: none;
 	display: block;
 	margin: 10px;
@@ -107,7 +107,7 @@ a.twitter-link,
 .randomimages a.more:hover,
 a.blog-link:hover,
 a.twitter-link:hover,
-.donate a.more:hover {
+.donate a:hover {
 	background: transparent url('images/go_right.png') no-repeat 100% -18px;
 }
 
@@ -115,8 +115,12 @@ a.twitter-link:hover,
 	margin-top: 0;
 }
 
-.donate a.more {
+.donate a {
     margin-top: -2em;
+}
+
+.donate p {
+    margin: 0;
 }
 
 ul.tweet_list li.empty {

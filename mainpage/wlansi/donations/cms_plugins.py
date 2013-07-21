@@ -79,6 +79,7 @@ class DonatePlugin(plugin_base.CMSPluginBase):
     model = models.Donate
     name = pgettext_lazy(u'admin', u"Donate")
     render_template = "donations/button.html"
+    text_enabled = True
 
     def render(self, context, instance, placeholder):
         request = context['request']

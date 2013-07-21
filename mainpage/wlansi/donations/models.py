@@ -12,9 +12,9 @@ from paypal.standard.ipn import models as ipn_models
 from paypal.standard.pdt import models as pdt_models
 
 class Donate(plugin_base.CMSPlugin):
-    organization_name_or_service = models.CharField(max_length=127, unique=True)
+    organization_name_or_service = models.CharField(max_length=127)
     # We do not allow numerical donation IDs because we are using such IDs for shop items
-    donation_id = models.CharField(max_length=127, unique=True, validators=[validators.RegexValidator(r'\D')])
+    donation_id = models.CharField(max_length=127, validators=[validators.RegexValidator(r'\D')])
 
     def __unicode__(self):
         return unicode(_(u"%(organization_name_or_service)s/%(donation_id)s" % {'organization_name_or_service': self.organization_name_or_service, 'donation_id': self.donation_id}))

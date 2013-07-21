@@ -1,8 +1,0 @@
-{% load i18n cms_tags context_tags %}
-
-<div class="donate">
-    <h3>{% trans "Donate" %}</h3>
-    {% include "snippets/donate_normal.html" %}
-    {% setcontext as donate_url %}{% page_url "donate" %}{% endsetcontext %}
-    {% blocktrans with donate_url=donate_url %}<a class="more" href="{{ donate_url }}">More ways to donate...</a>{% endblocktrans %}
-</div>
