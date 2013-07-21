@@ -20,8 +20,10 @@ urlpatterns = patterns('',
     url(r'^i18n/js/$', 'django.views.i18n.javascript_catalog', js_info_dict),
 
     url(r'^paypal/ipn/$', 'mainpage.wlansi.buynow.views.ipn', name='paypal-ipn'),
-    url(r'^paypal/pdt/$', 'mainpage.wlansi.buynow.views.pdt', name='paypal-pdt'),
+    url(r'^paypal/order/$', 'mainpage.wlansi.buynow.views.pdt', name='paypal-order'),
     url(r'^paypal/button/$', 'mainpage.wlansi.buynow.views.paypal_button', name='paypal-button'),
+
+    url(r'^paypal/donation/$', 'mainpage.wlansi.buynow.views.pdt', {'template': 'donations/pdt.html'}, name='paypal-donation'),
 
     url(r'^', include('filer.server.urls')),
 

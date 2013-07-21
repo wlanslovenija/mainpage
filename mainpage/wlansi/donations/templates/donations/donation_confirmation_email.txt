@@ -1,0 +1,23 @@
+{% load i18n cms_tags %}{% blocktrans with name=obj.first_name %}Hello {{ name }}!{% endblocktrans %}
+{% filter wordwrap:68 %}
+{% blocktrans with site_name=site.name %}Thank you for your {{ site_name }} donation! This e-mail was sent to you to confirm we received it. Your donation enables life and growth of the network.{% endblocktrans %}
+
+{% trans "Donation by:" %}
+{{ donation_by }}
+{% trans "Amount:" %}
+{{ amount }} {{ obj.mc_currency }}
+{% if obj.memo %}{% trans "Public message:" %}
+{{ obj.memo|safe }}
+{% endif %}
+{% blocktrans %}We added your donation publicly to the list of incomes and your name to the list of supporters:{% endblocktrans %}
+
+{{ base_url }}{% page_url "opengrowth" %}
+{{ base_url }}{% page_url "supporters" %}
+
+{% blocktrans %}If you would prefer to be anonymous, feel free to tell us by replying to this e-mail.{% endblocktrans %}
+
+{% blocktrans %}Yours,{% endblocktrans %}
+{% endfilter %}
+
+{{ site.name }}
+{{ home_url }}

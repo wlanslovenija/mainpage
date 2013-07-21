@@ -6,6 +6,19 @@ from django.db import models
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
+from cms import plugin_base
+
+from paypal.standard.ipn import models as ipn_models
+from paypal.standard.pdt import models as pdt_models
+
+class Donate(plugin_base.CMSPlugin):
+    organization_name_or_service = models.CharField(max_length=127, unique=True)
+    # We do not allow numerical donation IDs because we are using such IDs for shop items
+    donation_id = models.CharField(max_length=127, unique=True, validators=[validators.RegexValidator(r'\D')])
+
+    def __unicode__(self):
+        return unicode(_(u"%(organization_name_or_service)s/%(donation_id)s" % {'organization_name_or_service': self.organization_name_or_service, 'donation_id': self.donation_id}))
+
 class DonationSourceMetaclass(models.Model.__metaclass__):
     def __new__(cls, name, bases, attrs):
         for language_code, language_name in settings.LANGUAGES:
@@ -33,6 +46,15 @@ class Donation(models.Model):
     donor = models.CharField(max_length=255, blank=True, help_text=_("Leave blank if anonymous."))
     message = models.TextField(blank=True)
     internal_comment = models.TextField(blank=True, help_text=_("Internal comment, like donation source, circumstances, etc."))
+
+    txn_id = models.CharField(_("transaction ID"), max_length=19, blank=True)
+    timestamp = models.DateTimeField(blank=True, null=True)
+    donation_by = models.CharField(max_length=129, blank=True)
+    email = models.CharField(_("e-mail address"), max_length=129, blank=True)
+    gross = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    fee = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    pdt = models.ForeignKey(pdt_models.PayPalPDT, verbose_name="PDT", blank=True, null=True)
+    ipn = models.ForeignKey(ipn_models.PayPalIPN, verbose_name="IPN", blank=True, null=True)
 
     class Meta:
         verbose_name = _("donation")

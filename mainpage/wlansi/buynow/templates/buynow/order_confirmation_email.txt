@@ -24,9 +24,9 @@
 {{ obj.contact_phone }}
 {% trans "Reference:" %}
 {{ obj.txn_id }}
-{% trans "Notes:" %}
+{% if obj.memo %}{% trans "Notes:" %}
 {{ obj.memo|safe }}
-
+{% endif %}
 {% blocktrans %}Yours,{% endblocktrans %}
 {% endfilter %}
 

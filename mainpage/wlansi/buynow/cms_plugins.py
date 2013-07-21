@@ -16,7 +16,7 @@ from paypal.standard.pdt import signals as pdt_signals
 
 import reversion
 
-from . import forms, models
+from . import forms, models, signals
 
 # PayPal rates for EU: https://www.paypal.com/ie/cgi-bin/webscr?cmd=_wp-standard-overview-outside
 # Sandbox might use different rates (if sandbox seller is not in EU)
@@ -59,9 +59,10 @@ def button_form(request, instance, handling, custom=None, cancel_return=None):
         'shipping2': '%.2f' % shipping2,
         'custom': custom,
         'no_note': '0',
+        'cn': _("Add special instructions to merchant."),
         'cancel_return': cancel_return,
         'notify_url': request.build_absolute_uri(urlresolvers.reverse('paypal-ipn')),
-        'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-pdt')),
+        'return_url': request.build_absolute_uri(urlresolvers.reverse('paypal-order')),
         'image_url': request.build_absolute_uri(staticfiles_storage.url('wlansi/images/paypal-logo.png')),
     })
 
@@ -96,48 +97,55 @@ class BuyNowPlugin(plugin_base.CMSPluginBase):
 
 plugin_pool.register_plugin(BuyNowPlugin)
 
+@dispatch.receiver(signals.transaction_new)
 @reversion.create_revision()
-def new_order(obj, is_pdt):
-    order_by = ' '.join((obj.first_name, obj.last_name))
+def new_order(sender, is_pdt, **kwargs):
+    try:
+        int(sender.item_number)
+    except ValueError:
+        # Item number not a number, thus not an object ID (probably donation ID)
+        return
+
+    order_by = ' '.join((sender.first_name, sender.last_name))
 
     shipping_address_tuple = (
-        obj.address_name,
-        obj.address_street,
-        obj.address_city,
-        ' '.join((obj.address_state, obj.address_zip)),
-        obj.address_country,
+        sender.address_name,
+        sender.address_street,
+        sender.address_city,
+        ' '.join((sender.address_state, sender.address_zip)),
+        sender.address_country,
     )
 
     defaults = {
-        'item_id': obj.item_number,
-        'quantity': obj.quantity,
+        'item_id': sender.item_number,
+        'quantity': sender.quantity,
         'order_by': order_by,
-        'email': obj.payer_email,
-        'phone': obj.contact_phone,
+        'email': sender.payer_email,
+        'phone': sender.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
-        'optional': obj.custom,
-        'notes': obj.memo,
-        'gross': obj.mc_gross,
-        'fee': obj.mc_fee,
-        'state': 'test' if obj.test_ipn else 'pending',
+        'optional': sender.custom,
+        'notes': sender.memo,
+        'gross': sender.mc_gross,
+        'fee': sender.mc_fee,
+        'state': 'test' if sender.test_ipn else 'pending',
     }
 
     if is_pdt:
-        defaults['pdt_id'] = obj.pk
+        defaults['pdt_id'] = sender.pk
     else:
-        defaults['ipn_id'] = obj.pk
+        defaults['ipn_id'] = sender.pk
 
-    order, created = models.Order.objects.get_or_create(txn_id=obj.txn_id, defaults=defaults)
+    order, created = models.Order.objects.get_or_create(txn_id=sender.txn_id, defaults=defaults)
 
     if not created:
         if is_pdt:
             reversion.set_comment("Got PDT, setting ID.")
-            order.pdt_id = obj.pk
+            order.pdt_id = sender.pk
         else:
             reversion.set_comment("Got IPN, setting ID.")
-            order.ipn_id = obj.pk
+            order.ipn_id = sender.pk
 
-        if obj.test_ipn:
+        if sender.test_ipn:
             reversion.set_comment("Got a test IPN, setting test state.")
             order.state = 'test'
 
@@ -174,7 +182,7 @@ def new_order(obj, is_pdt):
         'home_url': home_url,
         'instructions_url': getattr(settings, 'SHOP_INSTRUCTIONS', None),
         'order_url': order_url,
-        'obj': obj,
+        'obj': sender,
         'ordered_by': order_by,
         'shipping_address': ', '.join(shipping_address_tuple),
     }
@@ -191,9 +199,12 @@ def new_order(obj, is_pdt):
     subject = ''.join(subject.splitlines())
     email = loader.render_to_string('buynow/order_confirmation_email.txt', context)
 
-    mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL_ALIAS, [obj.payer_email])
+    mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL_ALIAS, [sender.payer_email])
 
-def error_order(obj, is_pdt=True):
+def transaction_new(obj, is_pdt):
+    signals.transaction_new.send(sender=obj, is_pdt=is_pdt)
+
+def transaction_error(obj, is_pdt):
     site = sites_models.Site.objects.get_current()
     protocol = 'https' if getattr(settings, 'USE_HTTPS', False) else 'http'
     base_url = "%s://%s" % (protocol, site.domain)
@@ -212,7 +223,6 @@ def error_order(obj, is_pdt=True):
         'protocol': protocol,
         'base_url': base_url,
         'home_url': home_url,
-        'instructions_url': getattr(settings, 'SHOP_INSTRUCTIONS', None),
         'obj_url': obj_url,
         'obj': obj,
     }
@@ -222,7 +232,7 @@ def error_order(obj, is_pdt=True):
     subject = ''.join(subject.splitlines())
     email = loader.render_to_string('buynow/error_email.txt', context)
 
-    mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL_ALIAS])
+    mail.mail_admins(subject, email)
 
 @dispatch.receiver(pdt_signals.pdt_successful)
 def pdt_successful(sender, **kwargs):
@@ -240,11 +250,11 @@ def pdt_successful(sender, **kwargs):
         sender.send_signals()
         return
 
-    new_order(sender, True)
+    transaction_new(sender, True)
 
 @dispatch.receiver(pdt_signals.pdt_failed)
 def pdt_failed(sender, **kwargs):
-    error_order(sender, True)
+    transaction_error(sender, True)
 
 @dispatch.receiver(ipn_signals.payment_was_successful)
 def payment_was_successful(sender, **kwargs):
@@ -253,8 +263,8 @@ def payment_was_successful(sender, **kwargs):
         reversion.set_comment("Initial version.")
         sender.save()
 
-    new_order(sender, False)
+    transaction_new(sender, False)
 
 @dispatch.receiver(ipn_signals.payment_was_flagged)
 def payment_was_flagged(sender, **kwargs):
-    error_order(sender, False)
+    transaction_error(sender, False)

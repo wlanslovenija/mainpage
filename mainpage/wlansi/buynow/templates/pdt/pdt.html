@@ -9,7 +9,7 @@
     {% if pdt_obj.st == "SUCCESS" %}
         <h3 class="success">{% trans "Order processed successfully" %}</h3>
         {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
-        <p>{% blocktrans with contact_url=contact_url %}Thank you for your order. If you have any questions about your order or order status, feel free to <a href="{{ contact_url }}">contact us</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Thank you for your order. If you have any questions about your order or order status, feel free to <a href="{{ contact_url }}">contact us</a>.{% endblocktrans %}</p>
         <p>{% blocktrans %}Please save the following data for your records. A confirmation e-mail with it was send to your e-mail address, too.{% endblocktrans %}</p>
         <dl>
             <dt>{% trans "Ordered by" %}</dt>
@@ -30,12 +30,14 @@
             <dd>{{ pdt_obj.contact_phone }}</dd>
             <dt>{% trans "Reference" %}</dt>
             <dd>{{ pdt_obj.txn_id }}</dd>
-            <dt>{% trans "Notes" %}</dt>
-            <dd>{{ pdt_obj.memo }}</dd>
+            {% if pdt_obj.memo %}
+                <dt>{% trans "Notes" %}</dt>
+                <dd>{{ pdt_obj.memo }}</dd>
+            {% endif %}
         </dl>
     {% else %}
         <h3 class="error">{% trans "Order processing failed" %}</h3>
         {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
-        <p>{% blocktrans with contact_url=contact_url %}Sorry, order processing failed. Please <a href="{{ contact_url }}">contact us</a> if money has been transferred from your account.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Sorry, order processing failed. Please <a href="{{ contact_url }}">contact us</a> if money has been transferred from your account.{% endblocktrans %}</p>
     {% endif %}
 {% endblock %}

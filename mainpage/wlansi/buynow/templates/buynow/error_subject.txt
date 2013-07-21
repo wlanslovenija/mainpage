@@ -1,1 +1,1 @@
-{% load i18n %}{{ EMAIL_SUBJECT_PREFIX }}{% blocktrans %}Order error{% endblocktrans %}
+{% load i18n %}{{ EMAIL_SUBJECT_PREFIX }}{% blocktrans %}PayPal transaction error{% endblocktrans %}

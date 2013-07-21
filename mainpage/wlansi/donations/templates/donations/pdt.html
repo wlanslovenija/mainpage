@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load i18n cms_tags context_tags donations_tags %}
+
+{% block title %}{% trans "Donation Results" %}{% endblock %}
+
+{% block content %}
+    <h2>{% trans "Donation Results" %}</h2>
+    {% if pdt_obj.st == "SUCCESS" %}
+        <h3 class="success">{% trans "Donation processed successfully" %}</h3>
+        {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
+        <p>{% blocktrans %}Thank you for your {{ site_name }} donation! Your donation enables life and growth of the network.{% endblocktrans %}</p>
+        <p>{% blocktrans %}A confirmation e-mail was send to your e-mail address, too.{% endblocktrans %}</p>
+        <dl>
+            <dt>{% trans "Donation by" %}</dt>
+            <dd>{{ pdt_obj.first_name }} {{ pdt_obj.last_name }}</dd>
+            <dt>{% trans "Amount" %}</dt>
+            <dd>{{ pdt_obj.mc_gross|subtract:pdt_obj.mc_fee }} {{ pdt_obj.mc_currency }}</dd>
+            {% if pdt_obj.memo %}
+                <dt>{% trans "Public message" %}</dt>
+                <dd>{{ pdt_obj.memo }}</dd>
+            {% endif %}
+        </dl>
+        {% setcontext as opengrowth_url %}{% page_url "opengrowth" %}{% endsetcontext %}
+        {% setcontext as supporters_url %}{% page_url "supporters" %}{% endsetcontext %}
+        <p>{% blocktrans %}We added your donation publicly to <a href="{{ opengrowth_url }}">the list of incomes</a> and your name to <a href="{{ supporters_url }}">the list of supporters</a>. If you would prefer to be anonymous, feel free to tell us by <a href="{{ contact_url }}">contacting us</a>.{% endblocktrans %}</p>
+    {% else %}
+        <h3 class="error">{% trans "Donation processing failed" %}</h3>
+        {% setcontext as contact_url %}{% page_url "contact" %}{% endsetcontext %}
+        <p>{% blocktrans %}Sorry, donation processing failed. Please <a href="{{ contact_url }}">contact us</a> if money has been transferred from your account.{% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}

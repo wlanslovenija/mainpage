@@ -1,0 +1,1 @@
+{% load i18n %}{{ EMAIL_SUBJECT_PREFIX }}{% blocktrans with donation_id=obj.txn_id %}New donation ({{ donation_id }}){% endblocktrans %}

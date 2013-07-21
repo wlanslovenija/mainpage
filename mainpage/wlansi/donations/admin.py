@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.contrib import admin
 from django.db.models import Q
+from django.db.models.fields import related
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 import reversion
+
+from ..buynow import admin as buynow_admin
 
 from . import models
 
@@ -41,6 +44,19 @@ class DonationAdmin(reversion.VersionAdmin):
     list_display_links = ('amount',)
     list_filter = ('date', 'donation_source', IsAnonymousListFilter)
     search_fields = ('date', 'amount', 'donor', 'message', 'internal_comment')
+    formfield_overrides = {
+        related.ForeignKey: {
+            'widget': buynow_admin.LinkedSelect,
+        },
+    }
+    fieldsets = (
+        (None, {
+            'fields': ('donation_source', 'date', 'amount', 'donor', 'message', 'internal_comment'),
+        }),
+        (_("PayPal"), {
+            'fields': ('txn_id', 'timestamp', 'donation_by', 'email', 'gross', 'fee', 'pdt', 'ipn'),
+        }),
+    )
 
     def get_list_display(self, request):
         language = translation.get_language()
