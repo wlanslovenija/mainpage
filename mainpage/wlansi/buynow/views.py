@@ -17,7 +17,7 @@ pdt = pdt_views.pdt
 def paypal_button(request):
     instance = shortcuts.get_object_or_404(models.BuyNow, pk=request.POST['instance'])
 
-    option = request.POST.get('option') or None
+    option = request.POST.get('option') or ''
     if option:
         options = []
         if instance.options:
@@ -35,6 +35,6 @@ def paypal_button(request):
         return http.HttpResponseBadRequest(_("Invalid value: %(handling)s") % {'handling': request.POST['handling']})
 
     # TODO: Can we just pass cancel_return parameter like this? Is this secure?
-    form = cms_plugins.button_form(request, instance, handling, option, request.POST['cancel_return'])
+    form = cms_plugins.button_form(request, instance, handling, '%s:%s' % (request.LANGUAGE_CODE, option), request.POST['cancel_return'])
 
     return http.HttpResponse(form.render())

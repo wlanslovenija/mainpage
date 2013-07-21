@@ -60,6 +60,7 @@ def button_form(request, instance, cancel_return=None):
         'business': settings.PAYPAL_RECEIVER_EMAIL_DONATION_ALIAS,
         'item_number': instance.donation_id,
         'item_name': instance.organization_name_or_service,
+        'custom': request.LANGUAGE_CODE,
         'no_note': '0',
         'cn': _("Public message"),
         'cancel_return': cancel_return,
@@ -108,6 +109,8 @@ def new_donation(sender, is_pdt, **kwargs):
     timestamp = timezone.now()
     amount = decimal.Decimal(sender.mc_gross) - decimal.Decimal(sender.mc_fee) # Formula in donations/pdf.html as well
     donation_by = ' '.join((sender.first_name, sender.last_name))
+
+    language = sender.custom
 
     defaults = {
         'date': timestamp,
@@ -164,7 +167,7 @@ def new_donation(sender, is_pdt, **kwargs):
 
     class Request(object):
         REQUEST = {
-            'language': translation.get_language(),
+            'language': language,
         }
         current_page = None
 
@@ -181,16 +184,18 @@ def new_donation(sender, is_pdt, **kwargs):
         'request': Request(), # Fake request object for page_url to work in e-mails
     }
 
-    subject = loader.render_to_string('donations/new_donation_subject.txt', context)
-    # Email subject *must not* contain newlines
-    subject = ''.join(subject.splitlines())
-    email = loader.render_to_string('donations/new_donation_email.txt', context)
+    with translation.override(language):
+        subject = loader.render_to_string('donations/new_donation_subject.txt', context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        email = loader.render_to_string('donations/new_donation_email.txt', context)
 
     mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL_DONATION_ALIAS])
 
-    subject = loader.render_to_string('donations/donation_confirmation_subject.txt', context)
-    # Email subject *must not* contain newlines
-    subject = ''.join(subject.splitlines())
-    email = loader.render_to_string('donations/donation_confirmation_email.txt', context)
+    with translation.override(language):
+        subject = loader.render_to_string('donations/donation_confirmation_subject.txt', context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        email = loader.render_to_string('donations/donation_confirmation_email.txt', context)
 
     mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL_DONATION_ALIAS, [sender.payer_email])

@@ -6,6 +6,7 @@ from django.contrib.sites import models as sites_models
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core import mail, urlresolvers
 from django.template import loader
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 from cms import plugin_base
@@ -116,6 +117,8 @@ def new_order(sender, is_pdt, **kwargs):
         sender.address_country,
     )
 
+    language, optional = sender.custom.split(':', 1)
+
     defaults = {
         'item_id': sender.item_number,
         'quantity': sender.quantity,
@@ -123,7 +126,7 @@ def new_order(sender, is_pdt, **kwargs):
         'email': sender.payer_email,
         'phone': sender.contact_phone,
         'shipping_address': '\n'.join(shipping_address_tuple),
-        'optional': sender.custom,
+        'optional': optional,
         'notes': sender.memo,
         'gross': sender.mc_gross,
         'fee': sender.mc_fee,
@@ -187,17 +190,19 @@ def new_order(sender, is_pdt, **kwargs):
         'shipping_address': ', '.join(shipping_address_tuple),
     }
 
-    subject = loader.render_to_string('buynow/new_order_subject.txt', context)
-    # Email subject *must not* contain newlines
-    subject = ''.join(subject.splitlines())
-    email = loader.render_to_string('buynow/new_order_email.txt', context)
+    with translation.override(language):
+        subject = loader.render_to_string('buynow/new_order_subject.txt', context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        email = loader.render_to_string('buynow/new_order_email.txt', context)
 
     mail.send_mail(subject, email, None, [settings.PAYPAL_RECEIVER_EMAIL_ALIAS])
 
-    subject = loader.render_to_string('buynow/order_confirmation_subject.txt', context)
-    # Email subject *must not* contain newlines
-    subject = ''.join(subject.splitlines())
-    email = loader.render_to_string('buynow/order_confirmation_email.txt', context)
+    with translation.override(language):
+        subject = loader.render_to_string('buynow/order_confirmation_subject.txt', context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        email = loader.render_to_string('buynow/order_confirmation_email.txt', context)
 
     mail.send_mail(subject, email, settings.PAYPAL_RECEIVER_EMAIL_ALIAS, [sender.payer_email])
 
