@@ -15,6 +15,8 @@ class BuyNowForm(paypal_form.PayPalEncryptedPaymentsForm):
 
     image_url = forms.ChoiceField(widget=paypal_widgets.ValueHiddenInput())
 
+    cn = forms.ChoiceField(widget=paypal_widgets.ValueHiddenInput())
+
     def render(self):
         if getattr(settings, 'PAYPAL_TEST', True):
             return super(BuyNowForm, self).sandbox()
