@@ -326,7 +326,7 @@ CMS_MARKUP_OPTIONS = (
 CMS_MARKUP_TRAC_INTERTRAC = {
     'grow': {
         'TITLE': 'wlan slovenia growing',
-        'URL': 'http://grow.wlan-si.net',
+        'URL': 'https://grow.wlan-si.net',
     },
     'interop': {
         'TITLE': 'Open Networks Interoperability',
@@ -334,7 +334,7 @@ CMS_MARKUP_TRAC_INTERTRAC = {
     },
     'dev': {
         'TITLE': 'wlan slovenia development',
-        'URL': 'http://dev.wlan-si.net',
+        'URL': 'https://dev.wlan-si.net',
     },
 }
 
@@ -349,10 +349,10 @@ CMS_MARKUP_TRAC_INTERWIKI = {
         'URL': 'skype:?chat&blob=',
     },
     'wikipedia': {
-        'URL': 'http://en.wikipedia.org/wiki/',
+        'URL': 'https://en.wikipedia.org/wiki/',
     },
     'slwikipedia': {
-        'URL': 'http://sl.wikipedia.org/wiki/',
+        'URL': 'https://sl.wikipedia.org/wiki/',
     },
     'nodewatcher': {
         'URL': 'http://nodewatcher.readthedocs.org/en/latest/',
@@ -507,6 +507,6 @@ PAYPAL_PUBLIC_CERT = os.path.join(paypal_dir, 'sandbox.public')
 PAYPAL_CERT = os.path.join(paypal_dir, 'paypal_sandbox.pem')
 PAYPAL_CERT_ID = 'VCGS7EDY5NQ8J'
 
-SHOP_INSTRUCTIONS = 'http://grow.wlan-si.net/wiki/Navodila/Narocilo'
+SHOP_INSTRUCTIONS = 'https://grow.wlan-si.net/wiki/Navodila/Narocilo'
 
 USE_HTTPS = False
