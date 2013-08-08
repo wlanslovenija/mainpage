@@ -20,7 +20,7 @@ class AccountPlugin(plugin_base.CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         transactions = itertools.chain(models.Transaction.objects.all(), donations_models.Donation.objects.all())
-        transactions = sorted(transactions, key=operator('date', 'id'), reverse=True)
+        transactions = sorted(transactions, key=operator.attrgetter('date', 'id'), reverse=True)
         context.update({
             'transactions': transactions,
         })
