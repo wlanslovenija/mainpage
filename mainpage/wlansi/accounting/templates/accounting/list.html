@@ -1,6 +1,6 @@
 {% load i18n tracwiki context_tags accounting %}
 
-{% for transaction in transactions|dictsortreversed:"date" %}
+{% for transaction in transactions %}
     {% ifchanged transaction.date|date:"Y" %}
         {% if not forloop.first %}
             </dl>

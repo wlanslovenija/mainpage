@@ -1,4 +1,4 @@
-import decimal, itertools
+import decimal, itertools, operator
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,8 +19,10 @@ class AccountPlugin(plugin_base.CMSPluginBase):
     render_template = 'accounting/list.html'
 
     def render(self, context, instance, placeholder):
+        transactions = itertools.chain(models.Transaction.objects.all(), donations_models.Donation.objects.all())
+        transactions = sorted(transactions, key=operator('date', 'id'), reverse=True)
         context.update({
-            'transactions': itertools.chain(models.Transaction.objects.all(), donations_models.Donation.objects.all()),
+            'transactions': transactions,
         })
         return context
 
