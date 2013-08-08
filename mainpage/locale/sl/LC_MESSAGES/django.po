@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-21 12:23+0200\n"
+"POT-Creation-Date: 2013-08-08 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,13 @@ msgid "has paper"
 msgstr ""
 
 #: wlansi/accounting/admin.py:21 wlansi/accounting/admin.py:38
-#: wlansi/donations/admin.py:20 wlansi/inmedia/admin.py:19
+#: wlansi/donations/admin.py:22 wlansi/inmedia/admin.py:19
 #: wlansi/inmedia/admin.py:35 wlansi/participants/admin.py:14
 msgid "Yes"
 msgstr ""
 
 #: wlansi/accounting/admin.py:22 wlansi/accounting/admin.py:39
-#: wlansi/donations/admin.py:21 wlansi/inmedia/admin.py:20
+#: wlansi/donations/admin.py:23 wlansi/inmedia/admin.py:20
 #: wlansi/inmedia/admin.py:36 wlansi/participants/admin.py:15
 msgid "No"
 msgstr ""
@@ -43,6 +43,8 @@ msgstr ""
 
 #: wlansi/accounting/admin.py:107
 #: wlansi/accounting/templates/accounting/admin_summary.html:10
+#: wlansi/donations/admin.py:71
+#: wlansi/donations/templates/donations/admin_summary.html:10
 msgid "Summary"
 msgstr ""
 
@@ -50,7 +52,7 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: wlansi/accounting/cms_plugins.py:35
+#: wlansi/accounting/cms_plugins.py:37
 msgid "Balance"
 msgstr ""
 
@@ -126,6 +128,7 @@ msgid "papers"
 msgstr ""
 
 #: wlansi/accounting/templates/accounting/admin_summary.html:7
+#: wlansi/donations/templates/donations/admin_summary.html:7
 msgid "Home"
 msgstr ""
 
@@ -191,11 +194,11 @@ msgstr "Povzetek:"
 msgid "Change Object"
 msgstr ""
 
-#: wlansi/buynow/cms_plugins.py:62
+#: wlansi/buynow/cms_plugins.py:63
 msgid "Add special instructions or notes."
 msgstr "Dodaj posebna navodila ali opombe."
 
-#: wlansi/buynow/cms_plugins.py:78
+#: wlansi/buynow/cms_plugins.py:79
 msgid "Buy now"
 msgstr ""
 
@@ -481,11 +484,11 @@ msgstr ""
 "Oprosti, naročilo ni uspelo. Prosimo, <a href=\"%(contact_url)s"
 "\">kontaktiraj nas</a>, če je bil denar nakazan s tvojega računa."
 
-#: wlansi/donations/admin.py:15
+#: wlansi/donations/admin.py:17
 msgid "is anonymous"
 msgstr ""
 
-#: wlansi/donations/admin.py:56
+#: wlansi/donations/admin.py:58
 msgid "PayPal"
 msgstr ""
 
@@ -497,12 +500,12 @@ msgstr ""
 msgid "Supporters"
 msgstr ""
 
-#: wlansi/donations/cms_plugins.py:64
+#: wlansi/donations/cms_plugins.py:65
 #: wlansi/donations/templates/donations/pdt.html:20
 msgid "Public message"
 msgstr "Javno sporočilo"
 
-#: wlansi/donations/cms_plugins.py:80
+#: wlansi/donations/cms_plugins.py:81
 msgctxt "admin"
 msgid "Donate"
 msgstr ""
@@ -547,6 +550,15 @@ msgstr ""
 #: wlansi/donations/models.py:61
 msgid "donations"
 msgstr ""
+
+#: wlansi/donations/templates/donations/admin_summary.html:15
+#, python-format
+msgid "Summary for %(count)s donation: %(summary)s EUR"
+msgid_plural "Summary for %(count)s donations: %(summary)s EUR"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: wlansi/donations/templates/donations/donation_confirmation_email.txt:3
 #, python-format

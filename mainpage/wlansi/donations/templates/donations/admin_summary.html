@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+
+{% load future i18n admin_urls %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ app_label|capfirst }}</a>
+        &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst|escape }}</a>
+        &rsaquo; {% trans 'Summary' %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p>{% blocktrans count count=count %}Summary for {{ count }} donation: {{ summary }} EUR{% plural %}Summary for {{ count }} donations: {{ summary }} EUR{% endblocktrans %}</p>
+{% endblock %}

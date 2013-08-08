@@ -1,3 +1,5 @@
+import decimal
+
 from django.conf import settings
 from django.contrib import admin
 from django.db.models import Q
@@ -57,6 +59,23 @@ class DonationAdmin(reversion.VersionAdmin):
             'fields': ('txn_id', 'timestamp', 'donation_by', 'email', 'gross', 'fee', 'pdt', 'ipn'),
         }),
     )
+    actions = ('compute_summary',)
+
+    def compute_summary(self, request, queryset):
+        summary = decimal.Decimal(0)
+
+        for donation in queryset:
+            summary += donation.amount
+
+        context = {
+            'title': _("Summary"),
+            'opts': self.model._meta,
+            'app_label': self.model._meta.app_label,
+            'count': queryset.count(),
+            'summary': summary,
+        }
+
+        return response.TemplateResponse(request, 'donations/admin_summary.html', context, current_app=self.admin_site.name)
 
     def get_list_display(self, request):
         language = translation.get_language()
