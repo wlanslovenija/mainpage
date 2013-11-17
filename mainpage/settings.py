@@ -211,6 +211,7 @@ INSTALLED_APPS = (
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
     'mainpage.wlansi.buynow',
+    'mainpage.wlansi.coinwidget',
     'mainpage.wlansi.donations',
     'mainpage.wlansi.dummy',
     'mainpage.wlansi.gallery',

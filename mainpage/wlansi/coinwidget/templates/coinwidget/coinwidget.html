@@ -1,0 +1,31 @@
+{% load staticfiles sekizai_tags %}
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var COINWIDGET_LOOKUP = 'http://coinwidget.com/widget/';
+    var COINWIDGET_QR = 'http://coinwidget.com/widget/';
+    var COINWIDGET_SOURCE = '{% filter escapejs %}{% static "coinwidget/" %}{% endfilter %}';
+    /* ]]> */
+</script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}<script type="text/javascript" src="{% static "coinwidget/coin.js" %}"></script>{% endaddtoblock %}
+
+<script type="text/javascript">
+    /* <![CDATA[ */
+    CoinWidgetCom.go({
+        'wallet_address': '{{ object.wallet_address|escapejs }}',
+        'currency': '{{ object.currency|escapejs }}',
+        'counter': '{{ object.counter|escapejs }}',
+        'alignment': '{{ object.window_alignment|escapejs }}',
+        'qrcode': {{ object.qr_code|lower}},
+        'auto_show': {{ object.auto_show|lower }},
+        'decimals': {{ object.decimals }},
+        'lbl_button': "{{ object.button_label|escapejs }}",
+        'lbl_address': "{{ object.address_label|escapejs }}",
+        'lbl_count': "{{ object.count_label|escapejs }}",
+        'lbl_amount': "{{ object.window_alignment|escapejs }}"
+    });
+    /* ]]> */
+</script>

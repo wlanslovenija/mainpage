@@ -786,3 +786,7 @@ li.empty {
 .smalltext {
 	font-size: 10px;
 }
+
+.COINWIDGETCOM_CREDITS {
+    display: none;
+}
