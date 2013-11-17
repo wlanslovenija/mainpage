@@ -801,6 +801,10 @@ li.empty {
     margin-top: 1px;
 }
 
+.donate-button .paypal-donate, .donate-button .coinwidget {
+    margin: 1em 0;
+}
+
 .COINWIDGETCOM_CREDITS {
     display: none;
 }

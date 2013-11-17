@@ -111,6 +111,10 @@ a.twitter-link:hover,
 	background: transparent url('images/go_right.png') no-repeat 100% -18px;
 }
 
+.donate p {
+    margin-top: -1em;
+}
+
 .twitter-link-p, a.twitter-link {
 	margin-top: 0;
 }
