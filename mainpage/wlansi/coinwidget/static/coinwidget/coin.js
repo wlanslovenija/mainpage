@@ -37,7 +37,9 @@ var CoinWidgetComCounter = 0;
 
 if (typeof CoinWidgetCom != 'object')
 var CoinWidgetCom = {
-	source: 'http://coinwidget.com/widget/'
+	sourceLookup: COINWIDGET_LOOKUP
+	, sourceQR: COINWIDGET_QR
+	, source: COINWIDGET_SOURCE
 	, config: []
 	, go :function(config) {
 		config = CoinWidgetCom.validate(config);
@@ -165,7 +167,7 @@ var CoinWidgetCom = {
 		if ($addresses.length) {
 			CoinWidgetCom.loader.script({
 				id: 'COINWIDGETCOM_INFO'+Math.random()
-				, source: (CoinWidgetCom.source+'lookup.php?data='+$addresses.join('|'))
+				, source: (CoinWidgetCom.sourceLookup+'lookup.php?data='+$addresses.join('|'))
 				, callback: function(){
 					if (typeof COINWIDGETCOM_DATA == 'object') {
 						CoinWidgetCom.counter = COINWIDGETCOM_DATA;
@@ -229,7 +231,7 @@ var CoinWidgetCom = {
 						return;
 					}
 					$lrg.attr({
-						src: CoinWidgetCom.source +'qr/?address='+$config.wallet_address
+						src: CoinWidgetCom.sourceQR +'qr/?address='+$config.wallet_address
 					}).show();
 				}).bind('mouseleave',function(){
 					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
