@@ -787,6 +787,20 @@ li.empty {
 	font-size: 10px;
 }
 
+.donate-button p {
+    display: none;
+}
+
+.donate-button .paypal-donate, .donate-button .coinwidget {
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+}
+
+.donate-button .coinwidget {
+    margin-top: 1px;
+}
+
 .COINWIDGETCOM_CREDITS {
     display: none;
 }
