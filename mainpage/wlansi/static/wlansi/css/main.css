@@ -115,12 +115,22 @@ a.twitter-link:hover,
 	margin-top: 0;
 }
 
-.donate a {
-    margin-top: -2em;
+.donate {
+    margin-top: -0.5em;
 }
 
-.donate p {
-    margin: 0;
+.donate-button p {
+    display: none;
+}
+
+.donate-button {
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+}
+
+.donate-button .coinwidget {
+    margin-top: 1px;
 }
 
 ul.tweet_list li.empty {
