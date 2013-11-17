@@ -14,6 +14,7 @@ class CoinwidgetPlugin(plugin_base.CMSPluginBase):
     model = models.Coinwidget
     name = _("Coinwidget")
     render_template = "coinwidget/coinwidget.html"
+    text_enabled = True
 
     def render(self, context, instance, placeholder):
         context.update({
