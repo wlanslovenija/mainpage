@@ -146,7 +146,7 @@ var CoinWidgetCom = {
 					break;
 			}
 		if ($(coin_window).is(':visible')) {
-			$(coin_window).stop().animate({'z-index':99999999999,'top':$top,'left':$left},150);
+			$(coin_window).stop().css({'z-index':99999999999,'top':$top,'left':$left});
 		} else {
 			$(coin_window).stop().css({'z-index':99999999998,'top':$top,'left':$left});
 		}
