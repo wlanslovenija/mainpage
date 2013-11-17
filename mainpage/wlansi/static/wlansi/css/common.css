@@ -797,12 +797,12 @@ li.empty {
     height: 26px;
 }
 
-.donate-button .coinwidget {
-    margin-top: 1px;
-}
-
 .donate-button .paypal-donate, .donate-button .coinwidget {
     margin: 1em 0;
+}
+
+.donate-button .coinwidget {
+    padding-top: 1px;
 }
 
 .COINWIDGETCOM_CREDITS {
