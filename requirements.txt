@@ -46,7 +46,7 @@ python-dateutil==1.5
 python-memcached==1.48
 pytz==2012c
 recaptcha-client==1.0.6
-simple-translation==0.8.6
+-e git+https://github.com/wlanslovenija/simple-translation.git@56397d5e07d0e151196eb357db04967e978949cd#egg=simple_translation-dev
 smmap==0.8.2
 textile==2.1.5
 wsgiref==0.1.2
