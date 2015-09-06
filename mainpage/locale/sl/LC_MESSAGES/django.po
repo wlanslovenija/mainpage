@@ -949,6 +949,10 @@ msgstr "razvoj"
 msgid "growing"
 msgstr "rast"
 
+#: wlansi/templates/footer.html:28
+msgid "chat"
+msgstr "klepet"
+
 #: wlansi/templates/header.html:16
 msgid "Like us on Facebook"
 msgstr "Likeaj na Facebooku"
