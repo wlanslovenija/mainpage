@@ -364,6 +364,9 @@ CMS_MARKUP_TRAC_INTERWIKI = {
     'github': {
         'URL': 'https://github.com/wlanslovenija/',
     },
+    'chat': {
+        'URL': 'https://chat.wlan-si.net/',
+    },
 }
 
 CMS_MARKUP_TRAC_CONFIGURATION = {
