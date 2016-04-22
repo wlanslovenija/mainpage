@@ -56,6 +56,7 @@ $(document).ready(function () {
           })})(node.i);
         }
       }
+      updateStatus();
     }
 
     function updateStatus() {
