@@ -1,7 +1,7 @@
-var nodewatcher_url = "https://nodes.wlan-si.net";
-var nodes = [];
-
 $(document).ready(function () {
+    var nodewatcher_url = "https://nodes.wlan-si.net";
+    var nodes = [];
+
     var icon = new google.maps.MarkerImage(
         // TODO: Very ugly, but it works
         MAP_ICON_NODE_UP,
