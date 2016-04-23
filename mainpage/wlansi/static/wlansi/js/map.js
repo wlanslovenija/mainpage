@@ -1,14 +1,17 @@
 $(document).ready(function () {
+    // TODO: Do not hard-code.
+    var NODEWATCHER_BASE_URL = "https://nodes.wlan-si.net";
+
+    var nodes = [];
+
     var icon = new google.maps.MarkerImage(
-        // TODO: Very ugly, but it works
-        'https://nodes.wlan-si.net/images/status_up_gmap.png',
+        MAP_ICON_NODE_UP,
         new google.maps.Size(20, 32),
         new google.maps.Point(0, 0),
         new google.maps.Point(9, 30)
     );
     var shadow = new google.maps.MarkerImage(
-        // TODO: Very ugly, but it works
-        'https://nodes.wlan-si.net/images/gmap_node_shadow.png',
+        MAP_ICON_NODE_SHADOW,
         new google.maps.Size(32, 32),
         new google.maps.Point(0, 0),
         new google.maps.Point(9, 30)
@@ -20,27 +23,17 @@ $(document).ready(function () {
     var map_options = {
         'zoom': MAP_ZOOM,
         'center': new google.maps.LatLng(MAP_LATITUDE, MAP_LONGITUDE),
-        'mapTypeId': google.maps.MapTypeId.ROADMAP,
+        'mapTypeId': google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById('map_canvas'), map_options);
-    $.each(nodes, function (i, node) {
-        var marker = new google.maps.Marker({
-            'position': new google.maps.LatLng(node.lat, node.long),
-            'map': map,
-            'shadow': shadow,
-            'icon': icon,
-            'shape': shape,
-            'title': node.name
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-            document.location = node.url;
-        });
-    });
+
     function updateStatus() {
         var bounds = map.getBounds();
         var visible_nodes = 0;
         $.each(nodes, function (i, node) {
-            if (bounds.contains(new google.maps.LatLng(node.lat, node.long))) visible_nodes++;
+            if (node.hasOwnProperty('l') && bounds.contains(new google.maps.LatLng(node.l[1], node.l[0]))) {
+                visible_nodes++;
+            }
         });
         var fmts = ngettext("%(visible_nodes)s active node visible (%(all_nodes)s all)", "%(visible_nodes)s active nodes visible (%(all_nodes)s all)", visible_nodes);
         $('.map_status').text(interpolate(fmts, {
@@ -48,5 +41,46 @@ $(document).ready(function () {
             'all_nodes': nodes.length
         }, true));
     }
+
+    function displayNodes() {
+        $.each(nodes, function (i, node) {
+            if (node.hasOwnProperty('l')) {
+                var marker = new google.maps.Marker({
+                    'position': new google.maps.LatLng(node.l[1], node.l[0]),
+                    'map': map,
+                    'shadow': shadow,
+                    'icon': icon,
+                    'shape': shape,
+                    'title': node.n
+                });
+                google.maps.event.addListener(marker, 'click', function () {
+                    // TODO: Do not hard-code the URL.
+                    document.location = NODEWATCHER_BASE_URL + '/node/' + node.i + '/';
+                });
+            }
+        });
+        updateStatus();
+    }
+
+    // TODO: Do not hard-code the URL.
+    $.getJSON(NODEWATCHER_BASE_URL + '/api/v1/stream/', {
+        format: 'json',
+        tags__module: 'topology',
+        limit: 1
+    }, function (data) {
+        var streamId = data.objects[0].id;
+        var latestTimestamp = Math.round(Date.parse(data.objects[0].latest_datapoint) / 1000);
+        // TODO: Do not hard-code the URL.
+        $.getJSON(NODEWATCHER_BASE_URL + '/api/v1/stream/' + streamId + '/', {
+            format: 'json',
+            reverse: 'true',
+            limit: 1,
+            start: latestTimestamp
+        }, function (data) {
+            nodes = data.datapoints[0].v.v;
+            displayNodes();
+        });
+    });
+
     google.maps.event.addListener(map, 'bounds_changed', updateStatus);
 });

@@ -1,20 +1,16 @@
 {% load i18n l10n staticfiles sekizai_tags %}
 
-{% addtoblock "js" %}<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;region=SI"></script>{% endaddtoblock %}
-{% addtoblock "js" %}<script type="text/javascript" src="{% static "wlansi/js/map.js" %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?region=SI"></script>{% endaddtoblock %}
 {% addtoblock "js" %}<script type="text/javascript">
     /* <![CDATA[ */
-    var nodes = [
-        {% for node in nodes %}
-            {'lat': {{ node.geo_lat|unlocalize }}, 'long': {{ node.geo_long|unlocalize }}, 'name': '{{ node.name|escapejs }}', 'url': '{{ node.get_full_url|escapejs }}'}{% if not forloop.last %},{% endif %}
-        {% endfor %}
-    ];
     var MAP_LATITUDE = '{{ MAP_LATITUDE|escapejs }}';
     var MAP_LONGITUDE = '{{ MAP_LONGITUDE|escapejs }}';
     var MAP_ZOOM = {{ MAP_ZOOM }};
+    var MAP_ICON_NODE_UP = "{% static 'wlansi/images/gmap_node_up.png' %}";
+    var MAP_ICON_NODE_SHADOW = "{% static 'wlansi/images/gmap_node_shadow.png' %}";
     /* ]]> */
-</script>
-{% endaddtoblock %}
+</script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{% static "wlansi/js/map.js" %}"></script>{% endaddtoblock %}
 
 <div class="map">
     <div id="map_canvas"></div>
