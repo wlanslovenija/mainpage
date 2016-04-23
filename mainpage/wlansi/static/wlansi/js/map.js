@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    var nodewatcher_url = "https://nodes.wlan-si.net";
+    // TODO: Do not hard-code.
+    var NODEWATCHER_BASE_URL = "https://nodes.wlan-si.net";
+
     var nodes = [];
 
     var icon = new google.maps.MarkerImage(
@@ -53,17 +55,17 @@ $(document).ready(function () {
                     'title': node.n
                 });
                 google.maps.event.addListener(marker, 'click', function () {
-                    document.location = nodewatcher_url + "/node/" + node.i + "/";
+                    document.location = NODEWATCHER_BASE_URL + "/node/" + node.i + "/";
                 });
             }
         });
         updateStatus();
     }
 
-    $.getJSON(nodewatcher_url + "/api/v1/stream/", {format: "json", tags__module: "topology", limit: 1}, function (data) {
+    $.getJSON(NODEWATCHER_BASE_URL + "/api/v1/stream/", {format: "json", tags__module: "topology", limit: 1}, function (data) {
         var streamId = data.objects[0].id;
         var latestTimestamp = Math.round(Date.parse(data.objects[0].latest_datapoint) / 1000);
-        $.getJSON(nodewatcher_url + "/api/v1/stream/" + streamId + "/", {format: "json", reverse: "true", limit: 1, start: latestTimestamp}, function(data) {
+        $.getJSON(NODEWATCHER_BASE_URL + "/api/v1/stream/" + streamId + "/", {format: "json", reverse: "true", limit: 1, start: latestTimestamp}, function(data) {
             nodes = data.datapoints[0].v.v;
             displayNodes();
         });
