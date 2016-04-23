@@ -5,14 +5,12 @@ $(document).ready(function () {
     var nodes = [];
 
     var icon = new google.maps.MarkerImage(
-        // TODO: Very ugly, but it works
         MAP_ICON_NODE_UP,
         new google.maps.Size(20, 32),
         new google.maps.Point(0, 0),
         new google.maps.Point(9, 30)
     );
     var shadow = new google.maps.MarkerImage(
-        // TODO: Very ugly, but it works
         MAP_ICON_NODE_SHADOW,
         new google.maps.Size(32, 32),
         new google.maps.Point(0, 0),
