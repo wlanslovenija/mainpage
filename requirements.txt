@@ -1,7 +1,7 @@
 Django==1.4
 Genshi==0.6
 Markdown==2.1.1
-PIL==1.1.7
+Pillow==4.2.1
 PyYAML==3.10
 Pygments==1.5
 South==0.7.5
@@ -10,16 +10,11 @@ amqplib==1.0.2
 anyjson==0.3.1
 async==0.6.1
 chardet==1.0.1
--e git+https://github.com/wlanslovenija/cmsplugin-blog.git@0829d67e47934ab021206661ad5df7e7e1573b89#egg=cmsplugin_blog-dev
--e git+https://github.com/maccesch/cmsplugin-contact.git@ea95740655582faf603cb2f0f772f3600f952a6b#egg=cmsplugin_contact-dev
--e git+https://github.com/stefanfoulis/cmsplugin-filer.git@9f2e5959c25b849ba64d4a6be10d6ccd7278e050#egg=cmsplugin_filer-dev
 cmsplugin-markup==0.2.2
 cmsplugin-markup-tracwiki==0.2.2
-distribute==0.6.27
+distribute==0.7.3
 django-appconf==0.5
 django-classy-tags==0.3.4.1
--e git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
--e git+https://github.com/mitar/django-filer.git@d9917b1458c5abd41f47bc98c56d197d4ccd6fa0#egg=django_filer-dev
 django-missing==0.1.11
 django-mptt==0.5.2
 django-paypal==0.1.2
@@ -46,7 +41,6 @@ python-dateutil==1.5
 python-memcached==1.48
 pytz==2012c
 recaptcha-client==1.0.6
--e git+https://github.com/wlanslovenija/simple-translation.git@94c5e5639532411e070e9746c0ebd802e142b208#egg=simple_translation-dev
 smmap==0.8.2
 textile==2.1.5
 wsgiref==0.1.2

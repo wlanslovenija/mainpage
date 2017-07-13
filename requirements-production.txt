@@ -1,11 +1,5 @@
-GeoIP-Python==1.2.7
--e svn+http://trac-hacks.org/svn/footnotemacro/trunk@11926#egg=FootNoteMacro-dev_r11926
+GeoIP==1.3.2
 GitPython==0.3.2.RC1
--e git+https://github.com/mitar/trac-mathjax.git@e5b2bcbd8ec74685407c6fb2e71fb56cc2f47484#egg=MathJaxPlugin-dev
--e svn+http://trac-hacks.org/svn/dashessyntaxplugin/0.11@8543#egg=TracDashesSyntaxPlugin-dev_r8543
--e hg+https://bitbucket.org/kisielk/tracmathplugin@05cd705cc9eadf322d5b8395fad1ffb0a6efeab5#egg=TracMath-dev
 gitdb==0.5.4
 psycopg2==2.2.1
-python-aprmd5==0.2
-M2Crypto==0.21.1
--r requirements.txt
+M2Crypto==0.26.0
