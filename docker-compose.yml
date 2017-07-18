@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: "python manage.py runserver 0.0.0.0:8000"
+    entrypoint: scripts/docker-run
+    environment:
+      PYTHONUNBUFFERED: 1
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"

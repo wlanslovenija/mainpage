@@ -25,3 +25,6 @@ RUN pip install --upgrade --force-reinstall -e git+https://github.com/stefanfoul
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/mitar/django-filer.git@d9917b1458c5abd41f47bc98c56d197d4ccd6fa0#egg=django_filer-dev
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/wlanslovenija/simple-translation.git@94c5e5639532411e070e9746c0ebd802e142b208#egg=simple_translation-dev
+
+WORKDIR /code
+ADD . /code
