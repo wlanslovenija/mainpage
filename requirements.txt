@@ -44,3 +44,4 @@ recaptcha-client==1.0.6
 smmap==0.8.2
 textile==2.1.5
 wsgiref==0.1.2
+uwsgi==2.0.15
