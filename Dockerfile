@@ -23,8 +23,10 @@ RUN pip install --upgrade --force-reinstall -e git+https://github.com/wlansloven
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/maccesch/cmsplugin-contact.git@ea95740655582faf603cb2f0f772f3600f952a6b#egg=cmsplugin_contact-dev
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/stefanfoulis/cmsplugin-filer.git@9f2e5959c25b849ba64d4a6be10d6ccd7278e050#egg=cmsplugin_filer-dev
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
-RUN pip install --upgrade --force-reinstall -e git+https://github.com/mitar/django-filer.git@d9917b1458c5abd41f47bc98c56d197d4ccd6fa0#egg=django_filer-dev
+RUN pip install --upgrade --force-reinstall -e git+https://github.com/mitar/django-filer.git#egg=django_filer-dev
 RUN pip install --upgrade --force-reinstall -e git+https://github.com/wlanslovenija/simple-translation.git@94c5e5639532411e070e9746c0ebd802e142b208#egg=simple_translation-dev
+
+RUN pip install -Iv --force-reinstall Django==1.4.0
 
 WORKDIR /code
 ADD . /code

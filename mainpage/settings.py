@@ -7,7 +7,7 @@ database_file = os.path.join(settings_dir, 'db.sqlite')
 
 # Website requires nodewatcher, so for easier development we assume
 # it is accessible in the same directory website repository is
-nodewatcher_dir = os.path.abspath(os.path.join(settings_dir, '..', '..', 'nodewatcher', 'nodewatcher'))
+nodewatcher_dir = "/code/" + os.path.abspath(os.path.join(settings_dir, '..', '..', 'nodewatcher', 'nodewatcher'))
 sys.path.insert(0, nodewatcher_dir)
 
 # Dummy function, so that "makemessages" can find strings which should be translated.
