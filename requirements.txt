@@ -45,3 +45,14 @@ smmap==0.8.2
 textile==2.1.5
 wsgiref==0.1.2
 uwsgi==2.0.15
+svn+https://trac-hacks.org/svn/footnotemacro/trunk/#egg=FootNoteMacro
+git+https://github.com/mitar/trac-mathjax.git@e5b2bcbd8ec74685407c6fb2e71fb56cc2f47484#egg=MathJaxPlugin-dev
+svn+https://trac-hacks.org/svn/dashessyntaxplugin/0.11/#egg=TracDashesSyntaxPlugin
+hg+https://bitbucket.org/kisielk/tracmathplugin#egg=TracMath-dev
+git+https://github.com/herzbube/python-aprmd5.git#egg=python-aprmd5
+git+https://github.com/wlanslovenija/cmsplugin-blog.git@0829d67e47934ab021206661ad5df7e7e1573b89#egg=cmsplugin_blog-dev
+git+https://github.com/maccesch/cmsplugin-contact.git@ea95740655582faf603cb2f0f772f3600f952a6b#egg=cmsplugin_contact-dev
+git+https://github.com/stefanfoulis/cmsplugin-filer.git@9f2e5959c25b849ba64d4a6be10d6ccd7278e050#egg=cmsplugin_filer-dev
+git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
+git+https://github.com/mitar/django-filer.git#egg=django_filer-dev
+git+https://github.com/wlanslovenija/simple-translation.git@94c5e5639532411e070e9746c0ebd802e142b208#egg=simple_translation-dev
