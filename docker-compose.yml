@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: "python manage.py runserver 0.0.0.0:80"
+    environment:
+      PYTHONUNBUFFERED: 1
+    volumes:
+      - .:/code
+    ports:
+      - "80:80"
