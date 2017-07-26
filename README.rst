@@ -4,9 +4,9 @@
 Development installation
 ------------------------
 
-docker build -t mainpage .
+docker-compose build
 
 Development run
 ------------------------
 
-docker run mainpage
+docker-compose up
