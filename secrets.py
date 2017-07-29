@@ -14,13 +14,13 @@ PAYPAL_IDENTITY_TOKEN_PRODUCTION = '...'
 
 
 class SecretNotDefined(Exception):
-    exit()
+    pass
 
 if DB_PASSWORD == '...':
-    raise SecretNotDefined("Database password is not set")
+    raise SecretNotDefined("Database password is not set (set it in secrets.py)")
 elif SECRET_KEY == '...':
-    raise SecretNotDefined("Secret is not set")
+    raise SecretNotDefined("Secret is not set (set it in secrets.py)")
 elif RECAPTCHA_PRIVATE_KEY == '...' or RECAPTCHA_PUBLIC_KEY == '...':
-    raise SecretNotDefined("Recaptcha keys not set")
+    raise SecretNotDefined("Recaptcha keys not set(set it in secrets.py)")
 elif PAYPAL_IDENTITY_TOKEN_PRODUCTION == '...':
-    raise SecretNotDefined("Paypal identity toekn not set")
+    raise SecretNotDefined("Paypal identity toekn not set(set it in secrets.py)")
