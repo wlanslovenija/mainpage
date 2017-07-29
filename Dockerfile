@@ -1,7 +1,7 @@
 FROM tozd/runit:ubuntu-xenial
 
 EXPOSE 80/tcp
-ENV DJANGO_SETTINGS_MODULE mainpage.settings
+ENV DJANGO_SETTINGS_MODULE mainpage.settings_production
 
 RUN apt-get update -q -q && \
     apt-get install --no-install-recommends -y git python python-dev python-pip python-setuptools build-essential libgeoip-dev libpq-dev swig libxml2-dev libxslt1-dev subversion mercurial libaprutil1 apache2-dev
