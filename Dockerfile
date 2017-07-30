@@ -3,6 +3,16 @@ FROM tozd/runit:ubuntu-xenial
 EXPOSE 80/tcp
 ENV DJANGO_SETTINGS_MODULE mainpage.settings_production
 
+#Set secrets for
+#ENV DB_PASSWORD ...
+#Make this unique, and don't share it with anybody.
+#ENV SECRET_KEY ...
+#You can find them at: https://www.google.com/recaptcha/admin
+#ENV RECAPTCHA_PUBLIC_KEY ...
+#ENV RECAPTCHA_PRIVATE_KEY ...
+#ENV PAYPAL_IDENTITY_TOKEN_PRODUCTION ...
+
+
 # Update packages
 RUN apt-get update -q -q && \
     apt-get install --no-install-recommends -y git python python-dev python-pip python-setuptools build-essential libgeoip-dev libpq-dev swig libxml2-dev libxslt1-dev subversion mercurial libaprutil1 apache2-dev

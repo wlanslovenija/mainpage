@@ -4,9 +4,6 @@ from __future__ import absolute_import
 
 from .settings import *
 
-# Secrets are in a separate file and they have to be configured
-from secrets import *
-
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 

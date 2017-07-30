@@ -1,4 +1,3 @@
-Django==1.4.0
 Genshi==0.6
 Markdown==2.1.1
 Pillow==4.2.1
@@ -56,4 +55,5 @@ git+https://github.com/stefanfoulis/cmsplugin-filer.git@9f2e5959c25b849ba64d4a6b
 git+https://github.com/mitar/django-cms.git@0bcf0409d5a052f136850cd03f6b54149a3983c5#egg=django_cms-dev
 git+https://github.com/mitar/django-filer.git#egg=django_filer-dev
 git+https://github.com/wlanslovenija/simple-translation.git@94c5e5639532411e070e9746c0ebd802e142b208#egg=simple_translation-dev
-djangocms-twitter==0.0.5    
+djangocms-twitter==0.0.5
+Django==1.4.0
