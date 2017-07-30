@@ -17,6 +17,9 @@ MANAGERS = ADMINS
 # tables (like users) between them. The idea is that we delete users table from
 # mainpage's schema so that it is found in nodewatcher's schema.
 
+#DB_PASSWORD is defined in Dockerfile
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'mainpage')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -29,7 +32,8 @@ DATABASES = {
     },
 }
 
-# SECRET_KEY is in secrets
+# SECRET_KEY is defined in Dockerfile
+SECRET_KEY = os.environ.get('SECRET_KEY', 'ilikejimmyjams')
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
@@ -49,8 +53,10 @@ CACHES = {
     },
 }
 
-# RECAPTCHA_PUBLIC_KEY is in secrets
-# RECAPTCHA_PRIVATE_KEY is in secrets
+# RECAPTCHA_PUBLIC_KEY is defined in Dockerfile
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+# RECAPTCHA_PRIVATE_KEY is defined in Dockerfile
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
 CMS_MARKUP_TRAC_COMPONENTS += (
     'tracdashessyntax.plugin.DashesSyntaxPlugin',
