@@ -16,14 +16,13 @@ ENV DJANGO_SETTINGS_MODULE mainpage.settings_production
 # Update packages
 RUN apt-get update -q -q && \
     apt-get install --no-install-recommends -y git python python-dev python-pip python-setuptools build-essential libgeoip-dev libpq-dev swig libxml2-dev libxslt1-dev subversion mercurial libaprutil1 apache2-dev
+RUN pip install --upgrade pip setuptools wheel six requests
 
 ADD ./requirements.txt /code/requirements.txt
 ADD ./requirements-production.txt /code/requirements-production.txt
 
-# Install Python package dependencies (do not use pip install -r here!)
-RUN pip install --upgrade --force-reinstall pip six requests && \
-    sed -i 's/^-r.*$//g' /code/requirements.txt && \
-    cat /code/requirements-production.txt /code/requirements.txt | xargs -n 1 sh -c 'CPLUS_INCLUDE_PATH=/usr/include/gdal C_INCLUDE_PATH=/usr/include/gdal pip install $0 || exit 255'
+# Install Python package dependencies
+RUN pip install -r /code/requirements-production.txt
 
 # Remove unneeded build-time dependencies
 RUN apt-get purge python-dev build-essential -y && \

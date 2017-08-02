@@ -1,3 +1,4 @@
+-r /code/requirements.txt
 GeoIP==1.3.2
 GitPython==0.3.2.RC1
 gitdb==0.5.4

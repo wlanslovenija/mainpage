@@ -102,7 +102,7 @@ GIT_REPOSITORIES_DIR = '/srv/git/'
 if not DEBUG:
     PAYPAL_TEST = DEBUG
     PAYPAL_DEBUG = PAYPAL_TEST
-    # PAYPAL_IDENTITY_TOKEN_PRODUCTION is defined in Dockerfile
+    # PAYPAL_IDENTITY_TOKEN is defined in Dockerfile
     PAYPAL_IDENTITY_TOKEN = os.environ.get('PAYPAL_IDENTITY_TOKEN_PRODUCTION')
     PAYPAL_RECEIVER_EMAIL = 'mitar@tnode.com'
     PAYPAL_RECEIVER_EMAIL_ALIAS = 'order@wlan-si.net'
@@ -113,3 +113,5 @@ if not DEBUG:
     PAYPAL_CERT_ID = 'EWMRL6RHUA6NE'
 
 USE_HTTPS = True
+
+ALLOWED_HOSTS = []
