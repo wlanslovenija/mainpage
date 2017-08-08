@@ -13,10 +13,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# We set search path to include nodewatcher's schema, so we can share some
-# tables (like users) between them. The idea is that we delete users table from
-# mainpage's schema so that it is found in nodewatcher's schema.
-
 #DB_PASSWORD is defined in Dockerfile
 DB_PASSWORD = os.environ.get('DB_PASSWORD', 'mainpage')
 
@@ -26,9 +22,11 @@ DATABASES = {
         'NAME': 'wlansi',
         'USER': 'wlansi_cms',
         'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '',
-        'SCHEMA_SEARCH_PATH': ('wlansi_cms', 'wlansi_nw'),
+        'OPTIONS': {
+            'options': '-c search_path=public'
+        },
     },
 }
 

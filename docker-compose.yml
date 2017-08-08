@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   web:
     build: .
@@ -10,3 +10,17 @@ services:
       - .:/code
     ports:
       - "80:80"
+  db:
+    image: tozd/postgresql:9.6
+    environment:
+      PGSQL_ROLE_1_USERNAME: wlansi_cms
+      PGSQL_ROLE_1_PASSWORD: mainpage
+      PGSQL_ROLE_1_FLAGS: LOGIN SUPERUSER
+      PGSQL_DB_1_NAME: wlansi
+      PGSQL_DB_1_OWNER: wlansi_cms
+      PGSQL_DB_1_ENCODING: UNICODE
+      PGSQL_DB_1_POSTGIS: "true"
+    volumes:
+      - /tmp/mainpage-db:/var/lib/postgresql/9.5/main
+    expose:
+      - 5432
