@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: "python manage.py runserver 0.0.0.0:80"
+    command: "scripts/docker-wait-pgsql; python scripts/migrate.py; python manage.py runserver 0.0.0.0:80"
     entrypoint: scripts/docker-run
     environment:
       PYTHONUNBUFFERED: 1
@@ -11,16 +11,14 @@ services:
     ports:
       - "80:80"
   db:
-    image: tozd/postgresql:9.6
-    environment:
-      PGSQL_ROLE_1_USERNAME: wlansi_cms
-      PGSQL_ROLE_1_PASSWORD: mainpage
-      PGSQL_ROLE_1_FLAGS: LOGIN SUPERUSER
-      PGSQL_DB_1_NAME: wlansi
-      PGSQL_DB_1_OWNER: wlansi_cms
-      PGSQL_DB_1_ENCODING: UNICODE
-      PGSQL_DB_1_POSTGIS: "true"
+    build:
+      context: docker/database/
+      dockerfile: Dockerfile
     volumes:
-      - /tmp/mainpage-db:/var/lib/postgresql/9.5/main
+      - ./scripts:/scripts
+      - /var/lib/postgresql/9.6/main
+    entrypoint: scripts/docker-run
     expose:
       - 5432
+    command: "/usr/lib/postgresql/9.6/bin/postgres -D /var/lib/postgresql/9.6/main -c config_file=/etc/postgresql/9.6/main/postgresql.conf"
+    user: postgres

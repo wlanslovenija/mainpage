@@ -10,7 +10,7 @@ if os.path.isfile(database_file):
     print "Removing old database.\n"
     os.remove(database_file)
 
-subprocess.check_call(('python', manage_script, 'syncdb'))
+subprocess.check_call(('python', manage_script, 'syncdb', '--noinput'))
 subprocess.check_call(('python', manage_script, 'migrate'))
 subprocess.check_call(('python', manage_script, 'reset', '--noinput', 'contenttypes'))
 

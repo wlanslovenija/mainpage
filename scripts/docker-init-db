@@ -1,0 +1,6 @@
+#!/bin/bash
+su - postgres
+scripts/docker-wait-pgsql
+psql -d template1 -c 'create extension ip4r;'
+psql --command "CREATE USER wlansi_cms WITH SUPERUSER PASSWORD 'mainpage';"
+createdb -O wlansi_cms wlansi
