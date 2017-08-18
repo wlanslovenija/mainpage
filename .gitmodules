@@ -1,4 +1,0 @@
-[submodule "nodewatcher"]
-	path = nodewatcher
-	url = https://github.com/wlanslovenija/nodewatcher.git
-	branch = master
