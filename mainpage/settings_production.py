@@ -112,4 +112,4 @@ if not DEBUG:
 
 USE_HTTPS = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]

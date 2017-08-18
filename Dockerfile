@@ -1,8 +1,7 @@
 FROM tozd/runit:ubuntu-xenial
 
 EXPOSE 80/tcp
-ENV DJANGO_SETTINGS_MODULE mainpage.settings_production
-
+ENV DJANGO_SETTINGS_MODULE mainpage.settings
 #Set secrets by uncommenting lines below
 #ENV DB_PASSWORD ...
 #Make this unique, and don't share it with anybody.
