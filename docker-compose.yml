@@ -14,11 +14,9 @@ services:
     build:
       context: docker/database/
       dockerfile: Dockerfile
-    volumes:
-      - ./scripts:/scripts
-      - /var/lib/postgresql/9.6/main
-    entrypoint: scripts/docker-run
+    environment:
+        POSTGRESQL_USER: wlansi_cms
+        POSTGRESQL_PASS: mainpage
+        POSTGRESQL_DB: wlansi
     expose:
       - 5432
-    command: "/usr/lib/postgresql/9.6/bin/postgres -D /var/lib/postgresql/9.6/main -c config_file=/etc/postgresql/9.6/main/postgresql.conf"
-    user: postgres

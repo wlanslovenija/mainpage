@@ -24,8 +24,6 @@ DATABASES = {
         'PASSWORD': DB_PASSWORD,
         'HOST': 'db',
         'PORT': '',
-        'OPTIONS': {
-            'options': '-c search_path=public'
         },
     },
 }

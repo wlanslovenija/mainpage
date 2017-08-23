@@ -1,0 +1,4 @@
+[submodule "docker/database"]
+	path = docker/database
+	url = https://github.com/Banno/docker-postgresql-8.4/
+    branch = postgres-8.4

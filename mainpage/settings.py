@@ -23,19 +23,20 @@ TEMPLATE_DEBUG = DEBUG
 # DEBUG=False and a view raises an exception, Django will e-mail these
 # people with the full exception information. Each member of the tuple
 # should be a tuple of (Full name, e-mail address).
-ADMINS = (
-)
+ADMINS = ()
 
 MANAGERS = ADMINS
 
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'mainpage')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': database_file,                  # Or path to database file if using sqlite3.
-        'USER': '',                             # Not used with sqlite3.
-        'PASSWORD': '',                         # Not used with sqlite3.
-        'HOST': '',                             # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'wlansi',
+        'USER': 'wlansi_cms',
+        'PASSWORD': DB_PASSWORD,
+        'HOST': 'db',
+        'PORT': '',
     },
 }
 
