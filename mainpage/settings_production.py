@@ -24,7 +24,6 @@ DATABASES = {
         'PASSWORD': DB_PASSWORD,
         'HOST': 'db',
         'PORT': '',
-        },
     },
 }
 

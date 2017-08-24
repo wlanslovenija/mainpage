@@ -13,7 +13,7 @@ ENV DJANGO_SETTINGS_MODULE mainpage.settings
 
 # Update packages
 RUN apt-get update -q -q && \
-    apt-get install --no-install-recommends -y git curl python python-dev python-pip python-setuptools build-essential libgeoip-dev libpq-dev swig libxml2-dev libxslt1-dev subversion mercurial libaprutil1 apache2-dev
+    apt-get install --no-install-recommends -y git curl python python-dev python-pip python-setuptools build-essential libgeoip-dev libpq-dev swig libxml2-dev libxslt1-dev subversion mercurial libaprutil1 apache2-dev python2.7-dev nginx
 RUN pip install --upgrade pip setuptools wheel six requests
 
 ADD ./requirements.txt /code/requirements.txt

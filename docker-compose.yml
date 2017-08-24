@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: "scripts/docker-wait-pgsql; python scripts/migrate.py; python manage.py runserver 0.0.0.0:80"
+    command: "scripts/docker-wait-pgsql; python scripts/migrate.py; uwsgi --http :80 --module mainpage.wsgi"
     entrypoint: scripts/docker-run
     environment:
       PYTHONUNBUFFERED: 1
