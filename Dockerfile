@@ -26,7 +26,7 @@ RUN pip install -r /code/requirements-production.txt
 RUN apt-get purge python-dev build-essential -y && \
     apt-get autoremove -y && \
 rm -f /code/packages.txt /code/requirements.txt
-
+COPY ./etc /etc
 # Add the current version of the code (needed for production deployments)
 WORKDIR /code
 ADD . /code

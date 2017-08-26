@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: "scripts/docker-wait-pgsql; python scripts/migrate.py; uwsgi --http :80 --module mainpage.wsgi"
+    command: "service nginx start; scripts/docker-wait-pgsql; python scripts/migrate.py; uwsgi --socket /var/tmp/nodewatcher.sock --wsgi-file /code/mainpage/wsgi.py"
     entrypoint: scripts/docker-run
     environment:
       PYTHONUNBUFFERED: 1

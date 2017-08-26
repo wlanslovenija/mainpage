@@ -1,23 +1,24 @@
-upstream nodewatcher {
-  server unix:///var/tmp/nodewatcher.sock;
+upstream mainpage {
+    server unix:/var/tmp/nodewatcher.sock;
 }
-
+error_log /dev/stdout info;
 server {
-  listen 80;
-  server_name _;
-  root /tmp;
+    listen 80 default_server;
+    server_name _;
+    charset utf-8;
+    root /tmp;
 
-  location /static {
-    alias /static;
-  }
+    location /static {
+        alias /code/mainpage/wlansi/static;
+    }
 
-  location /media {
-    alias /media;
-  }
+    location /media {
+        alias /code/mainpage/media/;
+    }
 
-  location / {
-    uwsgi_pass nodewatcher;
-    include /etc/nginx/uwsgi_params;
-  }
+    location / {
+        uwsgi_pass mainpage;
+        include /etc/nginx/uwsgi_params;
+    }
 }
 
