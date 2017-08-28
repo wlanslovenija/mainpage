@@ -9,7 +9,7 @@ This is a repository for wlan-si web-page docker, it contains:
 Installation
 ------------
 
-Dillinger requires `docker <https://www.docker.com/>`__ and
+Mainpage requires `docker <https://www.docker.com/>`__ and
 `docker-compose <https://docs.docker.com/compose/>`__ to run.
 
 Download the repository to disk and run docker-compose build.
