@@ -43,4 +43,4 @@ fixing the django project that was suppose to run.
 Future
 ------
 
-All that is left is for someone to fix the broken django project-
+All that is left is for someone to fix the broken django project.
