@@ -1,7 +1,7 @@
 Django==1.4
 Genshi==0.6
 Markdown==2.1.1
-PIL==1.1.7
+pillow==5.2.0
 PyYAML==3.10
 Pygments==1.5
 South==0.7.5
