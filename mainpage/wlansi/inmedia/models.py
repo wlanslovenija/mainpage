@@ -4,7 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from filer.fields import file
 
-from frontend.account import geo_fields
+from mainpage.modules import geo_fields
+
 
 class InMediaEntry(models.Model):
     date = models.DateField()

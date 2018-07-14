@@ -5,10 +5,6 @@ import os, sys
 settings_dir = os.path.abspath(os.path.dirname(__file__))
 database_file = os.path.join(settings_dir, 'db.sqlite')
 
-# Website requires nodewatcher, so for easier development we assume
-# it is accessible in the same directory website repository is
-nodewatcher_dir = os.path.abspath(os.path.join(settings_dir, '..', '..', 'nodewatcher', 'nodewatcher'))
-sys.path.insert(0, nodewatcher_dir)
 
 # Dummy function, so that "makemessages" can find strings which should be translated.
 _ = lambda s: s
@@ -60,8 +56,7 @@ LOCALE_PATHS = (
 
 ADMIN_LANGUAGE_CODE = 'en'
 
-import frontend
-GEOIP_PATH = os.path.abspath(os.path.join(os.path.dirname(frontend.__file__), '..', 'geoip'))
+
 DEFAULT_COUNTRY = 'SI'
 
 URL_VALIDATOR_USER_AGENT = 'Django'
@@ -205,9 +200,6 @@ INSTALLED_APPS = (
     'cmsplugin_markup_tracwiki',
 
     # Ours are first so that we can override default templates in other apps
-    'frontend.account',
-    'frontend.dns',
-    'frontend.nodes',
     'mainpage.wlansi',
     'mainpage.wlansi.accounting',
     'mainpage.wlansi.buynow',
@@ -293,8 +285,10 @@ LOGIN_REDIRECT_URL = '/admin/'
 LOGIN_URL = '/admin/'
 LOGOUT_URL = '/admin/'
 
+GEOIP_PATH = '/geoip/'
+
 AUTHENTICATION_BACKENDS = (
-    'frontend.account.auth.ModelBackend',
+    'mainpage.modules.auth.ModelBackend',
 )
 
 CACHES = {
