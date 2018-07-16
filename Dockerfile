@@ -9,4 +9,6 @@ ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz /geoip
 
 COPY . .
 
-CMD ["python", "manage.py", "runserver"]
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "-v", "3"]
